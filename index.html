@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Intelligence Report — Know your next career move in 24 hours</title>
+<meta name="description" content="Upload your CV and in 24 hours you'll know which career path is most realistic for you, what skills you're missing, and exactly what to do next.">
+<style>
+  :root {
+    --ink: #16211c;
+    --ink-soft: #4a5852;
+    --ink-faint: #7a867f;
+    --paper: #faf9f6;
+    --card: #ffffff;
+    --accent: #1d6f4c;
+    --accent-dark: #15573b;
+    --accent-soft: #e7f2ec;
+    --line: #e4e2dc;
+    --radius: 14px;
+    font-size: 16px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; padding: 0 1.25rem; }
+
+  /* ---------- Hero ---------- */
+  header { padding: 4.5rem 0 3rem; text-align: center; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+  }
+  h1 {
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    line-height: 1.2;
+    font-weight: 750;
+    letter-spacing: -0.02em;
+    margin-bottom: 1.25rem;
+  }
+  h1 em { font-style: normal; color: var(--accent); }
+  .sub {
+    font-size: 1.125rem;
+    color: var(--ink-soft);
+    max-width: 34rem;
+    margin: 0 auto 2rem;
+  }
+  .cta-btn {
+    display: inline-block;
+    font-size: 1.05rem;
+    font-weight: 650;
+    color: #fff;
+    background: var(--accent);
+    border: none;
+    border-radius: 999px;
+    padding: 0.95rem 2.2rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .cta-btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
+  .cta-note { margin-top: 0.75rem; font-size: 0.85rem; color: var(--ink-faint); }
+
+  /* ---------- What you get ---------- */
+  section { padding: 2.5rem 0; }
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .cards { display: grid; gap: 1rem; }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .card .num {
+    flex: none;
+    width: 2rem; height: 2rem;
+    display: grid; place-items: center;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+    border-radius: 50%;
+    font-size: 0.95rem;
+  }
+  .card h3 { font-size: 1.05rem; font-weight: 650; margin-bottom: 0.2rem; }
+  .card p { color: var(--ink-soft); font-size: 0.95rem; }
+
+  /* ---------- How it works ---------- */
+  .steps { display: grid; gap: 0.9rem; counter-reset: step; }
+  .step {
+    display: flex; align-items: baseline; gap: 0.9rem;
+    color: var(--ink-soft); font-size: 1rem;
+  }
+  .step::before {
+    counter-increment: step;
+    content: counter(step);
+    flex: none;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .step strong { color: var(--ink); font-weight: 650; }
+
+  /* ---------- Form ---------- */
+  #get-report { scroll-margin-top: 2rem; }
+  form {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 2rem 1.75rem;
+    display: grid;
+    gap: 1.15rem;
+  }
+  label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 650;
+    margin-bottom: 0.35rem;
+  }
+  label .opt { font-weight: 400; color: var(--ink-faint); }
+  input[type="text"], input[type="email"], input[type="url"], input[type="number"], select, textarea {
+    width: 100%;
+    font: inherit;
+    font-size: 0.98rem;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: 0.65rem 0.85rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  textarea { resize: vertical; min-height: 5.5rem; }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .file-drop {
+    border: 1.5px dashed var(--line);
+    border-radius: 9px;
+    background: var(--paper);
+    padding: 1.4rem 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+  .file-drop:hover, .file-drop.dragover { border-color: var(--accent); background: var(--accent-soft); }
+  .file-drop input { display: none; }
+  .file-drop .icon { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
+  .file-drop .hint { font-size: 0.85rem; color: var(--ink-faint); }
+  .file-drop .filename { font-weight: 650; color: var(--accent); font-size: 0.95rem; }
+  form button[type="submit"] {
+    margin-top: 0.4rem;
+    font-size: 1.05rem;
+    font-weight: 650;
+    color: #fff;
+    background: var(--accent);
+    border: none;
+    border-radius: 999px;
+    padding: 0.95rem 2rem;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  form button[type="submit"]:hover { background: var(--accent-dark); }
+  form button[type="submit"]:disabled { opacity: 0.6; cursor: wait; }
+  .privacy { font-size: 0.8rem; color: var(--ink-faint); text-align: center; }
+
+  /* ---------- Thank you ---------- */
+  #thanks {
+    display: none;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  #thanks .check {
+    width: 3.2rem; height: 3.2rem;
+    display: grid; place-items: center;
+    margin: 0 auto 1.2rem;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-radius: 50%;
+    font-size: 1.5rem;
+  }
+  #thanks h2 { margin-bottom: 0.5rem; }
+  #thanks p { color: var(--ink-soft); max-width: 26rem; margin: 0 auto; }
+
+  footer {
+    padding: 3rem 0 2.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+  }
+
+  @media (max-width: 480px) {
+    header { padding-top: 3rem; }
+    form { padding: 1.5rem 1.15rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <span class="eyebrow">Career Intelligence Report</span>
+  <h1>In 24 hours, you'll know <em>which career path is realistic for you</em> — and exactly what to do next.</h1>
+  <p class="sub">Upload your CV and tell us where you want to go. You'll get a personalized report showing your most realistic career paths, the skills you're missing, and a concrete step-by-step plan.</p>
+  <a class="cta-btn" href="#get-report">Get my report</a>
+  <p class="cta-note">Personalized to your CV · Delivered within 24 hours</p>
+</header>
+
+<section class="wrap">
+  <h2>What's in your report</h2>
+  <div class="cards">
+    <div class="card">
+      <span class="num">1</span>
+      <div>
+        <h3>Your most realistic career paths</h3>
+        <p>Not a list of dream jobs — an honest assessment of which roles you can actually land from where you are today, ranked by fit.</p>
+      </div>
+    </div>
+    <div class="card">
+      <span class="num">2</span>
+      <div>
+        <h3>The skills you're missing</h3>
+        <p>The specific gaps between your CV and your target role — and which ones matter most to close first.</p>
+      </div>
+    </div>
+    <div class="card">
+      <span class="num">3</span>
+      <div>
+        <h3>Exactly what to do next</h3>
+        <p>A concrete action plan: what to learn, what to change on your CV, and who to talk to — starting this week.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2>How it works</h2>
+  <div class="steps">
+    <p class="step"><span><strong>Upload your CV</strong> and answer a few short questions — it takes about 3 minutes.</span></p>
+    <p class="step"><span><strong>We analyze your experience</strong> against real market demand for your target role and location.</span></p>
+    <p class="step"><span><strong>Your report lands in your inbox</strong> within 24 hours, ready to act on.</span></p>
+  </div>
+</section>
+
+<section class="wrap" id="get-report">
+  <h2>Get your report</h2>
+
+  <form id="report-form" novalidate>
+    <div>
+      <label for="cv">Upload your CV</label>
+      <label class="file-drop" id="file-drop" for="cv">
+        <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
+        <span class="icon">📄</span>
+        <span class="filename" id="file-name">Click to upload your CV</span>
+        <span class="hint">PDF or Word · max 10 MB</span>
+      </label>
+    </div>
+
+    <div>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" autocomplete="name" placeholder="Your full name" required>
+    </div>
+
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required>
+    </div>
+
+    <div>
+      <label for="linkedin">LinkedIn profile <span class="opt">(optional)</span></label>
+      <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourname">
+    </div>
+
+    <div>
+      <label for="target-job">Target job</label>
+      <input type="text" id="target-job" name="target_job" placeholder="e.g. Product Manager, Data Analyst…" required>
+    </div>
+
+    <div>
+      <label for="country">Country you want to work in</label>
+      <input type="text" id="country" name="country" placeholder="e.g. Netherlands" required>
+    </div>
+
+    <div>
+      <label for="location">Current location</label>
+      <input type="text" id="location" name="current_location" placeholder="City, country" required>
+    </div>
+
+    <div>
+      <label for="experience">Years of work experience</label>
+      <select id="experience" name="years_of_experience" required>
+        <option value="" disabled selected>Select…</option>
+        <option>0–2 years</option>
+        <option>3–5 years</option>
+        <option>6–10 years</option>
+        <option>11–15 years</option>
+        <option>15+ years</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="challenge">What's your biggest career challenge right now?</label>
+      <textarea id="challenge" name="biggest_challenge" placeholder="e.g. I don't know if my experience transfers to a new field, I'm not getting interviews, I'm stuck deciding between two paths…" required></textarea>
+    </div>
+
+    <button type="submit" id="submit-btn">Send me my report</button>
+    <p class="privacy">Your CV is only used to create your report. We never share it with anyone.</p>
+  </form>
+
+  <div id="thanks">
+    <span class="check">✓</span>
+    <h2>Thank you!</h2>
+    <p>We'll send your personalized Career Intelligence Report to your inbox within 24 hours.</p>
+  </div>
+</section>
+
+<footer class="wrap">
+  © 2026 Career Intelligence Report
+</footer>
+
+<script>
+  // ---- Configuration -------------------------------------------------------
+  // Point this at your form backend (e.g. a Formspree endpoint like
+  // "https://formspree.io/f/xxxxxxxx"). Leave empty to run in demo mode:
+  // the form validates and shows the thank-you screen without sending data.
+  const FORM_ENDPOINT = "";
+  // --------------------------------------------------------------------------
+
+  const form = document.getElementById("report-form");
+  const thanks = document.getElementById("thanks");
+  const submitBtn = document.getElementById("submit-btn");
+  const fileInput = document.getElementById("cv");
+  const fileDrop = document.getElementById("file-drop");
+  const fileName = document.getElementById("file-name");
+
+  fileInput.addEventListener("change", () => {
+    if (fileInput.files.length) fileName.textContent = fileInput.files[0].name;
+  });
+
+  ["dragover", "dragleave", "drop"].forEach(evt => {
+    fileDrop.addEventListener(evt, e => {
+      e.preventDefault();
+      fileDrop.classList.toggle("dragover", evt === "dragover");
+      if (evt === "drop" && e.dataTransfer.files.length) {
+        fileInput.files = e.dataTransfer.files;
+        fileName.textContent = e.dataTransfer.files[0].name;
+      }
+    });
+  });
+
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending…";
+
+    try {
+      if (FORM_ENDPOINT) {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" }
+        });
+        if (!res.ok) throw new Error("Submission failed");
+      }
+      form.style.display = "none";
+      thanks.style.display = "block";
+      thanks.scrollIntoView({ behavior: "smooth", block: "center" });
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send me my report";
+      alert("Something went wrong sending your details. Please try again.");
+    }
+  });
+</script>
+
+</body>
+</html>
