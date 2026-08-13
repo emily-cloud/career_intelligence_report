@@ -462,6 +462,94 @@
       </div>
     </div>
 
+    <div class="step" data-name="Interests">
+      <h3>What kind of work interests you most?</h3>
+      <p class="step-sub">Pick everything that genuinely appeals to you.</p>
+      <div class="field">
+        <div class="pills" id="interests" data-required data-other="interests-other">
+          <span class="pill">Working with people</span>
+          <span class="pill">Organizing &amp; planning</span>
+          <span class="pill">Numbers &amp; analysis</span>
+          <span class="pill">Creative work</span>
+          <span class="pill">Technology</span>
+          <span class="pill">Teaching &amp; helping</span>
+          <span class="pill">Selling &amp; persuading</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="interests-other">
+          <input type="text" placeholder="Tell us what draws you…">
+        </div>
+      </div>
+    </div>
+
+    <div class="step" data-name="Your goal">
+      <h3>What would you like to do next?</h3>
+      <p class="step-sub">There's no wrong answer — "not sure" is exactly what we're here for.</p>
+      <div class="field">
+        <div class="pills" id="goal" data-single data-required data-other="goal-other" data-advance>
+          <span class="pill">Return to my previous field</span>
+          <span class="pill">Try something new</span>
+          <span class="pill">Any stable job, soon</span>
+          <span class="pill">Start my own business</span>
+          <span class="pill">I'm not sure yet</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="goal-other">
+          <input type="text" placeholder="Describe your goal…">
+        </div>
+      </div>
+    </div>
+
+    <div class="step" data-name="Clarity">
+      <h3>Which statement best describes you?</h3>
+      <div class="field">
+        <div class="pills" id="clarity" data-single data-required data-advance>
+          <span class="pill">I know exactly what career I want.</span>
+          <span class="pill">I have a few ideas.</span>
+          <span class="pill">I have no idea where to start.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" data-name="Your challenge">
+      <h3>What's your biggest challenge right now?</h3>
+      <p class="step-sub">Choose the one that weighs on you most.</p>
+      <div class="field">
+        <div class="pills" id="challenge" data-single data-required data-other="challenge-other" data-advance>
+          <span class="pill">I don't know which job fits me.</span>
+          <span class="pill">I don't know what skills to learn.</span>
+          <span class="pill">My confidence is low.</span>
+          <span class="pill">My CV is outdated.</span>
+          <span class="pill">I don't get interviews.</span>
+          <span class="pill">I don't know where to look.</span>
+          <span class="pill">I don't have a network.</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="challenge-other">
+          <input type="text" placeholder="Tell us in your own words…">
+        </div>
+      </div>
+    </div>
+
+    <div class="step" data-name="Your solution">
+      <h3>How would you prefer to solve this?</h3>
+      <p class="step-sub">Pick the kind of help that appeals to you most.</p>
+      <div class="field">
+        <div class="pills" id="solution" data-single data-required data-other="solution-other" data-advance>
+          <span class="pill">A clear step-by-step plan I follow myself</span>
+          <span class="pill">Personal guidance from a coach</span>
+          <span class="pill">An online course to build skills</span>
+          <span class="pill">Talking to people who've done it</span>
+          <span class="pill">Tools that match me to the right jobs</span>
+          <span class="pill">I'm not sure yet</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="solution-other">
+          <input type="text" placeholder="Describe what would help you…">
+        </div>
+      </div>
+    </div>
+
     <div class="step" data-name="Confidence">
       <h3>How true is this for you today?</h3>
       <p class="step-sub">1 = not at all, 5 = completely.</p>
@@ -739,15 +827,15 @@
 
   // ---- report logic (simple, transparent rules — no fake AI) ----
   const PATHS = {
-    "Customer Success":       { skills: ["Customer Support", "Sales", "Marketing"], soft: ["Customer relationships", "Communication"], why: "builds on your people skills and support experience" },
-    "Project Coordinator":    { skills: ["Project Management", "Excel", "Event Planning"], soft: ["Organization", "Time management"], why: "fits your coordination and organizational strengths" },
-    "Operations Specialist":  { skills: ["Excel", "Project Management", "Bookkeeping"], soft: ["Organization", "Problem solving"], why: "matches your structured, detail-oriented profile" },
-    "Data Analyst":           { skills: ["Excel", "Python", "SQL"], soft: ["Problem solving"], why: "builds on your analytical and technical skills" },
-    "Digital Marketing Specialist": { skills: ["Marketing", "Social Media", "Writing", "Design"], soft: ["Communication"], why: "uses your creative and communication skills" },
-    "Account Manager":        { skills: ["Sales", "Customer Support", "Marketing"], soft: ["Customer relationships", "Communication"], why: "leverages your relationship-building experience" },
-    "Corporate Trainer / L&D": { skills: ["Teaching", "Writing"], soft: ["Communication", "Leadership"], why: "puts your teaching and mentoring skills to work" },
-    "HR / Recruitment Coordinator": { skills: ["Recruiting / HR", "Customer Support"], soft: ["Communication", "Teamwork", "Customer relationships"], why: "combines your people skills with coordination work" },
-    "Content / Communications Specialist": { skills: ["Writing", "Social Media", "Marketing"], soft: ["Communication"], why: "builds on your writing and communication strengths" }
+    "Customer Success":       { skills: ["Customer Support", "Sales", "Marketing"], soft: ["Customer relationships", "Communication"], interests: ["Working with people", "Teaching & helping"], why: "builds on your people skills and support experience" },
+    "Project Coordinator":    { skills: ["Project Management", "Excel", "Event Planning"], soft: ["Organization", "Time management"], interests: ["Organizing & planning"], why: "fits your coordination and organizational strengths" },
+    "Operations Specialist":  { skills: ["Excel", "Project Management", "Bookkeeping"], soft: ["Organization", "Problem solving"], interests: ["Organizing & planning", "Numbers & analysis"], why: "matches your structured, detail-oriented profile" },
+    "Data Analyst":           { skills: ["Excel", "Python", "SQL"], soft: ["Problem solving"], interests: ["Numbers & analysis", "Technology"], why: "builds on your analytical and technical skills" },
+    "Digital Marketing Specialist": { skills: ["Marketing", "Social Media", "Writing", "Design"], soft: ["Communication"], interests: ["Creative work", "Selling & persuading"], why: "uses your creative and communication skills" },
+    "Account Manager":        { skills: ["Sales", "Customer Support", "Marketing"], soft: ["Customer relationships", "Communication"], interests: ["Working with people", "Selling & persuading"], why: "leverages your relationship-building experience" },
+    "Corporate Trainer / L&D": { skills: ["Teaching", "Writing"], soft: ["Communication", "Leadership"], interests: ["Teaching & helping", "Working with people"], why: "puts your teaching and mentoring skills to work" },
+    "HR / Recruitment Coordinator": { skills: ["Recruiting / HR", "Customer Support"], soft: ["Communication", "Teamwork", "Customer relationships"], interests: ["Working with people"], why: "combines your people skills with coordination work" },
+    "Content / Communications Specialist": { skills: ["Writing", "Social Media", "Marketing"], soft: ["Communication"], interests: ["Creative work"], why: "builds on your writing and communication strengths" }
   };
 
   // selected pill labels; "Other" becomes the user's own description when given
@@ -761,21 +849,41 @@
     const skills = selected("#skills");
     const soft = selected("#soft-skills");
     const priorities = selected("#priorities");
+    const interests = selected("#interests");
+    const goal = selected("#goal")[0] || "";
 
     const strengths = [...soft.slice(0, 3)];
     if (strengths.length < 3) strengths.push(...skills.slice(0, 3 - strengths.length));
 
     const scored = Object.entries(PATHS).map(([name, def]) => {
       const s = def.skills.filter(x => skills.includes(x)).length * 2 +
-                def.soft.filter(x => soft.includes(x)).length;
+                def.soft.filter(x => soft.includes(x)).length +
+                def.interests.filter(x => interests.includes(x)).length;
       return { name, why: def.why, score: s };
     }).filter(p => p.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
 
-    const blockers = [...document.querySelectorAll(".scale-q")]
+    const clarity = selected("#clarity")[0] || "";
+    const challenge = selected("#challenge")[0] || "";
+
+    let blockers = [...document.querySelectorAll(".scale-q")]
       .filter(q => parseInt(q.querySelector(".scale").dataset.value, 10) <= 3)
       .map(q => q.dataset.blocker);
+    if (goal === "I'm not sure yet" || clarity === "I have no idea where to start.")
+      blockers.unshift("Unclear which direction to take");
+    // the challenge they named themselves always leads the list
+    const CHALLENGE_BLOCKERS = {
+      "I don't know which job fits me.": "Unclear which direction to take",
+      "I don't know what skills to learn.": "Unsure which skills to update",
+      "My confidence is low.": "Lack of confidence when applying",
+      "My CV is outdated.": "An outdated CV",
+      "I don't get interviews.": "Not getting interviews",
+      "I don't know where to look.": "Limited knowledge of today's job market",
+      "I don't have a network.": "A limited professional network"
+    };
+    if (challenge) blockers.unshift(CHALLENGE_BLOCKERS[challenge] || challenge);
+    blockers = [...new Set(blockers)];
 
-    return { skills, soft, priorities, strengths, paths: scored, blockers };
+    return { skills, soft, priorities, interests, goal, clarity, challenge, strengths, paths: scored, blockers };
   }
 
   function collectAnswers() {
@@ -789,6 +897,11 @@
       soft_skills: selected("#soft-skills").join(", "),
       work_format: selected("#work-format").join(", "),
       priorities: selected("#priorities").join(", "),
+      interests: selected("#interests").join(", "),
+      goal: selected("#goal").join(""),
+      career_clarity: selected("#clarity").join(""),
+      biggest_challenge: selected("#challenge").join(""),
+      preferred_solution: selected("#solution").join(""),
       confidence: [...document.querySelectorAll(".scale-q")]
         .map(q => `${q.querySelector(".statement").textContent} → ${q.querySelector(".scale").dataset.value}/5`).join(" | "),
       skills: selected("#skills").join(", "),
@@ -819,8 +932,16 @@
       : `<li><span class="mark">•</span>No major blockers — your main task is simply to start applying.</li>`;
 
     const prio = profile.priorities.length ? profile.priorities.join(" and ").toLowerCase() : "what matters to you";
+    const goalPhrases = {
+      "Return to my previous field": "returning to your field",
+      "Try something new": "trying something new",
+      "Any stable job, soon": "finding a stable job soon",
+      "Start my own business": "starting your own business",
+      "I'm not sure yet": "finding your direction"
+    };
+    const goalText = goalPhrases[profile.goal] || (profile.goal ? profile.goal.toLowerCase() : "");
     document.getElementById("report-note").innerHTML =
-      `<strong>What happens next:</strong> within 24 hours you'll receive your full career roadmap by email — with concrete next steps for each path above, focused on ${prio}.`;
+      `<strong>What happens next:</strong> within 24 hours you'll receive your full career roadmap by email — with concrete next steps for each path above, focused on ${prio}${goalText ? ` and built around your goal of ${goalText}` : ""}.`;
   }
 
   async function finish() {
