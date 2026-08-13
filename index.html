@@ -934,13 +934,21 @@
     "Content / Communications Specialist": { skills: ["Writing", "Social Media", "Marketing"], soft: ["Communication"], interests: ["Creative work"], keywords: ["content", "communication", "editor", "copywriter", "journalist"], why: "builds on your writing and communication strengths" },
     "Executive / Virtual Assistant": { skills: ["Excel", "Bookkeeping", "Event Planning"], soft: ["Organization", "Time management", "Adaptability"], interests: ["Organizing & planning"], keywords: ["assistant", "secretary", "administrative"], why: "rewards your reliability and organizational talent, often with flexible hours" },
     "Office Manager":         { skills: ["Bookkeeping", "Excel", "Event Planning"], soft: ["Organization", "Leadership"], interests: ["Organizing & planning"], keywords: ["office manager", "administration", "facilities"], why: "puts you at the organized heart of a team" },
-    "Bookkeeper / Finance Assistant": { skills: ["Bookkeeping", "Excel"], soft: ["Organization", "Problem solving"], interests: ["Numbers & analysis"], keywords: ["finance", "accounting", "accountant", "bookkeep", "payroll", "invoice"], why: "builds on your precision and comfort with numbers" },
+    "Bookkeeper / Finance Assistant": { skills: ["Bookkeeping", "Excel"], soft: ["Organization", "Problem solving"], interests: ["Numbers & analysis"], keywords: ["finance", "accounting", "accountant", "bookkeep", "payroll", "invoice", "bank", "insurance"], why: "builds on your precision and comfort with numbers" },
     "Social Media Manager":   { skills: ["Social Media", "Marketing", "Design", "Writing"], soft: ["Communication", "Adaptability"], interests: ["Creative work", "Technology"], keywords: ["social media", "community manager", "influencer"], why: "turns your creativity and online fluency into a role" },
     "UX / Visual Designer":   { skills: ["Design"], soft: ["Problem solving", "Communication"], interests: ["Creative work", "Technology"], keywords: ["design", "graphic", "ux", "ui", "creative"], why: "builds on your design skills and eye for detail" },
-    "Event Coordinator":      { skills: ["Event Planning", "Project Management", "Social Media"], soft: ["Organization", "Customer relationships"], interests: ["Organizing & planning", "Working with people"], keywords: ["event", "hospitality", "wedding", "catering"], why: "combines your planning skills with working with people" },
+    "Event Coordinator":      { skills: ["Event Planning", "Project Management", "Social Media"], soft: ["Organization", "Customer relationships"], interests: ["Organizing & planning", "Working with people"], keywords: ["event", "hospitality", "wedding", "catering", "restaurant", "chef", "cook", "hotel"], why: "combines your planning skills with working with people" },
     "Teacher / Tutor":        { skills: ["Teaching"], soft: ["Communication", "Adaptability", "Leadership"], interests: ["Teaching & helping"], keywords: ["teacher", "tutor", "school", "childcare"], why: "uses your gift for explaining and encouraging others" },
     "QA / Software Tester":   { skills: ["Python", "SQL", "Excel"], soft: ["Problem solving"], interests: ["Technology", "Numbers & analysis"], keywords: ["software", "developer", "engineer", "tester", "ict"], why: "is a realistic tech entry point for a structured, curious mind" },
-    "Care / Community Coordinator": { skills: ["Customer Support", "Teaching"], soft: ["Customer relationships", "Teamwork", "Communication"], interests: ["Teaching & helping", "Working with people"], keywords: ["nurse", "health", "community", "charity", "ngo", "welfare"], why: "turns your care experience into recognized, paid work" }
+    "Care / Community Coordinator": { skills: ["Customer Support", "Teaching"], soft: ["Customer relationships", "Teamwork", "Communication"], interests: ["Teaching & helping", "Working with people"], keywords: ["nurse", "health", "community", "charity", "ngo", "welfare"], why: "turns your care experience into recognized, paid work" },
+    "E-commerce / Webshop Coordinator": { skills: ["Marketing", "Social Media", "Excel", "Customer Support"], soft: ["Organization", "Adaptability"], interests: ["Technology", "Selling & persuading"], keywords: ["e-commerce", "ecommerce", "webshop", "retail", "store", "shop"], why: "combines organization with online selling in a flexible, growing field" },
+    "Translator / Language Specialist": { skills: ["Writing", "Teaching"], soft: ["Communication", "Adaptability"], interests: ["Creative work"], keywords: ["translator", "translation", "linguist", "language"], why: "puts your languages to professional use, often freelance-friendly" },
+    "Legal / Compliance Assistant": { skills: ["Excel", "Bookkeeping", "Writing"], soft: ["Organization", "Problem solving"], interests: ["Organizing & planning"], keywords: ["legal", "paralegal", "lawyer", "law firm", "compliance", "notary"], why: "values your precision and process discipline" },
+    "Healthcare / Practice Assistant": { skills: ["Customer Support", "Excel"], soft: ["Customer relationships", "Teamwork", "Organization"], interests: ["Teaching & helping", "Working with people"], keywords: ["medical", "clinic", "pharmac", "dental", "doctor", "physio", "hospital"], why: "keeps you close to healthcare with regular, family-friendly hours" },
+    "Supply Chain / Logistics Coordinator": { skills: ["Excel", "Project Management"], soft: ["Organization", "Problem solving"], interests: ["Organizing & planning", "Numbers & analysis"], keywords: ["warehouse", "transport", "production", "manufacturing", "logistics"], why: "rewards your practical, keep-things-moving mindset" },
+    "Research / Policy Assistant": { skills: ["Writing", "Excel", "SQL"], soft: ["Problem solving", "Organization"], interests: ["Numbers & analysis"], keywords: ["policy", "government", "municipality", "university", "science"], why: "suits your careful, analytical way of working" },
+    "Product Owner / Business Analyst": { skills: ["Project Management", "SQL", "Excel"], soft: ["Communication", "Problem solving"], interests: ["Technology", "Organizing & planning"], keywords: ["product owner", "business analyst", "scrum", "consultant"], why: "bridges business and technology — a strong step up from coordination or analysis" },
+    "Freelance / Your Own Business": { skills: ["Marketing", "Social Media", "Bookkeeping", "Sales"], soft: ["Adaptability", "Leadership"], interests: ["Selling & persuading", "Creative work"], keywords: ["founder", "owner", "entrepreneur", "freelanc", "self-employed"], goals: ["Start my own business"], activities: ["Freelance work", "Personal projects"], why: "builds on your independence — many returners restart on their own terms" }
   };
 
   // selected pill labels; "Other" becomes the user's own description when given
@@ -962,12 +970,15 @@
 
     const background = (document.getElementById("prev-title").value + " " +
                         document.getElementById("industry").value).toLowerCase();
+    const activities = selected("#break-activities");
     const scored = Object.entries(PATHS).map(([name, def]) => {
       const kw = def.keywords.filter(k => background.includes(k)).length;
       const s = kw * 3 +
                 def.skills.filter(x => skills.includes(x)).length * 2 +
                 def.soft.filter(x => soft.includes(x)).length +
-                def.interests.filter(x => interests.includes(x)).length;
+                def.interests.filter(x => interests.includes(x)).length +
+                (def.goals && def.goals.includes(goal) ? 3 : 0) +
+                (def.activities ? def.activities.filter(a => activities.includes(a)).length * 2 : 0);
       return { name, why: def.why, score: s, fromBackground: kw > 0 };
     }).filter(p => p.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
 
