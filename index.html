@@ -500,6 +500,37 @@
       </div>
     </div>
 
+    <div class="step" data-name="Clarity">
+      <h3>Which statement best describes you?</h3>
+      <div class="field">
+        <div class="pills" id="clarity" data-single data-required data-advance>
+          <span class="pill">I know exactly what career I want.</span>
+          <span class="pill">I have a few ideas.</span>
+          <span class="pill">I have no idea where to start.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" data-name="Your challenge">
+      <h3>What's your biggest challenge right now?</h3>
+      <p class="step-sub">Choose the one that weighs on you most.</p>
+      <div class="field">
+        <div class="pills" id="challenge" data-single data-required data-other="challenge-other" data-advance>
+          <span class="pill">I don't know which job fits me.</span>
+          <span class="pill">I don't know what skills to learn.</span>
+          <span class="pill">My confidence is low.</span>
+          <span class="pill">My CV is outdated.</span>
+          <span class="pill">I don't get interviews.</span>
+          <span class="pill">I don't know where to look.</span>
+          <span class="pill">I don't have a network.</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="challenge-other">
+          <input type="text" placeholder="Tell us in your own words…">
+        </div>
+      </div>
+    </div>
+
     <div class="step" data-name="Confidence">
       <h3>How true is this for you today?</h3>
       <p class="step-sub">1 = not at all, 5 = completely.</p>
@@ -812,13 +843,28 @@
       return { name, why: def.why, score: s };
     }).filter(p => p.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
 
-    const blockers = [...document.querySelectorAll(".scale-q")]
+    const clarity = selected("#clarity")[0] || "";
+    const challenge = selected("#challenge")[0] || "";
+
+    let blockers = [...document.querySelectorAll(".scale-q")]
       .filter(q => parseInt(q.querySelector(".scale").dataset.value, 10) <= 3)
       .map(q => q.dataset.blocker);
-    if (goal === "I'm not sure yet" && !blockers.includes("Unclear which direction to take"))
-      blockers.unshift("Still exploring which direction fits you");
+    if (goal === "I'm not sure yet" || clarity === "I have no idea where to start.")
+      blockers.unshift("Unclear which direction to take");
+    // the challenge they named themselves always leads the list
+    const CHALLENGE_BLOCKERS = {
+      "I don't know which job fits me.": "Unclear which direction to take",
+      "I don't know what skills to learn.": "Unsure which skills to update",
+      "My confidence is low.": "Lack of confidence when applying",
+      "My CV is outdated.": "An outdated CV",
+      "I don't get interviews.": "Not getting interviews",
+      "I don't know where to look.": "Limited knowledge of today's job market",
+      "I don't have a network.": "A limited professional network"
+    };
+    if (challenge) blockers.unshift(CHALLENGE_BLOCKERS[challenge] || challenge);
+    blockers = [...new Set(blockers)];
 
-    return { skills, soft, priorities, interests, goal, strengths, paths: scored, blockers };
+    return { skills, soft, priorities, interests, goal, clarity, challenge, strengths, paths: scored, blockers };
   }
 
   function collectAnswers() {
@@ -834,6 +880,8 @@
       priorities: selected("#priorities").join(", "),
       interests: selected("#interests").join(", "),
       goal: selected("#goal").join(""),
+      career_clarity: selected("#clarity").join(""),
+      biggest_challenge: selected("#challenge").join(""),
       confidence: [...document.querySelectorAll(".scale-q")]
         .map(q => `${q.querySelector(".statement").textContent} → ${q.querySelector(".scale").dataset.value}/5`).join(" | "),
       skills: selected("#skills").join(", "),
