@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Career Intelligence Report — Know your next career move in 24 hours</title>
-<meta name="description" content="Upload your CV and in 24 hours you'll know which career path is most realistic for you, what skills you're missing, and exactly what to do next.">
+<title>Career Clarity Assessment — Ready to return to work?</title>
+<meta name="description" content="Ready to return to work, but not sure where to start? Take the 5-minute Career Clarity Assessment and receive a personalized career roadmap.">
 <style>
   :root {
     --ink: #16211c;
@@ -73,7 +73,7 @@
   .cta-btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
   .cta-note { margin-top: 0.75rem; font-size: 0.85rem; color: var(--ink-faint); }
 
-  /* ---------- What you get ---------- */
+  /* ---------- Benefit cards ---------- */
   section { padding: 2.5rem 0; }
   h2 {
     font-size: 1.4rem;
@@ -105,39 +105,40 @@
   .card h3 { font-size: 1.05rem; font-weight: 650; margin-bottom: 0.2rem; }
   .card p { color: var(--ink-soft); font-size: 0.95rem; }
 
-  /* ---------- How it works ---------- */
-  .steps { display: grid; gap: 0.9rem; counter-reset: step; }
-  .step {
-    display: flex; align-items: baseline; gap: 0.9rem;
-    color: var(--ink-soft); font-size: 1rem;
-  }
-  .step::before {
-    counter-increment: step;
-    content: counter(step);
-    flex: none;
-    font-weight: 700;
-    color: var(--accent);
-  }
-  .step strong { color: var(--ink); font-weight: 650; }
-
-  /* ---------- Form ---------- */
-  #get-report { scroll-margin-top: 2rem; }
-  form {
+  /* ---------- Assessment ---------- */
+  #assessment { scroll-margin-top: 2rem; }
+  .panel {
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: var(--radius);
     padding: 2rem 1.75rem;
-    display: grid;
-    gap: 1.15rem;
   }
-  label {
+  .progress { margin-bottom: 1.75rem; }
+  .progress-label {
+    display: flex; justify-content: space-between;
+    font-size: 0.82rem; font-weight: 600; color: var(--ink-faint);
+    margin-bottom: 0.45rem;
+  }
+  .progress-bar {
+    height: 6px; border-radius: 999px; background: var(--line); overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%; width: 0; background: var(--accent);
+    border-radius: 999px; transition: width 0.3s ease;
+  }
+  .step { display: none; }
+  .step.active { display: block; }
+  .step h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.3rem; }
+  .step .step-sub { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 1.4rem; }
+  .field { margin-bottom: 1.15rem; }
+  label, .q-label {
     display: block;
     font-size: 0.9rem;
     font-weight: 650;
     margin-bottom: 0.35rem;
   }
-  label .opt { font-weight: 400; color: var(--ink-faint); }
-  input[type="text"], input[type="email"], input[type="url"], input[type="number"], select, textarea {
+  .opt { font-weight: 400; color: var(--ink-faint); }
+  input[type="text"], input[type="email"], select, textarea {
     width: 100%;
     font: inherit;
     font-size: 0.98rem;
@@ -148,62 +149,117 @@
     padding: 0.65rem 0.85rem;
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
-  textarea { resize: vertical; min-height: 5.5rem; }
   input:focus, select:focus, textarea:focus {
     outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-soft);
   }
-  .file-drop {
-    border: 1.5px dashed var(--line);
-    border-radius: 9px;
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 480px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  /* pills (multi/single choice) */
+  .pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .pill {
+    font-size: 0.92rem;
+    font-weight: 550;
+    color: var(--ink-soft);
     background: var(--paper);
-    padding: 1.4rem 1rem;
-    text-align: center;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.45rem 1rem;
     cursor: pointer;
-    transition: border-color 0.15s ease, background 0.15s ease;
+    user-select: none;
+    transition: all 0.12s ease;
   }
-  .file-drop:hover, .file-drop.dragover { border-color: var(--accent); background: var(--accent-soft); }
-  .file-drop input { display: none; }
-  .file-drop .icon { font-size: 1.5rem; display: block; margin-bottom: 0.3rem; }
-  .file-drop .hint { font-size: 0.85rem; color: var(--ink-faint); }
-  .file-drop .filename { font-weight: 650; color: var(--accent); font-size: 0.95rem; }
-  form button[type="submit"] {
-    margin-top: 0.4rem;
-    font-size: 1.05rem;
-    font-weight: 650;
+  .pill:hover { border-color: var(--accent); }
+  .pill.selected {
     color: #fff;
     background: var(--accent);
-    border: none;
+    border-color: var(--accent);
+  }
+
+  /* 1-5 scale */
+  .scale-q { margin-bottom: 1.3rem; }
+  .scale {
+    display: flex; gap: 0.45rem; margin-top: 0.4rem;
+  }
+  .scale button {
+    flex: 1;
+    font: inherit; font-weight: 650; font-size: 0.95rem;
+    color: var(--ink-soft);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    padding: 0.55rem 0;
+    cursor: pointer;
+    transition: all 0.12s ease;
+  }
+  .scale button:hover { border-color: var(--accent); }
+  .scale button.selected { color: #fff; background: var(--accent); border-color: var(--accent); }
+  .scale-ends {
+    display: flex; justify-content: space-between;
+    font-size: 0.75rem; color: var(--ink-faint); margin-top: 0.25rem;
+  }
+
+  .step-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 1.75rem;
+  }
+  .btn-next, .btn-back {
+    font: inherit; font-weight: 650; font-size: 1rem;
     border-radius: 999px;
-    padding: 0.95rem 2rem;
+    padding: 0.75rem 1.8rem;
     cursor: pointer;
     transition: background 0.15s ease;
   }
-  form button[type="submit"]:hover { background: var(--accent-dark); }
-  form button[type="submit"]:disabled { opacity: 0.6; cursor: wait; }
-  .privacy { font-size: 0.8rem; color: var(--ink-faint); text-align: center; }
-
-  /* ---------- Thank you ---------- */
-  #thanks {
+  .btn-next { color: #fff; background: var(--accent); border: none; }
+  .btn-next:hover { background: var(--accent-dark); }
+  .btn-back { color: var(--ink-soft); background: transparent; border: none; }
+  .btn-back:hover { color: var(--ink); }
+  .step-error {
     display: none;
+    font-size: 0.85rem; color: #b3402a;
+    margin-top: 0.9rem;
+  }
+
+  /* ---------- Report ---------- */
+  #report { display: none; }
+  .report-card {
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    padding: 3rem 2rem;
-    text-align: center;
+    padding: 2.25rem 1.9rem;
   }
-  #thanks .check {
-    width: 3.2rem; height: 3.2rem;
-    display: grid; place-items: center;
-    margin: 0 auto 1.2rem;
-    background: var(--accent-soft);
+  .report-card > h2 { text-align: left; margin-bottom: 0.25rem; }
+  .report-intro { color: var(--ink-soft); font-size: 0.98rem; margin-bottom: 1.8rem; }
+  .report-section { margin-bottom: 1.8rem; }
+  .report-section h4 {
+    font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.07em; text-transform: uppercase;
     color: var(--accent);
-    border-radius: 50%;
-    font-size: 1.5rem;
+    margin-bottom: 0.7rem;
   }
-  #thanks h2 { margin-bottom: 0.5rem; }
-  #thanks p { color: var(--ink-soft); max-width: 26rem; margin: 0 auto; }
+  .report-list { list-style: none; display: grid; gap: 0.45rem; }
+  .report-list li {
+    display: flex; gap: 0.6rem; align-items: baseline;
+    font-size: 0.98rem;
+  }
+  .report-list li .mark { flex: none; color: var(--accent); font-weight: 700; }
+  .path-item {
+    background: var(--accent-soft);
+    border-radius: 10px;
+    padding: 0.8rem 1rem;
+  }
+  .path-item strong { display: block; font-size: 1rem; }
+  .path-item span { font-size: 0.88rem; color: var(--ink-soft); }
+  .paths { display: grid; gap: 0.6rem; }
+  .report-note {
+    border-top: 1px solid var(--line);
+    padding-top: 1.3rem;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+  .report-note strong { color: var(--ink); }
 
   footer {
     padding: 3rem 0 2.5rem;
@@ -214,187 +270,493 @@
 
   @media (max-width: 480px) {
     header { padding-top: 3rem; }
-    form { padding: 1.5rem 1.15rem; }
+    .panel, .report-card { padding: 1.5rem 1.15rem; }
   }
 </style>
 </head>
 <body>
 
 <header class="wrap">
-  <span class="eyebrow">Career Intelligence Report</span>
-  <h1>In 24 hours, you'll know <em>which career path is realistic for you</em> — and exactly what to do next.</h1>
-  <p class="sub">Upload your CV and tell us where you want to go. You'll get a personalized report showing your most realistic career paths, the skills you're missing, and a concrete step-by-step plan.</p>
-  <a class="cta-btn" href="#get-report">Get my report</a>
-  <p class="cta-note">Personalized to your CV · Delivered within 24 hours</p>
+  <span class="eyebrow">Career Clarity Assessment</span>
+  <h1>Ready to return to work, <em>but not sure where to start?</em></h1>
+  <p class="sub">Take our 5-minute Career Clarity Assessment and receive a personalized career roadmap — your strengths, your most realistic next roles, and what's holding you back.</p>
+  <a class="cta-btn" href="#assessment">Start Assessment</a>
+  <p class="cta-note">5 minutes · No CV needed · Free</p>
 </header>
 
 <section class="wrap">
-  <h2>What's in your report</h2>
+  <h2>What you'll walk away with</h2>
   <div class="cards">
     <div class="card">
       <span class="num">1</span>
       <div>
-        <h3>Your most realistic career paths</h3>
-        <p>Not a list of dream jobs — an honest assessment of which roles you can actually land from where you are today, ranked by fit.</p>
+        <h3>Your biggest strengths</h3>
+        <p>The experience and skills you already have that employers value today — even after a career break.</p>
       </div>
     </div>
     <div class="card">
       <span class="num">2</span>
       <div>
-        <h3>The skills you're missing</h3>
-        <p>The specific gaps between your CV and your target role — and which ones matter most to close first.</p>
+        <h3>Realistic career paths</h3>
+        <p>Not dream jobs — roles that genuinely fit your background, your skills, and the way you want to work now.</p>
       </div>
     </div>
     <div class="card">
       <span class="num">3</span>
       <div>
-        <h3>Exactly what to do next</h3>
-        <p>A concrete action plan: what to learn, what to change on your CV, and who to talk to — starting this week.</p>
+        <h3>Your current blockers</h3>
+        <p>What's actually standing between you and your next job — so you know exactly what to work on first.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="wrap">
-  <h2>How it works</h2>
-  <div class="steps">
-    <p class="step"><span><strong>Upload your CV</strong> and answer a few short questions — it takes about 3 minutes.</span></p>
-    <p class="step"><span><strong>We analyze your experience</strong> against real market demand for your target role and location.</span></p>
-    <p class="step"><span><strong>Your report lands in your inbox</strong> within 24 hours, ready to act on.</span></p>
+<section class="wrap" id="assessment">
+  <h2>Career Clarity Assessment</h2>
+
+  <div class="panel" id="wizard">
+    <div class="progress">
+      <div class="progress-label">
+        <span id="progress-step">Step 1 of 6</span>
+        <span id="progress-name">Background</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+
+    <!-- STEP 1: Background -->
+    <div class="step active" data-name="Background">
+      <h3>A little about you</h3>
+      <p class="step-sub">This helps us tailor your roadmap to your situation.</p>
+
+      <div class="grid-2">
+        <div class="field">
+          <label for="age">Age <span class="opt">(optional)</span></label>
+          <input type="text" id="age" inputmode="numeric" placeholder="e.g. 38">
+        </div>
+        <div class="field">
+          <label for="country">Country</label>
+          <input type="text" id="country" placeholder="e.g. Netherlands" data-required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="location">Current location</label>
+        <input type="text" id="location" placeholder="City, country" data-required>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label for="experience">Years of work experience</label>
+          <select id="experience" data-required>
+            <option value="" disabled selected>Select…</option>
+            <option>0–2 years</option>
+            <option>3–5 years</option>
+            <option>6–10 years</option>
+            <option>11–15 years</option>
+            <option>15+ years</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="break-duration">Career break duration</label>
+          <select id="break-duration" data-required>
+            <option value="" disabled selected>Select…</option>
+            <option>Less than 1 year</option>
+            <option>1–2 years</option>
+            <option>3–5 years</option>
+            <option>6–10 years</option>
+            <option>More than 10 years</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <span class="q-label">Reason for career break</span>
+        <div class="pills" id="break-reason" data-single data-required>
+          <span class="pill">Parenthood</span>
+          <span class="pill">Caregiving</span>
+          <span class="pill">Illness</span>
+          <span class="pill">Relocation</span>
+          <span class="pill">Other</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: Previous experience -->
+    <div class="step" data-name="Experience">
+      <h3>Your previous experience</h3>
+      <p class="step-sub">Everything you did before your break still counts.</p>
+
+      <div class="field">
+        <label for="prev-title">Previous job title</label>
+        <input type="text" id="prev-title" placeholder="e.g. Marketing Coordinator" data-required>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label for="industry">Industry</label>
+          <input type="text" id="industry" placeholder="e.g. Retail, Healthcare…" data-required>
+        </div>
+        <div class="field">
+          <label for="education">Highest education</label>
+          <select id="education" data-required>
+            <option value="" disabled selected>Select…</option>
+            <option>High school</option>
+            <option>Vocational training</option>
+            <option>Bachelor's degree</option>
+            <option>Master's degree</option>
+            <option>PhD</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="languages">Languages you speak</label>
+        <input type="text" id="languages" placeholder="e.g. Dutch, English" data-required>
+      </div>
+      <div class="field">
+        <span class="q-label">Soft skills — pick the ones that sound like you</span>
+        <div class="pills" id="soft-skills" data-required>
+          <span class="pill">Communication</span>
+          <span class="pill">Organization</span>
+          <span class="pill">Problem solving</span>
+          <span class="pill">Teamwork</span>
+          <span class="pill">Leadership</span>
+          <span class="pill">Customer relationships</span>
+          <span class="pill">Time management</span>
+          <span class="pill">Adaptability</span>
+        </div>
+      </div>
+      <div class="field">
+        <label for="tech-skills">Other technical skills <span class="opt">(optional)</span></label>
+        <input type="text" id="tech-skills" placeholder="e.g. Salesforce, Photoshop, bookkeeping…">
+      </div>
+    </div>
+
+    <!-- STEP 3: Goals -->
+    <div class="step" data-name="Goals">
+      <h3>What do you want next?</h3>
+      <p class="step-sub">There are no wrong answers — this is about what fits your life now.</p>
+
+      <div class="field">
+        <span class="q-label">What would you like your next job to look like? <span class="opt">(pick any)</span></span>
+        <div class="pills" id="work-format" data-required>
+          <span class="pill">Full-time</span>
+          <span class="pill">Part-time</span>
+          <span class="pill">Remote</span>
+          <span class="pill">Hybrid</span>
+          <span class="pill">Flexible hours</span>
+        </div>
+      </div>
+      <div class="field">
+        <span class="q-label">What matters most to you? <span class="opt">(pick up to 2)</span></span>
+        <div class="pills" id="priorities" data-required data-max="2">
+          <span class="pill">Higher salary</span>
+          <span class="pill">Meaningful work</span>
+          <span class="pill">Stability</span>
+          <span class="pill">Flexibility</span>
+          <span class="pill">Career growth</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 4: Confidence -->
+    <div class="step" data-name="Confidence">
+      <h3>Where do you stand today?</h3>
+      <p class="step-sub">Honest answers here make your roadmap much more useful. 1 = not at all, 5 = completely.</p>
+
+      <div class="scale-q" data-blocker="Unclear which direction to take">
+        <span class="q-label">"I know what type of job I want."</span>
+        <div class="scale" data-required>
+          <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
+        </div>
+        <div class="scale-ends"><span>Not at all</span><span>Completely</span></div>
+      </div>
+      <div class="scale-q" data-blocker="Unsure which skills to update">
+        <span class="q-label">"I know which skills I should learn."</span>
+        <div class="scale" data-required>
+          <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
+        </div>
+        <div class="scale-ends"><span>Not at all</span><span>Completely</span></div>
+      </div>
+      <div class="scale-q" data-blocker="Lack of confidence when applying">
+        <span class="q-label">"I feel confident applying for jobs."</span>
+        <div class="scale" data-required>
+          <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
+        </div>
+        <div class="scale-ends"><span>Not at all</span><span>Completely</span></div>
+      </div>
+      <div class="scale-q" data-blocker="Limited knowledge of today's job market">
+        <span class="q-label">"I know where to find suitable jobs."</span>
+        <div class="scale" data-required>
+          <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
+        </div>
+        <div class="scale-ends"><span>Not at all</span><span>Completely</span></div>
+      </div>
+    </div>
+
+    <!-- STEP 5: Skills -->
+    <div class="step" data-name="Skills">
+      <h3>Which of these are you comfortable with?</h3>
+      <p class="step-sub">Select everything you could do today, even if you're a little rusty.</p>
+
+      <div class="field">
+        <div class="pills" id="skills" data-required>
+          <span class="pill">Marketing</span>
+          <span class="pill">Sales</span>
+          <span class="pill">Excel</span>
+          <span class="pill">Project Management</span>
+          <span class="pill">Python</span>
+          <span class="pill">SQL</span>
+          <span class="pill">Customer Support</span>
+          <span class="pill">Teaching</span>
+          <span class="pill">Design</span>
+          <span class="pill">Writing</span>
+          <span class="pill">Social Media</span>
+          <span class="pill">Bookkeeping</span>
+          <span class="pill">Event Planning</span>
+          <span class="pill">Recruiting / HR</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 6: Email -->
+    <div class="step" data-name="Your roadmap">
+      <h3>Your Career Profile is ready</h3>
+      <p class="step-sub">Tell us where to send your full roadmap — you'll also see your profile right now.</p>
+
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" autocomplete="name" placeholder="Your first name" data-required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" autocomplete="email" placeholder="you@example.com" data-required>
+      </div>
+      <p class="cta-note" style="text-align:left; margin-top:0.2rem;">Your answers are only used to create your roadmap. No spam, ever.</p>
+    </div>
+
+    <p class="step-error" id="step-error">Please answer the highlighted questions to continue.</p>
+
+    <div class="step-nav">
+      <button type="button" class="btn-back" id="btn-back" style="visibility:hidden">← Back</button>
+      <button type="button" class="btn-next" id="btn-next">Continue</button>
+    </div>
   </div>
-</section>
 
-<section class="wrap" id="get-report">
-  <h2>Get your report</h2>
+  <!-- REPORT -->
+  <div id="report">
+    <div class="report-card">
+      <h2>Your Career Profile</h2>
+      <p class="report-intro" id="report-intro">Based on your answers…</p>
 
-  <form id="report-form" novalidate>
-    <div>
-      <label for="cv">Upload your CV</label>
-      <label class="file-drop" id="file-drop" for="cv">
-        <input type="file" id="cv" name="cv" accept=".pdf,.doc,.docx" required>
-        <span class="icon">📄</span>
-        <span class="filename" id="file-name">Click to upload your CV</span>
-        <span class="hint">PDF or Word · max 10 MB</span>
-      </label>
+      <div class="report-section">
+        <h4>Your biggest strengths</h4>
+        <ul class="report-list" id="report-strengths"></ul>
+      </div>
+
+      <div class="report-section">
+        <h4>Potential career paths</h4>
+        <div class="paths" id="report-paths"></div>
+      </div>
+
+      <div class="report-section">
+        <h4>Current blockers</h4>
+        <ul class="report-list" id="report-blockers"></ul>
+      </div>
+
+      <p class="report-note" id="report-note"></p>
     </div>
-
-    <div>
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" autocomplete="name" placeholder="Your full name" required>
-    </div>
-
-    <div>
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com" required>
-    </div>
-
-    <div>
-      <label for="linkedin">LinkedIn profile <span class="opt">(optional)</span></label>
-      <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourname">
-    </div>
-
-    <div>
-      <label for="target-job">Target job</label>
-      <input type="text" id="target-job" name="target_job" placeholder="e.g. Product Manager, Data Analyst…" required>
-    </div>
-
-    <div>
-      <label for="country">Country you want to work in</label>
-      <input type="text" id="country" name="country" placeholder="e.g. Netherlands" required>
-    </div>
-
-    <div>
-      <label for="location">Current location</label>
-      <input type="text" id="location" name="current_location" placeholder="City, country" required>
-    </div>
-
-    <div>
-      <label for="experience">Years of work experience</label>
-      <select id="experience" name="years_of_experience" required>
-        <option value="" disabled selected>Select…</option>
-        <option>0–2 years</option>
-        <option>3–5 years</option>
-        <option>6–10 years</option>
-        <option>11–15 years</option>
-        <option>15+ years</option>
-      </select>
-    </div>
-
-    <div>
-      <label for="challenge">What's your biggest career challenge right now?</label>
-      <textarea id="challenge" name="biggest_challenge" placeholder="e.g. I don't know if my experience transfers to a new field, I'm not getting interviews, I'm stuck deciding between two paths…" required></textarea>
-    </div>
-
-    <button type="submit" id="submit-btn">Send me my report</button>
-    <p class="privacy">Your CV is only used to create your report. We never share it with anyone.</p>
-  </form>
-
-  <div id="thanks">
-    <span class="check">✓</span>
-    <h2>Thank you!</h2>
-    <p>We'll send your personalized Career Intelligence Report to your inbox within 24 hours.</p>
   </div>
 </section>
 
 <footer class="wrap">
-  © 2026 Career Intelligence Report
+  © 2026 Career Clarity Assessment
 </footer>
 
 <script>
   // ---- Configuration -------------------------------------------------------
   // Point this at your form backend (e.g. a Formspree endpoint like
-  // "https://formspree.io/f/xxxxxxxx"). Leave empty to run in demo mode:
-  // the form validates and shows the thank-you screen without sending data.
+  // "https://formspree.io/f/xxxxxxxx") to receive each completed assessment
+  // (all answers + email) as a submission. Leave empty for demo mode:
+  // the report still renders, nothing is sent anywhere.
   const FORM_ENDPOINT = "";
   // --------------------------------------------------------------------------
 
-  const form = document.getElementById("report-form");
-  const thanks = document.getElementById("thanks");
-  const submitBtn = document.getElementById("submit-btn");
-  const fileInput = document.getElementById("cv");
-  const fileDrop = document.getElementById("file-drop");
-  const fileName = document.getElementById("file-name");
+  const steps = [...document.querySelectorAll(".step")];
+  const fill = document.getElementById("progress-fill");
+  const progressStep = document.getElementById("progress-step");
+  const progressName = document.getElementById("progress-name");
+  const btnNext = document.getElementById("btn-next");
+  const btnBack = document.getElementById("btn-back");
+  const stepError = document.getElementById("step-error");
+  let current = 0;
 
-  fileInput.addEventListener("change", () => {
-    if (fileInput.files.length) fileName.textContent = fileInput.files[0].name;
-  });
-
-  ["dragover", "dragleave", "drop"].forEach(evt => {
-    fileDrop.addEventListener(evt, e => {
-      e.preventDefault();
-      fileDrop.classList.toggle("dragover", evt === "dragover");
-      if (evt === "drop" && e.dataTransfer.files.length) {
-        fileInput.files = e.dataTransfer.files;
-        fileName.textContent = e.dataTransfer.files[0].name;
+  // ---- pills ----
+  document.querySelectorAll(".pills").forEach(group => {
+    const single = group.hasAttribute("data-single");
+    const max = parseInt(group.dataset.max || "0", 10);
+    group.addEventListener("click", e => {
+      const pill = e.target.closest(".pill");
+      if (!pill) return;
+      if (single) {
+        group.querySelectorAll(".pill").forEach(p => p.classList.remove("selected"));
+        pill.classList.add("selected");
+      } else {
+        if (!pill.classList.contains("selected") && max &&
+            group.querySelectorAll(".pill.selected").length >= max) return;
+        pill.classList.toggle("selected");
       }
     });
   });
 
-  form.addEventListener("submit", async e => {
-    e.preventDefault();
-    if (!form.reportValidity()) return;
+  // ---- 1-5 scales ----
+  document.querySelectorAll(".scale").forEach(scale => {
+    scale.addEventListener("click", e => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      scale.querySelectorAll("button").forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+      scale.dataset.value = btn.textContent;
+    });
+  });
 
-    submitBtn.disabled = true;
-    submitBtn.textContent = "Sending…";
+  // ---- validation ----
+  function validateStep(step) {
+    let ok = true;
+    step.querySelectorAll("[data-required]").forEach(el => {
+      let valid;
+      if (el.classList.contains("pills")) {
+        valid = el.querySelector(".pill.selected") !== null;
+      } else if (el.classList.contains("scale")) {
+        valid = !!el.dataset.value;
+      } else if (el.type === "email") {
+        valid = /.+@.+\..+/.test(el.value.trim());
+      } else {
+        valid = el.value.trim() !== "";
+      }
+      el.style.outline = valid ? "" : "2px solid #d98570";
+      el.style.outlineOffset = valid ? "" : "3px";
+      if (!valid) ok = false;
+    });
+    return ok;
+  }
 
+  function show(i) {
+    steps[current].classList.remove("active");
+    current = i;
+    steps[current].classList.add("active");
+    stepError.style.display = "none";
+    progressStep.textContent = `Step ${current + 1} of ${steps.length}`;
+    progressName.textContent = steps[current].dataset.name;
+    fill.style.width = `${((current + 1) / steps.length) * 100}%`;
+    btnBack.style.visibility = current === 0 ? "hidden" : "visible";
+    btnNext.textContent = current === steps.length - 1 ? "See my Career Profile" : "Continue";
+    document.getElementById("assessment").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+  fill.style.width = `${(1 / steps.length) * 100}%`;
+
+  btnBack.addEventListener("click", () => { if (current > 0) show(current - 1); });
+  btnNext.addEventListener("click", () => {
+    if (!validateStep(steps[current])) {
+      stepError.style.display = "block";
+      return;
+    }
+    if (current < steps.length - 1) show(current + 1);
+    else finish();
+  });
+
+  // ---- report logic (simple, transparent rules — no fake AI) ----
+  const PATHS = {
+    "Customer Success":       { skills: ["Customer Support", "Sales", "Marketing"], soft: ["Customer relationships", "Communication"], why: "builds on your people skills and support experience" },
+    "Project Coordinator":    { skills: ["Project Management", "Excel", "Event Planning"], soft: ["Organization", "Time management"], why: "fits your coordination and organizational strengths" },
+    "Operations Specialist":  { skills: ["Excel", "Project Management", "Bookkeeping"], soft: ["Organization", "Problem solving"], why: "matches your structured, detail-oriented profile" },
+    "Data Analyst":           { skills: ["Excel", "Python", "SQL"], soft: ["Problem solving"], why: "builds on your analytical and technical skills" },
+    "Digital Marketing Specialist": { skills: ["Marketing", "Social Media", "Writing", "Design"], soft: ["Communication"], why: "uses your creative and communication skills" },
+    "Account Manager":        { skills: ["Sales", "Customer Support", "Marketing"], soft: ["Customer relationships", "Communication"], why: "leverages your relationship-building experience" },
+    "Corporate Trainer / L&D": { skills: ["Teaching", "Writing"], soft: ["Communication", "Leadership"], why: "puts your teaching and mentoring skills to work" },
+    "HR / Recruitment Coordinator": { skills: ["Recruiting / HR", "Customer Support"], soft: ["Communication", "Teamwork", "Customer relationships"], why: "combines your people skills with coordination work" },
+    "Content / Communications Specialist": { skills: ["Writing", "Social Media", "Marketing"], soft: ["Communication"], why: "builds on your writing and communication strengths" }
+  };
+
+  const selected = sel => [...document.querySelectorAll(`${sel} .pill.selected`)].map(p => p.textContent);
+
+  function buildProfile() {
+    const skills = selected("#skills");
+    const soft = selected("#soft-skills");
+    const priorities = selected("#priorities");
+
+    // strengths: soft skills first, then strongest skill matches
+    const strengths = [...soft.slice(0, 3)];
+    if (strengths.length < 3) strengths.push(...skills.slice(0, 3 - strengths.length));
+
+    // score each path by overlap with selected skills & soft skills
+    const scored = Object.entries(PATHS).map(([name, def]) => {
+      const s = def.skills.filter(x => skills.includes(x)).length * 2 +
+                def.soft.filter(x => soft.includes(x)).length;
+      return { name, why: def.why, score: s };
+    }).filter(p => p.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
+
+    // blockers: confidence answers of 3 or below
+    const blockers = [...document.querySelectorAll(".scale-q")]
+      .filter(q => parseInt(q.querySelector(".scale").dataset.value, 10) <= 3)
+      .map(q => q.dataset.blocker);
+
+    return { skills, soft, priorities, strengths, paths: scored, blockers };
+  }
+
+  function collectAnswers() {
+    const val = id => document.getElementById(id).value.trim();
+    return {
+      age: val("age"), country: val("country"), current_location: val("location"),
+      years_of_experience: val("experience"), career_break_duration: val("break-duration"),
+      break_reason: selected("#break-reason").join(""),
+      previous_job_title: val("prev-title"), industry: val("industry"),
+      highest_education: val("education"), languages: val("languages"),
+      soft_skills: selected("#soft-skills").join(", "),
+      other_technical_skills: val("tech-skills"),
+      work_format: selected("#work-format").join(", "),
+      priorities: selected("#priorities").join(", "),
+      confidence: [...document.querySelectorAll(".scale-q")]
+        .map(q => `${q.querySelector(".q-label").textContent} → ${q.querySelector(".scale").dataset.value}/5`).join(" | "),
+      skills: selected("#skills").join(", "),
+      name: val("name"), email: val("email")
+    };
+  }
+
+  function renderReport(profile) {
+    const name = document.getElementById("name").value.trim().split(" ")[0];
+    document.getElementById("report-intro").textContent =
+      `${name}, based on your answers, here's where you stand — and where you could go next.`;
+
+    document.getElementById("report-strengths").innerHTML = profile.strengths
+      .map(s => `<li><span class="mark">✓</span>${s}</li>`).join("");
+
+    const pathsEl = document.getElementById("report-paths");
+    pathsEl.innerHTML = profile.paths.length
+      ? profile.paths.map(p => `<div class="path-item"><strong>⭐ ${p.name}</strong><span>This ${p.why}.</span></div>`).join("")
+      : `<div class="path-item"><strong>⭐ Let's talk</strong><span>Your combination of skills is unique — your full roadmap will include hand-picked suggestions.</span></div>`;
+
+    const blockersEl = document.getElementById("report-blockers");
+    blockersEl.innerHTML = profile.blockers.length
+      ? profile.blockers.map(b => `<li><span class="mark">•</span>${b}</li>`).join("")
+      : `<li><span class="mark">•</span>No major blockers — your main task is simply to start applying.</li>`;
+
+    const prio = profile.priorities.length ? profile.priorities.join(" and ").toLowerCase() : "what matters to you";
+    document.getElementById("report-note").innerHTML =
+      `<strong>What happens next:</strong> within 24 hours you'll receive your full career roadmap by email — with concrete next steps for each path above, focused on ${prio}.`;
+  }
+
+  async function finish() {
+    btnNext.disabled = true;
+    btnNext.textContent = "Building your profile…";
     try {
       if (FORM_ENDPOINT) {
-        const res = await fetch(FORM_ENDPOINT, {
-          method: "POST",
-          body: new FormData(form),
-          headers: { Accept: "application/json" }
-        });
-        if (!res.ok) throw new Error("Submission failed");
+        const fd = new FormData();
+        Object.entries(collectAnswers()).forEach(([k, v]) => fd.append(k, v));
+        await fetch(FORM_ENDPOINT, { method: "POST", body: fd, headers: { Accept: "application/json" } });
       }
-      form.style.display = "none";
-      thanks.style.display = "block";
-      thanks.scrollIntoView({ behavior: "smooth", block: "center" });
-    } catch (err) {
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Send me my report";
-      alert("Something went wrong sending your details. Please try again.");
-    }
-  });
+    } catch (e) { /* still show the report — don't lose the user */ }
+    renderReport(buildProfile());
+    document.getElementById("wizard").style.display = "none";
+    document.getElementById("report").style.display = "block";
+    document.getElementById("assessment").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
 </script>
 
 </body>

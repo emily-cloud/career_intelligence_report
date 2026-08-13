@@ -1,37 +1,48 @@
-# Career Intelligence Report — Landing Page
+# Career Clarity Assessment — Landing Page
 
-A single-file landing page (`index.html`) to test the idea: **upload your CV, get a personalized career report within 24 hours.**
+A single-file landing page (`index.html`) to test the idea: **a 5-minute Career Clarity Assessment for people returning to work after a career break, ending in a personalized career roadmap.**
 
 No frameworks, no build step. Open `index.html` in a browser and it works.
 
-## The one job of this page
+## The flow
 
-> "This page is not meant to impress investors. It's meant to convince one confused job seeker to upload their CV."
+**Hero:** "Ready to return to work, but not sure where to start?" → **[Start Assessment]** — deliberately not "Upload your CV", and no mention of AI anywhere.
 
-The headline promises exactly one thing: *in 24 hours you'll know which career path is realistic for you, what skills you're missing, and what to do next.* AI is deliberately never mentioned.
+**Assessment (6 steps, with progress bar):**
 
-## Form fields
+1. **Background** — age (optional), country, current location, years of experience, career break duration, reason for break (Parenthood / Caregiving / Illness / Relocation / Other)
+2. **Previous experience** — job title, industry, education, languages, soft skills, other technical skills
+3. **Goals** — desired work format (full-time / part-time / remote / hybrid / flexible), what matters most (pick up to 2)
+4. **Confidence** — four 1–5 statements ("I know what type of job I want", "I know which skills I should learn", "I feel confident applying for jobs", "I know where to find suitable jobs") → these identify blockers
+5. **Skills** — a simple "which of these are you comfortable with?" checklist (Marketing, Sales, Excel, Project Management, Python, SQL, Customer Support, Teaching, Design, …) — no real skill assessment yet
+6. **Name + email** — the conversion moment: "Tell us where to send your full roadmap"
 
-Upload CV → Name → Email → LinkedIn (optional) → Target job → Country → Current location → Years of experience → Biggest challenge → **Thank you!** ("We'll send your personalized report within 24 hours.")
+**Report ("Your Career Profile"):** rendered instantly from transparent rules — no fake AI:
 
-## Making the form actually deliver submissions
+- **Your biggest strengths** — the soft skills they selected
+- **Potential career paths** — top 3 of 9 predefined roles (Customer Success, Project Coordinator, Operations Specialist, Data Analyst, Digital Marketing Specialist, Account Manager, Corporate Trainer/L&D, HR Coordinator, Content Specialist), scored by overlap with their selected skills (weight 2) and soft skills (weight 1), each with a one-line "why this fits"
+- **Current blockers** — every confidence statement scored 3 or below, mapped to plain language ("Lack of confidence when applying", "Limited knowledge of today's job market", …)
+- Ends with: your full roadmap arrives by email within 24 hours.
 
-The form currently runs in **demo mode**: it validates and shows the thank-you screen, but sends nothing anywhere. To receive real submissions:
+## Receiving submissions
 
-1. Create a form on a service that accepts file uploads, e.g. [Formspree](https://formspree.io) (file uploads need a paid plan) or [Tally](https://tally.so) (free file uploads — but then embed their form instead).
-2. Open `index.html` and set the endpoint near the bottom of the file:
+The page runs in **demo mode** by default: the report renders, but answers go nowhere. To receive each completed assessment (all answers + email) by email:
+
+1. Create a free form on [Formspree](https://formspree.io) (no file uploads needed anymore, so the free plan works).
+2. In `index.html`, set the endpoint near the top of the `<script>` block:
    ```js
    const FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
    ```
-3. Submissions (including the CV file) will arrive in your Formspree inbox / email.
+
+If submission fails, the user still sees their report — you lose the lead, they don't lose the experience.
 
 ## Deploying
 
 Any static host works:
 
 - **GitHub Pages**: repo Settings → Pages → deploy from branch, root folder.
-- **Netlify / Vercel**: drag-and-drop the folder or connect the repo. (On Netlify you can also use [Netlify Forms](https://docs.netlify.com/forms/setup/) instead of Formspree.)
+- **Netlify / Vercel**: drag-and-drop the folder or connect the repo.
 
 ## Measuring the test
 
-Suggested success signal: of the people who land on the page, how many upload a CV and submit? Add a free analytics snippet (e.g. [Plausible](https://plausible.io), [GoatCounter](https://www.goatcounter.com)) to count visits vs. submissions.
+The funnel to watch: visitors → started assessment → completed step 4 (blockers revealed) → submitted email. Add a free analytics snippet (e.g. [Plausible](https://plausible.io), [GoatCounter](https://www.goatcounter.com)) to count these. Email submission rate is the signal that the value proposition lands.
