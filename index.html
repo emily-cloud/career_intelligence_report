@@ -208,6 +208,43 @@
   .btn-back:hover { color: var(--ink); }
   .step-error { display: none; font-size: 0.85rem; color: #b3402a; margin-top: 1rem; }
 
+  .consent {
+    display: flex; gap: 0.7rem; align-items: flex-start;
+    font-size: 0.85rem; font-weight: 400; color: var(--ink-soft);
+    line-height: 1.5;
+    margin-top: 1.1rem;
+    cursor: pointer;
+  }
+  .consent input {
+    flex: none;
+    width: 1.15rem; height: 1.15rem;
+    margin-top: 0.15rem;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+  .consent a { color: var(--accent); }
+
+  /* ---------- Privacy notice ---------- */
+  #privacy { scroll-margin-top: 2rem; padding-top: 1rem; }
+  .privacy-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.8rem 1.7rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+  .privacy-card summary {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--ink);
+    cursor: pointer;
+    list-style-position: inside;
+  }
+  .privacy-card h5 { font-size: 0.9rem; color: var(--ink); margin: 1.1rem 0 0.2rem; }
+  .privacy-card p { margin-top: 0.3rem; }
+  .privacy-card a { color: var(--accent); }
+
   /* ---------- Report ---------- */
   #report { display: none; animation: fadein 0.4s ease; }
   .report-card {
@@ -508,7 +545,10 @@
         <label for="email">Email</label>
         <input type="email" id="email" autocomplete="email" placeholder="you@example.com" data-required>
       </div>
-      <p class="cta-note" style="text-align:left;">Your answers are only used to create your roadmap. No spam, ever.</p>
+      <label class="consent" for="consent">
+        <input type="checkbox" id="consent" data-required>
+        <span>I agree that my answers are used to create my career roadmap and that I'll receive it by email. I can withdraw my consent and have my data deleted at any time. <a href="#privacy">Privacy notice</a></span>
+      </label>
     </div>
 
     <p class="step-error" id="step-error">Please answer this question to continue.</p>
@@ -545,8 +585,24 @@
   </div>
 </section>
 
+<section class="wrap" id="privacy">
+  <details class="privacy-card">
+    <summary>Privacy notice</summary>
+    <h5>Who we are</h5>
+    <p>This assessment is run by [YOUR NAME / COMPANY NAME]. Questions or requests about your data: <a href="mailto:[YOUR CONTACT EMAIL]">[YOUR CONTACT EMAIL]</a>.</p>
+    <h5>What we collect and why</h5>
+    <p>Your assessment answers (background, career break, experience, goals, skills, and confidence), plus your name and email address. Age is optional. We use this data for one purpose only: to create your personal career roadmap and send it to you by email. The legal basis is your consent, given by ticking the box before submitting.</p>
+    <h5>Where your data is stored</h5>
+    <p>Submissions are delivered to us through Formspree Inc. (USA), which participates in the EU–U.S. Data Privacy Framework, and arrive in our email inbox. We do not sell or share your data with anyone else, and we won't send you anything beyond your roadmap unless you separately ask us to.</p>
+    <h5>How long we keep it</h5>
+    <p>Your answers are deleted within 30 days after your roadmap has been sent.</p>
+    <h5>Your rights</h5>
+    <p>You can ask at any time to see, correct, or delete the data we hold about you, or withdraw your consent — just email us. You also have the right to complain to your data protection authority (in the Netherlands: Autoriteit Persoonsgegevens).</p>
+  </details>
+</section>
+
 <footer class="wrap">
-  © 2026 Career Clarity Assessment
+  © 2026 Career Clarity Assessment · <a href="#privacy" style="color:var(--ink-faint);">Privacy</a>
 </footer>
 
 <script>
@@ -639,6 +695,8 @@
                 (!otherSelected(el) || otherText(el) !== "");
       } else if (el.classList.contains("scale")) {
         valid = !!el.dataset.value;
+      } else if (el.type === "checkbox") {
+        valid = el.checked;
       } else if (el.type === "email") {
         valid = /.+@.+\..+/.test(el.value.trim());
       } else {
@@ -734,7 +792,11 @@
       confidence: [...document.querySelectorAll(".scale-q")]
         .map(q => `${q.querySelector(".statement").textContent} → ${q.querySelector(".scale").dataset.value}/5`).join(" | "),
       skills: selected("#skills").join(", "),
-      name: val("name"), email: val("email")
+      name: val("name"), email: val("email"),
+      // record of consent, kept with the submission (GDPR accountability)
+      consent: document.getElementById("consent").checked
+        ? `Consented to processing for career roadmap at ${new Date().toISOString()}`
+        : "NO CONSENT"
     };
   }
 

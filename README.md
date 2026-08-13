@@ -36,6 +36,21 @@ The page runs in **demo mode** by default: the report renders, but answers go no
 
 If submission fails, the user still sees their report — you lose the lead, they don't lose the experience.
 
+## GDPR
+
+The page ships with the on-page half of GDPR compliance built in:
+
+- A **required consent checkbox** at the email step (unticked by default), naming the exact purpose: answers are used to create the roadmap, delivered by email, withdrawable at any time.
+- A **plain-language privacy notice** on the page (linked from the checkbox and the footer): who processes the data, what is collected and why, that Formspree (EU–U.S. Data Privacy Framework participant) delivers submissions, a 30-day retention promise, and the person's rights including complaint to the Dutch Autoriteit Persoonsgegevens.
+- A **consent record** (statement + ISO timestamp) included in every submission, for accountability.
+
+Before going live, complete the other half yourself:
+
+1. **Fill in the placeholders** in the privacy notice in `index.html`: replace `[YOUR NAME / COMPANY NAME]` and `[YOUR CONTACT EMAIL]` with your real identity and a monitored address.
+2. **Honor the notice**: send only the roadmap (no newsletter without a separate opt-in), delete submissions from Formspree and your inbox within the promised 30 days, and act on any access/deletion request promptly.
+3. **In Formspree**: delete submissions after fulfilling each report; if you upgrade to a paid plan, accept their Data Processing Agreement in the workspace settings.
+4. Collect nothing extra — the form already practices data minimization (age is optional); keep it that way.
+
 ## Deploying
 
 Any static host works:
