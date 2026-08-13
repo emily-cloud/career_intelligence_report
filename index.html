@@ -177,6 +177,8 @@
     background: var(--accent);
     border-color: var(--accent);
   }
+  .other-input { display: none; margin-top: 0.6rem; }
+  .other-input.visible { display: block; }
 
   /* 1-5 scale */
   .scale-q { margin-bottom: 1.3rem; }
@@ -368,12 +370,15 @@
       </div>
       <div class="field">
         <span class="q-label">Reason for career break</span>
-        <div class="pills" id="break-reason" data-single data-required>
+        <div class="pills" id="break-reason" data-single data-required data-other="break-reason-other">
           <span class="pill">Parenthood</span>
           <span class="pill">Caregiving</span>
           <span class="pill">Illness</span>
           <span class="pill">Relocation</span>
           <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="break-reason-other">
+          <input type="text" placeholder="Tell us in your own words…">
         </div>
       </div>
     </div>
@@ -411,7 +416,7 @@
       </div>
       <div class="field">
         <span class="q-label">Soft skills — pick the ones that sound like you</span>
-        <div class="pills" id="soft-skills" data-required>
+        <div class="pills" id="soft-skills" data-required data-other="soft-skills-other">
           <span class="pill">Communication</span>
           <span class="pill">Organization</span>
           <span class="pill">Problem solving</span>
@@ -420,6 +425,10 @@
           <span class="pill">Customer relationships</span>
           <span class="pill">Time management</span>
           <span class="pill">Adaptability</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="soft-skills-other">
+          <input type="text" placeholder="Describe your other strengths…">
         </div>
       </div>
       <div class="field">
@@ -435,22 +444,30 @@
 
       <div class="field">
         <span class="q-label">What would you like your next job to look like? <span class="opt">(pick any)</span></span>
-        <div class="pills" id="work-format" data-required>
+        <div class="pills" id="work-format" data-required data-other="work-format-other">
           <span class="pill">Full-time</span>
           <span class="pill">Part-time</span>
           <span class="pill">Remote</span>
           <span class="pill">Hybrid</span>
           <span class="pill">Flexible hours</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="work-format-other">
+          <input type="text" placeholder="Describe what would work for you…">
         </div>
       </div>
       <div class="field">
         <span class="q-label">What matters most to you? <span class="opt">(pick up to 2)</span></span>
-        <div class="pills" id="priorities" data-required data-max="2">
+        <div class="pills" id="priorities" data-required data-max="2" data-other="priorities-other">
           <span class="pill">Higher salary</span>
           <span class="pill">Meaningful work</span>
           <span class="pill">Stability</span>
           <span class="pill">Flexibility</span>
           <span class="pill">Career growth</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="priorities-other">
+          <input type="text" placeholder="What matters most to you?">
         </div>
       </div>
     </div>
@@ -496,7 +513,7 @@
       <p class="step-sub">Select everything you could do today, even if you're a little rusty.</p>
 
       <div class="field">
-        <div class="pills" id="skills" data-required>
+        <div class="pills" id="skills" data-required data-other="skills-other">
           <span class="pill">Marketing</span>
           <span class="pill">Sales</span>
           <span class="pill">Excel</span>
@@ -511,6 +528,10 @@
           <span class="pill">Bookkeeping</span>
           <span class="pill">Event Planning</span>
           <span class="pill">Recruiting / HR</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="skills-other">
+          <input type="text" placeholder="Tell us what else you're comfortable with…">
         </div>
       </div>
     </div>
@@ -588,6 +609,15 @@
   let current = 0;
 
   // ---- pills ----
+  const otherSelected = group =>
+    [...group.querySelectorAll(".pill.selected")].some(p => p.textContent === "Other");
+  const otherField = group =>
+    group.dataset.other ? document.getElementById(group.dataset.other) : null;
+  const otherText = group => {
+    const f = otherField(group);
+    return f ? f.querySelector("input").value.trim() : "";
+  };
+
   document.querySelectorAll(".pills").forEach(group => {
     const single = group.hasAttribute("data-single");
     const max = parseInt(group.dataset.max || "0", 10);
@@ -601,6 +631,11 @@
         if (!pill.classList.contains("selected") && max &&
             group.querySelectorAll(".pill.selected").length >= max) return;
         pill.classList.toggle("selected");
+      }
+      const field = otherField(group);
+      if (field) {
+        field.classList.toggle("visible", otherSelected(group));
+        if (otherSelected(group)) field.querySelector("input").focus();
       }
     });
   });
@@ -622,7 +657,8 @@
     step.querySelectorAll("[data-required]").forEach(el => {
       let valid;
       if (el.classList.contains("pills")) {
-        valid = el.querySelector(".pill.selected") !== null;
+        valid = el.querySelector(".pill.selected") !== null &&
+                (!otherSelected(el) || otherText(el) !== "");
       } else if (el.classList.contains("scale")) {
         valid = !!el.dataset.value;
       } else if (el.type === "email") {
@@ -674,7 +710,12 @@
     "Content / Communications Specialist": { skills: ["Writing", "Social Media", "Marketing"], soft: ["Communication"], why: "builds on your writing and communication strengths" }
   };
 
-  const selected = sel => [...document.querySelectorAll(`${sel} .pill.selected`)].map(p => p.textContent);
+  // selected pill labels; "Other" becomes the user's own description when given
+  const selected = sel => {
+    const group = document.querySelector(sel);
+    return [...group.querySelectorAll(".pill.selected")].map(p =>
+      p.textContent === "Other" && otherText(group) ? otherText(group) : p.textContent);
+  };
 
   function buildProfile() {
     const skills = selected("#skills");
