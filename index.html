@@ -91,7 +91,8 @@
 
   /* ---------- Assessment ---------- */
   section { padding: 1rem 0 3rem; }
-  #assessment { scroll-margin-top: 1.5rem; }
+  #assessment { scroll-margin-top: 1.5rem; display: none; }
+  #assessment.open { display: block; }
   .panel {
     background: var(--card);
     border: 1px solid var(--line);
@@ -701,6 +702,16 @@
   // the report still renders, nothing is sent anywhere.
   const FORM_ENDPOINT = "https://formspree.io/f/xrpzkvwj";
   // --------------------------------------------------------------------------
+
+  // The assessment stays hidden until the visitor clicks Start
+  const assessment = document.getElementById("assessment");
+  document.querySelector(".cta-btn").addEventListener("click", e => {
+    e.preventDefault();
+    assessment.classList.add("open");
+    assessment.scrollIntoView({ behavior: "smooth", block: "start" });
+    const firstInput = assessment.querySelector(".step.active input, .step.active select");
+    if (firstInput) firstInput.focus({ preventScroll: true });
+  });
 
   const steps = [...document.querySelectorAll(".step")];
   const fill = document.getElementById("progress-fill");
