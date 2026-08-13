@@ -133,7 +133,7 @@
     font-weight: 650;
     margin-bottom: 0.4rem;
   }
-  input[type="text"], input[type="email"], select {
+  input[type="text"], input[type="email"], select, textarea {
     width: 100%;
     font: inherit;
     font-size: 1.05rem;
@@ -144,7 +144,19 @@
     padding: 0.85rem 1rem;
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
-  input:focus, select:focus {
+  textarea { resize: vertical; min-height: 5rem; }
+  .lang-row { display: flex; gap: 0.6rem; margin-bottom: 0.6rem; }
+  .lang-row .lang-name { flex: 1.6; }
+  .lang-row .lang-level { flex: 1; }
+  .add-lang {
+    font: inherit; font-size: 0.9rem; font-weight: 600;
+    color: var(--accent);
+    background: none; border: none;
+    cursor: pointer;
+    padding: 0.2rem 0;
+  }
+  .add-lang:hover { color: var(--accent-dark); }
+  input:focus, select:focus, textarea:focus {
     outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-soft);
@@ -310,13 +322,7 @@
     </div>
 
     <!-- One question per page -->
-    <div class="step active" data-name="About you">
-      <h3>How old are you?</h3>
-      <p class="step-sub">You can skip this if you prefer.</p>
-      <div class="field"><input type="text" id="age" inputmode="numeric" placeholder="Your age (optional)"></div>
-    </div>
-
-    <div class="step" data-name="Location">
+    <div class="step active" data-name="Location">
       <h3>Which country do you want to work in?</h3>
       <p class="step-sub">Job markets differ a lot by place.</p>
       <div class="field"><input type="text" id="country" placeholder="e.g. Netherlands" data-required></div>
@@ -368,9 +374,30 @@
           <span class="pill">Illness</span>
           <span class="pill">Relocation</span>
           <span class="pill">Other</span>
+          <span class="pill">Prefer not to say</span>
         </div>
         <div class="other-input" id="break-reason-other">
           <input type="text" placeholder="Tell us in your own words…">
+        </div>
+      </div>
+    </div>
+
+    <div class="step" data-name="Career break">
+      <h3>What have you done during your career break?</h3>
+      <p class="step-sub">Pick everything that applies — it all counts.</p>
+      <div class="field">
+        <div class="pills" id="break-activities" data-required data-other="break-activities-other">
+          <span class="pill">Study</span>
+          <span class="pill">Certification</span>
+          <span class="pill">New skills</span>
+          <span class="pill">Personal projects</span>
+          <span class="pill">Freelance work</span>
+          <span class="pill">Volunteering</span>
+          <span class="pill">Caregiving</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="break-activities-other">
+          <input type="text" placeholder="Tell us what you've been up to…">
         </div>
       </div>
     </div>
@@ -402,8 +429,21 @@
     </div>
 
     <div class="step" data-name="Education">
-      <h3>Which languages do you speak?</h3>
-      <div class="field"><input type="text" id="languages" placeholder="e.g. Dutch, English" data-required></div>
+      <h3>Which languages do you speak, and how well?</h3>
+      <p class="step-sub">Languages open doors — add each one with your level.</p>
+      <div class="field" id="languages-rows">
+        <div class="lang-row">
+          <input type="text" class="lang-name" placeholder="e.g. Dutch" data-required>
+          <select class="lang-level" data-required>
+            <option value="" disabled selected>Level…</option>
+            <option>Native</option>
+            <option>Fluent</option>
+            <option>Good</option>
+            <option>Basic</option>
+          </select>
+        </div>
+      </div>
+      <button type="button" class="add-lang" id="add-lang">+ Add another language</button>
     </div>
 
     <div class="step" data-name="Strengths">
@@ -634,6 +674,10 @@
         <label for="email">Email</label>
         <input type="email" id="email" autocomplete="email" placeholder="you@example.com" data-required>
       </div>
+      <div class="field" style="margin-top:1rem;">
+        <label for="notes">Anything else you'd like us to know? <span class="opt" style="font-weight:400;color:var(--ink-faint);">(optional)</span></label>
+        <textarea id="notes" rows="3" placeholder="Your situation, doubts, hopes — anything that helps us tailor your roadmap…"></textarea>
+      </div>
       <label class="consent" for="consent">
         <input type="checkbox" id="consent" data-required>
         <span>I agree that my answers are used to create my career roadmap and that I'll receive it by email. I can withdraw my consent and have my data deleted at any time. <a href="#privacy">Privacy notice</a></span>
@@ -680,7 +724,7 @@
     <h5>Who we are</h5>
     <p>This assessment is run by Emily Ai, UnityWerk. Questions or requests about your data: <a href="mailto:emilyaiai86@gmail.com">emilyaiai86@gmail.com</a>.</p>
     <h5>What we collect and why</h5>
-    <p>Your assessment answers (background, career break, experience, goals, skills, and confidence), plus your name and email address. Age is optional. We use this data for one purpose only: to create your personal career roadmap and send it to you by email. The legal basis is your consent, given by ticking the box before submitting.</p>
+    <p>Your assessment answers (background, career break, experience, goals, skills, and confidence), plus your name and email address. We use this data for one purpose only: to create your personal career roadmap and send it to you by email. The legal basis is your consent, given by ticking the box before submitting.</p>
     <h5>Where your data is stored</h5>
     <p>Submissions are delivered to us through Formspree Inc. (USA), which participates in the EU–U.S. Data Privacy Framework, and arrive in our email inbox. We do not sell or share your data with anyone else, and we won't send you anything beyond your roadmap unless you separately ask us to.</p>
     <h5>How long we keep it</h5>
@@ -784,6 +828,24 @@
     });
   });
 
+  // ---- languages: add extra language/level rows (up to 4) ----
+  const langRows = document.getElementById("languages-rows");
+  const addLang = document.getElementById("add-lang");
+  addLang.addEventListener("click", () => {
+    const row = langRows.querySelector(".lang-row").cloneNode(true);
+    row.querySelectorAll("[data-required]").forEach(el => el.removeAttribute("data-required"));
+    const name = row.querySelector(".lang-name");
+    const level = row.querySelector(".lang-level");
+    name.value = ""; name.placeholder = "Another language";
+    level.selectedIndex = 0;
+    name.addEventListener("keydown", e => {
+      if (e.key === "Enter") { e.preventDefault(); btnNext.click(); }
+    });
+    langRows.appendChild(row);
+    name.focus();
+    if (langRows.querySelectorAll(".lang-row").length >= 4) addLang.style.display = "none";
+  });
+
   // ---- validation ----
   function validateStep(step) {
     let ok = true;
@@ -804,6 +866,14 @@
       el.style.outline = valid ? "" : "2px solid #d98570";
       el.style.outlineOffset = valid ? "" : "3px";
       if (!valid) ok = false;
+    });
+    // extra language rows: a half-filled pair blocks the step
+    step.querySelectorAll(".lang-row").forEach(row => {
+      const name = row.querySelector(".lang-name");
+      const level = row.querySelector(".lang-level");
+      const half = (name.value.trim() !== "") !== (level.value !== "");
+      const mark = el => { el.style.outline = "2px solid #d98570"; el.style.outlineOffset = "3px"; };
+      if (half) { ok = false; mark(name.value.trim() ? level : name); }
     });
     return ok;
   }
@@ -900,11 +970,16 @@
   function collectAnswers() {
     const val = id => document.getElementById(id).value.trim();
     return {
-      age: val("age"), country: val("country"), current_location: val("location"),
+      country: val("country"), current_location: val("location"),
       years_of_experience: val("experience"), career_break_duration: val("break-duration"),
       break_reason: selected("#break-reason").join(""),
+      career_break_activities: selected("#break-activities").join(", "),
+      additional_notes: val("notes"),
       previous_job_title: val("prev-title"), industry: val("industry"),
-      highest_education: val("education"), languages: val("languages"),
+      highest_education: val("education"),
+      languages: [...document.querySelectorAll(".lang-row")]
+        .map(r => ({ n: r.querySelector(".lang-name").value.trim(), l: r.querySelector(".lang-level").value }))
+        .filter(x => x.n).map(x => x.l ? `${x.n} (${x.l})` : x.n).join(", "),
       soft_skills: selected("#soft-skills").join(", "),
       work_format: selected("#work-format").join(", "),
       priorities: selected("#priorities").join(", "),
