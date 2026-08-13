@@ -310,6 +310,7 @@
   .path-item { background: var(--accent-soft); border-radius: 16px; padding: 1rem 1.15rem; }
   .path-item strong { display: block; font-size: 1.05rem; }
   .path-item span { font-size: 0.9rem; color: var(--ink-soft); }
+  .paths-note { font-size: 0.85rem; color: var(--ink-faint); margin-top: 0.3rem; }
   .report-note { border-top: 1px solid var(--line); padding-top: 1.5rem; font-size: 0.93rem; color: var(--ink-soft); }
   .report-note strong { color: var(--ink); }
 
@@ -917,16 +918,29 @@
   });
 
   // ---- report logic (simple, transparent rules — no fake AI) ----
+  // Each role is scored against the answers:
+  //   +3 per keyword found in previous job title / industry (strongest signal)
+  //   +2 per matching skill from the checklist
+  //   +1 per matching soft skill, +1 per matching interest
   const PATHS = {
-    "Customer Success":       { skills: ["Customer Support", "Sales", "Marketing"], soft: ["Customer relationships", "Communication"], interests: ["Working with people", "Teaching & helping"], why: "builds on your people skills and support experience" },
-    "Project Coordinator":    { skills: ["Project Management", "Excel", "Event Planning"], soft: ["Organization", "Time management"], interests: ["Organizing & planning"], why: "fits your coordination and organizational strengths" },
-    "Operations Specialist":  { skills: ["Excel", "Project Management", "Bookkeeping"], soft: ["Organization", "Problem solving"], interests: ["Organizing & planning", "Numbers & analysis"], why: "matches your structured, detail-oriented profile" },
-    "Data Analyst":           { skills: ["Excel", "Python", "SQL"], soft: ["Problem solving"], interests: ["Numbers & analysis", "Technology"], why: "builds on your analytical and technical skills" },
-    "Digital Marketing Specialist": { skills: ["Marketing", "Social Media", "Writing", "Design"], soft: ["Communication"], interests: ["Creative work", "Selling & persuading"], why: "uses your creative and communication skills" },
-    "Account Manager":        { skills: ["Sales", "Customer Support", "Marketing"], soft: ["Customer relationships", "Communication"], interests: ["Working with people", "Selling & persuading"], why: "leverages your relationship-building experience" },
-    "Corporate Trainer / L&D": { skills: ["Teaching", "Writing"], soft: ["Communication", "Leadership"], interests: ["Teaching & helping", "Working with people"], why: "puts your teaching and mentoring skills to work" },
-    "HR / Recruitment Coordinator": { skills: ["Recruiting / HR", "Customer Support"], soft: ["Communication", "Teamwork", "Customer relationships"], interests: ["Working with people"], why: "combines your people skills with coordination work" },
-    "Content / Communications Specialist": { skills: ["Writing", "Social Media", "Marketing"], soft: ["Communication"], interests: ["Creative work"], why: "builds on your writing and communication strengths" }
+    "Customer Success":       { skills: ["Customer Support", "Sales", "Marketing"], soft: ["Customer relationships", "Communication"], interests: ["Working with people", "Teaching & helping"], keywords: ["customer", "support", "service", "client"], why: "builds on your people skills and support experience" },
+    "Project Coordinator":    { skills: ["Project Management", "Excel", "Event Planning"], soft: ["Organization", "Time management"], interests: ["Organizing & planning"], keywords: ["project", "coordinator", "planner"], why: "fits your coordination and organizational strengths" },
+    "Operations Specialist":  { skills: ["Excel", "Project Management", "Bookkeeping"], soft: ["Organization", "Problem solving"], interests: ["Organizing & planning", "Numbers & analysis"], keywords: ["operations", "logistics", "supply chain"], why: "matches your structured, detail-oriented profile" },
+    "Data Analyst":           { skills: ["Excel", "Python", "SQL"], soft: ["Problem solving"], interests: ["Numbers & analysis", "Technology"], keywords: ["analyst", "data", "research"], why: "builds on your analytical and technical skills" },
+    "Digital Marketing Specialist": { skills: ["Marketing", "Social Media", "Writing", "Design"], soft: ["Communication"], interests: ["Creative work", "Selling & persuading"], keywords: ["marketing", "brand", "campaign"], why: "uses your creative and communication skills" },
+    "Account Manager":        { skills: ["Sales", "Customer Support", "Marketing"], soft: ["Customer relationships", "Communication"], interests: ["Working with people", "Selling & persuading"], keywords: ["sales", "business development", "account manager"], why: "leverages your relationship-building experience" },
+    "Corporate Trainer / L&D": { skills: ["Teaching", "Writing"], soft: ["Communication", "Leadership"], interests: ["Teaching & helping", "Working with people"], keywords: ["trainer", "training", "education", "lecturer"], why: "puts your teaching and mentoring skills to work" },
+    "HR / Recruitment Coordinator": { skills: ["Recruiting / HR", "Customer Support"], soft: ["Communication", "Teamwork", "Customer relationships"], interests: ["Working with people"], keywords: ["hr", "human resources", "recruit", "talent"], why: "combines your people skills with coordination work" },
+    "Content / Communications Specialist": { skills: ["Writing", "Social Media", "Marketing"], soft: ["Communication"], interests: ["Creative work"], keywords: ["content", "communication", "editor", "copywriter", "journalist"], why: "builds on your writing and communication strengths" },
+    "Executive / Virtual Assistant": { skills: ["Excel", "Bookkeeping", "Event Planning"], soft: ["Organization", "Time management", "Adaptability"], interests: ["Organizing & planning"], keywords: ["assistant", "secretary", "administrative"], why: "rewards your reliability and organizational talent, often with flexible hours" },
+    "Office Manager":         { skills: ["Bookkeeping", "Excel", "Event Planning"], soft: ["Organization", "Leadership"], interests: ["Organizing & planning"], keywords: ["office manager", "administration", "facilities"], why: "puts you at the organized heart of a team" },
+    "Bookkeeper / Finance Assistant": { skills: ["Bookkeeping", "Excel"], soft: ["Organization", "Problem solving"], interests: ["Numbers & analysis"], keywords: ["finance", "accounting", "accountant", "bookkeep", "payroll", "invoice"], why: "builds on your precision and comfort with numbers" },
+    "Social Media Manager":   { skills: ["Social Media", "Marketing", "Design", "Writing"], soft: ["Communication", "Adaptability"], interests: ["Creative work", "Technology"], keywords: ["social media", "community manager", "influencer"], why: "turns your creativity and online fluency into a role" },
+    "UX / Visual Designer":   { skills: ["Design"], soft: ["Problem solving", "Communication"], interests: ["Creative work", "Technology"], keywords: ["design", "graphic", "ux", "ui", "creative"], why: "builds on your design skills and eye for detail" },
+    "Event Coordinator":      { skills: ["Event Planning", "Project Management", "Social Media"], soft: ["Organization", "Customer relationships"], interests: ["Organizing & planning", "Working with people"], keywords: ["event", "hospitality", "wedding", "catering"], why: "combines your planning skills with working with people" },
+    "Teacher / Tutor":        { skills: ["Teaching"], soft: ["Communication", "Adaptability", "Leadership"], interests: ["Teaching & helping"], keywords: ["teacher", "tutor", "school", "childcare"], why: "uses your gift for explaining and encouraging others" },
+    "QA / Software Tester":   { skills: ["Python", "SQL", "Excel"], soft: ["Problem solving"], interests: ["Technology", "Numbers & analysis"], keywords: ["software", "developer", "engineer", "tester", "ict"], why: "is a realistic tech entry point for a structured, curious mind" },
+    "Care / Community Coordinator": { skills: ["Customer Support", "Teaching"], soft: ["Customer relationships", "Teamwork", "Communication"], interests: ["Teaching & helping", "Working with people"], keywords: ["nurse", "health", "community", "charity", "ngo", "welfare"], why: "turns your care experience into recognized, paid work" }
   };
 
   // selected pill labels; "Other" becomes the user's own description when given
@@ -946,11 +960,15 @@
     const strengths = [...soft.slice(0, 3)];
     if (strengths.length < 3) strengths.push(...skills.slice(0, 3 - strengths.length));
 
+    const background = (document.getElementById("prev-title").value + " " +
+                        document.getElementById("industry").value).toLowerCase();
     const scored = Object.entries(PATHS).map(([name, def]) => {
-      const s = def.skills.filter(x => skills.includes(x)).length * 2 +
+      const kw = def.keywords.filter(k => background.includes(k)).length;
+      const s = kw * 3 +
+                def.skills.filter(x => skills.includes(x)).length * 2 +
                 def.soft.filter(x => soft.includes(x)).length +
                 def.interests.filter(x => interests.includes(x)).length;
-      return { name, why: def.why, score: s };
+      return { name, why: def.why, score: s, fromBackground: kw > 0 };
     }).filter(p => p.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
 
     const challenges = selected("#challenge");
@@ -1016,9 +1034,10 @@
       .map(s => `<li><span class="mark">✓</span>${s}</li>`).join("");
 
     const pathsEl = document.getElementById("report-paths");
-    pathsEl.innerHTML = profile.paths.length
-      ? profile.paths.map(p => `<div class="path-item"><strong>⭐ ${p.name}</strong><span>This ${p.why}.</span></div>`).join("")
-      : `<div class="path-item"><strong>⭐ Let's talk</strong><span>Your combination of skills is unique — your full roadmap will include hand-picked suggestions.</span></div>`;
+    pathsEl.innerHTML = (profile.paths.length
+      ? profile.paths.map(p => `<div class="path-item"><strong>⭐ ${p.name}</strong><span>This ${p.why}${p.fromBackground ? ", and connects directly to your previous experience" : ""}.</span></div>`).join("")
+      : `<div class="path-item"><strong>⭐ Let's talk</strong><span>Your combination of skills is unique — your full roadmap will include hand-picked suggestions.</span></div>`)
+      + `<p class="paths-note">These are starting points, not a verdict — your full roadmap looks at the whole job market, including paths beyond this list.</p>`;
 
     const blockersEl = document.getElementById("report-blockers");
     blockersEl.innerHTML = profile.blockers.length
