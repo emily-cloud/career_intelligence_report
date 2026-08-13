@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Career Clarity Assessment — Ready to return to work?</title>
+<meta name="description" content="Ready to return to work, but not sure where to start? Take the 5-minute Career Clarity Assessment and receive a personalized career roadmap.">
+<style>
+  :root {
+    --ink: #3d2b33;
+    --ink-soft: #6f5a64;
+    --ink-faint: #a08d97;
+    --paper: #fbf5f3;
+    --card: #ffffff;
+    --accent: #a34d6d;
+    --accent-dark: #8a3d5b;
+    --accent-soft: #f7e8ee;
+    --gold: #c9a26b;
+    --line: #efdfe5;
+    --radius: 20px;
+    --serif: Georgia, "Times New Roman", serif;
+    font-size: 16px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background:
+      radial-gradient(60rem 30rem at 85% -5%, #f6e3ea 0%, transparent 60%),
+      radial-gradient(50rem 26rem at -10% 30%, #f8ece2 0%, transparent 55%),
+      var(--paper);
+    background-attachment: fixed;
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+  .wrap { max-width: 560px; margin: 0 auto; padding: 0 1.25rem; }
+
+  /* ---------- Hero ---------- */
+  header { padding: 5rem 0 3.5rem; text-align: center; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.6rem;
+  }
+  .eyebrow::before, .eyebrow::after { content: "✿"; color: var(--gold); margin: 0 0.7rem; font-size: 0.7rem; }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 6vw, 2.9rem);
+    line-height: 1.18;
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+    text-wrap: balance;
+  }
+  h1 em { font-style: italic; color: var(--accent); }
+  .sub {
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    max-width: 28rem;
+    margin: 0 auto 2.2rem;
+    text-wrap: balance;
+  }
+  .cta-btn {
+    display: inline-block;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent);
+    border: none;
+    border-radius: 999px;
+    padding: 1rem 2.8rem;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 10px 28px rgba(163, 77, 109, 0.28);
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .cta-btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
+  .cta-note { margin-top: 1rem; font-size: 0.85rem; color: var(--ink-faint); }
+
+  .promise {
+    padding: 0 0 2.5rem;
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+  }
+  .promise span { color: var(--accent); margin: 0 0.35rem; }
+
+  /* ---------- Assessment ---------- */
+  section { padding: 1rem 0 3rem; }
+  #assessment { scroll-margin-top: 1.5rem; }
+  .panel {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 2.2rem 2rem 2rem;
+    box-shadow: 0 16px 48px rgba(61, 43, 51, 0.08);
+  }
+  .progress { margin-bottom: 2.2rem; }
+  .progress-label {
+    display: flex; justify-content: space-between;
+    font-size: 0.78rem; font-weight: 600; color: var(--ink-faint);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+  .progress-bar { height: 5px; border-radius: 999px; background: var(--accent-soft); overflow: hidden; }
+  .progress-fill {
+    height: 100%; width: 0;
+    background: linear-gradient(90deg, var(--accent), var(--gold));
+    border-radius: 999px; transition: width 0.35s ease;
+  }
+  .step { display: none; animation: fadein 0.35s ease; }
+  .step.active { display: block; }
+  @keyframes fadein { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) { .step { animation: none; } }
+  .step h3 {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.28;
+    margin-bottom: 0.4rem;
+    text-wrap: balance;
+  }
+  .step .step-sub { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 1.6rem; }
+  .field { margin-bottom: 0.4rem; }
+  label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 650;
+    margin-bottom: 0.4rem;
+  }
+  input[type="text"], input[type="email"], select {
+    width: 100%;
+    font: inherit;
+    font-size: 1.05rem;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 0.85rem 1rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+
+  /* pills */
+  .pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .pill {
+    font-size: 0.98rem;
+    font-weight: 550;
+    color: var(--ink-soft);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.6rem 1.25rem;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.12s ease;
+  }
+  .pill:hover { border-color: var(--accent); color: var(--accent); }
+  .pill.selected { color: #fff; background: var(--accent); border-color: var(--accent); }
+  .other-input { display: none; margin-top: 0.8rem; }
+  .other-input.visible { display: block; }
+
+  /* 1-5 scale */
+  .statement {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+  .scale { display: flex; gap: 0.55rem; }
+  .scale button {
+    flex: 1;
+    font: inherit; font-weight: 650; font-size: 1.05rem;
+    color: var(--ink-soft);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 0.85rem 0;
+    cursor: pointer;
+    transition: all 0.12s ease;
+  }
+  .scale button:hover { border-color: var(--accent); color: var(--accent); }
+  .scale button.selected { color: #fff; background: var(--accent); border-color: var(--accent); }
+  .scale-ends {
+    display: flex; justify-content: space-between;
+    font-size: 0.78rem; color: var(--ink-faint); margin-top: 0.4rem;
+  }
+
+  .step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; }
+  .btn-next, .btn-back {
+    font: inherit; font-weight: 600; font-size: 1rem;
+    border-radius: 999px;
+    padding: 0.8rem 2.1rem;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .btn-next { color: #fff; background: var(--accent); border: none; }
+  .btn-next:hover { background: var(--accent-dark); }
+  .btn-back { color: var(--ink-faint); background: transparent; border: none; padding-left: 0; }
+  .btn-back:hover { color: var(--ink); }
+  .step-error { display: none; font-size: 0.85rem; color: #b3402a; margin-top: 1rem; }
+
+  .consent {
+    display: flex; gap: 0.7rem; align-items: flex-start;
+    font-size: 0.85rem; font-weight: 400; color: var(--ink-soft);
+    line-height: 1.5;
+    margin-top: 1.1rem;
+    cursor: pointer;
+  }
+  .consent input {
+    flex: none;
+    width: 1.15rem; height: 1.15rem;
+    margin-top: 0.15rem;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+  .consent a { color: var(--accent); }
+
+  /* ---------- Privacy notice ---------- */
+  #privacy { scroll-margin-top: 2rem; padding-top: 1rem; }
+  .privacy-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.8rem 1.7rem;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+  .privacy-card summary {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--ink);
+    cursor: pointer;
+    list-style-position: inside;
+  }
+  .privacy-card h5 { font-size: 0.9rem; color: var(--ink); margin: 1.1rem 0 0.2rem; }
+  .privacy-card p { margin-top: 0.3rem; }
+  .privacy-card a { color: var(--accent); }
+
+  /* ---------- Report ---------- */
+  #report { display: none; animation: fadein 0.4s ease; }
+  .report-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 2.5rem 2.1rem;
+    box-shadow: 0 16px 48px rgba(61, 43, 51, 0.08);
+  }
+  .report-card h2 {
+    font-family: var(--serif);
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+  }
+  .report-intro { color: var(--ink-soft); font-size: 0.98rem; margin-bottom: 2rem; }
+  .report-section { margin-bottom: 2rem; }
+  .report-section h4 {
+    font-size: 0.76rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+  .report-list { list-style: none; display: grid; gap: 0.5rem; }
+  .report-list li { display: flex; gap: 0.65rem; align-items: baseline; font-size: 1rem; }
+  .report-list li .mark { flex: none; color: var(--accent); font-weight: 700; }
+  .paths { display: grid; gap: 0.7rem; }
+  .path-item { background: var(--accent-soft); border-radius: 16px; padding: 1rem 1.15rem; }
+  .path-item strong { display: block; font-size: 1.05rem; }
+  .path-item span { font-size: 0.9rem; color: var(--ink-soft); }
+  .report-note { border-top: 1px solid var(--line); padding-top: 1.5rem; font-size: 0.93rem; color: var(--ink-soft); }
+  .report-note strong { color: var(--ink); }
+
+  footer { padding: 2rem 0 2.5rem; text-align: center; font-size: 0.85rem; color: var(--ink-faint); }
+
+  @media (max-width: 480px) {
+    header { padding-top: 3.5rem; }
+    .panel, .report-card { padding: 1.7rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <span class="eyebrow">Career Clarity Assessment</span>
+  <h1>Ready to return to work, <em>but not sure where to start?</em></h1>
+  <p class="sub">Answer a few short questions — one at a time — and receive your personalized career roadmap.</p>
+  <a class="cta-btn" href="#assessment">Start Assessment</a>
+  <p class="cta-note">5 minutes · One question at a time · Free</p>
+</header>
+
+<p class="promise wrap">Your strengths <span>✿</span> Your realistic next roles <span>✿</span> What's holding you back</p>
+
+<section class="wrap" id="assessment">
+  <div class="panel" id="wizard">
+    <div class="progress">
+      <div class="progress-label">
+        <span id="progress-step">1 of 19</span>
+        <span id="progress-name"></span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+
+    <!-- One question per page -->
+    <div class="step active" data-name="About you">
+      <h3>How old are you?</h3>
+      <p class="step-sub">You can skip this if you prefer.</p>
+      <div class="field"><input type="text" id="age" inputmode="numeric" placeholder="Your age (optional)"></div>
+    </div>
+
+    <div class="step" data-name="Location">
+      <h3>Which country do you want to work in?</h3>
+      <p class="step-sub">Job markets differ a lot by place.</p>
+      <div class="field"><input type="text" id="country" placeholder="e.g. Netherlands" data-required></div>
+    </div>
+
+    <div class="step" data-name="Location">
+      <h3>Where do you live now?</h3>
+      <p class="step-sub">City and country is enough.</p>
+      <div class="field"><input type="text" id="location" placeholder="e.g. Utrecht, Netherlands" data-required></div>
+    </div>
+
+    <div class="step" data-name="Experience">
+      <h3>How many years have you worked in total?</h3>
+      <p class="step-sub">Before your break — all of it counts.</p>
+      <div class="field">
+        <select id="experience" data-required data-advance>
+          <option value="" disabled selected>Select…</option>
+          <option>0–2 years</option>
+          <option>3–5 years</option>
+          <option>6–10 years</option>
+          <option>11–15 years</option>
+          <option>15+ years</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="step" data-name="Career break">
+      <h3>How long is your career break so far?</h3>
+      <p class="step-sub">A break is part of your story — not a gap to apologize for.</p>
+      <div class="field">
+        <select id="break-duration" data-required data-advance>
+          <option value="" disabled selected>Select…</option>
+          <option>Less than 1 year</option>
+          <option>1–2 years</option>
+          <option>3–5 years</option>
+          <option>6–10 years</option>
+          <option>More than 10 years</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="step" data-name="Career break">
+      <h3>What was the reason for your break?</h3>
+      <p class="step-sub">Whatever it was, it was valid.</p>
+      <div class="field">
+        <div class="pills" id="break-reason" data-single data-required data-other="break-reason-other" data-advance>
+          <span class="pill">Parenthood</span>
+          <span class="pill">Caregiving</span>
+          <span class="pill">Illness</span>
+          <span class="pill">Relocation</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="break-reason-other">
+          <input type="text" placeholder="Tell us in your own words…">
+        </div>
+      </div>
+    </div>
+
+    <div class="step" data-name="Previous role">
+      <h3>What was your last job title?</h3>
+      <p class="step-sub">Even if it feels like a lifetime ago.</p>
+      <div class="field"><input type="text" id="prev-title" placeholder="e.g. Marketing Coordinator" data-required></div>
+    </div>
+
+    <div class="step" data-name="Previous role">
+      <h3>Which industry did you work in?</h3>
+      <div class="field"><input type="text" id="industry" placeholder="e.g. Retail, Healthcare…" data-required></div>
+    </div>
+
+    <div class="step" data-name="Education">
+      <h3>What's your highest education?</h3>
+      <div class="field">
+        <select id="education" data-required data-advance>
+          <option value="" disabled selected>Select…</option>
+          <option>High school</option>
+          <option>Vocational training</option>
+          <option>Bachelor's degree</option>
+          <option>Master's degree</option>
+          <option>PhD</option>
+          <option>Other</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="step" data-name="Education">
+      <h3>Which languages do you speak?</h3>
+      <div class="field"><input type="text" id="languages" placeholder="e.g. Dutch, English" data-required></div>
+    </div>
+
+    <div class="step" data-name="Strengths">
+      <h3>Which of these sound like you?</h3>
+      <p class="step-sub">Pick as many as you like — these become your strengths.</p>
+      <div class="field">
+        <div class="pills" id="soft-skills" data-required data-other="soft-skills-other">
+          <span class="pill">Communication</span>
+          <span class="pill">Organization</span>
+          <span class="pill">Problem solving</span>
+          <span class="pill">Teamwork</span>
+          <span class="pill">Leadership</span>
+          <span class="pill">Customer relationships</span>
+          <span class="pill">Time management</span>
+          <span class="pill">Adaptability</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="soft-skills-other">
+          <input type="text" placeholder="Describe your other strengths…">
+        </div>
+      </div>
+    </div>
+
+    <div class="step" data-name="Work style">
+      <h3>What should your next job look like?</h3>
+      <p class="step-sub">Pick everything that would fit your life now.</p>
+      <div class="field">
+        <div class="pills" id="work-format" data-required data-other="work-format-other">
+          <span class="pill">Full-time</span>
+          <span class="pill">Part-time</span>
+          <span class="pill">Remote</span>
+          <span class="pill">Hybrid</span>
+          <span class="pill">Flexible hours</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="work-format-other">
+          <input type="text" placeholder="Describe what would work for you…">
+        </div>
+      </div>
+    </div>
+
+    <div class="step" data-name="Priorities">
+      <h3>What matters most to you?</h3>
+      <p class="step-sub">Pick up to two.</p>
+      <div class="field">
+        <div class="pills" id="priorities" data-required data-max="2" data-other="priorities-other">
+          <span class="pill">Higher salary</span>
+          <span class="pill">Meaningful work</span>
+          <span class="pill">Stability</span>
+          <span class="pill">Flexibility</span>
+          <span class="pill">Career growth</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="priorities-other">
+          <input type="text" placeholder="What matters most to you?">
+        </div>
+      </div>
+    </div>
+
+    <div class="step" data-name="Confidence">
+      <h3>How true is this for you today?</h3>
+      <p class="step-sub">1 = not at all, 5 = completely.</p>
+      <div class="scale-q" data-blocker="Unclear which direction to take">
+        <p class="statement">“I know what type of job I want.”</p>
+        <div class="scale" data-required>
+          <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
+        </div>
+        <div class="scale-ends"><span>Not at all</span><span>Completely</span></div>
+      </div>
+    </div>
+
+    <div class="step" data-name="Confidence">
+      <h3>And this one?</h3>
+      <div class="scale-q" data-blocker="Unsure which skills to update">
+        <p class="statement">“I know which skills I should learn.”</p>
+        <div class="scale" data-required>
+          <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
+        </div>
+        <div class="scale-ends"><span>Not at all</span><span>Completely</span></div>
+      </div>
+    </div>
+
+    <div class="step" data-name="Confidence">
+      <h3>Two more like this.</h3>
+      <div class="scale-q" data-blocker="Lack of confidence when applying">
+        <p class="statement">“I feel confident applying for jobs.”</p>
+        <div class="scale" data-required>
+          <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
+        </div>
+        <div class="scale-ends"><span>Not at all</span><span>Completely</span></div>
+      </div>
+    </div>
+
+    <div class="step" data-name="Confidence">
+      <h3>Last one of these.</h3>
+      <div class="scale-q" data-blocker="Limited knowledge of today's job market">
+        <p class="statement">“I know where to find suitable jobs.”</p>
+        <div class="scale" data-required>
+          <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
+        </div>
+        <div class="scale-ends"><span>Not at all</span><span>Completely</span></div>
+      </div>
+    </div>
+
+    <div class="step" data-name="Skills">
+      <h3>Which of these are you comfortable with?</h3>
+      <p class="step-sub">Select everything you could do today, even if you're a little rusty.</p>
+      <div class="field">
+        <div class="pills" id="skills" data-required data-other="skills-other">
+          <span class="pill">Marketing</span>
+          <span class="pill">Sales</span>
+          <span class="pill">Excel</span>
+          <span class="pill">Project Management</span>
+          <span class="pill">Python</span>
+          <span class="pill">SQL</span>
+          <span class="pill">Customer Support</span>
+          <span class="pill">Teaching</span>
+          <span class="pill">Design</span>
+          <span class="pill">Writing</span>
+          <span class="pill">Social Media</span>
+          <span class="pill">Bookkeeping</span>
+          <span class="pill">Event Planning</span>
+          <span class="pill">Recruiting / HR</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="skills-other">
+          <input type="text" placeholder="Tell us what else you're comfortable with…">
+        </div>
+      </div>
+    </div>
+
+    <div class="step" data-name="Your roadmap">
+      <h3>Your Career Profile is ready ✿</h3>
+      <p class="step-sub">Tell us where to send your full roadmap — you'll see your profile right away.</p>
+      <div class="field" style="margin-bottom:1rem;">
+        <label for="name">Name</label>
+        <input type="text" id="name" autocomplete="name" placeholder="Your first name" data-required>
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" autocomplete="email" placeholder="you@example.com" data-required>
+      </div>
+      <label class="consent" for="consent">
+        <input type="checkbox" id="consent" data-required>
+        <span>I agree that my answers are used to create my career roadmap and that I'll receive it by email. I can withdraw my consent and have my data deleted at any time. <a href="#privacy">Privacy notice</a></span>
+      </label>
+    </div>
+
+    <p class="step-error" id="step-error">Please answer this question to continue.</p>
+
+    <div class="step-nav">
+      <button type="button" class="btn-back" id="btn-back" style="visibility:hidden">← Back</button>
+      <button type="button" class="btn-next" id="btn-next">Continue</button>
+    </div>
+  </div>
+
+  <!-- REPORT -->
+  <div id="report">
+    <div class="report-card">
+      <h2>Your Career Profile</h2>
+      <p class="report-intro" id="report-intro">Based on your answers…</p>
+
+      <div class="report-section">
+        <h4>Your biggest strengths</h4>
+        <ul class="report-list" id="report-strengths"></ul>
+      </div>
+
+      <div class="report-section">
+        <h4>Potential career paths</h4>
+        <div class="paths" id="report-paths"></div>
+      </div>
+
+      <div class="report-section">
+        <h4>Current blockers</h4>
+        <ul class="report-list" id="report-blockers"></ul>
+      </div>
+
+      <p class="report-note" id="report-note"></p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="privacy">
+  <details class="privacy-card">
+    <summary>Privacy notice</summary>
+    <h5>Who we are</h5>
+    <p>This assessment is run by Emily Ai, UnityWerk. Questions or requests about your data: <a href="mailto:emilyaiai86@gmail.com">emilyaiai86@gmail.com</a>.</p>
+    <h5>What we collect and why</h5>
+    <p>Your assessment answers (background, career break, experience, goals, skills, and confidence), plus your name and email address. Age is optional. We use this data for one purpose only: to create your personal career roadmap and send it to you by email. The legal basis is your consent, given by ticking the box before submitting.</p>
+    <h5>Where your data is stored</h5>
+    <p>Submissions are delivered to us through Formspree Inc. (USA), which participates in the EU–U.S. Data Privacy Framework, and arrive in our email inbox. We do not sell or share your data with anyone else, and we won't send you anything beyond your roadmap unless you separately ask us to.</p>
+    <h5>How long we keep it</h5>
+    <p>Your answers are deleted within 30 days after your roadmap has been sent.</p>
+    <h5>Your rights</h5>
+    <p>You can ask at any time to see, correct, or delete the data we hold about you, or withdraw your consent — just email us. You also have the right to complain to your data protection authority (in the Netherlands: Autoriteit Persoonsgegevens).</p>
+  </details>
+</section>
+
+<footer class="wrap">
+  © 2026 Career Clarity Assessment · <a href="#privacy" style="color:var(--ink-faint);">Privacy</a>
+</footer>
+
+<script>
+  // ---- Configuration -------------------------------------------------------
+  // Point this at your form backend (e.g. a Formspree endpoint like
+  // "https://formspree.io/f/xxxxxxxx") to receive each completed assessment
+  // (all answers + email) as a submission. Leave empty for demo mode:
+  // the report still renders, nothing is sent anywhere.
+  const FORM_ENDPOINT = "https://formspree.io/f/xrpzkvwj";
+  // --------------------------------------------------------------------------
+
+  const steps = [...document.querySelectorAll(".step")];
+  const fill = document.getElementById("progress-fill");
+  const progressStep = document.getElementById("progress-step");
+  const progressName = document.getElementById("progress-name");
+  const btnNext = document.getElementById("btn-next");
+  const btnBack = document.getElementById("btn-back");
+  const stepError = document.getElementById("step-error");
+  let current = 0;
+
+  const advance = (delay = 350) =>
+    setTimeout(() => { if (current < steps.length - 1) btnNext.click(); }, delay);
+
+  // ---- pills ----
+  const otherSelected = group =>
+    [...group.querySelectorAll(".pill.selected")].some(p => p.textContent === "Other");
+  const otherField = group =>
+    group.dataset.other ? document.getElementById(group.dataset.other) : null;
+  const otherText = group => {
+    const f = otherField(group);
+    return f ? f.querySelector("input").value.trim() : "";
+  };
+
+  document.querySelectorAll(".pills").forEach(group => {
+    const single = group.hasAttribute("data-single");
+    const max = parseInt(group.dataset.max || "0", 10);
+    group.addEventListener("click", e => {
+      const pill = e.target.closest(".pill");
+      if (!pill) return;
+      if (single) {
+        group.querySelectorAll(".pill").forEach(p => p.classList.remove("selected"));
+        pill.classList.add("selected");
+      } else {
+        if (!pill.classList.contains("selected") && max &&
+            group.querySelectorAll(".pill.selected").length >= max) return;
+        pill.classList.toggle("selected");
+      }
+      const field = otherField(group);
+      if (field) {
+        field.classList.toggle("visible", otherSelected(group));
+        if (otherSelected(group)) field.querySelector("input").focus();
+      }
+      // single-choice pages flow straight to the next question
+      // (unless "Other" needs describing first)
+      if (group.hasAttribute("data-advance") && !otherSelected(group)) advance();
+    });
+  });
+
+  // dropdown pages flow to the next question on choice
+  document.querySelectorAll("select[data-advance]").forEach(sel => {
+    sel.addEventListener("change", () => advance());
+  });
+
+  // ---- 1-5 scales: select, then flow to the next question ----
+  document.querySelectorAll(".scale").forEach(scale => {
+    scale.addEventListener("click", e => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      scale.querySelectorAll("button").forEach(b => b.classList.remove("selected"));
+      btn.classList.add("selected");
+      scale.dataset.value = btn.textContent;
+      if (steps[current].contains(scale)) advance();
+    });
+  });
+
+  // Enter advances from text inputs
+  document.querySelectorAll("input").forEach(inp => {
+    inp.addEventListener("keydown", e => {
+      if (e.key === "Enter") { e.preventDefault(); btnNext.click(); }
+    });
+  });
+
+  // ---- validation ----
+  function validateStep(step) {
+    let ok = true;
+    step.querySelectorAll("[data-required]").forEach(el => {
+      let valid;
+      if (el.classList.contains("pills")) {
+        valid = el.querySelector(".pill.selected") !== null &&
+                (!otherSelected(el) || otherText(el) !== "");
+      } else if (el.classList.contains("scale")) {
+        valid = !!el.dataset.value;
+      } else if (el.type === "checkbox") {
+        valid = el.checked;
+      } else if (el.type === "email") {
+        valid = /.+@.+\..+/.test(el.value.trim());
+      } else {
+        valid = el.value.trim() !== "";
+      }
+      el.style.outline = valid ? "" : "2px solid #d98570";
+      el.style.outlineOffset = valid ? "" : "3px";
+      if (!valid) ok = false;
+    });
+    return ok;
+  }
+
+  function show(i) {
+    steps[current].classList.remove("active");
+    current = i;
+    steps[current].classList.add("active");
+    stepError.style.display = "none";
+    progressStep.textContent = `${current + 1} of ${steps.length}`;
+    progressName.textContent = steps[current].dataset.name;
+    fill.style.width = `${((current + 1) / steps.length) * 100}%`;
+    btnBack.style.visibility = current === 0 ? "hidden" : "visible";
+    btnNext.textContent = current === steps.length - 1 ? "See my Career Profile" : "Continue";
+    document.getElementById("assessment").scrollIntoView({ behavior: "smooth", block: "start" });
+    const firstInput = steps[current].querySelector("input, select");
+    if (firstInput && !firstInput.closest(".other-input")) firstInput.focus({ preventScroll: true });
+  }
+  fill.style.width = `${(1 / steps.length) * 100}%`;
+  progressStep.textContent = `1 of ${steps.length}`;
+  progressName.textContent = steps[0].dataset.name;
+
+  btnBack.addEventListener("click", () => { if (current > 0) show(current - 1); });
+  btnNext.addEventListener("click", () => {
+    if (!validateStep(steps[current])) {
+      stepError.style.display = "block";
+      return;
+    }
+    if (current < steps.length - 1) show(current + 1);
+    else finish();
+  });
+
+  // ---- report logic (simple, transparent rules — no fake AI) ----
+  const PATHS = {
+    "Customer Success":       { skills: ["Customer Support", "Sales", "Marketing"], soft: ["Customer relationships", "Communication"], why: "builds on your people skills and support experience" },
+    "Project Coordinator":    { skills: ["Project Management", "Excel", "Event Planning"], soft: ["Organization", "Time management"], why: "fits your coordination and organizational strengths" },
+    "Operations Specialist":  { skills: ["Excel", "Project Management", "Bookkeeping"], soft: ["Organization", "Problem solving"], why: "matches your structured, detail-oriented profile" },
+    "Data Analyst":           { skills: ["Excel", "Python", "SQL"], soft: ["Problem solving"], why: "builds on your analytical and technical skills" },
+    "Digital Marketing Specialist": { skills: ["Marketing", "Social Media", "Writing", "Design"], soft: ["Communication"], why: "uses your creative and communication skills" },
+    "Account Manager":        { skills: ["Sales", "Customer Support", "Marketing"], soft: ["Customer relationships", "Communication"], why: "leverages your relationship-building experience" },
+    "Corporate Trainer / L&D": { skills: ["Teaching", "Writing"], soft: ["Communication", "Leadership"], why: "puts your teaching and mentoring skills to work" },
+    "HR / Recruitment Coordinator": { skills: ["Recruiting / HR", "Customer Support"], soft: ["Communication", "Teamwork", "Customer relationships"], why: "combines your people skills with coordination work" },
+    "Content / Communications Specialist": { skills: ["Writing", "Social Media", "Marketing"], soft: ["Communication"], why: "builds on your writing and communication strengths" }
+  };
+
+  // selected pill labels; "Other" becomes the user's own description when given
+  const selected = sel => {
+    const group = document.querySelector(sel);
+    return [...group.querySelectorAll(".pill.selected")].map(p =>
+      p.textContent === "Other" && otherText(group) ? otherText(group) : p.textContent);
+  };
+
+  function buildProfile() {
+    const skills = selected("#skills");
+    const soft = selected("#soft-skills");
+    const priorities = selected("#priorities");
+
+    const strengths = [...soft.slice(0, 3)];
+    if (strengths.length < 3) strengths.push(...skills.slice(0, 3 - strengths.length));
+
+    const scored = Object.entries(PATHS).map(([name, def]) => {
+      const s = def.skills.filter(x => skills.includes(x)).length * 2 +
+                def.soft.filter(x => soft.includes(x)).length;
+      return { name, why: def.why, score: s };
+    }).filter(p => p.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
+
+    const blockers = [...document.querySelectorAll(".scale-q")]
+      .filter(q => parseInt(q.querySelector(".scale").dataset.value, 10) <= 3)
+      .map(q => q.dataset.blocker);
+
+    return { skills, soft, priorities, strengths, paths: scored, blockers };
+  }
+
+  function collectAnswers() {
+    const val = id => document.getElementById(id).value.trim();
+    return {
+      age: val("age"), country: val("country"), current_location: val("location"),
+      years_of_experience: val("experience"), career_break_duration: val("break-duration"),
+      break_reason: selected("#break-reason").join(""),
+      previous_job_title: val("prev-title"), industry: val("industry"),
+      highest_education: val("education"), languages: val("languages"),
+      soft_skills: selected("#soft-skills").join(", "),
+      work_format: selected("#work-format").join(", "),
+      priorities: selected("#priorities").join(", "),
+      confidence: [...document.querySelectorAll(".scale-q")]
+        .map(q => `${q.querySelector(".statement").textContent} → ${q.querySelector(".scale").dataset.value}/5`).join(" | "),
+      skills: selected("#skills").join(", "),
+      name: val("name"), email: val("email"),
+      // record of consent, kept with the submission (GDPR accountability)
+      consent: document.getElementById("consent").checked
+        ? `Consented to processing for career roadmap at ${new Date().toISOString()}`
+        : "NO CONSENT"
+    };
+  }
+
+  function renderReport(profile) {
+    const name = document.getElementById("name").value.trim().split(" ")[0];
+    document.getElementById("report-intro").textContent =
+      `${name}, based on your answers, here's where you stand — and where you could go next.`;
+
+    document.getElementById("report-strengths").innerHTML = profile.strengths
+      .map(s => `<li><span class="mark">✓</span>${s}</li>`).join("");
+
+    const pathsEl = document.getElementById("report-paths");
+    pathsEl.innerHTML = profile.paths.length
+      ? profile.paths.map(p => `<div class="path-item"><strong>⭐ ${p.name}</strong><span>This ${p.why}.</span></div>`).join("")
+      : `<div class="path-item"><strong>⭐ Let's talk</strong><span>Your combination of skills is unique — your full roadmap will include hand-picked suggestions.</span></div>`;
+
+    const blockersEl = document.getElementById("report-blockers");
+    blockersEl.innerHTML = profile.blockers.length
+      ? profile.blockers.map(b => `<li><span class="mark">•</span>${b}</li>`).join("")
+      : `<li><span class="mark">•</span>No major blockers — your main task is simply to start applying.</li>`;
+
+    const prio = profile.priorities.length ? profile.priorities.join(" and ").toLowerCase() : "what matters to you";
+    document.getElementById("report-note").innerHTML =
+      `<strong>What happens next:</strong> within 24 hours you'll receive your full career roadmap by email — with concrete next steps for each path above, focused on ${prio}.`;
+  }
+
+  async function finish() {
+    btnNext.disabled = true;
+    btnNext.textContent = "Building your profile…";
+    try {
+      if (FORM_ENDPOINT) {
+        const fd = new FormData();
+        Object.entries(collectAnswers()).forEach(([k, v]) => fd.append(k, v));
+        await fetch(FORM_ENDPOINT, { method: "POST", body: fd, headers: { Accept: "application/json" } });
+      }
+    } catch (e) { /* still show the report — don't lose the user */ }
+    renderReport(buildProfile());
+    document.getElementById("wizard").style.display = "none";
+    document.getElementById("report").style.display = "block";
+    document.getElementById("assessment").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+</script>
+
+</body>
+</html>
