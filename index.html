@@ -89,6 +89,28 @@
   }
   .promise span { color: var(--accent); margin: 0 0.35rem; }
 
+  /* ---------- Why this is different ---------- */
+  #why { padding: 0 0 1.5rem; }
+  .why-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.9rem 2rem;
+    text-align: center;
+  }
+  .why-card h2 {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+  .why-card p {
+    color: var(--ink-soft);
+    font-size: 0.97rem;
+    max-width: 30rem;
+    margin: 0 auto;
+  }
+
   /* ---------- Assessment ---------- */
   section { padding: 1rem 0 3rem; }
   #assessment { scroll-margin-top: 1.5rem; display: none; }
@@ -310,6 +332,13 @@
 </header>
 
 <p class="promise wrap">Your strengths <span>✿</span> Your realistic next roles <span>✿</span> What's holding you back</p>
+
+<section class="wrap" id="why">
+  <div class="why-card">
+    <h2>Not another personality quiz</h2>
+    <p>Your roadmap combines your previous experience, your transferable skills, your current priorities and real job-market requirements — to identify realistic next steps, not vague labels.</p>
+  </div>
+</section>
 
 <section class="wrap" id="assessment">
   <div class="panel" id="wizard">
