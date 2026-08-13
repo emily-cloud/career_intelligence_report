@@ -350,17 +350,18 @@
       <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
     </div>
 
-    <!-- One question per page -->
+    <!-- One topic per page -->
     <div class="step active" data-name="Location">
-      <h3>Which country do you want to work in?</h3>
+      <h3>Where are you based?</h3>
       <p class="step-sub">Job markets differ a lot by place.</p>
-      <div class="field"><input type="text" id="country" placeholder="e.g. Netherlands" data-required></div>
-    </div>
-
-    <div class="step" data-name="Location">
-      <h3>Where do you live now?</h3>
-      <p class="step-sub">City and country is enough.</p>
-      <div class="field"><input type="text" id="location" placeholder="e.g. Utrecht, Netherlands" data-required></div>
+      <div class="field">
+        <label for="country">Country you want to work in</label>
+        <input type="text" id="country" placeholder="e.g. Netherlands" data-required>
+      </div>
+      <div class="field">
+        <label for="location">Current location</label>
+        <input type="text" id="location" placeholder="e.g. Utrecht, Netherlands" data-required>
+      </div>
     </div>
 
     <div class="step" data-name="Experience">
@@ -432,14 +433,16 @@
     </div>
 
     <div class="step" data-name="Previous role">
-      <h3>What was your last job title?</h3>
+      <h3>What did you do before your break?</h3>
       <p class="step-sub">Even if it feels like a lifetime ago.</p>
-      <div class="field"><input type="text" id="prev-title" placeholder="e.g. Marketing Coordinator" data-required></div>
-    </div>
-
-    <div class="step" data-name="Previous role">
-      <h3>Which industry did you work in?</h3>
-      <div class="field"><input type="text" id="industry" placeholder="e.g. Retail, Healthcare…" data-required></div>
+      <div class="field">
+        <label for="prev-title">Previous job title</label>
+        <input type="text" id="prev-title" placeholder="e.g. Marketing Coordinator" data-required>
+      </div>
+      <div class="field">
+        <label for="industry">Industry</label>
+        <input type="text" id="industry" placeholder="e.g. Retail, Healthcare…" data-required>
+      </div>
     </div>
 
     <div class="step" data-name="Education">
@@ -570,17 +573,6 @@
       </div>
     </div>
 
-    <div class="step" data-name="Clarity">
-      <h3>Which statement best describes you?</h3>
-      <div class="field">
-        <div class="pills" id="clarity" data-single data-required data-advance>
-          <span class="pill">I know exactly what career I want.</span>
-          <span class="pill">I have a few ideas.</span>
-          <span class="pill">I have no idea where to start.</span>
-        </div>
-      </div>
-    </div>
-
     <div class="step" data-name="Your challenge">
       <h3>What are your biggest challenges right now?</h3>
       <p class="step-sub">Pick up to two — the ones that weigh on you most.</p>
@@ -644,20 +636,9 @@
     </div>
 
     <div class="step" data-name="Confidence">
-      <h3>Two more like this.</h3>
+      <h3>Last one of these.</h3>
       <div class="scale-q" data-blocker="Lack of confidence when applying">
         <p class="statement">“I feel confident applying for jobs.”</p>
-        <div class="scale" data-required>
-          <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
-        </div>
-        <div class="scale-ends"><span>Not at all</span><span>Completely</span></div>
-      </div>
-    </div>
-
-    <div class="step" data-name="Confidence">
-      <h3>Last one of these.</h3>
-      <div class="scale-q" data-blocker="Limited knowledge of today's job market">
-        <p class="statement">“I know where to find suitable jobs.”</p>
         <div class="scale" data-required>
           <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
         </div>
@@ -972,13 +953,12 @@
       return { name, why: def.why, score: s };
     }).filter(p => p.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
 
-    const clarity = selected("#clarity")[0] || "";
     const challenges = selected("#challenge");
 
     let blockers = [...document.querySelectorAll(".scale-q")]
       .filter(q => parseInt(q.querySelector(".scale").dataset.value, 10) <= 3)
       .map(q => q.dataset.blocker);
-    if (goal === "I'm not sure yet" || clarity === "I have no idea where to start.")
+    if (goal === "I'm not sure yet")
       blockers.unshift("Unclear which direction to take");
     // the challenges they named themselves always lead the list
     const CHALLENGE_BLOCKERS = {
@@ -993,7 +973,7 @@
     blockers.unshift(...challenges.map(c => CHALLENGE_BLOCKERS[c] || c));
     blockers = [...new Set(blockers)];
 
-    return { skills, soft, priorities, interests, goal, clarity, challenges, strengths, paths: scored, blockers };
+    return { skills, soft, priorities, interests, goal, challenges, strengths, paths: scored, blockers };
   }
 
   function collectAnswers() {
@@ -1014,7 +994,6 @@
       priorities: selected("#priorities").join(", "),
       interests: selected("#interests").join(", "),
       goal: selected("#goal").join(""),
-      career_clarity: selected("#clarity").join(""),
       biggest_challenge: selected("#challenge").join(", "),
       preferred_solution: selected("#solution").join(", "),
       confidence: [...document.querySelectorAll(".scale-q")]
