@@ -942,7 +942,12 @@
       ? profile.blockers.map(b => `<li><span class="mark">•</span>${b}</li>`).join("")
       : `<li><span class="mark">•</span>No major blockers — your main task is simply to start applying.</li>`;
 
-    const prio = profile.priorities.length ? profile.priorities.join(" and ").toLowerCase() : "what matters to you";
+    const prioList = profile.priorities.map(p => p.toLowerCase());
+    const prio = prioList.length
+      ? (prioList.length > 1
+          ? prioList.slice(0, -1).join(", ") + " and " + prioList[prioList.length - 1]
+          : prioList[0])
+      : "what matters to you";
     const goalPhrases = {
       "Return to my previous field": "returning to your field",
       "Try something new": "trying something new",
