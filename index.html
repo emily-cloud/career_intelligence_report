@@ -531,6 +531,25 @@
       </div>
     </div>
 
+    <div class="step" data-name="Your solution">
+      <h3>How would you prefer to solve this?</h3>
+      <p class="step-sub">Pick the kind of help that appeals to you most.</p>
+      <div class="field">
+        <div class="pills" id="solution" data-single data-required data-other="solution-other" data-advance>
+          <span class="pill">A clear step-by-step plan I follow myself</span>
+          <span class="pill">Personal guidance from a coach</span>
+          <span class="pill">An online course to build skills</span>
+          <span class="pill">Talking to people who've done it</span>
+          <span class="pill">Tools that match me to the right jobs</span>
+          <span class="pill">I'm not sure yet</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="solution-other">
+          <input type="text" placeholder="Describe what would help you…">
+        </div>
+      </div>
+    </div>
+
     <div class="step" data-name="Confidence">
       <h3>How true is this for you today?</h3>
       <p class="step-sub">1 = not at all, 5 = completely.</p>
@@ -882,6 +901,7 @@
       goal: selected("#goal").join(""),
       career_clarity: selected("#clarity").join(""),
       biggest_challenge: selected("#challenge").join(""),
+      preferred_solution: selected("#solution").join(""),
       confidence: [...document.querySelectorAll(".scale-q")]
         .map(q => `${q.querySelector(".statement").textContent} → ${q.querySelector(".scale").dataset.value}/5`).join(" | "),
       skills: selected("#skills").join(", "),
