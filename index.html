@@ -408,9 +408,9 @@
 
     <div class="step" data-name="Strengths">
       <h3>Which of these sound like you?</h3>
-      <p class="step-sub">Pick as many as you like — these become your strengths.</p>
+      <p class="step-sub">Pick up to three — these become your strengths.</p>
       <div class="field">
-        <div class="pills" id="soft-skills" data-required data-other="soft-skills-other">
+        <div class="pills" id="soft-skills" data-required data-max="3" data-other="soft-skills-other">
           <span class="pill">Communication</span>
           <span class="pill">Organization</span>
           <span class="pill">Problem solving</span>
@@ -429,9 +429,9 @@
 
     <div class="step" data-name="Work style">
       <h3>What should your next job look like?</h3>
-      <p class="step-sub">Pick everything that would fit your life now.</p>
+      <p class="step-sub">Pick up to three that would fit your life now.</p>
       <div class="field">
-        <div class="pills" id="work-format" data-required data-other="work-format-other">
+        <div class="pills" id="work-format" data-required data-max="3" data-other="work-format-other">
           <span class="pill">Full-time</span>
           <span class="pill">Part-time</span>
           <span class="pill">Remote</span>
@@ -447,9 +447,9 @@
 
     <div class="step" data-name="Priorities">
       <h3>What matters most to you?</h3>
-      <p class="step-sub">Pick up to two.</p>
+      <p class="step-sub">Pick up to three.</p>
       <div class="field">
-        <div class="pills" id="priorities" data-required data-max="2" data-other="priorities-other">
+        <div class="pills" id="priorities" data-required data-max="3" data-other="priorities-other">
           <span class="pill">Higher salary</span>
           <span class="pill">Meaningful work</span>
           <span class="pill">Stability</span>
@@ -465,9 +465,9 @@
 
     <div class="step" data-name="Interests">
       <h3>What kind of work interests you most?</h3>
-      <p class="step-sub">Pick everything that genuinely appeals to you.</p>
+      <p class="step-sub">Pick up to three that genuinely appeal to you.</p>
       <div class="field">
-        <div class="pills" id="interests" data-required data-other="interests-other">
+        <div class="pills" id="interests" data-required data-max="3" data-other="interests-other">
           <span class="pill">Working with people</span>
           <span class="pill">Organizing &amp; planning</span>
           <span class="pill">Numbers &amp; analysis</span>
@@ -598,9 +598,9 @@
 
     <div class="step" data-name="Skills">
       <h3>Which of these are you comfortable with?</h3>
-      <p class="step-sub">Select everything you could do today, even if you're a little rusty.</p>
+      <p class="step-sub">Pick up to five you could use today, even if you're a little rusty.</p>
       <div class="field">
-        <div class="pills" id="skills" data-required data-other="skills-other">
+        <div class="pills" id="skills" data-required data-max="5" data-other="skills-other">
           <span class="pill">Marketing</span>
           <span class="pill">Sales</span>
           <span class="pill">Excel</span>
@@ -942,7 +942,12 @@
       ? profile.blockers.map(b => `<li><span class="mark">•</span>${b}</li>`).join("")
       : `<li><span class="mark">•</span>No major blockers — your main task is simply to start applying.</li>`;
 
-    const prio = profile.priorities.length ? profile.priorities.join(" and ").toLowerCase() : "what matters to you";
+    const prioList = profile.priorities.map(p => p.toLowerCase());
+    const prio = prioList.length
+      ? (prioList.length > 1
+          ? prioList.slice(0, -1).join(", ") + " and " + prioList[prioList.length - 1]
+          : prioList[0])
+      : "what matters to you";
     const goalPhrases = {
       "Return to my previous field": "returning to your field",
       "Try something new": "trying something new",
