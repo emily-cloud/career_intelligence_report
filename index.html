@@ -40,14 +40,19 @@
   header { padding: 5rem 0 3.5rem; text-align: center; }
   .eyebrow {
     display: inline-block;
-    font-size: 0.76rem;
+    font-size: clamp(0.56rem, 1.75vw, 0.72rem);
     font-weight: 600;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 1.6rem;
+    white-space: nowrap;
   }
   .eyebrow::before, .eyebrow::after { content: "✿"; color: var(--gold); margin: 0 0.7rem; font-size: 0.7rem; }
+  @media (max-width: 370px) {
+    .eyebrow { letter-spacing: 0.05em; }
+    .eyebrow::before, .eyebrow::after { content: ""; margin: 0; }
+  }
   h1 {
     font-family: var(--serif);
     font-size: clamp(2rem, 6vw, 2.9rem);
