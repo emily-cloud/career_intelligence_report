@@ -149,7 +149,7 @@
   }
   .step .step-sub { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 1.6rem; }
   .field { margin-bottom: 0.4rem; }
-  label {
+  label, .q-label {
     display: block;
     font-size: 0.9rem;
     font-weight: 650;
@@ -228,6 +228,7 @@
     display: flex; justify-content: space-between;
     font-size: 0.78rem; color: var(--ink-faint); margin-top: 0.4rem;
   }
+  .scale-q + .scale-q { margin-top: 1.6rem; }
 
   .step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; }
   .btn-next, .btn-back {
@@ -325,19 +326,19 @@
 <body>
 
 <header class="wrap">
-  <span class="eyebrow">Career Clarity Assessment</span>
+  <span class="eyebrow">For women returning to work after a career break</span>
   <h1>Ready to return to work,<br><em>but not sure where to start?</em></h1>
-  <p class="sub">Discover which career paths fit your experience and life today — and get a personalized roadmap for your next step.</p>
+  <p class="sub">Uncover the skills you may be overlooking, explore realistic career directions, and get practical next steps back to work — based on what you've actually done.</p>
   <a class="cta-btn" href="#assessment">Discover My Next Step</a>
   <p class="cta-note">5 minutes · One question at a time · Free</p>
 </header>
 
-<p class="promise wrap">Your strengths <span>✿</span> Your realistic next roles <span>✿</span> What's holding you back</p>
+<p class="promise wrap">Skills you may be overlooking <span>✿</span> Realistic career directions <span>✿</span> Practical next steps</p>
 
 <section class="wrap" id="why">
   <div class="why-card">
     <h2>Not another personality quiz</h2>
-    <p>Your roadmap combines your previous experience, your transferable skills, your current priorities and real job-market requirements — to identify realistic next steps, not vague labels.</p>
+    <p>We don't ask you to label yourself. We look at what you've actually done — before and during your career break — to uncover transferable skills you may be overlooking, and turn them into realistic ways back to work.</p>
   </div>
 </section>
 
@@ -431,6 +432,10 @@
           <input type="text" placeholder="Tell us what you've been up to…">
         </div>
       </div>
+      <div class="field" style="margin-top:1rem;">
+        <label for="break-details">Tell us briefly what this involved.</label>
+        <textarea id="break-details" rows="3" placeholder="What did you do, organize, learn, manage, create or help with?" data-required></textarea>
+      </div>
     </div>
 
     <div class="step" data-name="Previous role">
@@ -443,6 +448,10 @@
       <div class="field">
         <label for="industry">Industry</label>
         <input type="text" id="industry" placeholder="e.g. Retail, Healthcare…" data-required>
+      </div>
+      <div class="field">
+        <label for="role-tasks">What did you actually do in this role?</label>
+        <textarea id="role-tasks" rows="3" placeholder="Add 2–4 main tasks or responsibilities. Don't worry about professional wording." data-required></textarea>
       </div>
     </div>
 
@@ -480,22 +489,24 @@
     </div>
 
     <div class="step" data-name="Strengths">
-      <h3>Which of these sound like you?</h3>
-      <p class="step-sub">Pick up to three — these become your strengths.</p>
+      <h3>What kinds of things have people relied on you for — at work or outside work?</h3>
+      <p class="step-sub">Pick up to four — these become your strengths.</p>
       <div class="field">
-        <div class="pills" id="soft-skills" data-required data-max="3" data-other="soft-skills-other">
-          <span class="pill">Communication</span>
-          <span class="pill">Organization</span>
-          <span class="pill">Problem solving</span>
-          <span class="pill">Teamwork</span>
-          <span class="pill">Leadership</span>
-          <span class="pill">Customer relationships</span>
-          <span class="pill">Time management</span>
-          <span class="pill">Adaptability</span>
+        <div class="pills" id="soft-skills" data-required data-max="4" data-other="soft-skills-other">
+          <span class="pill">Organizing things</span>
+          <span class="pill">Explaining things clearly</span>
+          <span class="pill">Solving unexpected problems</span>
+          <span class="pill">Keeping track of details</span>
+          <span class="pill">Helping or supporting people</span>
+          <span class="pill">Making decisions</span>
+          <span class="pill">Working with numbers or information</span>
+          <span class="pill">Coordinating people</span>
+          <span class="pill">Creating or improving things</span>
+          <span class="pill">Learning new things quickly</span>
           <span class="pill">Other</span>
         </div>
         <div class="other-input" id="soft-skills-other">
-          <input type="text" placeholder="Describe your other strengths…">
+          <input type="text" placeholder="Describe it in your own words…">
         </div>
       </div>
     </div>
@@ -528,6 +539,8 @@
           <span class="pill">Stability</span>
           <span class="pill">Flexibility</span>
           <span class="pill">Career growth</span>
+          <span class="pill">Work-life balance</span>
+          <span class="pill">Getting back to work quickly</span>
           <span class="pill">Other</span>
         </div>
         <div class="other-input" id="priorities-other">
@@ -586,6 +599,9 @@
           <span class="pill">I don't get interviews.</span>
           <span class="pill">I don't know where to look.</span>
           <span class="pill">I don't have a network.</span>
+          <span class="pill">I'm not sure whether my old skills are still relevant.</span>
+          <span class="pill">I don't know how to explain my career break.</span>
+          <span class="pill">My language or qualifications may limit my options.</span>
           <span class="pill">Other</span>
         </div>
         <div class="other-input" id="challenge-other">
@@ -613,9 +629,34 @@
       </div>
     </div>
 
+    <div class="step" data-name="Readiness">
+      <h3>What's realistic for you right now?</h3>
+      <p class="step-sub">There's no right answer — this keeps your roadmap practical.</p>
+      <div class="field">
+        <span class="q-label">How much change are you realistically ready for?</span>
+        <div class="pills" id="change-readiness" data-single data-required>
+          <span class="pill">Use mostly what I already know</span>
+          <span class="pill">Refresh or learn a few skills</span>
+          <span class="pill">Take a short course or certification</span>
+          <span class="pill">Open to substantial retraining</span>
+          <span class="pill">I'm not sure</span>
+        </div>
+      </div>
+      <div class="field" style="margin-top:1.2rem;">
+        <span class="q-label">When would you ideally like to return to paid work?</span>
+        <div class="pills" id="return-timeline" data-single data-required>
+          <span class="pill">As soon as possible</span>
+          <span class="pill">Within 1–3 months</span>
+          <span class="pill">Within 3–6 months</span>
+          <span class="pill">Within 6–12 months</span>
+          <span class="pill">No fixed timeline</span>
+        </div>
+      </div>
+    </div>
+
     <div class="step" data-name="Confidence">
       <h3>How true is this for you today?</h3>
-      <p class="step-sub">1 = not at all, 5 = completely.</p>
+      <p class="step-sub">1 = not at all, 5 = completely. Honest answers make your roadmap more useful.</p>
       <div class="scale-q" data-blocker="Unclear which direction to take">
         <p class="statement">“I know what type of job I want.”</p>
         <div class="scale" data-required>
@@ -623,10 +664,6 @@
         </div>
         <div class="scale-ends"><span>Not at all</span><span>Completely</span></div>
       </div>
-    </div>
-
-    <div class="step" data-name="Confidence">
-      <h3>And this one?</h3>
       <div class="scale-q" data-blocker="Unsure which skills to update">
         <p class="statement">“I know which skills I should learn.”</p>
         <div class="scale" data-required>
@@ -634,10 +671,6 @@
         </div>
         <div class="scale-ends"><span>Not at all</span><span>Completely</span></div>
       </div>
-    </div>
-
-    <div class="step" data-name="Confidence">
-      <h3>Last one of these.</h3>
       <div class="scale-q" data-blocker="Lack of confidence when applying">
         <p class="statement">“I feel confident applying for jobs.”</p>
         <div class="scale" data-required>
@@ -648,29 +681,10 @@
     </div>
 
     <div class="step" data-name="Skills">
-      <h3>Which of these are you comfortable with?</h3>
-      <p class="step-sub">Pick up to five you could use today, even if you're a little rusty.</p>
+      <h3>Is there any professional knowledge, software, tools or specialist skill you could still use today?</h3>
+      <p class="step-sub">Optional — skip if nothing comes to mind, even rusty skills count.</p>
       <div class="field">
-        <div class="pills" id="skills" data-required data-max="5" data-other="skills-other">
-          <span class="pill">Marketing</span>
-          <span class="pill">Sales</span>
-          <span class="pill">Excel</span>
-          <span class="pill">Project Management</span>
-          <span class="pill">Python</span>
-          <span class="pill">SQL</span>
-          <span class="pill">Customer Support</span>
-          <span class="pill">Teaching</span>
-          <span class="pill">Design</span>
-          <span class="pill">Writing</span>
-          <span class="pill">Social Media</span>
-          <span class="pill">Bookkeeping</span>
-          <span class="pill">Event Planning</span>
-          <span class="pill">Recruiting / HR</span>
-          <span class="pill">Other</span>
-        </div>
-        <div class="other-input" id="skills-other">
-          <input type="text" placeholder="Tell us what else you're comfortable with…">
-        </div>
+        <textarea id="skills-text" rows="3" placeholder="For example: Excel, accounting, CRM, teaching, design tools, coding, recruiting, healthcare, administration…"></textarea>
       </div>
     </div>
 
@@ -725,6 +739,22 @@
       </div>
 
       <p class="report-note" id="report-note"></p>
+
+      <div class="report-section" id="next-value-block" style="margin-top:1.8rem; margin-bottom:0;">
+        <h4>One last question</h4>
+        <p style="margin-bottom:0.8rem;">What would be most valuable to you next?</p>
+        <div class="pills" id="next-value" data-single data-other="next-value-other">
+          <span class="pill">Detailed career roadmap</span>
+          <span class="pill">Skills or qualification plan</span>
+          <span class="pill">Relevant jobs</span>
+          <span class="pill">CV/application help</span>
+          <span class="pill">Human career coach</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="next-value-other">
+          <input type="text" placeholder="Tell us what would help — press Enter to send…">
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -733,7 +763,7 @@
   <details class="privacy-card">
     <summary>Privacy notice</summary>
     <h5>Who we are</h5>
-    <p>This assessment is run by Emily Ai, UnityWerk. Questions or requests about your data: <a href="mailto:emilyaiai86@gmail.com">emilyaiai86@gmail.com</a>.</p>
+    <p>This assessment is a pilot project run by UnityWerk. Questions or requests about your data: <a href="mailto:emilyaiai86@gmail.com">emilyaiai86@gmail.com</a>.</p>
     <h5>What we collect and why</h5>
     <p>Your assessment answers (background, career break, experience, goals, skills, and confidence), plus your name and email address. We use this data for one purpose only: to create your personal career roadmap and send it to you by email. The legal basis is your consent, given by ticking the box before submitting.</p>
     <h5>Where your data is stored</h5>
@@ -741,12 +771,12 @@
     <h5>How long we keep it</h5>
     <p>Your answers are deleted within 30 days after your roadmap has been sent.</p>
     <h5>Your rights</h5>
-    <p>You can ask at any time to see, correct, or delete the data we hold about you, or withdraw your consent — just email us. You also have the right to complain to your data protection authority (in the Netherlands: Autoriteit Persoonsgegevens).</p>
+    <p>You can ask at any time to see, correct, or delete the data we hold about you, or withdraw your consent — just email us. You also have the right to complain to a data protection supervisory authority.</p>
   </details>
 </section>
 
 <footer class="wrap">
-  © 2026 Career Clarity Assessment · <a href="#privacy" style="color:var(--ink-faint);">Privacy</a>
+  © 2026 UnityWerk · Career Clarity Assessment · <a href="#privacy" style="color:var(--ink-faint);">Privacy</a>
 </footer>
 
 <script>
@@ -820,7 +850,7 @@
     sel.addEventListener("change", () => advance());
   });
 
-  // ---- 1-5 scales: select, then flow to the next question ----
+  // ---- 1-5 scales: flow onward once every scale on the page is answered ----
   document.querySelectorAll(".scale").forEach(scale => {
     scale.addEventListener("click", e => {
       const btn = e.target.closest("button");
@@ -828,12 +858,14 @@
       scale.querySelectorAll("button").forEach(b => b.classList.remove("selected"));
       btn.classList.add("selected");
       scale.dataset.value = btn.textContent;
-      if (steps[current].contains(scale)) advance();
+      const pageScales = [...steps[current].querySelectorAll(".scale")];
+      if (pageScales.includes(scale) && pageScales.every(s => s.dataset.value)) advance();
     });
   });
 
-  // Enter advances from text inputs
+  // Enter advances from text inputs (report inputs have their own handling)
   document.querySelectorAll("input").forEach(inp => {
+    if (inp.closest("#report")) return;
     inp.addEventListener("keydown", e => {
       if (e.key === "Enter") { e.preventDefault(); btnNext.click(); }
     });
@@ -958,15 +990,49 @@
       p.textContent === "Other" && otherText(group) ? otherText(group) : p.textContent);
   };
 
+  // behavioral strengths → the trait tags used in the PATHS catalog
+  const BEHAVIOR_TRAITS = {
+    "Organizing things": ["Organization", "Time management"],
+    "Explaining things clearly": ["Communication"],
+    "Solving unexpected problems": ["Problem solving", "Adaptability"],
+    "Keeping track of details": ["Organization"],
+    "Helping or supporting people": ["Customer relationships", "Teamwork"],
+    "Making decisions": ["Leadership"],
+    "Working with numbers or information": ["Problem solving"],
+    "Coordinating people": ["Leadership", "Teamwork"],
+    "Creating or improving things": ["Adaptability"],
+    "Learning new things quickly": ["Adaptability"]
+  };
+
+  // skill names from the PATHS catalog, detected in the user's own text
+  const SKILL_HINTS = {
+    "Marketing": ["marketing"], "Sales": ["sales", "selling"], "Excel": ["excel", "spreadsheet"],
+    "Project Management": ["project"], "Python": ["python"], "SQL": ["sql", "database"],
+    "Customer Support": ["customer", "support", "helpdesk", "client"],
+    "Teaching": ["teach", "tutor", "training", "lesson"],
+    "Design": ["design", "photoshop", "figma", "canva", "illustrator"],
+    "Writing": ["writing", "writer", "copywrit", "blog", "editing"],
+    "Social Media": ["social media", "instagram", "tiktok", "linkedin", "facebook"],
+    "Bookkeeping": ["accounting", "bookkeep", "invoic", "payroll", "finance", "budget"],
+    "Event Planning": ["event", "party", "festival"],
+    "Recruiting / HR": ["recruit", "human resources", "hiring", "hr"]
+  };
+
   function buildProfile() {
-    const skills = selected("#skills");
-    const soft = selected("#soft-skills");
+    const behaviors = selected("#soft-skills");
     const priorities = selected("#priorities");
     const interests = selected("#interests");
     const goal = selected("#goal")[0] || "";
 
-    const strengths = [...soft.slice(0, 3)];
-    if (strengths.length < 3) strengths.push(...skills.slice(0, 3 - strengths.length));
+    // what she says people rely on her for, in her own words
+    const strengths = [...behaviors.slice(0, 4)];
+    // map behaviors to catalog traits for scoring
+    const soft = [...new Set(behaviors.flatMap(b => BEHAVIOR_TRAITS[b] || []))];
+    // uncover catalog skills from what she actually wrote
+    const ownText = ["skills-text", "role-tasks", "break-details"]
+      .map(id => document.getElementById(id).value).join(" ").toLowerCase();
+    const skills = Object.keys(SKILL_HINTS)
+      .filter(name => SKILL_HINTS[name].some(h => ownText.includes(h)));
 
     const background = (document.getElementById("prev-title").value + " " +
                         document.getElementById("industry").value).toLowerCase();
@@ -996,8 +1062,11 @@
       "My confidence is low.": "Lack of confidence when applying",
       "My CV is outdated.": "An outdated CV",
       "I don't get interviews.": "Not getting interviews",
-      "I don't know where to look.": "Limited knowledge of today's job market",
-      "I don't have a network.": "A limited professional network"
+      "I don't know where to look.": "Not knowing where to look for jobs",
+      "I don't have a network.": "A limited professional network",
+      "I'm not sure whether my old skills are still relevant.": "Doubts about whether your skills are still relevant",
+      "I don't know how to explain my career break.": "Explaining the career break with confidence",
+      "My language or qualifications may limit my options.": "Possible language or qualification barriers"
     };
     blockers.unshift(...challenges.map(c => CHALLENGE_BLOCKERS[c] || c));
     blockers = [...new Set(blockers)];
@@ -1012,22 +1081,26 @@
       years_of_experience: val("experience"), career_break_duration: val("break-duration"),
       break_reason: selected("#break-reason").join(""),
       career_break_activities: selected("#break-activities").join(", "),
+      career_break_details: val("break-details"),
       additional_notes: val("notes"),
       previous_job_title: val("prev-title"), industry: val("industry"),
+      previous_role_tasks: val("role-tasks"),
       highest_education: val("education"),
       languages: [...document.querySelectorAll(".lang-row")]
         .map(r => ({ n: r.querySelector(".lang-name").value.trim(), l: r.querySelector(".lang-level").value }))
         .filter(x => x.n).map(x => x.l ? `${x.n} (${x.l})` : x.n).join(", "),
-      soft_skills: selected("#soft-skills").join(", "),
+      relied_on_for: selected("#soft-skills").join(", "),
       work_format: selected("#work-format").join(", "),
       priorities: selected("#priorities").join(", "),
       interests: selected("#interests").join(", "),
       goal: selected("#goal").join(""),
       biggest_challenge: selected("#challenge").join(", "),
       preferred_solution: selected("#solution").join(", "),
+      change_readiness: selected("#change-readiness").join(""),
+      return_timeline: selected("#return-timeline").join(""),
       confidence: [...document.querySelectorAll(".scale-q")]
         .map(q => `${q.querySelector(".statement").textContent} → ${q.querySelector(".scale").dataset.value}/5`).join(" | "),
-      skills: selected("#skills").join(", "),
+      reusable_skills: val("skills-text"),
       name: val("name"), email: val("email"),
       // record of consent, kept with the submission (GDPR accountability)
       consent: document.getElementById("consent").checked
@@ -1048,7 +1121,7 @@
     pathsEl.innerHTML = (profile.paths.length
       ? profile.paths.map(p => `<div class="path-item"><strong>⭐ ${p.name}</strong><span>This ${p.why}${p.fromBackground ? ", and connects directly to your previous experience" : ""}.</span></div>`).join("")
       : `<div class="path-item"><strong>⭐ Let's talk</strong><span>Your combination of skills is unique — your full roadmap will include hand-picked suggestions.</span></div>`)
-      + `<p class="paths-note">These are starting points, not a verdict — your full roadmap looks at the whole job market, including paths beyond this list.</p>`;
+      + `<p class="paths-note">These are starting points, not a verdict — your full roadmap will explore directions beyond this list.</p>`;
 
     const blockersEl = document.getElementById("report-blockers");
     blockersEl.innerHTML = profile.blockers.length
@@ -1088,6 +1161,31 @@
     document.getElementById("report").style.display = "block";
     document.getElementById("assessment").scrollIntoView({ behavior: "smooth", block: "start" });
   }
+
+  // ---- post-result product-research question (separate, fire-and-forget) ----
+  function sendNextValue(value) {
+    try {
+      if (FORM_ENDPOINT) {
+        const fd = new FormData();
+        fd.append("email", document.getElementById("email").value.trim());
+        fd.append("most_valuable_next", value);
+        fetch(FORM_ENDPOINT, { method: "POST", body: fd, headers: { Accept: "application/json" } }).catch(() => {});
+      }
+    } catch (e) { /* research data only — never block the user */ }
+    document.getElementById("next-value-block").innerHTML =
+      "<h4>One last question</h4><p>Thank you — noted ✿</p>";
+  }
+  document.getElementById("next-value").addEventListener("click", e => {
+    const pill = e.target.closest(".pill");
+    if (!pill || pill.textContent === "Other") return;
+    sendNextValue(pill.textContent);
+  });
+  document.querySelector("#next-value-other input").addEventListener("keydown", e => {
+    if (e.key === "Enter" && e.target.value.trim()) {
+      e.preventDefault();
+      sendNextValue("Other: " + e.target.value.trim());
+    }
+  });
 </script>
 
 </body>

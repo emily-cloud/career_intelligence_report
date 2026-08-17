@@ -1,63 +1,53 @@
-# Career Clarity Assessment — Landing Page
+# UnityWerk — Career Clarity Assessment (Builder Week Mini-MVP)
 
-A single-file landing page (`index.html`) to test the idea: **a 5-minute Career Clarity Assessment for people returning to work after a career break, ending in a personalized career roadmap.**
+A single-file landing page (`index.html`) piloting a **Career Clarity Assessment for women returning to work after a career break**. No frameworks, no build step, no backend — open `index.html` in a browser and it works.
 
-No frameworks, no build step. Open `index.html` in a browser and it works.
+**Core hypothesis:** what has this woman actually done → what transferable skills may be hidden in that experience → what realistic career directions could fit her now → what should she do next?
 
-## The flow
+The page therefore collects **evidence**, not just labels: what she did in her previous role, what her career-break activities actually involved, what people rely on her for, and any professional skills in her own words. Submissions are reviewed (with AI/manual help) to write each personalized roadmap, delivered by email within 24 hours.
 
-**Hero:** "Ready to return to work, but not sure where to start?" → **[Start Assessment]** — deliberately not "Upload your CV", and no mention of AI anywhere.
+## The flow (19 pages, one topic each, ~5 minutes)
 
-**Assessment (6 steps, with progress bar):**
+1. Where are you based? (country + city)
+2. Years of work experience
+3. Career break length
+4. Break reason (incl. Other + Prefer not to say)
+5. Career-break activities **+ "Tell us briefly what this involved"** (free text, required)
+6. Previous job title + industry **+ "What did you actually do in this role?"** (free text, required)
+7. Highest education
+8. Languages with levels (up to 4)
+9. "What kinds of things have people relied on you for?" (behavioral strengths, up to 4)
+10. Desired work format (up to 3)
+11. What matters most (incl. work-life balance, getting back quickly; up to 3)
+12. Interests (up to 3)
+13. What would you like to do next? (goal)
+14. Biggest challenges (incl. skills-relevance, explaining the break, language/qualifications; up to 2)
+15. How would you prefer to solve this? (product validation; up to 2)
+16. Transition readiness: how much change + ideal return timeline (one screen)
+17. Three 1–5 confidence statements (one screen)
+18. Reusable professional skills (optional free text)
+19. Name + email + optional notes + GDPR consent → instant Career Profile preview
 
-1. **Background** — age (optional), country, current location, years of experience, career break duration, reason for break (Parenthood / Caregiving / Illness / Relocation / Other)
-2. **Previous experience** — job title, industry, education, languages, soft skills, other technical skills
-3. **Goals** — desired work format (full-time / part-time / remote / hybrid / flexible), what matters most (pick up to 2)
-4. **Confidence** — four 1–5 statements ("I know what type of job I want", "I know which skills I should learn", "I feel confident applying for jobs", "I know where to find suitable jobs") → these identify blockers
-5. **Skills** — a simple "which of these are you comfortable with?" checklist (Marketing, Sales, Excel, Project Management, Python, SQL, Customer Support, Teaching, Design, …) — no real skill assessment yet
-6. **Name + email** — the conversion moment: "Tell us where to send your full roadmap"
+**After the report:** one product-research question — "What would be most valuable to you next?" — sent as a separate fire-and-forget submission.
 
-**Report ("Your Career Profile"):** rendered instantly from transparent rules — no fake AI:
+## The instant report
 
-- **Your biggest strengths** — the soft skills they selected
-- **Potential career paths** — top 3 of 9 predefined roles (Customer Success, Project Coordinator, Operations Specialist, Data Analyst, Digital Marketing Specialist, Account Manager, Corporate Trainer/L&D, HR Coordinator, Content Specialist), scored by overlap with their selected skills (weight 2) and soft skills (weight 1), each with a one-line "why this fits"
-- **Current blockers** — every confidence statement scored 3 or below, mapped to plain language ("Lack of confidence when applying", "Limited knowledge of today's job market", …)
-- Ends with: your full roadmap arrives by email within 24 hours.
+Rendered from transparent rules, no AI at runtime: strengths are her own selected words; career paths come from a 27-role catalog scored on background keywords (job title/industry, weight 3), skills detected in her own free text (weight 2), behavioral strengths and interests (weight 1), plus goal/activity boosts; blockers combine her named challenges with low confidence scores. A note clarifies these are starting points, and the full roadmap explores beyond the list.
 
 ## Receiving submissions
 
-The page runs in **demo mode** by default: the report renders, but answers go nowhere. To receive each completed assessment (all answers + email) by email:
+Submissions post to the `FORM_ENDPOINT` (Formspree) configured near the top of the `<script>` block. If submission fails, the user still sees her report. Note the post-result question sends a **second** small submission per user.
 
-1. Create a free form on [Formspree](https://formspree.io) (no file uploads needed anymore, so the free plan works).
-2. In `index.html`, set the endpoint near the top of the `<script>` block:
-   ```js
-   const FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
-   ```
+## Privacy (GDPR)
 
-If submission fails, the user still sees their report — you lose the lead, they don't lose the experience.
+Consent checkbox (unticked by default), on-page privacy notice (UnityWerk pilot; contact emilyaiai86@gmail.com; Formspree as processor; 30-day retention; data-subject rights), and a timestamped consent record in each submission. **Open item:** the notice names UnityWerk as a pilot project — confirm the formal controller name/address for a Berlin/Germany-based pilot before scaling beyond friendly testers.
 
-## GDPR
-
-The page ships with the on-page half of GDPR compliance built in:
-
-- A **required consent checkbox** at the email step (unticked by default), naming the exact purpose: answers are used to create the roadmap, delivered by email, withdrawable at any time.
-- A **plain-language privacy notice** on the page (linked from the checkbox and the footer): who processes the data, what is collected and why, that Formspree (EU–U.S. Data Privacy Framework participant) delivers submissions, a 30-day retention promise, and the person's rights including complaint to the Dutch Autoriteit Persoonsgegevens.
-- A **consent record** (statement + ISO timestamp) included in every submission, for accountability.
-
-Before going live, complete the other half yourself:
-
-1. **Fill in the placeholders** in the privacy notice in `index.html`: replace `[YOUR NAME / COMPANY NAME]` and `[YOUR CONTACT EMAIL]` with your real identity and a monitored address.
-2. **Honor the notice**: send only the roadmap (no newsletter without a separate opt-in), delete submissions from Formspree and your inbox within the promised 30 days, and act on any access/deletion request promptly.
-3. **In Formspree**: delete submissions after fulfilling each report; if you upgrade to a paid plan, accept their Data Processing Agreement in the workspace settings.
-4. Collect nothing extra — the form already practices data minimization (age is optional); keep it that way.
+Operator duties: fill roadmaps within 24h, delete submissions within 30 days, no mailing beyond the roadmap, honor access/deletion requests.
 
 ## Deploying
 
-Any static host works:
-
-- **GitHub Pages**: repo Settings → Pages → deploy from branch, root folder.
-- **Netlify / Vercel**: drag-and-drop the folder or connect the repo.
+GitHub Pages (Settings → Pages → deploy from `main`) or Netlify. A pre-Builder-Week snapshot is preserved on the `backup/pre-builder-week` branch.
 
 ## Measuring the test
 
-The funnel to watch: visitors → started assessment → completed step 4 (blockers revealed) → submitted email. Add a free analytics snippet (e.g. [Plausible](https://plausible.io), [GoatCounter](https://www.goatcounter.com)) to count these. Email submission rate is the signal that the value proposition lands.
+Funnel: visits → Start clicked → email submitted → post-result answer. The free-text answers (`career_break_details`, `previous_role_tasks`, `reusable_skills`, `biggest_challenge`, `most_valuable_next`) are the core research data.
