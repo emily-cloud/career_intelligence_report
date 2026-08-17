@@ -807,9 +807,6 @@
   const stepError = document.getElementById("step-error");
   let current = 0;
 
-  const advance = (delay = 350) =>
-    setTimeout(() => { if (current < steps.length - 1) btnNext.click(); }, delay);
-
   // ---- pills ----
   const otherSelected = group =>
     [...group.querySelectorAll(".pill.selected")].some(p => p.textContent === "Other");
@@ -839,18 +836,10 @@
         field.classList.toggle("visible", otherSelected(group));
         if (otherSelected(group)) field.querySelector("input").focus();
       }
-      // single-choice pages flow straight to the next question
-      // (unless "Other" needs describing first)
-      if (group.hasAttribute("data-advance") && !otherSelected(group)) advance();
     });
   });
 
-  // dropdown pages flow to the next question on choice
-  document.querySelectorAll("select[data-advance]").forEach(sel => {
-    sel.addEventListener("change", () => advance());
-  });
-
-  // ---- 1-5 scales: flow onward once every scale on the page is answered ----
+  // ---- 1-5 scales ----
   document.querySelectorAll(".scale").forEach(scale => {
     scale.addEventListener("click", e => {
       const btn = e.target.closest("button");
@@ -858,8 +847,6 @@
       scale.querySelectorAll("button").forEach(b => b.classList.remove("selected"));
       btn.classList.add("selected");
       scale.dataset.value = btn.textContent;
-      const pageScales = [...steps[current].querySelectorAll(".scale")];
-      if (pageScales.includes(scale) && pageScales.every(s => s.dataset.value)) advance();
     });
   });
 
