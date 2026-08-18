@@ -116,18 +116,22 @@
     font-family: var(--serif);
     font-size: 1.35rem;
     font-weight: 500;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.9rem;
   }
   .why-card p {
     color: var(--ink-soft);
     font-size: 0.97rem;
     max-width: 30rem;
     margin: 0 auto;
+    text-align: left;
   }
+  .why-card p + p { margin-top: 0.8rem; }
+  .why-card p:last-child { text-align: center; margin-top: 1.1rem; color: var(--ink); }
+  .why-card em { font-style: italic; color: var(--accent); }
 
   /* ---------- Assessment ---------- */
   section { padding: 1rem 0 3rem; }
-  #assessment { scroll-margin-top: 1.5rem; display: none; }
+  #assessment { scroll-margin-top: 1.5rem; display: none; max-width: 760px; }
   #assessment.open { display: block; }
   .panel {
     background: var(--card);
@@ -211,24 +215,38 @@
     box-shadow: 0 0 0 3px var(--accent-soft);
   }
 
-  /* pills */
-  .pills { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  /* pills — two options per line */
+  .pills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; }
   .pill {
     font-size: 0.98rem;
     font-weight: 550;
+    text-align: center;
     color: var(--ink-soft);
     background: var(--paper);
     border: 1px solid var(--line);
     border-radius: 999px;
-    padding: 0.6rem 1.25rem;
+    padding: 0.6rem 0.9rem;
     cursor: pointer;
     user-select: none;
     transition: all 0.12s ease;
+  }
+  @media (max-width: 520px) {
+    .pills { grid-template-columns: 1fr; }
   }
   .pill:hover { border-color: var(--accent); color: var(--accent); }
   .pill.selected { color: #fff; background: var(--accent); border-color: var(--accent); }
   .other-input { display: none; margin-top: 0.8rem; }
   .other-input.visible { display: block; }
+  .pill-group-label {
+    grid-column: 1 / -1;
+    font-size: 0.78rem;
+    font-weight: 650;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 0.6rem;
+  }
+  .pill-group-label:first-child { margin-top: 0; }
 
   /* 1-5 scale */
   .statement {
@@ -341,6 +359,18 @@
   .paths-note { font-size: 0.85rem; color: var(--ink-faint); margin-top: 0.3rem; }
   .report-note { border-top: 1px solid var(--line); padding-top: 1.5rem; font-size: 0.93rem; color: var(--ink-soft); }
   .report-note strong { color: var(--ink); }
+  .share-row { text-align: center; margin-top: 2rem; }
+  .share-btn {
+    font: inherit; font-size: 0.98rem; font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid var(--accent);
+    border-radius: 999px;
+    padding: 0.75rem 1.8rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .share-btn:hover { color: #fff; background: var(--accent); }
 
   footer { padding: 2rem 0 2.5rem; text-align: center; font-size: 0.85rem; color: var(--ink-faint); }
 
@@ -364,8 +394,11 @@
 
 <section class="wrap" id="why">
   <div class="why-card">
-    <h2>Not another personality quiz</h2>
-    <p>We don't ask you to label yourself. We look at what you've actually done — before and during your career break — to uncover transferable skills you may be overlooking, and turn them into realistic ways back to work.</p>
+    <h2>Your story isn't a gap ✿</h2>
+    <p>Maybe you've been away from work for two years — or ten. Somewhere between caring for others and holding everything together, a quiet question crept in: <em>"Who would hire me now?"</em></p>
+    <p>Here's what we've learned from women who've stood exactly where you stand: what's missing is almost never ability. It's that years of real skills — organizing, supporting, solving, deciding — have never been written down in one place.</p>
+    <p>That's what these questions are for. This is not a personality quiz, and there are no trick questions. Each answer adds a piece of your picture: what you did before, what you carried through your break, what you want now. At the end you'll see your strengths and realistic directions right away — and within 24 hours, we'll send your personal roadmap back to work.</p>
+    <p><strong>Five minutes. One question at a time. Let's put your story into words.</strong></p>
   </div>
 </section>
 
@@ -381,7 +414,7 @@
 
     <!-- One topic per page -->
     <div class="step active" data-name="Location">
-      <h3>Where are you based?</h3>
+      <h3>Where are you based? 📍</h3>
       <p class="step-sub">Job markets differ a lot by place.</p>
       <div class="field">
         <label for="country">Country you want to work in</label>
@@ -394,7 +427,7 @@
     </div>
 
     <div class="step" data-name="Experience">
-      <h3>How many years have you worked in total?</h3>
+      <h3>How many years have you worked in total? 💼</h3>
       <p class="step-sub">Before your break — all of it counts.</p>
       <div class="field">
         <select id="experience" data-required>
@@ -409,7 +442,7 @@
     </div>
 
     <div class="step" data-name="Career break">
-      <h3>How long is your career break so far?</h3>
+      <h3>How long is your career break so far? ⏳</h3>
       <p class="step-sub">A break is part of your story — not a gap to apologize for.</p>
       <div class="field">
         <select id="break-duration" data-required>
@@ -424,7 +457,7 @@
     </div>
 
     <div class="step" data-name="Career break">
-      <h3>What was the reason for your break?</h3>
+      <h3>What was the reason for your break? 💛</h3>
       <p class="step-sub">Whatever it was, it was valid — pick everything that applies.</p>
       <div class="field">
         <div class="pills" id="break-reason" data-required data-other="break-reason-other">
@@ -442,7 +475,7 @@
     </div>
 
     <div class="step" data-name="Previous work">
-      <h3>What did you mainly do in your previous work, if you've worked before?</h3>
+      <h3>What did you mainly do in your previous work, if you've worked before? 🧰</h3>
       <p class="step-sub">Pick everything that applies.</p>
       <div class="field">
         <div class="pills" id="prev-work" data-required data-other="prev-work-other">
@@ -470,7 +503,7 @@
     </div>
 
     <div class="step" data-name="Career break">
-      <h3>What experiences were part of your career break?</h3>
+      <h3>What experiences were part of your career break? 🌱</h3>
       <p class="step-sub">Pick everything that applies — it all counts.</p>
       <div class="field">
         <div class="pills" id="break-activities" data-required data-other="break-activities-other" data-other-label="Something else">
@@ -494,7 +527,7 @@
     </div>
 
     <div class="step" data-name="Education">
-      <h3>What's your highest education?</h3>
+      <h3>What's your highest education? 🎓</h3>
       <div class="field">
         <select id="education" data-required>
           <option value="" disabled selected>Select…</option>
@@ -510,7 +543,7 @@
     </div>
 
     <div class="step" data-name="Languages">
-      <h3>Which languages do you speak, and how well?</h3>
+      <h3>Which languages do you speak, and how well? 🌍</h3>
       <p class="step-sub">Languages open doors — add each one with your level (up to 4).</p>
       <div class="field" id="languages-rows">
         <div class="lang-row">
@@ -554,7 +587,7 @@
     </div>
 
     <div class="step" data-name="Strengths">
-      <h3>What do people often appreciate and rely on you for?</h3>
+      <h3>What do people often appreciate and rely on you for? 💪</h3>
       <p class="step-sub">Pick up to four — these become your strengths.</p>
       <div class="field">
         <div class="pills" id="soft-skills" data-required data-max="4" data-other="soft-skills-other">
@@ -577,7 +610,7 @@
     </div>
 
     <div class="step" data-name="Work style">
-      <h3>How would you like to work?</h3>
+      <h3>How would you like to work? ⏰</h3>
       <p class="step-sub">Pick up to three that would fit your life now.</p>
       <div class="field">
         <div class="pills" id="work-format" data-required data-max="3" data-other="work-format-other">
@@ -598,7 +631,7 @@
     </div>
 
     <div class="step" data-name="Priorities">
-      <h3>What matters most to you?</h3>
+      <h3>What matters most to you? 💖</h3>
       <p class="step-sub">Choose up to three.</p>
       <div class="field">
         <div class="pills" id="priorities" data-required data-max="3" data-other="priorities-other">
@@ -627,7 +660,7 @@
     </div>
 
     <div class="step" data-name="Interests">
-      <h3>What kind of work interests you most?</h3>
+      <h3>What kind of work interests you most? ✨</h3>
       <p class="step-sub">Choose up to three.</p>
       <div class="field">
         <div class="pills" id="interests" data-required data-max="3" data-other="interests-other">
@@ -656,7 +689,7 @@
     </div>
 
     <div class="step" data-name="Your goal">
-      <h3>What would you like to do next?</h3>
+      <h3>What would you like to do next? 🎯</h3>
       <p class="step-sub">There's no wrong answer — "not sure" is exactly what we're here for.</p>
       <div class="field">
         <div class="pills" id="goal" data-single data-required data-other="goal-other">
@@ -674,25 +707,27 @@
     </div>
 
     <div class="step" data-name="Your challenge">
-      <h3>Which parts of returning to work feel most challenging right now?</h3>
+      <h3>Which parts of returning to work feel most challenging right now? 🤔</h3>
       <p class="step-sub">Choose up to three.</p>
       <div class="field">
         <div class="pills" id="challenge" data-required data-max="3" data-other="challenge-other">
+          <span class="pill-group-label">🧭 Direction</span>
           <span class="pill">Unsure which role suits me</span>
           <span class="pill">Unsure what skills to build</span>
           <span class="pill">Unsure how to use my past experience</span>
-          <span class="pill">Explaining my career break</span>
+          <span class="pill-group-label">🌷 Confidence &amp; story</span>
           <span class="pill">Rebuilding my confidence</span>
+          <span class="pill">Explaining my career break</span>
+          <span class="pill-group-label">📄 Applications</span>
           <span class="pill">Updating my CV or LinkedIn</span>
-          <span class="pill">Getting interviews</span>
           <span class="pill">Preparing for interviews</span>
-          <span class="pill">Finding the right jobs</span>
+          <span class="pill-group-label">🌐 Market &amp; network</span>
           <span class="pill">Building a professional network</span>
-          <span class="pill">Lack of recent experience</span>
-          <span class="pill">Language barriers</span>
-          <span class="pill">Finding work that fits my life</span>
           <span class="pill">Understanding today's job market</span>
-          <span class="pill">Knowing what salary to expect</span>
+          <span class="pill">Language barriers</span>
+          <span class="pill-group-label">⚖️ Life fit</span>
+          <span class="pill">Finding work that fits my life</span>
+          <span class="pill-group-label">💬 Something else</span>
           <span class="pill">Other</span>
         </div>
         <div class="other-input" id="challenge-other">
@@ -702,7 +737,7 @@
     </div>
 
     <div class="step" data-name="Your solution">
-      <h3>How would you prefer to solve this?</h3>
+      <h3>How would you prefer to solve this? 🤝</h3>
       <p class="step-sub">Pick up to three kinds of help that appeal to you most.</p>
       <div class="field">
         <div class="pills" id="solution" data-required data-max="3" data-other="solution-other">
@@ -721,7 +756,7 @@
     </div>
 
     <div class="step" data-name="Timeline">
-      <h3>When would you ideally like to return to paid work?</h3>
+      <h3>When would you ideally like to return to paid work? 📅</h3>
       <p class="step-sub">There's no right answer — this keeps your roadmap practical.</p>
       <div class="field">
         <div class="pills" id="return-timeline" data-single data-required>
@@ -735,7 +770,7 @@
     </div>
 
     <div class="step" data-name="Confidence">
-      <h3>How true is this for you today?</h3>
+      <h3>How true is this for you today? 🌸</h3>
       <p class="step-sub">1 = not at all, 5 = completely. Honest answers make your roadmap more useful.</p>
       <div class="scale-q" data-blocker="Unclear which direction to take">
         <p class="statement">“I know what type of job I want.”</p>
@@ -761,7 +796,7 @@
     </div>
 
     <div class="step" data-name="Skills">
-      <h3>Is there any professional knowledge, software, tools or specialist skill you could use today?</h3>
+      <h3>Is there any professional knowledge, software, tools or specialist skill you could use today? 🛠️</h3>
       <p class="step-sub">Optional — skip if nothing comes to mind, even rusty skills count.</p>
       <div class="field">
         <textarea id="skills-text" rows="3" placeholder="For example: Excel, accounting, CRM, teaching, design tools, coding, recruiting, healthcare, administration…"></textarea>
@@ -834,6 +869,10 @@
         <div class="other-input" id="next-value-other">
           <input type="text" placeholder="Tell us what would help — press Enter to send…">
         </div>
+      </div>
+
+      <div class="share-row">
+        <button type="button" class="share-btn" id="share-btn">💌 Share this with a friend</button>
       </div>
     </div>
   </div>
@@ -914,7 +953,8 @@
   };
   const ALONE = {
     "break-reason": ["Prefer not to say"],
-    "prev-work": ["Never worked before"]
+    "prev-work": ["Never worked before"],
+    "solution": ["I'm not sure yet"]
   };
 
   document.querySelectorAll(".pills").forEach(group => {
@@ -1365,6 +1405,26 @@
     if (e.key === "Enter" && e.target.value.trim()) {
       e.preventDefault();
       sendNextValue("Other: " + e.target.value.trim());
+    }
+  });
+
+  // ---- share the assessment (and her top paths) with a friend ----
+  document.getElementById("share-btn").addEventListener("click", async () => {
+    const btn = document.getElementById("share-btn");
+    const url = location.protocol.startsWith("http")
+      ? location.href.split("#")[0]
+      : "https://emily-cloud.github.io/career_intelligence_report/";
+    const paths = [...document.querySelectorAll(".path-item strong")]
+      .map(x => x.textContent.replace("⭐ ", "")).slice(0, 3);
+    const text = `I just tried the Career Clarity Assessment${paths.length ? " — my top paths: " + paths.join(", ") : ""}. If you're thinking about returning to work, try it too:`;
+    if (navigator.share) {
+      try { await navigator.share({ title: "Career Clarity Assessment", text, url }); } catch (e) { /* user cancelled */ }
+    } else {
+      try {
+        await navigator.clipboard.writeText(`${text} ${url}`);
+        btn.textContent = "Copied — paste it anywhere ✿";
+        setTimeout(() => { btn.textContent = "💌 Share this with a friend"; }, 3000);
+      } catch (e) { /* clipboard unavailable */ }
     }
   });
 </script>
