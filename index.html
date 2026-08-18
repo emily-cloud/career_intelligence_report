@@ -160,6 +160,7 @@
     font-weight: 650;
     margin-bottom: 0.4rem;
   }
+  .opt { font-weight: 400; color: var(--ink-faint); }
   input[type="text"], input[type="email"], select, textarea {
     width: 100%;
     font: inherit;
@@ -172,9 +173,21 @@
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
   textarea { resize: vertical; min-height: 5rem; }
-  .lang-row { display: flex; gap: 0.6rem; margin-bottom: 0.6rem; }
-  .lang-row .lang-name { flex: 1.6; }
+  .lang-row { display: flex; gap: 0.5rem; margin-bottom: 0.6rem; align-items: center; }
+  .lang-row .lang-select { flex: 1.5; }
+  .lang-row .lang-custom { flex: 1.3; display: none; }
   .lang-row .lang-level { flex: 1; }
+  .lang-remove {
+    flex: none;
+    width: 2.1rem; height: 2.1rem;
+    font: inherit; font-size: 1.1rem; line-height: 1;
+    color: var(--ink-faint);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .lang-remove:hover { color: var(--accent); border-color: var(--accent); }
   .add-lang {
     font: inherit; font-size: 0.9rem; font-weight: 600;
     color: var(--accent);
@@ -375,7 +388,7 @@
       <h3>How many years have you worked in total?</h3>
       <p class="step-sub">Before your break — all of it counts.</p>
       <div class="field">
-        <select id="experience" data-required data-advance>
+        <select id="experience" data-required>
           <option value="" disabled selected>Select…</option>
           <option>0–2 years</option>
           <option>3–5 years</option>
@@ -390,7 +403,7 @@
       <h3>How long is your career break so far?</h3>
       <p class="step-sub">A break is part of your story — not a gap to apologize for.</p>
       <div class="field">
-        <select id="break-duration" data-required data-advance>
+        <select id="break-duration" data-required>
           <option value="" disabled selected>Select…</option>
           <option>Less than 1 year</option>
           <option>1–2 years</option>
@@ -403,9 +416,9 @@
 
     <div class="step" data-name="Career break">
       <h3>What was the reason for your break?</h3>
-      <p class="step-sub">Whatever it was, it was valid.</p>
+      <p class="step-sub">Whatever it was, it was valid — pick everything that applies.</p>
       <div class="field">
-        <div class="pills" id="break-reason" data-single data-required data-other="break-reason-other" data-advance>
+        <div class="pills" id="break-reason" data-required data-other="break-reason-other">
           <span class="pill">Parenthood</span>
           <span class="pill">Caregiving</span>
           <span class="pill">Illness</span>
@@ -419,95 +432,133 @@
       </div>
     </div>
 
+    <div class="step" data-name="Previous work">
+      <h3>What did you mainly do in your previous work, if you've worked before?</h3>
+      <p class="step-sub">Pick everything that applies.</p>
+      <div class="field">
+        <div class="pills" id="prev-work" data-required data-other="prev-work-other">
+          <span class="pill">Worked with customers or clients</span>
+          <span class="pill">Sold products or negotiated contracts</span>
+          <span class="pill">Managed projects or processes</span>
+          <span class="pill">Led or supported a team</span>
+          <span class="pill">Worked with data or numbers</span>
+          <span class="pill">Organized operations or administration</span>
+          <span class="pill">Used technical tools or systems</span>
+          <span class="pill">Created content, products, or designs</span>
+          <span class="pill">Taught, trained, or advised others</span>
+          <span class="pill">Conducted research or analysis</span>
+          <span class="pill">I haven't worked before</span>
+          <span class="pill">Other</span>
+        </div>
+        <div class="other-input" id="prev-work-other">
+          <input type="text" placeholder="Tell us in your own words…">
+        </div>
+      </div>
+      <div class="field" style="margin-top:1rem;">
+        <label for="prev-work-details">Tell us a little about your experience. <span class="opt">(optional)</span></label>
+        <textarea id="prev-work-details" rows="3" placeholder="Job titles, industries, or main tasks — don't worry about professional wording."></textarea>
+      </div>
+    </div>
+
     <div class="step" data-name="Career break">
-      <h3>What have you done during your career break?</h3>
+      <h3>Did you explore or learn anything new during your career break?</h3>
       <p class="step-sub">Pick everything that applies — it all counts.</p>
       <div class="field">
-        <div class="pills" id="break-activities" data-required data-other="break-activities-other">
-          <span class="pill">Study</span>
-          <span class="pill">Certification</span>
-          <span class="pill">New skills</span>
-          <span class="pill">Personal projects</span>
-          <span class="pill">Freelance work</span>
-          <span class="pill">Volunteering</span>
-          <span class="pill">Caregiving</span>
-          <span class="pill">Other</span>
+        <div class="pills" id="break-activities" data-required data-other="break-activities-other" data-other-label="Something else">
+          <span class="pill">Studied or took a course</span>
+          <span class="pill">Learned new skills</span>
+          <span class="pill">Earned a certification</span>
+          <span class="pill">Worked on a personal project</span>
+          <span class="pill">Freelanced or worked part-time</span>
+          <span class="pill">Volunteered</span>
+          <span class="pill">Focused on caregiving or family</span>
+          <span class="pill">Something else</span>
         </div>
         <div class="other-input" id="break-activities-other">
           <input type="text" placeholder="Tell us what you've been up to…">
         </div>
       </div>
       <div class="field" style="margin-top:1rem;">
-        <label for="break-details">Tell us briefly what this involved.</label>
-        <textarea id="break-details" rows="3" placeholder="What did you do, organize, learn, manage, create or help with?" data-required></textarea>
-      </div>
-    </div>
-
-    <div class="step" data-name="Previous role">
-      <h3>What did you do before your break?</h3>
-      <p class="step-sub">Even if it feels like a lifetime ago.</p>
-      <div class="field">
-        <label for="prev-title">Previous job title</label>
-        <input type="text" id="prev-title" placeholder="e.g. Marketing Coordinator" data-required>
-      </div>
-      <div class="field">
-        <label for="industry">Industry</label>
-        <input type="text" id="industry" placeholder="e.g. Retail, Healthcare…" data-required>
-      </div>
-      <div class="field">
-        <label for="role-tasks">What did you actually do in this role?</label>
-        <textarea id="role-tasks" rows="3" placeholder="Add 2–4 main tasks or responsibilities. Don't worry about professional wording." data-required></textarea>
+        <label for="break-details">Would you like to tell us a little more? <span class="opt">(optional)</span></label>
+        <textarea id="break-details" rows="3" placeholder="What did you do, organize, learn, manage, create or help with?"></textarea>
       </div>
     </div>
 
     <div class="step" data-name="Education">
       <h3>What's your highest education?</h3>
       <div class="field">
-        <select id="education" data-required data-advance>
+        <select id="education" data-required>
           <option value="" disabled selected>Select…</option>
           <option>High school</option>
-          <option>Vocational training</option>
+          <option>Vocational training / Ausbildung</option>
           <option>Bachelor's degree</option>
           <option>Master's degree</option>
           <option>PhD</option>
           <option>Other</option>
         </select>
+        <input type="text" id="education-other" placeholder="Tell us what it is…" style="display:none; margin-top:0.7rem;">
       </div>
     </div>
 
-    <div class="step" data-name="Education">
+    <div class="step" data-name="Languages">
       <h3>Which languages do you speak, and how well?</h3>
-      <p class="step-sub">Languages open doors — add each one with your level.</p>
+      <p class="step-sub">Languages open doors — add each one with your level (up to 4).</p>
       <div class="field" id="languages-rows">
         <div class="lang-row">
-          <input type="text" class="lang-name" placeholder="e.g. German" data-required>
-          <select class="lang-level" data-required>
-            <option value="" disabled selected>Level…</option>
-            <option>Native</option>
-            <option>Fluent</option>
-            <option>Good</option>
-            <option>Basic</option>
+          <select class="lang-select">
+            <option value="" selected>Language…</option>
+            <option>German</option>
+            <option>English</option>
+            <option>Turkish</option>
+            <option>Arabic</option>
+            <option>Polish</option>
+            <option>Russian</option>
+            <option>Ukrainian</option>
+            <option>French</option>
+            <option>Spanish</option>
+            <option>Italian</option>
+            <option>Portuguese</option>
+            <option>Dutch</option>
+            <option>Greek</option>
+            <option>Romanian</option>
+            <option>Chinese</option>
+            <option>Vietnamese</option>
+            <option>Farsi</option>
+            <option>Hindi</option>
+            <option>Urdu</option>
+            <option>Korean</option>
+            <option>Japanese</option>
+            <option>Other…</option>
           </select>
+          <input type="text" class="lang-custom" placeholder="Type your language">
+          <select class="lang-level">
+            <option value="" selected>Level…</option>
+            <option>Basic</option>
+            <option>Good</option>
+            <option>Fluent</option>
+            <option>Native</option>
+          </select>
+          <button type="button" class="lang-remove" aria-label="Remove this language" style="visibility:hidden">×</button>
         </div>
       </div>
       <button type="button" class="add-lang" id="add-lang">+ Add another language</button>
     </div>
 
     <div class="step" data-name="Strengths">
-      <h3>What kinds of things have people relied on you for — at work or outside work?</h3>
+      <h3>What do people often appreciate and rely on you for?</h3>
       <p class="step-sub">Pick up to four — these become your strengths.</p>
       <div class="field">
         <div class="pills" id="soft-skills" data-required data-max="4" data-other="soft-skills-other">
-          <span class="pill">Organizing things</span>
-          <span class="pill">Explaining things clearly</span>
-          <span class="pill">Solving unexpected problems</span>
-          <span class="pill">Keeping track of details</span>
-          <span class="pill">Helping or supporting people</span>
-          <span class="pill">Making decisions</span>
-          <span class="pill">Working with numbers or information</span>
-          <span class="pill">Coordinating people</span>
-          <span class="pill">Creating or improving things</span>
-          <span class="pill">Learning new things quickly</span>
+          <span class="pill">Communicating clearly</span>
+          <span class="pill">Managing time &amp; priorities</span>
+          <span class="pill">Solving problems</span>
+          <span class="pill">Supporting others</span>
+          <span class="pill">Leading people</span>
+          <span class="pill">Building relationships</span>
+          <span class="pill">Working with customers</span>
+          <span class="pill">Getting things done</span>
+          <span class="pill">Handling change</span>
+          <span class="pill">Learning quickly</span>
           <span class="pill">Other</span>
         </div>
         <div class="other-input" id="soft-skills-other">
@@ -517,7 +568,7 @@
     </div>
 
     <div class="step" data-name="Work style">
-      <h3>What should your next job look like?</h3>
+      <h3>How would you like to work?</h3>
       <p class="step-sub">Pick up to three that would fit your life now.</p>
       <div class="field">
         <div class="pills" id="work-format" data-required data-max="3" data-other="work-format-other">
@@ -525,7 +576,10 @@
           <span class="pill">Part-time</span>
           <span class="pill">Remote</span>
           <span class="pill">Hybrid</span>
+          <span class="pill">On-site</span>
           <span class="pill">Flexible hours</span>
+          <span class="pill">Weekdays only</span>
+          <span class="pill">Weekend work is okay</span>
           <span class="pill">Other</span>
         </div>
         <div class="other-input" id="work-format-other">
@@ -536,16 +590,25 @@
 
     <div class="step" data-name="Priorities">
       <h3>What matters most to you?</h3>
-      <p class="step-sub">Pick up to three.</p>
+      <p class="step-sub">Choose up to five.</p>
       <div class="field">
-        <div class="pills" id="priorities" data-required data-max="3" data-other="priorities-other">
+        <div class="pills" id="priorities" data-required data-max="5" data-other="priorities-other">
           <span class="pill">Higher salary</span>
-          <span class="pill">Meaningful work</span>
-          <span class="pill">Stability</span>
-          <span class="pill">Flexibility</span>
-          <span class="pill">Career growth</span>
           <span class="pill">Work-life balance</span>
-          <span class="pill">Getting back to work quickly</span>
+          <span class="pill">Job stability</span>
+          <span class="pill">Meaningful work</span>
+          <span class="pill">Career growth</span>
+          <span class="pill">Learning new skills</span>
+          <span class="pill">More responsibility</span>
+          <span class="pill">Independence &amp; autonomy</span>
+          <span class="pill">Supportive team</span>
+          <span class="pill">Good manager</span>
+          <span class="pill">Friendly work culture</span>
+          <span class="pill">Recognition</span>
+          <span class="pill">International environment</span>
+          <span class="pill">Low-stress environment</span>
+          <span class="pill">Positive social/environmental impact</span>
+          <span class="pill">Good benefits</span>
           <span class="pill">Other</span>
         </div>
         <div class="other-input" id="priorities-other">
@@ -556,7 +619,7 @@
 
     <div class="step" data-name="Interests">
       <h3>What kind of work interests you most?</h3>
-      <p class="step-sub">Pick up to three that genuinely appeal to you.</p>
+      <p class="step-sub">Choose up to three.</p>
       <div class="field">
         <div class="pills" id="interests" data-required data-max="3" data-other="interests-other">
           <span class="pill">Working with people</span>
@@ -564,8 +627,17 @@
           <span class="pill">Numbers &amp; analysis</span>
           <span class="pill">Creative work</span>
           <span class="pill">Technology</span>
-          <span class="pill">Teaching &amp; helping</span>
+          <span class="pill">Teaching &amp; supporting others</span>
           <span class="pill">Selling &amp; persuading</span>
+          <span class="pill">Writing &amp; communication</span>
+          <span class="pill">Research &amp; investigation</span>
+          <span class="pill">Problem solving</span>
+          <span class="pill">Building or making things</span>
+          <span class="pill">Managing projects</span>
+          <span class="pill">Leading people</span>
+          <span class="pill">Business &amp; strategy</span>
+          <span class="pill">Operations &amp; logistics</span>
+          <span class="pill">Hands-on practical work</span>
           <span class="pill">Other</span>
         </div>
         <div class="other-input" id="interests-other">
@@ -578,7 +650,7 @@
       <h3>What would you like to do next?</h3>
       <p class="step-sub">There's no wrong answer — "not sure" is exactly what we're here for.</p>
       <div class="field">
-        <div class="pills" id="goal" data-single data-required data-other="goal-other" data-advance>
+        <div class="pills" id="goal" data-single data-required data-other="goal-other">
           <span class="pill">Return to my previous field</span>
           <span class="pill">Try something new</span>
           <span class="pill">Any stable job, soon</span>
@@ -593,20 +665,25 @@
     </div>
 
     <div class="step" data-name="Your challenge">
-      <h3>What are your biggest challenges right now?</h3>
-      <p class="step-sub">Pick up to two — the ones that weigh on you most.</p>
+      <h3>What feels hardest about returning to work right now?</h3>
+      <p class="step-sub">Choose up to three.</p>
       <div class="field">
-        <div class="pills" id="challenge" data-required data-max="2" data-other="challenge-other">
-          <span class="pill">I don't know which job fits me.</span>
-          <span class="pill">I don't know what skills to learn.</span>
-          <span class="pill">My confidence is low.</span>
-          <span class="pill">My CV is outdated.</span>
-          <span class="pill">I don't get interviews.</span>
-          <span class="pill">I don't know where to look.</span>
-          <span class="pill">I don't have a network.</span>
-          <span class="pill">I'm not sure whether my old skills are still relevant.</span>
-          <span class="pill">I don't know how to explain my career break.</span>
-          <span class="pill">My language or qualifications may limit my options.</span>
+        <div class="pills" id="challenge" data-required data-max="3" data-other="challenge-other">
+          <span class="pill">Unsure which role suits me</span>
+          <span class="pill">Unsure what skills to build</span>
+          <span class="pill">Unsure how to use my past experience</span>
+          <span class="pill">Explaining my career break</span>
+          <span class="pill">Rebuilding my confidence</span>
+          <span class="pill">Updating my CV or LinkedIn</span>
+          <span class="pill">Getting interviews</span>
+          <span class="pill">Preparing for interviews</span>
+          <span class="pill">Finding the right jobs</span>
+          <span class="pill">Building a professional network</span>
+          <span class="pill">Lack of recent experience</span>
+          <span class="pill">Language barriers</span>
+          <span class="pill">Finding work that fits my life</span>
+          <span class="pill">Understanding today's job market</span>
+          <span class="pill">Knowing what salary to expect</span>
           <span class="pill">Other</span>
         </div>
         <div class="other-input" id="challenge-other">
@@ -617,9 +694,9 @@
 
     <div class="step" data-name="Your solution">
       <h3>How would you prefer to solve this?</h3>
-      <p class="step-sub">Pick up to two kinds of help that appeal to you most.</p>
+      <p class="step-sub">Pick up to three kinds of help that appeal to you most.</p>
       <div class="field">
-        <div class="pills" id="solution" data-required data-max="2" data-other="solution-other">
+        <div class="pills" id="solution" data-required data-max="3" data-other="solution-other">
           <span class="pill">A clear step-by-step plan I follow myself</span>
           <span class="pill">Personal guidance from a coach</span>
           <span class="pill">An online course to build skills</span>
@@ -634,21 +711,10 @@
       </div>
     </div>
 
-    <div class="step" data-name="Readiness">
-      <h3>What's realistic for you right now?</h3>
+    <div class="step" data-name="Timeline">
+      <h3>When would you ideally like to return to paid work?</h3>
       <p class="step-sub">There's no right answer — this keeps your roadmap practical.</p>
       <div class="field">
-        <span class="q-label">How much change are you realistically ready for?</span>
-        <div class="pills" id="change-readiness" data-single data-required>
-          <span class="pill">Use mostly what I already know</span>
-          <span class="pill">Refresh or learn a few skills</span>
-          <span class="pill">Take a short course or certification</span>
-          <span class="pill">Open to substantial retraining</span>
-          <span class="pill">I'm not sure</span>
-        </div>
-      </div>
-      <div class="field" style="margin-top:1.2rem;">
-        <span class="q-label">When would you ideally like to return to paid work?</span>
         <div class="pills" id="return-timeline" data-single data-required>
           <span class="pill">As soon as possible</span>
           <span class="pill">Within 1–3 months</span>
@@ -705,7 +771,7 @@
         <input type="email" id="email" autocomplete="email" placeholder="you@example.com" data-required>
       </div>
       <div class="field" style="margin-top:1rem;">
-        <label for="notes">Anything else you'd like us to know? <span class="opt" style="font-weight:400;color:var(--ink-faint);">(optional)</span></label>
+        <label for="notes">Anything else you'd like us to know? <span class="opt">(optional)</span></label>
         <textarea id="notes" rows="3" placeholder="Your situation, doubts, hopes — anything that helps us tailor your roadmap…"></textarea>
       </div>
       <label class="consent" for="consent">
@@ -793,11 +859,13 @@
   const FORM_ENDPOINT = "https://formspree.io/f/xrpzkvwj";
   // --------------------------------------------------------------------------
 
-  // The assessment stays hidden until the visitor clicks Start
+  // The assessment stays hidden until the visitor clicks Start;
+  // the explainer card makes way for the questions.
   const assessment = document.getElementById("assessment");
   document.querySelector(".cta-btn").addEventListener("click", e => {
     e.preventDefault();
     assessment.classList.add("open");
+    document.getElementById("why").style.display = "none";
     assessment.scrollIntoView({ behavior: "smooth", block: "start" });
     const firstInput = assessment.querySelector(".step.active input, .step.active select");
     if (firstInput) firstInput.focus({ preventScroll: true });
@@ -813,13 +881,28 @@
   let current = 0;
 
   // ---- pills ----
+  const otherLabel = group => group.dataset.otherLabel || "Other";
   const otherSelected = group =>
-    [...group.querySelectorAll(".pill.selected")].some(p => p.textContent === "Other");
+    [...group.querySelectorAll(".pill.selected")].some(p => p.textContent === otherLabel(group));
   const otherField = group =>
     group.dataset.other ? document.getElementById(group.dataset.other) : null;
   const otherText = group => {
     const f = otherField(group);
     return f ? f.querySelector("input").value.trim() : "";
+  };
+
+  // options that can never be combined (within the same set), and
+  // options that stand alone (deselect everything else when picked)
+  const EXCLUSIVE = {
+    "work-format": [
+      ["Full-time", "Part-time"],
+      ["Remote", "Hybrid", "On-site"],
+      ["Weekdays only", "Weekend work is okay"]
+    ]
+  };
+  const ALONE = {
+    "break-reason": ["Prefer not to say"],
+    "prev-work": ["I haven't worked before"]
   };
 
   document.querySelectorAll(".pills").forEach(group => {
@@ -832,8 +915,25 @@
         group.querySelectorAll(".pill").forEach(p => p.classList.remove("selected"));
         pill.classList.add("selected");
       } else {
-        if (!pill.classList.contains("selected") && max &&
-            group.querySelectorAll(".pill.selected").length >= max) return;
+        const isSelecting = !pill.classList.contains("selected");
+        if (isSelecting) {
+          // deselect logical opposites first, so picking one side replaces the other
+          (EXCLUSIVE[group.id] || []).forEach(set => {
+            if (set.includes(pill.textContent))
+              group.querySelectorAll(".pill.selected").forEach(p => {
+                if (set.includes(p.textContent)) p.classList.remove("selected");
+              });
+          });
+          const alone = ALONE[group.id] || [];
+          if (alone.includes(pill.textContent)) {
+            group.querySelectorAll(".pill.selected").forEach(p => p.classList.remove("selected"));
+          } else if (alone.length) {
+            group.querySelectorAll(".pill.selected").forEach(p => {
+              if (alone.includes(p.textContent)) p.classList.remove("selected");
+            });
+          }
+          if (max && group.querySelectorAll(".pill.selected").length >= max) return;
+        }
         pill.classList.toggle("selected");
       }
       const field = otherField(group);
@@ -863,27 +963,51 @@
     });
   });
 
-  // ---- languages: add extra language/level rows (up to 4) ----
+  // ---- education: "Other" reveals a describe-field ----
+  const eduSel = document.getElementById("education");
+  eduSel.addEventListener("change", () => {
+    document.getElementById("education-other").style.display =
+      eduSel.value === "Other" ? "block" : "none";
+  });
+
+  // ---- languages: dropdown + level rows, add/remove, up to 4 ----
   const langRows = document.getElementById("languages-rows");
   const addLang = document.getElementById("add-lang");
+  langRows.addEventListener("change", e => {
+    if (e.target.classList.contains("lang-select")) {
+      const custom = e.target.closest(".lang-row").querySelector(".lang-custom");
+      const isOther = e.target.value === "Other…";
+      custom.style.display = isOther ? "block" : "none";
+      if (isOther) custom.focus();
+    }
+  });
+  langRows.addEventListener("click", e => {
+    const btn = e.target.closest(".lang-remove");
+    if (!btn) return;
+    if (langRows.querySelectorAll(".lang-row").length <= 1) return;
+    btn.closest(".lang-row").remove();
+    addLang.style.display = "";
+  });
   addLang.addEventListener("click", () => {
-    const row = langRows.querySelector(".lang-row").cloneNode(true);
-    row.querySelectorAll("[data-required]").forEach(el => el.removeAttribute("data-required"));
-    const name = row.querySelector(".lang-name");
-    const level = row.querySelector(".lang-level");
-    name.value = ""; name.placeholder = "Another language";
-    level.selectedIndex = 0;
-    name.addEventListener("keydown", e => {
-      if (e.key === "Enter") { e.preventDefault(); btnNext.click(); }
-    });
+    const first = langRows.querySelector(".lang-row");
+    const row = first.cloneNode(true);
+    row.querySelector(".lang-select").selectedIndex = 0;
+    row.querySelector(".lang-level").selectedIndex = 0;
+    const custom = row.querySelector(".lang-custom");
+    custom.value = ""; custom.style.display = "none";
+    row.querySelector(".lang-remove").style.visibility = "visible";
     langRows.appendChild(row);
-    name.focus();
+    row.querySelector(".lang-select").focus();
     if (langRows.querySelectorAll(".lang-row").length >= 4) addLang.style.display = "none";
   });
 
   // ---- validation ----
   function validateStep(step) {
     let ok = true;
+    const mark = (el, bad) => {
+      el.style.outline = bad ? "2px solid #d98570" : "";
+      el.style.outlineOffset = bad ? "3px" : "";
+    };
     step.querySelectorAll("[data-required]").forEach(el => {
       let valid;
       if (el.classList.contains("pills")) {
@@ -898,18 +1022,36 @@
       } else {
         valid = el.value.trim() !== "";
       }
-      el.style.outline = valid ? "" : "2px solid #d98570";
-      el.style.outlineOffset = valid ? "" : "3px";
+      mark(el, !valid);
       if (!valid) ok = false;
     });
-    // extra language rows: a half-filled pair blocks the step
-    step.querySelectorAll(".lang-row").forEach(row => {
-      const name = row.querySelector(".lang-name");
-      const level = row.querySelector(".lang-level");
-      const half = (name.value.trim() !== "") !== (level.value !== "");
-      const mark = el => { el.style.outline = "2px solid #d98570"; el.style.outlineOffset = "3px"; };
-      if (half) { ok = false; mark(name.value.trim() ? level : name); }
-    });
+    // education "Other" needs a description
+    const edu = step.querySelector("#education");
+    if (edu && edu.value === "Other") {
+      const o = document.getElementById("education-other");
+      const valid = o.value.trim() !== "";
+      mark(o, !valid);
+      if (!valid) ok = false;
+    }
+    // languages: at least one complete row, no half-filled rows
+    if (step.querySelector("#languages-rows")) {
+      let complete = 0;
+      langRows.querySelectorAll(".lang-row").forEach(row => {
+        const sel = row.querySelector(".lang-select");
+        const custom = row.querySelector(".lang-custom");
+        const level = row.querySelector(".lang-level");
+        [sel, custom, level].forEach(el => mark(el, false));
+        const nm = sel.value === "Other…" ? custom.value.trim() : sel.value;
+        if (nm && level.value) { complete++; return; }
+        if (nm && !level.value) { ok = false; mark(level, true); }
+        else if (!nm && level.value) { ok = false; mark(sel.value === "Other…" ? custom : sel, true); }
+        else if (sel.value === "Other…" && !custom.value.trim()) { ok = false; mark(custom, true); }
+      });
+      if (complete === 0 && ok) {
+        ok = false;
+        mark(langRows.querySelector(".lang-select"), true);
+      }
+    }
     return ok;
   }
 
@@ -943,57 +1085,73 @@
 
   // ---- report logic (simple, transparent rules — no fake AI) ----
   // Each role is scored against the answers:
-  //   +3 per keyword found in previous job title / industry (strongest signal)
-  //   +2 per matching skill from the checklist
-  //   +1 per matching soft skill, +1 per matching interest
+  //   +3 per keyword found in the user's own text (strongest signal)
+  //   +2 per skill uncovered from previous work or the user's own words
+  //   +1 per matching strength trait, +1 per matching interest
+  //   +3 when the stated goal fits, +2 per fitting career-break activity
   const PATHS = {
-    "Customer Success":       { skills: ["Customer Support", "Sales", "Marketing"], soft: ["Customer relationships", "Communication"], interests: ["Working with people", "Teaching & helping"], keywords: ["customer", "support", "service", "client"], why: "builds on your people skills and support experience" },
-    "Project Coordinator":    { skills: ["Project Management", "Excel", "Event Planning"], soft: ["Organization", "Time management"], interests: ["Organizing & planning"], keywords: ["project", "coordinator", "planner"], why: "fits your coordination and organizational strengths" },
-    "Operations Specialist":  { skills: ["Excel", "Project Management", "Bookkeeping"], soft: ["Organization", "Problem solving"], interests: ["Organizing & planning", "Numbers & analysis"], keywords: ["operations", "logistics", "supply chain"], why: "matches your structured, detail-oriented profile" },
-    "Data Analyst":           { skills: ["Excel", "Python", "SQL"], soft: ["Problem solving"], interests: ["Numbers & analysis", "Technology"], keywords: ["analyst", "data", "research"], why: "builds on your analytical and technical skills" },
+    "Customer Success":       { skills: ["Customer Support", "Sales", "Marketing"], soft: ["Customer relationships", "Communication"], interests: ["Working with people", "Teaching & supporting others"], keywords: ["customer", "support", "service", "client"], why: "builds on your people skills and support experience" },
+    "Project Coordinator":    { skills: ["Project Management", "Excel", "Event Planning"], soft: ["Organization", "Time management"], interests: ["Organizing & planning", "Managing projects"], keywords: ["project", "coordinator", "planner"], why: "fits your coordination and organizational strengths" },
+    "Operations Specialist":  { skills: ["Excel", "Project Management", "Bookkeeping"], soft: ["Organization", "Problem solving"], interests: ["Organizing & planning", "Numbers & analysis", "Operations & logistics"], keywords: ["operations", "logistics", "supply chain"], why: "matches your structured, detail-oriented profile" },
+    "Data Analyst":           { skills: ["Excel", "Python", "SQL"], soft: ["Problem solving"], interests: ["Numbers & analysis", "Technology", "Research & investigation"], keywords: ["analyst", "data", "research"], why: "builds on your analytical and technical skills" },
     "Digital Marketing Specialist": { skills: ["Marketing", "Social Media", "Writing", "Design"], soft: ["Communication"], interests: ["Creative work", "Selling & persuading"], keywords: ["marketing", "brand", "campaign"], why: "uses your creative and communication skills" },
-    "Account Manager":        { skills: ["Sales", "Customer Support", "Marketing"], soft: ["Customer relationships", "Communication"], interests: ["Working with people", "Selling & persuading"], keywords: ["sales", "business development", "account manager"], why: "leverages your relationship-building experience" },
-    "Corporate Trainer / L&D": { skills: ["Teaching", "Writing"], soft: ["Communication", "Leadership"], interests: ["Teaching & helping", "Working with people"], keywords: ["trainer", "training", "education", "lecturer"], why: "puts your teaching and mentoring skills to work" },
+    "Account Manager":        { skills: ["Sales", "Customer Support", "Marketing"], soft: ["Customer relationships", "Communication"], interests: ["Working with people", "Selling & persuading", "Business & strategy"], keywords: ["sales", "business development", "account manager"], why: "leverages your relationship-building experience" },
+    "Corporate Trainer / L&D": { skills: ["Teaching", "Writing"], soft: ["Communication", "Leadership"], interests: ["Teaching & supporting others", "Working with people", "Leading people"], keywords: ["trainer", "training", "education", "lecturer"], why: "puts your teaching and mentoring skills to work" },
     "HR / Recruitment Coordinator": { skills: ["Recruiting / HR", "Customer Support"], soft: ["Communication", "Teamwork", "Customer relationships"], interests: ["Working with people"], keywords: ["hr", "human resources", "recruit", "talent"], why: "combines your people skills with coordination work" },
-    "Content / Communications Specialist": { skills: ["Writing", "Social Media", "Marketing"], soft: ["Communication"], interests: ["Creative work"], keywords: ["content", "communication", "editor", "copywriter", "journalist"], why: "builds on your writing and communication strengths" },
+    "Content / Communications Specialist": { skills: ["Writing", "Social Media", "Marketing"], soft: ["Communication"], interests: ["Creative work", "Writing & communication"], keywords: ["content", "communication", "editor", "copywriter", "journalist"], why: "builds on your writing and communication strengths" },
     "Executive / Virtual Assistant": { skills: ["Excel", "Bookkeeping", "Event Planning"], soft: ["Organization", "Time management", "Adaptability"], interests: ["Organizing & planning"], keywords: ["assistant", "secretary", "administrative"], why: "rewards your reliability and organizational talent, often with flexible hours" },
     "Office Manager":         { skills: ["Bookkeeping", "Excel", "Event Planning"], soft: ["Organization", "Leadership"], interests: ["Organizing & planning"], keywords: ["office manager", "administration", "facilities"], why: "puts you at the organized heart of a team" },
     "Bookkeeper / Finance Assistant": { skills: ["Bookkeeping", "Excel"], soft: ["Organization", "Problem solving"], interests: ["Numbers & analysis"], keywords: ["finance", "accounting", "accountant", "bookkeep", "payroll", "invoice", "bank", "insurance"], why: "builds on your precision and comfort with numbers" },
-    "Social Media Manager":   { skills: ["Social Media", "Marketing", "Design", "Writing"], soft: ["Communication", "Adaptability"], interests: ["Creative work", "Technology"], keywords: ["social media", "community manager", "influencer"], why: "turns your creativity and online fluency into a role" },
-    "UX / Visual Designer":   { skills: ["Design"], soft: ["Problem solving", "Communication"], interests: ["Creative work", "Technology"], keywords: ["design", "graphic", "ux", "ui", "creative"], why: "builds on your design skills and eye for detail" },
-    "Event Coordinator":      { skills: ["Event Planning", "Project Management", "Social Media"], soft: ["Organization", "Customer relationships"], interests: ["Organizing & planning", "Working with people"], keywords: ["event", "hospitality", "wedding", "catering", "restaurant", "chef", "cook", "hotel"], why: "combines your planning skills with working with people" },
-    "Teacher / Tutor":        { skills: ["Teaching"], soft: ["Communication", "Adaptability", "Leadership"], interests: ["Teaching & helping"], keywords: ["teacher", "tutor", "school", "childcare"], why: "uses your gift for explaining and encouraging others" },
-    "QA / Software Tester":   { skills: ["Python", "SQL", "Excel"], soft: ["Problem solving"], interests: ["Technology", "Numbers & analysis"], keywords: ["software", "developer", "engineer", "tester", "ict"], why: "is a realistic tech entry point for a structured, curious mind" },
-    "Care / Community Coordinator": { skills: ["Customer Support", "Teaching"], soft: ["Customer relationships", "Teamwork", "Communication"], interests: ["Teaching & helping", "Working with people"], keywords: ["nurse", "health", "community", "charity", "ngo", "welfare"], why: "turns your care experience into recognized, paid work" },
+    "Social Media Manager":   { skills: ["Social Media", "Marketing", "Design", "Writing"], soft: ["Communication", "Adaptability"], interests: ["Creative work", "Technology", "Writing & communication"], keywords: ["social media", "community manager", "influencer"], why: "turns your creativity and online fluency into a role" },
+    "UX / Visual Designer":   { skills: ["Design"], soft: ["Problem solving", "Communication"], interests: ["Creative work", "Technology", "Building or making things"], keywords: ["design", "graphic", "ux", "ui", "creative"], why: "builds on your design skills and eye for detail" },
+    "Event Coordinator":      { skills: ["Event Planning", "Project Management", "Social Media"], soft: ["Organization", "Customer relationships"], interests: ["Organizing & planning", "Working with people", "Hands-on practical work"], keywords: ["event", "hospitality", "wedding", "catering", "restaurant", "chef", "cook", "hotel"], why: "combines your planning skills with working with people" },
+    "Teacher / Tutor":        { skills: ["Teaching"], soft: ["Communication", "Adaptability", "Leadership"], interests: ["Teaching & supporting others"], keywords: ["teacher", "tutor", "school", "childcare"], why: "uses your gift for explaining and encouraging others" },
+    "QA / Software Tester":   { skills: ["Python", "SQL", "Excel"], soft: ["Problem solving"], interests: ["Technology", "Numbers & analysis", "Problem solving"], keywords: ["software", "developer", "engineer", "tester", "ict"], why: "is a realistic tech entry point for a structured, curious mind" },
+    "Care / Community Coordinator": { skills: ["Customer Support", "Teaching"], soft: ["Customer relationships", "Teamwork", "Communication"], interests: ["Teaching & supporting others", "Working with people"], keywords: ["nurse", "health", "community", "charity", "ngo", "welfare"], why: "turns your care experience into recognized, paid work" },
     "E-commerce / Webshop Coordinator": { skills: ["Marketing", "Social Media", "Excel", "Customer Support"], soft: ["Organization", "Adaptability"], interests: ["Technology", "Selling & persuading"], keywords: ["e-commerce", "ecommerce", "webshop", "retail", "store", "shop"], why: "combines organization with online selling in a flexible, growing field" },
-    "Translator / Language Specialist": { skills: ["Writing", "Teaching"], soft: ["Communication", "Adaptability"], interests: ["Creative work"], keywords: ["translator", "translation", "linguist", "language"], why: "puts your languages to professional use, often freelance-friendly" },
+    "Translator / Language Specialist": { skills: ["Writing", "Teaching"], soft: ["Communication", "Adaptability"], interests: ["Creative work", "Writing & communication"], keywords: ["translator", "translation", "linguist", "language"], why: "puts your languages to professional use, often freelance-friendly" },
     "Legal / Compliance Assistant": { skills: ["Excel", "Bookkeeping", "Writing"], soft: ["Organization", "Problem solving"], interests: ["Organizing & planning"], keywords: ["legal", "paralegal", "lawyer", "law firm", "compliance", "notary"], why: "values your precision and process discipline" },
-    "Healthcare / Practice Assistant": { skills: ["Customer Support", "Excel"], soft: ["Customer relationships", "Teamwork", "Organization"], interests: ["Teaching & helping", "Working with people"], keywords: ["medical", "clinic", "pharmac", "dental", "doctor", "physio", "hospital"], why: "keeps you close to healthcare with regular, family-friendly hours" },
-    "Supply Chain / Logistics Coordinator": { skills: ["Excel", "Project Management"], soft: ["Organization", "Problem solving"], interests: ["Organizing & planning", "Numbers & analysis"], keywords: ["warehouse", "transport", "production", "manufacturing", "logistics"], why: "rewards your practical, keep-things-moving mindset" },
-    "Research / Policy Assistant": { skills: ["Writing", "Excel", "SQL"], soft: ["Problem solving", "Organization"], interests: ["Numbers & analysis"], keywords: ["policy", "government", "municipality", "university", "science"], why: "suits your careful, analytical way of working" },
-    "Product Owner / Business Analyst": { skills: ["Project Management", "SQL", "Excel"], soft: ["Communication", "Problem solving"], interests: ["Technology", "Organizing & planning"], keywords: ["product owner", "business analyst", "scrum", "consultant"], why: "bridges business and technology — a strong step up from coordination or analysis" },
-    "Freelance / Your Own Business": { skills: ["Marketing", "Social Media", "Bookkeeping", "Sales"], soft: ["Adaptability", "Leadership"], interests: ["Selling & persuading", "Creative work"], keywords: ["founder", "owner", "entrepreneur", "freelanc", "self-employed"], goals: ["Start my own business"], activities: ["Freelance work", "Personal projects"], why: "builds on your independence — many returners restart on their own terms" }
+    "Healthcare / Practice Assistant": { skills: ["Customer Support", "Excel"], soft: ["Customer relationships", "Teamwork", "Organization"], interests: ["Teaching & supporting others", "Working with people"], keywords: ["medical", "clinic", "pharmac", "dental", "doctor", "physio", "hospital"], why: "keeps you close to healthcare with regular, family-friendly hours" },
+    "Supply Chain / Logistics Coordinator": { skills: ["Excel", "Project Management"], soft: ["Organization", "Problem solving"], interests: ["Organizing & planning", "Numbers & analysis", "Operations & logistics", "Hands-on practical work"], keywords: ["warehouse", "transport", "production", "manufacturing", "logistics"], why: "rewards your practical, keep-things-moving mindset" },
+    "Research / Policy Assistant": { skills: ["Writing", "Excel", "SQL"], soft: ["Problem solving", "Organization"], interests: ["Numbers & analysis", "Research & investigation"], keywords: ["policy", "government", "municipality", "university", "science"], why: "suits your careful, analytical way of working" },
+    "Product Owner / Business Analyst": { skills: ["Project Management", "SQL", "Excel"], soft: ["Communication", "Problem solving"], interests: ["Technology", "Organizing & planning", "Business & strategy", "Managing projects"], keywords: ["product owner", "business analyst", "scrum", "consultant"], why: "bridges business and technology — a strong step up from coordination or analysis" },
+    "Freelance / Your Own Business": { skills: ["Marketing", "Social Media", "Bookkeeping", "Sales"], soft: ["Adaptability", "Leadership"], interests: ["Selling & persuading", "Creative work", "Business & strategy"], keywords: ["founder", "owner", "entrepreneur", "freelanc", "self-employed"], goals: ["Start my own business"], activities: ["Freelanced or worked part-time", "Worked on a personal project"], why: "builds on your independence — many returners restart on their own terms" }
   };
 
-  // selected pill labels; "Other" becomes the user's own description when given
+  // selected pill labels; the write-in option becomes the user's own words
   const selected = sel => {
     const group = document.querySelector(sel);
+    const ol = group.dataset.otherLabel || "Other";
     return [...group.querySelectorAll(".pill.selected")].map(p =>
-      p.textContent === "Other" && otherText(group) ? otherText(group) : p.textContent);
+      p.textContent === ol && otherText(group) ? otherText(group) : p.textContent);
   };
 
-  // behavioral strengths → the trait tags used in the PATHS catalog
+  // strengths → the trait tags used in the PATHS catalog
   const BEHAVIOR_TRAITS = {
-    "Organizing things": ["Organization", "Time management"],
-    "Explaining things clearly": ["Communication"],
-    "Solving unexpected problems": ["Problem solving", "Adaptability"],
-    "Keeping track of details": ["Organization"],
-    "Helping or supporting people": ["Customer relationships", "Teamwork"],
-    "Making decisions": ["Leadership"],
-    "Working with numbers or information": ["Problem solving"],
-    "Coordinating people": ["Leadership", "Teamwork"],
-    "Creating or improving things": ["Adaptability"],
-    "Learning new things quickly": ["Adaptability"]
+    "Communicating clearly": ["Communication"],
+    "Managing time & priorities": ["Time management", "Organization"],
+    "Solving problems": ["Problem solving"],
+    "Supporting others": ["Teamwork", "Customer relationships"],
+    "Leading people": ["Leadership"],
+    "Building relationships": ["Customer relationships", "Communication"],
+    "Working with customers": ["Customer relationships"],
+    "Getting things done": ["Organization"],
+    "Handling change": ["Adaptability"],
+    "Learning quickly": ["Adaptability"]
+  };
+
+  // what she mainly did at work → catalog skills and traits
+  const WORK_HINTS = {
+    "Worked with customers or clients": { skills: ["Customer Support"], soft: ["Customer relationships"] },
+    "Sold products or negotiated contracts": { skills: ["Sales"], soft: [] },
+    "Managed projects or processes": { skills: ["Project Management"], soft: ["Organization"] },
+    "Led or supported a team": { skills: [], soft: ["Leadership", "Teamwork"] },
+    "Worked with data or numbers": { skills: ["Excel"], soft: ["Problem solving"] },
+    "Organized operations or administration": { skills: ["Excel", "Bookkeeping"], soft: ["Organization"] },
+    "Used technical tools or systems": { skills: ["SQL"], soft: [] },
+    "Created content, products, or designs": { skills: ["Design", "Writing"], soft: [] },
+    "Taught, trained, or advised others": { skills: ["Teaching"], soft: ["Communication"] },
+    "Conducted research or analysis": { skills: ["SQL", "Writing"], soft: ["Problem solving"] }
   };
 
   // skill names from the PATHS catalog, detected in the user's own text
@@ -1015,22 +1173,26 @@
     const priorities = selected("#priorities");
     const interests = selected("#interests");
     const goal = selected("#goal")[0] || "";
+    const prevWork = selected("#prev-work");
+    const activities = selected("#break-activities");
 
     // what she says people rely on her for, in her own words
     const strengths = [...behaviors.slice(0, 4)];
-    // map behaviors to catalog traits for scoring
-    const soft = [...new Set(behaviors.flatMap(b => BEHAVIOR_TRAITS[b] || []))];
-    // uncover catalog skills from what she actually wrote
-    const ownText = ["skills-text", "role-tasks", "break-details"]
+    // map strengths + work activities to catalog traits for scoring
+    const soft = [...new Set([
+      ...behaviors.flatMap(b => BEHAVIOR_TRAITS[b] || []),
+      ...prevWork.flatMap(w => (WORK_HINTS[w] || {}).soft || [])
+    ])];
+    // uncover catalog skills from what she did and what she wrote
+    const ownText = ["skills-text", "prev-work-details", "break-details"]
       .map(id => document.getElementById(id).value).join(" ").toLowerCase();
-    const skills = Object.keys(SKILL_HINTS)
-      .filter(name => SKILL_HINTS[name].some(h => ownText.includes(h)));
+    const skills = [...new Set([
+      ...Object.keys(SKILL_HINTS).filter(name => SKILL_HINTS[name].some(h => ownText.includes(h))),
+      ...prevWork.flatMap(w => (WORK_HINTS[w] || {}).skills || [])
+    ])];
 
-    const background = (document.getElementById("prev-title").value + " " +
-                        document.getElementById("industry").value).toLowerCase();
-    const activities = selected("#break-activities");
     const scored = Object.entries(PATHS).map(([name, def]) => {
-      const kw = def.keywords.filter(k => background.includes(k)).length;
+      const kw = def.keywords.filter(k => ownText.includes(k)).length;
       const s = kw * 3 +
                 def.skills.filter(x => skills.includes(x)).length * 2 +
                 def.soft.filter(x => soft.includes(x)).length +
@@ -1039,6 +1201,12 @@
                 (def.activities ? def.activities.filter(a => activities.includes(a)).length * 2 : 0);
       return { name, why: def.why, score: s, fromBackground: kw > 0 };
     }).filter(p => p.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
+
+    // her stated goal of independence always earns the entrepreneurial path a place
+    if (goal === "Start my own business" && !scored.some(p => p.name === "Freelance / Your Own Business")) {
+      scored.unshift({ name: "Freelance / Your Own Business", why: PATHS["Freelance / Your Own Business"].why, score: 0, fromBackground: false });
+      if (scored.length > 3) scored.length = 3;
+    }
 
     const challenges = selected("#challenge");
 
@@ -1049,16 +1217,21 @@
       blockers.unshift("Unclear which direction to take");
     // the challenges they named themselves always lead the list
     const CHALLENGE_BLOCKERS = {
-      "I don't know which job fits me.": "Unclear which direction to take",
-      "I don't know what skills to learn.": "Unsure which skills to update",
-      "My confidence is low.": "Lack of confidence when applying",
-      "My CV is outdated.": "An outdated CV",
-      "I don't get interviews.": "Not getting interviews",
-      "I don't know where to look.": "Not knowing where to look for jobs",
-      "I don't have a network.": "A limited professional network",
-      "I'm not sure whether my old skills are still relevant.": "Doubts about whether your skills are still relevant",
-      "I don't know how to explain my career break.": "Explaining the career break with confidence",
-      "My language or qualifications may limit my options.": "Possible language or qualification barriers"
+      "Unsure which role suits me": "Unclear which direction to take",
+      "Unsure what skills to build": "Unsure which skills to update",
+      "Unsure how to use my past experience": "Uncertainty how to use your past experience",
+      "Explaining my career break": "Explaining the career break with confidence",
+      "Rebuilding my confidence": "Rebuilding your confidence",
+      "Updating my CV or LinkedIn": "An outdated CV or LinkedIn profile",
+      "Getting interviews": "Not getting interviews",
+      "Preparing for interviews": "Interview preparation",
+      "Finding the right jobs": "Finding the right jobs to apply for",
+      "Building a professional network": "A limited professional network",
+      "Lack of recent experience": "A gap in recent experience",
+      "Language barriers": "Language barriers",
+      "Finding work that fits my life": "Finding work that fits your life",
+      "Understanding today's job market": "Understanding today's job market",
+      "Knowing what salary to expect": "Uncertainty about salary expectations"
     };
     blockers.unshift(...challenges.map(c => CHALLENGE_BLOCKERS[c] || c));
     blockers = [...new Set(blockers)];
@@ -1071,16 +1244,21 @@
     return {
       country: val("country"), current_location: val("location"),
       years_of_experience: val("experience"), career_break_duration: val("break-duration"),
-      break_reason: selected("#break-reason").join(""),
+      break_reason: selected("#break-reason").join(", "),
+      previous_work: selected("#prev-work").join(", "),
+      previous_work_details: val("prev-work-details"),
       career_break_activities: selected("#break-activities").join(", "),
       career_break_details: val("break-details"),
       additional_notes: val("notes"),
-      previous_job_title: val("prev-title"), industry: val("industry"),
-      previous_role_tasks: val("role-tasks"),
-      highest_education: val("education"),
-      languages: [...document.querySelectorAll(".lang-row")]
-        .map(r => ({ n: r.querySelector(".lang-name").value.trim(), l: r.querySelector(".lang-level").value }))
-        .filter(x => x.n).map(x => x.l ? `${x.n} (${x.l})` : x.n).join(", "),
+      highest_education: val("education") === "Other"
+        ? "Other: " + val("education-other")
+        : val("education"),
+      languages: [...document.querySelectorAll(".lang-row")].map(r => {
+        const sel = r.querySelector(".lang-select").value;
+        const nm = sel === "Other…" ? r.querySelector(".lang-custom").value.trim() : sel;
+        const lv = r.querySelector(".lang-level").value;
+        return { nm, lv };
+      }).filter(x => x.nm).map(x => x.lv ? `${x.nm} (${x.lv})` : x.nm).join(", "),
       relied_on_for: selected("#soft-skills").join(", "),
       work_format: selected("#work-format").join(", "),
       priorities: selected("#priorities").join(", "),
@@ -1088,7 +1266,6 @@
       goal: selected("#goal").join(""),
       biggest_challenge: selected("#challenge").join(", "),
       preferred_solution: selected("#solution").join(", "),
-      change_readiness: selected("#change-readiness").join(""),
       return_timeline: selected("#return-timeline").join(""),
       confidence: [...document.querySelectorAll(".scale-q")]
         .map(q => `${q.querySelector(".statement").textContent} → ${q.querySelector(".scale").dataset.value}/5`).join(" | "),
