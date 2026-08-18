@@ -44,9 +44,12 @@ Consent checkbox (unticked by default), on-page privacy notice (UnityWerk pilot;
 
 Operator duties: fill roadmaps within 24h, delete submissions within 30 days, no mailing beyond the roadmap, honor access/deletion requests.
 
-## Background photo (optional)
+## Photos (optional)
 
-The page is wired for a real photographic backdrop: add an image file named **`background.jpg`** to the repository root (next to `index.html`) and it appears behind a soft white veil across the whole page. Without the file, a gentle textured gradient shows instead — nothing breaks.
+Two image slots are wired in — drop the files next to `index.html` and they appear automatically; without them, graceful fallbacks show instead:
+
+- **`story.jpg`** — a real photo shown as a circular portrait at the top of the story card (a warm photo of a woman works best, roughly square, ~600×600px). Falls back to the built-in illustration.
+- **`background.jpg`** — a photographic backdrop behind a soft white veil across the whole page. Falls back to the textured gradient.
 
 Recommended: a calm, light photo (a bright workspace, soft morning light, plants) around 1600–2000px wide, compressed to under ~400KB (e.g. via squoosh.app) so the page stays fast. Free sources with safe licenses: unsplash.com and pexels.com.
 
