@@ -7,16 +7,16 @@
 <meta name="description" content="Ready to return to work, but not sure where to start? Take the 5-minute Career Clarity Assessment and receive a personalized career roadmap.">
 <style>
   :root {
-    --ink: #263430;
-    --ink-soft: #55665f;
-    --ink-faint: #8a988f;
-    --paper: #f7faf7;
+    --ink: #3a2f2a;
+    --ink-soft: #6e6057;
+    --ink-faint: #a4948a;
+    --paper: #fdf9f2;
     --card: #ffffff;
-    --accent: #3f7d6a;
-    --accent-dark: #2f6354;
-    --accent-soft: #e6f1ea;
-    --gold: #c9a26b;
-    --line: #dfe8e1;
+    --accent: #e8734a;
+    --accent-dark: #cf5c35;
+    --accent-soft: #fcebe3;
+    --gold: #f0b64e;
+    --line: #f2e3d8;
     --radius: 20px;
     --serif: Georgia, "Times New Roman", serif;
     font-size: 16px;
@@ -25,8 +25,8 @@
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background:
-      radial-gradient(60rem 30rem at 85% -5%, #e3f0e8 0%, transparent 60%),
-      radial-gradient(50rem 26rem at -10% 30%, #f4eedd 0%, transparent 55%),
+      radial-gradient(60rem 30rem at 85% -5%, #fde5d2 0%, transparent 60%),
+      radial-gradient(50rem 26rem at -10% 30%, #fcf3d9 0%, transparent 55%),
       var(--paper);
     background-attachment: fixed;
     color: var(--ink);
@@ -41,7 +41,7 @@
     content: "";
     position: fixed; inset: 0; z-index: -2; pointer-events: none;
     background:
-      linear-gradient(rgba(247, 250, 247, 0.88), rgba(250, 252, 250, 0.93)),
+      linear-gradient(rgba(253, 249, 242, 0.88), rgba(254, 251, 246, 0.93)),
       url("background.jpg") center / cover no-repeat;
   }
   /* fine grain so the ground feels like paper, not a flat fill */
@@ -100,7 +100,7 @@
     padding: 1rem 2.8rem;
     cursor: pointer;
     text-decoration: none;
-    box-shadow: 0 10px 28px rgba(63, 125, 106, 0.28);
+    box-shadow: 0 10px 28px rgba(232, 115, 74, 0.3);
     transition: background 0.15s ease, transform 0.15s ease;
   }
   .cta-btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
@@ -124,12 +124,12 @@
   .why-card {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(165deg, #ffffff 0%, #f4faf6 45%, #ebf4ee 100%);
-    border: 1px solid #dbe9df;
+    background: linear-gradient(165deg, #ffffff 0%, #fff6ec 45%, #fdecdc 100%);
+    border: 1px solid #f6dfca;
     border-radius: var(--radius);
     padding: 2.2rem 2rem;
     text-align: center;
-    box-shadow: 0 14px 40px rgba(47, 99, 84, 0.12);
+    box-shadow: 0 14px 40px rgba(207, 92, 53, 0.14);
   }
   .why-card::before {
     content: "✿"; position: absolute; top: -16px; left: -4px;
@@ -140,6 +140,15 @@
     font-size: 6.5rem; color: var(--gold); opacity: 0.12; pointer-events: none;
   }
   .why-art { width: 120px; height: 120px; display: block; margin: 0 auto 1.2rem; }
+  .why-photo {
+    width: 136px; height: 136px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 1.2rem;
+    border: 4px solid #fff;
+    box-shadow: 0 8px 24px rgba(207, 92, 53, 0.25);
+  }
   .why-card h2 {
     font-family: var(--serif);
     font-size: 1.45rem;
@@ -169,7 +178,7 @@
     border: 1px solid var(--line);
     border-radius: var(--radius);
     padding: 2.2rem 2rem 2rem;
-    box-shadow: 0 16px 48px rgba(38, 52, 48, 0.08);
+    box-shadow: 0 16px 48px rgba(120, 75, 45, 0.09);
   }
   .progress { margin-bottom: 2.2rem; }
   .progress-label {
@@ -364,7 +373,7 @@
     border: 1px solid var(--line);
     border-radius: var(--radius);
     padding: 2.5rem 2.1rem;
-    box-shadow: 0 16px 48px rgba(38, 52, 48, 0.08);
+    box-shadow: 0 16px 48px rgba(120, 75, 45, 0.09);
   }
   .report-card h2 {
     font-family: var(--serif);
@@ -423,37 +432,40 @@
 
 <section class="wrap" id="why">
   <div class="why-card">
+    <img class="why-photo" src="story.jpg" alt="A woman starting her next chapter"
+         onload="document.querySelector('.why-art').style.display='none'"
+         onerror="this.remove()">
     <svg class="why-art" viewBox="0 0 200 200" role="img" aria-label="A woman ready for her next chapter">
       <defs>
         <linearGradient id="whyBg" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stop-color="#e7f2ec"/>
-          <stop offset="1" stop-color="#d2e6db"/>
+          <stop offset="0" stop-color="#fde7d4"/>
+          <stop offset="1" stop-color="#fbd3b4"/>
         </linearGradient>
         <clipPath id="whyClip"><circle cx="100" cy="100" r="94"/></clipPath>
       </defs>
       <circle cx="100" cy="100" r="94" fill="url(#whyBg)"/>
-      <circle cx="38" cy="58" r="4" fill="#c9a26b" opacity="0.55"/>
-      <circle cx="163" cy="118" r="3.5" fill="#3f7d6a" opacity="0.35"/>
-      <circle cx="52" cy="140" r="3" fill="#3f7d6a" opacity="0.3"/>
-      <circle cx="150" cy="42" r="3" fill="#c9a26b" opacity="0.5"/>
+      <circle cx="38" cy="58" r="4" fill="#f0b64e" opacity="0.55"/>
+      <circle cx="163" cy="118" r="3.5" fill="#e8734a" opacity="0.4"/>
+      <circle cx="52" cy="140" r="3" fill="#e8734a" opacity="0.32"/>
+      <circle cx="150" cy="42" r="3" fill="#f0b64e" opacity="0.5"/>
       <g clip-path="url(#whyClip)">
-        <circle cx="100" cy="80" r="40" fill="#2f6354"/>
-        <rect x="90" y="106" width="20" height="34" rx="9" fill="#3f7d6a"/>
-        <path d="M32 200 C40 154 68 136 100 136 C132 136 160 154 168 200 Z" fill="#3f7d6a"/>
-        <path d="M76 148 Q100 168 124 148 L124 200 L76 200 Z" fill="#2f6354"/>
-        <circle cx="100" cy="92" r="32" fill="#6fa28d"/>
-        <circle cx="133" cy="56" r="13" fill="#2f6354"/>
-        <circle cx="128" cy="108" r="3" fill="#c9a26b"/>
+        <circle cx="100" cy="80" r="40" fill="#8c4a2e"/>
+        <rect x="90" y="106" width="20" height="34" rx="9" fill="#e8734a"/>
+        <path d="M32 200 C40 154 68 136 100 136 C132 136 160 154 168 200 Z" fill="#e8734a"/>
+        <path d="M76 148 Q100 168 124 148 L124 200 L76 200 Z" fill="#cf5c35"/>
+        <circle cx="100" cy="92" r="32" fill="#f2a984"/>
+        <circle cx="133" cy="56" r="13" fill="#8c4a2e"/>
+        <circle cx="128" cy="108" r="3" fill="#f0b64e"/>
       </g>
       <g>
-        <circle cx="133" cy="46" r="4.5" fill="#c9a26b"/>
-        <circle cx="142" cy="53" r="4.5" fill="#c9a26b"/>
-        <circle cx="139" cy="63" r="4.5" fill="#c9a26b"/>
-        <circle cx="127" cy="63" r="4.5" fill="#c9a26b"/>
-        <circle cx="124" cy="53" r="4.5" fill="#c9a26b"/>
-        <circle cx="133" cy="56" r="3.5" fill="#f0f7f2"/>
+        <circle cx="133" cy="46" r="4.5" fill="#f0b64e"/>
+        <circle cx="142" cy="53" r="4.5" fill="#f0b64e"/>
+        <circle cx="139" cy="63" r="4.5" fill="#f0b64e"/>
+        <circle cx="127" cy="63" r="4.5" fill="#f0b64e"/>
+        <circle cx="124" cy="53" r="4.5" fill="#f0b64e"/>
+        <circle cx="133" cy="56" r="3.5" fill="#fff3e2"/>
       </g>
-      <circle cx="100" cy="100" r="94" fill="none" stroke="#c9a26b" stroke-width="2" stroke-dasharray="1 8" stroke-linecap="round" opacity="0.9"/>
+      <circle cx="100" cy="100" r="94" fill="none" stroke="#f0b64e" stroke-width="2" stroke-dasharray="1 8" stroke-linecap="round" opacity="0.9"/>
     </svg>
     <h2>Your story isn't a gap ✿</h2>
     <p>Maybe you've been away from work for two years — or ten. Somewhere between caring for others and holding everything together, a quiet question crept in: <em>"Who would hire me now?"</em></p>
