@@ -437,17 +437,17 @@
       <p class="step-sub">Pick everything that applies.</p>
       <div class="field">
         <div class="pills" id="prev-work" data-required data-other="prev-work-other">
-          <span class="pill">Worked with customers or clients</span>
-          <span class="pill">Sold products or negotiated contracts</span>
-          <span class="pill">Managed projects or processes</span>
-          <span class="pill">Led or supported a team</span>
-          <span class="pill">Worked with data or numbers</span>
-          <span class="pill">Organized operations or administration</span>
-          <span class="pill">Used technical tools or systems</span>
-          <span class="pill">Created content, products, or designs</span>
-          <span class="pill">Taught, trained, or advised others</span>
-          <span class="pill">Conducted research or analysis</span>
-          <span class="pill">I haven't worked before</span>
+          <span class="pill">Customer service</span>
+          <span class="pill">Sales</span>
+          <span class="pill">Project management</span>
+          <span class="pill">Team leadership</span>
+          <span class="pill">Data &amp; analysis</span>
+          <span class="pill">Operations &amp; admin</span>
+          <span class="pill">Technical work</span>
+          <span class="pill">Content &amp; design</span>
+          <span class="pill">Teaching &amp; advising</span>
+          <span class="pill">Research</span>
+          <span class="pill">Never worked before</span>
           <span class="pill">Other</span>
         </div>
         <div class="other-input" id="prev-work-other">
@@ -903,7 +903,7 @@
   };
   const ALONE = {
     "break-reason": ["Prefer not to say"],
-    "prev-work": ["I haven't worked before"]
+    "prev-work": ["Never worked before"]
   };
 
   document.querySelectorAll(".pills").forEach(group => {
@@ -1143,16 +1143,16 @@
 
   // what she mainly did at work → catalog skills and traits
   const WORK_HINTS = {
-    "Worked with customers or clients": { skills: ["Customer Support"], soft: ["Customer relationships"] },
-    "Sold products or negotiated contracts": { skills: ["Sales"], soft: [] },
-    "Managed projects or processes": { skills: ["Project Management"], soft: ["Organization"] },
-    "Led or supported a team": { skills: [], soft: ["Leadership", "Teamwork"] },
-    "Worked with data or numbers": { skills: ["Excel"], soft: ["Problem solving"] },
-    "Organized operations or administration": { skills: ["Excel", "Bookkeeping"], soft: ["Organization"] },
-    "Used technical tools or systems": { skills: ["SQL"], soft: [] },
-    "Created content, products, or designs": { skills: ["Design", "Writing"], soft: [] },
-    "Taught, trained, or advised others": { skills: ["Teaching"], soft: ["Communication"] },
-    "Conducted research or analysis": { skills: ["SQL", "Writing"], soft: ["Problem solving"] }
+    "Customer service": { skills: ["Customer Support"], soft: ["Customer relationships"] },
+    "Sales": { skills: ["Sales"], soft: [] },
+    "Project management": { skills: ["Project Management"], soft: ["Organization"] },
+    "Team leadership": { skills: [], soft: ["Leadership", "Teamwork"] },
+    "Data & analysis": { skills: ["Excel"], soft: ["Problem solving"] },
+    "Operations & admin": { skills: ["Excel", "Bookkeeping"], soft: ["Organization"] },
+    "Technical work": { skills: ["SQL"], soft: [] },
+    "Content & design": { skills: ["Design", "Writing"], soft: [] },
+    "Teaching & advising": { skills: ["Teaching"], soft: ["Communication"] },
+    "Research": { skills: ["SQL", "Writing"], soft: ["Problem solving"] }
   };
 
   // skill names from the PATHS catalog, detected in the user's own text
