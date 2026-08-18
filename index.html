@@ -103,19 +103,32 @@
     .promise span { margin: 0 0.12rem; font-size: 0.85em; }
   }
 
-  /* ---------- Why this is different ---------- */
+  /* ---------- The story ---------- */
   #why { padding: 0 0 1.5rem; }
   .why-card {
-    background: var(--card);
-    border: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(165deg, #ffffff 0%, #fdf1f6 45%, #f8e7ef 100%);
+    border: 1px solid #f0d3e0;
     border-radius: var(--radius);
-    padding: 1.9rem 2rem;
+    padding: 2.2rem 2rem;
     text-align: center;
+    box-shadow: 0 14px 40px rgba(163, 77, 109, 0.1);
   }
+  .why-card::before {
+    content: "✿"; position: absolute; top: -16px; left: -4px;
+    font-size: 5.5rem; color: var(--accent); opacity: 0.07; pointer-events: none;
+  }
+  .why-card::after {
+    content: "✿"; position: absolute; bottom: -26px; right: -8px;
+    font-size: 6.5rem; color: var(--gold); opacity: 0.12; pointer-events: none;
+  }
+  .why-art { width: 120px; height: 120px; display: block; margin: 0 auto 1.2rem; }
   .why-card h2 {
     font-family: var(--serif);
-    font-size: 1.35rem;
+    font-size: 1.45rem;
     font-weight: 500;
+    color: var(--accent-dark);
     margin-bottom: 0.9rem;
   }
   .why-card p {
@@ -126,8 +139,10 @@
     text-align: left;
   }
   .why-card p + p { margin-top: 0.8rem; }
-  .why-card p:last-child { text-align: center; margin-top: 1.1rem; color: var(--ink); }
+  .why-card .story-close { text-align: center; margin-top: 1.2rem; color: var(--accent-dark); }
   .why-card em { font-style: italic; color: var(--accent); }
+  .why-card .cta-btn { margin-top: 1.4rem; }
+  .why-card .cta-note { text-align: center; font-size: 0.85rem; color: var(--ink-faint); margin-top: 0.8rem; }
 
   /* ---------- Assessment ---------- */
   section { padding: 1rem 0 3rem; }
@@ -386,19 +401,51 @@
   <span class="eyebrow">For women returning to work after a career break</span>
   <h1>Ready to return to work,<br><em>but unsure where to start?</em></h1>
   <p class="sub">Uncover the skills you may be overlooking, explore realistic career directions, and get practical next steps back to work — based on what you've actually done.</p>
-  <a class="cta-btn" href="#assessment">Discover My Next Step</a>
-  <p class="cta-note">5 minutes · One question at a time · Free</p>
 </header>
 
 <p class="promise wrap">Skills you may be overlooking <span>✿</span> Realistic career directions <span>✿</span> Practical next steps</p>
 
 <section class="wrap" id="why">
   <div class="why-card">
+    <svg class="why-art" viewBox="0 0 200 200" role="img" aria-label="A woman ready for her next chapter">
+      <defs>
+        <linearGradient id="whyBg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="#fbe4ee"/>
+          <stop offset="1" stop-color="#f3d0e0"/>
+        </linearGradient>
+        <clipPath id="whyClip"><circle cx="100" cy="100" r="94"/></clipPath>
+      </defs>
+      <circle cx="100" cy="100" r="94" fill="url(#whyBg)"/>
+      <circle cx="38" cy="58" r="4" fill="#c9a26b" opacity="0.55"/>
+      <circle cx="163" cy="118" r="3.5" fill="#a34d6d" opacity="0.35"/>
+      <circle cx="52" cy="140" r="3" fill="#a34d6d" opacity="0.3"/>
+      <circle cx="150" cy="42" r="3" fill="#c9a26b" opacity="0.5"/>
+      <g clip-path="url(#whyClip)">
+        <circle cx="100" cy="80" r="40" fill="#8a3d5b"/>
+        <rect x="90" y="106" width="20" height="34" rx="9" fill="#a34d6d"/>
+        <path d="M32 200 C40 154 68 136 100 136 C132 136 160 154 168 200 Z" fill="#a34d6d"/>
+        <path d="M76 148 Q100 168 124 148 L124 200 L76 200 Z" fill="#8a3d5b"/>
+        <circle cx="100" cy="92" r="32" fill="#b25a78"/>
+        <circle cx="133" cy="56" r="13" fill="#8a3d5b"/>
+        <circle cx="128" cy="108" r="3" fill="#c9a26b"/>
+      </g>
+      <g>
+        <circle cx="133" cy="46" r="4.5" fill="#c9a26b"/>
+        <circle cx="142" cy="53" r="4.5" fill="#c9a26b"/>
+        <circle cx="139" cy="63" r="4.5" fill="#c9a26b"/>
+        <circle cx="127" cy="63" r="4.5" fill="#c9a26b"/>
+        <circle cx="124" cy="53" r="4.5" fill="#c9a26b"/>
+        <circle cx="133" cy="56" r="3.5" fill="#f7e8ee"/>
+      </g>
+      <circle cx="100" cy="100" r="94" fill="none" stroke="#c9a26b" stroke-width="2" stroke-dasharray="1 8" stroke-linecap="round" opacity="0.9"/>
+    </svg>
     <h2>Your story isn't a gap ✿</h2>
     <p>Maybe you've been away from work for two years — or ten. Somewhere between caring for others and holding everything together, a quiet question crept in: <em>"Who would hire me now?"</em></p>
     <p>Here's what we've learned from women who've stood exactly where you stand: what's missing is almost never ability. It's that years of real skills — organizing, supporting, solving, deciding — have never been written down in one place.</p>
     <p>That's what these questions are for. This is not a personality quiz, and there are no trick questions. Each answer adds a piece of your picture: what you did before, what you carried through your break, what you want now. At the end you'll see your strengths and realistic directions right away — and within 24 hours, we'll send your personal roadmap back to work.</p>
-    <p><strong>Five minutes. One question at a time. Let's put your story into words.</strong></p>
+    <p class="story-close"><strong>Five minutes. One question at a time. Let's put your story into words.</strong></p>
+    <a class="cta-btn" href="#assessment">Discover My Next Step</a>
+    <p class="cta-note">5 minutes · One question at a time · Free</p>
   </div>
 </section>
 
