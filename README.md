@@ -40,7 +40,7 @@ Submissions post to the `FORM_ENDPOINT` (Formspree) configured near the top of t
 
 ## Privacy (GDPR)
 
-Consent checkbox (unticked by default), on-page privacy notice (UnityWerk pilot; contact emilyaiai86@gmail.com; Formspree as processor; 30-day retention; data-subject rights), and a timestamped consent record in each submission. **Open item:** the notice names UnityWerk as a pilot project — confirm the formal controller name/address for a Berlin/Germany-based pilot before scaling beyond friendly testers.
+Consent checkbox (unticked by default), on-page privacy notice (UnityWerk pilot; contact unitywerk@gmail.com; Formspree as processor; 30-day retention; data-subject rights), and a timestamped consent record in each submission. **Open item:** the notice names UnityWerk as a pilot project — confirm the formal controller name/address for a Berlin/Germany-based pilot before scaling beyond friendly testers.
 
 Operator duties: fill roadmaps within 24h, delete submissions within 30 days, no mailing beyond the roadmap, honor access/deletion requests.
 
