@@ -523,7 +523,7 @@
 
     <div class="step" data-name="Previous work">
       <h3>What did you mainly do in your previous work, if you've worked before? 🧰</h3>
-      <p class="step-sub">Pick everything that applies.</p>
+      <p class="step-sub" id="prev-work-sub">Pick everything that applies.</p>
       <div class="field">
         <div class="pills" id="prev-work" data-required data-other="prev-work-other">
           <span class="pill">Customer service</span>
@@ -551,7 +551,7 @@
 
     <div class="step" data-name="Career break">
       <h3>What experiences were part of your career break? 🌱</h3>
-      <p class="step-sub">Pick everything that applies — it all counts.</p>
+      <p class="step-sub" id="break-activities-sub">Pick everything that applies — it all counts.</p>
       <div class="field">
         <div class="pills" id="break-activities" data-required data-other="break-activities-other" data-other-label="Something else">
           <span class="pill">Studied or took a course</span>
@@ -635,7 +635,7 @@
 
     <div class="step" data-name="Strengths">
       <h3>What do people often appreciate and rely on you for? 💪</h3>
-      <p class="step-sub">Pick up to four — these become your strengths.</p>
+      <p class="step-sub" id="strengths-sub">Pick up to four — these become your strengths.</p>
       <div class="field">
         <div class="pills" id="soft-skills" data-required data-max="4" data-other="soft-skills-other">
           <span class="pill">Communicating clearly</span>
@@ -766,7 +766,7 @@
     </div>
 
     <div class="step" data-name="Your challenge">
-      <h3>Which parts of returning to work feel most challenging right now? 🤔</h3>
+      <h3 id="challenge-h">Which parts of returning to work feel most challenging right now? 🤔</h3>
       <p class="step-sub">Choose up to three.</p>
       <div class="field">
         <div class="pills" id="challenge" data-required data-max="3" data-other="challenge-other">
@@ -797,7 +797,7 @@
 
     <div class="step" data-name="Your solution">
       <h3>How would you prefer to solve this? 🤝</h3>
-      <p class="step-sub">Pick up to three kinds of help that appeal to you most.</p>
+      <p class="step-sub" id="solution-sub">Pick up to three kinds of help that appeal to you most.</p>
       <div class="field">
         <div class="pills" id="solution" data-required data-max="3" data-other="solution-other">
           <span class="pill">A clear step-by-step plan I follow myself</span>
@@ -816,7 +816,7 @@
 
     <div class="step" data-name="Timeline">
       <h3>When would you ideally like to return to paid work? 📅</h3>
-      <p class="step-sub">There's no right answer — this keeps your roadmap practical.</p>
+      <p class="step-sub" id="timeline-sub">There's no right answer — this keeps your roadmap practical.</p>
       <div class="field">
         <div class="pills" id="return-timeline" data-single data-required>
           <span class="pill">As soon as possible</span>
@@ -864,7 +864,7 @@
 
     <div class="step" data-name="Your roadmap">
       <h3>Almost there ✿</h3>
-      <p class="step-sub">Leave your email and we'll create your personalized career roadmap. You'll receive it within 24 hours.</p>
+      <p class="step-sub" id="final-sub">Leave your email and we'll create your personalized career roadmap. You'll receive it within 24 hours.</p>
       <div class="field" style="margin-bottom:1rem;">
         <label for="name">Name</label>
         <input type="text" id="name" autocomplete="name" placeholder="Your first name" data-required>
@@ -1084,12 +1084,24 @@
   // ---- languages: dropdown + level rows, add/remove, up to 4 ----
   const langRows = document.getElementById("languages-rows");
   const addLang = document.getElementById("add-lang");
+  // a language already chosen in one row can't be chosen again in another
+  function refreshLangOptions() {
+    const selects = [...langRows.querySelectorAll(".lang-select")];
+    const taken = selects.map(s => s.value).filter(v => v && v !== "Other…");
+    selects.forEach(sel => {
+      [...sel.options].forEach(opt => {
+        if (!opt.value || opt.value === "Other…") return;
+        opt.disabled = taken.includes(opt.value) && sel.value !== opt.value;
+      });
+    });
+  }
   langRows.addEventListener("change", e => {
     if (e.target.classList.contains("lang-select")) {
       const custom = e.target.closest(".lang-row").querySelector(".lang-custom");
       const isOther = e.target.value === "Other…";
       custom.style.display = isOther ? "block" : "none";
       if (isOther) custom.focus();
+      refreshLangOptions();
     }
   });
   langRows.addEventListener("click", e => {
@@ -1098,6 +1110,7 @@
     if (langRows.querySelectorAll(".lang-row").length <= 1) return;
     btn.closest(".lang-row").remove();
     addLang.style.display = "";
+    refreshLangOptions();
   });
   addLang.addEventListener("click", () => {
     const first = langRows.querySelector(".lang-row");
@@ -1109,6 +1122,7 @@
     row.querySelector(".lang-remove").style.visibility = "visible";
     langRows.appendChild(row);
     row.querySelector(".lang-select").focus();
+    refreshLangOptions();
     if (langRows.querySelectorAll(".lang-row").length >= 4) addLang.style.display = "none";
   });
 
@@ -1144,15 +1158,22 @@
       mark(o, !valid);
       if (!valid) ok = false;
     }
-    // languages: at least one complete row, no half-filled rows
+    // languages: at least one complete row, no half-filled rows, no duplicates
     if (step.querySelector("#languages-rows")) {
       let complete = 0;
+      const seen = [];
       langRows.querySelectorAll(".lang-row").forEach(row => {
         const sel = row.querySelector(".lang-select");
         const custom = row.querySelector(".lang-custom");
         const level = row.querySelector(".lang-level");
         [sel, custom, level].forEach(el => mark(el, false));
         const nm = sel.value === "Other…" ? custom.value.trim() : sel.value;
+        if (nm && seen.includes(nm.toLowerCase())) {
+          ok = false;
+          mark(sel.value === "Other…" ? custom : sel, true);
+          return;
+        }
+        if (nm) seen.push(nm.toLowerCase());
         if (nm && level.value) { complete++; return; }
         if (nm && !level.value) { ok = false; mark(level, true); }
         else if (!nm && level.value) { ok = false; mark(sel.value === "Other…" ? custom : sel, true); }
@@ -1166,10 +1187,60 @@
     return ok;
   }
 
+  // ---- context-aware copy: later questions pick up her earlier answers ----
+  const GOAL_BITS = {
+    "Return to my previous field": "returning to your field",
+    "Try something new": "trying something new",
+    "Any stable job, soon": "finding a stable job soon",
+    "Start my own business": "starting your own business",
+    "I'm not sure yet": "finding your direction"
+  };
+  function personalize() {
+    const goal = selected("#goal")[0] || "";
+    const g = GOAL_BITS[goal] || "";
+
+    document.getElementById("challenge-h").textContent = g
+      ? `As you think about ${g}, which parts feel most challenging right now? 🤔`
+      : "Which parts of returning to work feel most challenging right now? 🤔";
+
+    const dur = document.getElementById("break-duration").value;
+    document.getElementById("break-activities-sub").textContent =
+      dur === "Less than 1 year"
+        ? "Even a shorter break holds a lot of life — pick everything that applies, it all counts."
+        : dur
+          ? `Those ${dur.toLowerCase()} were full of life too — pick everything that applies, it all counts.`
+          : "Pick everything that applies — it all counts.";
+
+    const exp = document.getElementById("experience").value;
+    document.getElementById("prev-work-sub").textContent =
+      exp && exp !== "0–2 years"
+        ? `Your ${exp} of experience count for a lot — pick everything that applies.`
+        : "Pick everything that applies.";
+
+    document.getElementById("strengths-sub").textContent =
+      selected("#prev-work").includes("Never worked before")
+        ? "Paid work or not, people count on you — pick up to four, these become your strengths."
+        : "Pick up to four — these become your strengths.";
+
+    document.getElementById("solution-sub").textContent =
+      selected("#challenge").length
+        ? "You've named what's hard — now let's look at what would help. Pick up to three."
+        : "Pick up to three kinds of help that appeal to you most.";
+
+    document.getElementById("timeline-sub").textContent = g
+      ? `Whether ${g} takes three months or a year — knowing your pace keeps the roadmap realistic.`
+      : "There's no right answer — this keeps your roadmap practical.";
+
+    document.getElementById("final-sub").textContent = g
+      ? `Leave your email and we'll create your personalized roadmap for ${g}. You'll receive it within 24 hours.`
+      : "Leave your email and we'll create your personalized career roadmap. You'll receive it within 24 hours.";
+  }
+
   function show(i) {
     steps[current].classList.remove("active");
     current = i;
     steps[current].classList.add("active");
+    personalize();
     stepError.style.display = "none";
     progressStep.textContent = `${current + 1} of ${steps.length}`;
     progressName.textContent = steps[current].dataset.name;
