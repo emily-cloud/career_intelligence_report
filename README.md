@@ -44,6 +44,12 @@ Consent checkbox (unticked by default), on-page privacy notice (UnityWerk pilot;
 
 Operator duties: fill roadmaps within 24h, delete submissions within 30 days, no mailing beyond the roadmap, honor access/deletion requests.
 
+## Background photo (optional)
+
+The page is wired for a real photographic backdrop: add an image file named **`background.jpg`** to the repository root (next to `index.html`) and it appears behind a soft white veil across the whole page. Without the file, a gentle textured gradient shows instead — nothing breaks.
+
+Recommended: a calm, light photo (a bright workspace, soft morning light, plants) around 1600–2000px wide, compressed to under ~400KB (e.g. via squoosh.app) so the page stays fast. Free sources with safe licenses: unsplash.com and pexels.com.
+
 ## Deploying
 
 GitHub Pages (Settings → Pages → deploy from `main`) or Netlify. A pre-Builder-Week snapshot is preserved on the `backup/pre-builder-week` branch.
