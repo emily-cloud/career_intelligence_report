@@ -46,10 +46,7 @@ Operator duties: fill roadmaps within 24h, delete submissions within 30 days, no
 
 ## Photos (optional)
 
-Two image slots are wired in — drop the files next to `index.html` and they appear automatically; without them, graceful fallbacks show instead:
-
-- **`story.jpg`** — a real photo shown as a circular portrait at the top of the story card (a warm photo of a woman works best, roughly square, ~600×600px). Falls back to the built-in illustration.
-- **`background.jpg`** — a photographic backdrop behind a soft white veil across the whole page. Falls back to the textured gradient.
+One image slot is wired in: add a **`background.jpg`** next to `index.html` and it renders as a photographic backdrop behind a soft white veil across the whole page. Without the file, the textured gradient shows — nothing breaks.
 
 Recommended: a calm, light photo (a bright workspace, soft morning light, plants) around 1600–2000px wide, compressed to under ~400KB (e.g. via squoosh.app) so the page stays fast. Free sources with safe licenses: unsplash.com and pexels.com.
 
