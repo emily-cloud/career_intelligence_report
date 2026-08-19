@@ -19,14 +19,58 @@
     --line: #e8e2f1;
     --radius: 20px;
     --serif: Georgia, "Times New Roman", serif;
+    --glow1: #ece3f8;
+    --glow2: #f6f0e4;
+    --veil-a: rgba(250, 248, 252, 0.88);
+    --veil-b: rgba(253, 252, 254, 0.93);
+    --story-bg: linear-gradient(165deg, #ffffff 0%, #f9f5fd 45%, #f1eaf9 100%);
+    --story-border: #e5daf1;
     font-size: 16px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #ece7f4;
+      --ink-soft: #b9b1ca;
+      --ink-faint: #8d84a3;
+      --paper: #1d1926;
+      --card: #272132;
+      --accent: #a98fd6;
+      --accent-dark: #bfa8e6;
+      --accent-soft: #362c4a;
+      --gold: #d4b078;
+      --line: #3b3352;
+      --glow1: #2a2142;
+      --glow2: #322a1e;
+      --veil-a: rgba(29, 25, 38, 0.9);
+      --veil-b: rgba(29, 25, 38, 0.94);
+      --story-bg: linear-gradient(165deg, #2c2539 0%, #272134 45%, #221c2e 100%);
+      --story-border: #463b5e;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #ece7f4;
+    --ink-soft: #b9b1ca;
+    --ink-faint: #8d84a3;
+    --paper: #1d1926;
+    --card: #272132;
+    --accent: #a98fd6;
+    --accent-dark: #bfa8e6;
+    --accent-soft: #362c4a;
+    --gold: #d4b078;
+    --line: #3b3352;
+    --glow1: #2a2142;
+    --glow2: #322a1e;
+    --veil-a: rgba(29, 25, 38, 0.9);
+    --veil-b: rgba(29, 25, 38, 0.94);
+    --story-bg: linear-gradient(165deg, #2c2539 0%, #272134 45%, #221c2e 100%);
+    --story-border: #463b5e;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background:
-      radial-gradient(60rem 30rem at 85% -5%, #ece3f8 0%, transparent 60%),
-      radial-gradient(50rem 26rem at -10% 30%, #f6f0e4 0%, transparent 55%),
+      radial-gradient(60rem 30rem at 85% -5%, var(--glow1) 0%, transparent 60%),
+      radial-gradient(50rem 26rem at -10% 30%, var(--glow2) 0%, transparent 55%),
       var(--paper);
     background-attachment: fixed;
     color: var(--ink);
@@ -41,7 +85,7 @@
     content: "";
     position: fixed; inset: 0; z-index: -2; pointer-events: none;
     background:
-      linear-gradient(rgba(250, 248, 252, 0.88), rgba(253, 252, 254, 0.93)),
+      linear-gradient(var(--veil-a), var(--veil-b)),
       url("background.jpg") center / cover no-repeat;
   }
   /* fine grain so the ground feels like paper, not a flat fill */
@@ -125,8 +169,8 @@
   .why-card {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(165deg, #ffffff 0%, #f9f5fd 45%, #f1eaf9 100%);
-    border: 1px solid #e5daf1;
+    background: var(--story-bg);
+    border: 1px solid var(--story-border);
     border-radius: var(--radius);
     padding: 2.2rem 2rem;
     text-align: center;
@@ -413,8 +457,23 @@
     transition: all 0.15s ease;
   }
   .share-btn:hover { color: #fff; background: var(--accent); }
+  .share-links { margin-top: 0.8rem; font-size: 0.92rem; color: var(--ink-faint); }
+  .share-links a { color: var(--accent); font-weight: 600; text-decoration: none; cursor: pointer; }
+  .share-links a:hover { text-decoration: underline; }
 
   footer { padding: 2rem 0 2.5rem; text-align: center; font-size: 0.85rem; color: var(--ink-faint); }
+
+  #theme-toggle {
+    position: fixed; top: 0.9rem; right: 0.9rem; z-index: 50;
+    width: 2.6rem; height: 2.6rem;
+    font-size: 1.15rem; line-height: 1;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(51, 44, 62, 0.12);
+  }
+  #theme-toggle:hover { border-color: var(--accent); }
 
   @media (max-width: 480px) {
     header { padding-top: 3.5rem; }
@@ -423,6 +482,8 @@
 </style>
 </head>
 <body>
+
+<button id="theme-toggle" aria-label="Switch between light and dark mode">🌙</button>
 
 <header class="wrap">
   <span class="eyebrow">For women returning to work after a career break</span>
@@ -951,6 +1012,10 @@
 
       <div class="share-row">
         <button type="button" class="share-btn" id="share-btn">💌 Share this with a friend</button>
+        <p class="share-links">
+          <a id="share-wa" target="_blank" rel="noopener">Share on WhatsApp</a> ·
+          <a id="share-mail">Share by email</a>
+        </p>
       </div>
     </div>
   </div>
@@ -1528,6 +1593,7 @@
       }
     } catch (e) { /* still show the report — don't lose the user */ }
     renderReport(buildProfile());
+    fillShareLinks();
     document.getElementById("wizard").style.display = "none";
     document.getElementById("report").style.display = "block";
     document.getElementById("assessment").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -1559,23 +1625,62 @@
   });
 
   // ---- share the assessment (and her top paths) with a friend ----
-  document.getElementById("share-btn").addEventListener("click", async () => {
-    const btn = document.getElementById("share-btn");
+  function shareParts() {
     const url = location.protocol.startsWith("http")
       ? location.href.split("#")[0]
       : "https://emily-cloud.github.io/career_intelligence_report/";
     const paths = [...document.querySelectorAll(".path-item strong")]
       .map(x => x.textContent.replace("⭐ ", "")).slice(0, 3);
     const text = `I just tried the Career Clarity Assessment${paths.length ? " — my top paths: " + paths.join(", ") : ""}. If you're thinking about returning to work, try it too:`;
+    return { url, text, full: `${text} ${url}` };
+  }
+  function fillShareLinks() {
+    const { full } = shareParts();
+    document.getElementById("share-wa").href = "https://wa.me/?text=" + encodeURIComponent(full);
+    document.getElementById("share-mail").href = "mailto:?subject=" +
+      encodeURIComponent("Something for you — Career Clarity Assessment") +
+      "&body=" + encodeURIComponent(full);
+  }
+  document.getElementById("share-btn").addEventListener("click", async () => {
+    const btn = document.getElementById("share-btn");
+    const { url, text, full } = shareParts();
+    const confirmCopied = () => {
+      btn.textContent = "Copied — paste it anywhere ✿";
+      setTimeout(() => { btn.textContent = "💌 Share this with a friend"; }, 3000);
+    };
     if (navigator.share) {
-      try { await navigator.share({ title: "Career Clarity Assessment", text, url }); } catch (e) { /* user cancelled */ }
-    } else {
-      try {
-        await navigator.clipboard.writeText(`${text} ${url}`);
-        btn.textContent = "Copied — paste it anywhere ✿";
-        setTimeout(() => { btn.textContent = "💌 Share this with a friend"; }, 3000);
-      } catch (e) { /* clipboard unavailable */ }
+      try { await navigator.share({ title: "Career Clarity Assessment", text, url }); return; }
+      catch (e) { if (e.name === "AbortError") return; /* else fall through */ }
     }
+    try { await navigator.clipboard.writeText(full); confirmCopied(); return; } catch (e) { /* fall through */ }
+    const ta = document.createElement("textarea");
+    ta.value = full; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    let done = false;
+    try { done = document.execCommand("copy"); } catch (e) {}
+    ta.remove();
+    if (done) confirmCopied();
+    else window.prompt("Copy this message and send it to a friend:", full);
+  });
+
+  // ---- light / dark mode ----
+  const themeToggle = document.getElementById("theme-toggle");
+  function isDarkNow() {
+    const t = document.documentElement.dataset.theme;
+    return t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+  }
+  function applyTheme(t) {
+    if (t) document.documentElement.dataset.theme = t;
+    else delete document.documentElement.dataset.theme;
+    themeToggle.textContent = isDarkNow() ? "☀️" : "🌙";
+  }
+  let storedTheme = null;
+  try { storedTheme = localStorage.getItem("theme"); } catch (e) {}
+  applyTheme(storedTheme || null);
+  themeToggle.addEventListener("click", () => {
+    const next = isDarkNow() ? "light" : "dark";
+    try { localStorage.setItem("theme", next); } catch (e) {}
+    applyTheme(next);
   });
 </script>
 
