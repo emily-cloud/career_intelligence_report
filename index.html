@@ -1602,43 +1602,39 @@
     }
   });
 
-  // ---- share the assessment (and her top paths) with a friend ----
-  function shareParts() {
-    const url = location.protocol.startsWith("http")
+  // ---- share the assessment with a friend (link only) ----
+  function shareUrl() {
+    return location.protocol.startsWith("http")
       ? location.href.split("#")[0]
       : "https://emily-cloud.github.io/career_intelligence_report/";
-    const paths = [...document.querySelectorAll(".path-item strong")]
-      .map(x => x.textContent.replace("⭐ ", "")).slice(0, 3);
-    const text = `I just tried the Career Clarity Assessment${paths.length ? " — my top paths: " + paths.join(", ") : ""}. If you're thinking about returning to work, try it too:`;
-    return { url, text, full: `${text} ${url}` };
   }
   function fillShareLinks() {
-    const { full } = shareParts();
-    document.getElementById("share-wa").href = "https://wa.me/?text=" + encodeURIComponent(full);
+    const url = shareUrl();
+    document.getElementById("share-wa").href = "https://wa.me/?text=" + encodeURIComponent(url);
     document.getElementById("share-mail").href = "mailto:?subject=" +
       encodeURIComponent("Something for you — Career Clarity Assessment") +
-      "&body=" + encodeURIComponent(full);
+      "&body=" + encodeURIComponent(url);
   }
   document.getElementById("share-btn").addEventListener("click", async () => {
     const btn = document.getElementById("share-btn");
-    const { url, text, full } = shareParts();
+    const url = shareUrl();
     const confirmCopied = () => {
-      btn.textContent = "Copied — paste it anywhere";
+      btn.textContent = "Link copied — paste it anywhere";
       setTimeout(() => { btn.textContent = "💌 Share this with a friend"; }, 3000);
     };
     if (navigator.share) {
-      try { await navigator.share({ title: "Career Clarity Assessment", text, url }); return; }
+      try { await navigator.share({ title: "Career Clarity Assessment", url }); return; }
       catch (e) { if (e.name === "AbortError") return; /* else fall through */ }
     }
-    try { await navigator.clipboard.writeText(full); confirmCopied(); return; } catch (e) { /* fall through */ }
+    try { await navigator.clipboard.writeText(url); confirmCopied(); return; } catch (e) { /* fall through */ }
     const ta = document.createElement("textarea");
-    ta.value = full; ta.style.position = "fixed"; ta.style.opacity = "0";
+    ta.value = url; ta.style.position = "fixed"; ta.style.opacity = "0";
     document.body.appendChild(ta); ta.select();
     let done = false;
     try { done = document.execCommand("copy"); } catch (e) {}
     ta.remove();
     if (done) confirmCopied();
-    else window.prompt("Copy this message and send it to a friend:", full);
+    else window.prompt("Copy this link and send it to a friend:", url);
   });
 
   // ---- light / dark mode ----
