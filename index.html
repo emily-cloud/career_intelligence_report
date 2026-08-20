@@ -10,24 +10,28 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #2f2a24;
-    --ink-soft: #6b6157;
-    --ink-faint: #a0968b;
-    --paper: #f7f0e5;
-    --card: #fffdf8;
-    --accent: #b91c22;
-    --accent-dark: #93151b;
-    --accent-soft: #f8e7e2;
-    --gold: #b9924f;
-    --line: #eadfcc;
+    --ink: #3f3947;
+    --ink-soft: #6c6576;
+    --ink-faint: #9b93a5;
+    --paper: #ffffff;
+    --card: #ffffff;
+    --accent: #9c93b5;
+    --accent-dark: #7a7096;
+    --accent-soft: #e9e2e9;
+    --gold: #f8d568;
+    --olive: #b5b35c;
+    --btn: #b5b35c;
+    --btn-hover: #a3a150;
+    --btn-text: #33311d;
+    --line: #c6afc6;
     --radius: 10px;
     --serif: "Playfair Display", Georgia, "Times New Roman", serif;
-    --glow1: #f5e3d8;
-    --glow2: #f2ead6;
-    --veil-a: rgba(247, 240, 229, 0.88);
-    --veil-b: rgba(250, 245, 237, 0.93);
-    --story-bg: linear-gradient(165deg, #fffdf8 0%, #fbf4e9 45%, #f6ecdc 100%);
-    --story-border: #ecdfc7;
+    --glow1: #f0edf5;
+    --glow2: #faf8e8;
+    --veil-a: rgba(255, 255, 255, 0.88);
+    --veil-b: rgba(255, 255, 255, 0.93);
+    --story-bg: linear-gradient(165deg, #ffffff 0%, #f9f8ec 45%, #f2f1d8 100%);
+    --story-border: #c6afc6;
     font-size: 16px;
   }
   @media (prefers-color-scheme: dark) {
@@ -41,6 +45,10 @@
       --accent-dark: #ea7c74;
       --accent-soft: #47241f;
       --gold: #d3a76a;
+      --olive: #d3a76a;
+      --btn: #e0605a;
+      --btn-hover: #ea7c74;
+      --btn-text: #ffffff;
       --line: #453629;
       --glow1: #3a231e;
       --glow2: #37301e;
@@ -60,6 +68,10 @@
     --accent-dark: #ea7c74;
     --accent-soft: #47241f;
     --gold: #d3a76a;
+    --olive: #d3a76a;
+    --btn: #e0605a;
+    --btn-hover: #ea7c74;
+    --btn-text: #ffffff;
     --line: #453629;
     --glow1: #3a231e;
     --glow2: #37301e;
@@ -111,25 +123,22 @@
     margin-bottom: 1.6rem;
     white-space: nowrap;
   }
-  .eyebrow::before, .eyebrow::after { content: "✿"; color: var(--gold); margin: 0 0.7rem; font-size: 0.7rem; }
   @media (max-width: 430px) {
     .eyebrow { letter-spacing: 0.06em; font-size: 0.54rem; }
-    .eyebrow::before, .eyebrow::after { margin: 0 0.35rem; }
   }
   @media (max-width: 370px) {
     .eyebrow { letter-spacing: 0.05em; }
-    .eyebrow::before, .eyebrow::after { content: ""; margin: 0; }
   }
   h1 {
     font-family: var(--serif);
     font-size: clamp(1.25rem, 6.3vw, 2.8rem);
     line-height: 1.18;
     font-weight: 700;
-    color: var(--accent);
+    color: var(--accent-dark);
     margin-bottom: 1.2rem;
     text-wrap: balance;
   }
-  h1 em { font-style: italic; color: var(--accent); white-space: nowrap; }
+  h1 em { font-style: italic; color: inherit; white-space: nowrap; }
   .sub {
     font-size: 1.08rem;
     color: var(--ink-soft);
@@ -144,17 +153,17 @@
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #fff;
-    background: var(--accent);
+    color: var(--btn-text);
+    background: var(--btn);
     border: none;
     border-radius: 3px;
     padding: 1rem 2.4rem;
     cursor: pointer;
     text-decoration: none;
-    box-shadow: 0 10px 28px rgba(185, 28, 34, 0.22);
+    box-shadow: 0 10px 28px rgba(181, 179, 92, 0.4);
     transition: background 0.15s ease, transform 0.15s ease;
   }
-  .cta-btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
+  .cta-btn:hover { background: var(--btn-hover); transform: translateY(-1px); }
   .cta-note { margin-top: 1rem; font-size: 0.85rem; color: var(--ink-faint); }
 
   .promise {
@@ -180,7 +189,7 @@
     border-radius: var(--radius);
     padding: 2.2rem 2rem;
     text-align: center;
-    box-shadow: 0 14px 40px rgba(147, 21, 27, 0.1);
+    box-shadow: 0 14px 40px rgba(122, 112, 150, 0.13);
   }
   .why-card h2 {
     font-family: var(--serif);
@@ -359,8 +368,8 @@
     cursor: pointer;
     transition: background 0.15s ease;
   }
-  .btn-next { color: #fff; background: var(--accent); border: none; }
-  .btn-next:hover { background: var(--accent-dark); }
+  .btn-next { color: var(--btn-text); background: var(--btn); border: none; }
+  .btn-next:hover { background: var(--btn-hover); }
   .btn-back { color: var(--ink-faint); background: transparent; border: none; padding-left: 0; }
   .btn-back:hover { color: var(--ink); }
   .step-error { display: none; font-size: 0.85rem; color: #b3402a; margin-top: 1rem; }
@@ -484,7 +493,7 @@
 
 <section class="wrap" id="why">
   <div class="why-card">
-    <h2>Your story isn't a gap ✿</h2>
+    <h2>Your story isn't a gap</h2>
     <p>Maybe you've been away from work for two years — or ten. Somewhere between caring for others and holding everything together, a quiet question crept in: <em>"Who would hire me now?"</em></p>
     <p>Here's what we've learned from women who've stood exactly where you stand: what's missing is almost never ability. It's that years of real skills — organizing, supporting, solving, deciding — have never been written down in one place.</p>
     <p>That's what these questions are for. This is not a personality quiz, and there are no trick questions. Each answer adds a piece of your picture: what you did before, what you carried through your break, what you want now. At the end you'll see your strengths and realistic directions right away — and within 24 hours, we'll send your personal roadmap back to work.</p>
@@ -496,7 +505,7 @@
 
 <p class="sub under-story wrap">Uncover the skills you may be overlooking, explore realistic career directions, and get practical next steps back to work — based on what you've actually done.</p>
 
-<p class="promise wrap">Skills you may be overlooking <span>✿</span> Realistic career directions <span>✿</span> Practical next steps</p>
+<p class="promise wrap">Skills you may be overlooking <span>·</span> Realistic career directions <span>·</span> Practical next steps</p>
 
 <section class="wrap" id="assessment">
   <div class="panel" id="wizard">
@@ -912,7 +921,7 @@
     </div>
 
     <div class="step" data-name="Your roadmap">
-      <h3>Almost there ✿</h3>
+      <h3>Almost there</h3>
       <p class="step-sub" id="final-sub">Leave your email and we'll create your personalized career roadmap. You'll receive it within 24 hours.</p>
       <div class="field" style="margin-bottom:1rem;">
         <label for="name">Name</label>
@@ -1579,7 +1588,7 @@
       }
     } catch (e) { /* research data only — never block the user */ }
     document.getElementById("next-value-block").innerHTML =
-      "<h4>One last question</h4><p>Thank you — noted ✿</p>";
+      "<h4>One last question</h4><p>Thank you — noted.</p>";
   }
   document.getElementById("next-value").addEventListener("click", e => {
     const pill = e.target.closest(".pill");
@@ -1614,7 +1623,7 @@
     const btn = document.getElementById("share-btn");
     const { url, text, full } = shareParts();
     const confirmCopied = () => {
-      btn.textContent = "Copied — paste it anywhere ✿";
+      btn.textContent = "Copied — paste it anywhere";
       setTimeout(() => { btn.textContent = "💌 Share this with a friend"; }, 3000);
     };
     if (navigator.share) {
