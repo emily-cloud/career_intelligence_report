@@ -31,6 +31,7 @@
     --veil-a: rgba(255, 255, 255, 0.88);
     --veil-b: rgba(255, 255, 255, 0.93);
     --story-bg: linear-gradient(165deg, #ffffff 0%, #f9f8ec 45%, #f2f1d8 100%);
+    --cta-bg: linear-gradient(165deg, #ffffff 0%, #f3f0f8 45%, #e9e4f0 100%);
     --story-border: #c6afc6;
     font-size: 16px;
   }
@@ -55,6 +56,7 @@
       --veil-a: rgba(33, 24, 20, 0.9);
       --veil-b: rgba(33, 24, 20, 0.94);
       --story-bg: linear-gradient(165deg, #322520 0%, #2c211c 45%, #271c17 100%);
+      --cta-bg: linear-gradient(165deg, #352a33 0%, #2e232c 45%, #281e26 100%);
       --story-border: #4d3b2e;
     }
   }
@@ -78,6 +80,7 @@
     --veil-a: rgba(33, 24, 20, 0.9);
     --veil-b: rgba(33, 24, 20, 0.94);
     --story-bg: linear-gradient(165deg, #322520 0%, #2c211c 45%, #271c17 100%);
+    --cta-bg: linear-gradient(165deg, #352a33 0%, #2e232c 45%, #281e26 100%);
     --story-border: #4d3b2e;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -214,7 +217,8 @@
   }
   .why-card p + p { margin-top: 0.8rem; }
   .why-card .story-close { text-align: center; margin-top: 1.2rem; color: var(--accent-dark); }
-  .cta-card { margin-top: 1.2rem; }
+  .why-card + .why-card { margin-top: 1.2rem; }
+  .cta-card { background: var(--cta-bg); }
   .cta-card .story-close { margin-top: 0; }
   .why-card em { font-style: italic; color: var(--accent); }
   .why-card .cta-btn { margin-top: 1.4rem; }
@@ -501,18 +505,18 @@
 </header>
 
 <section class="wrap" id="why">
-  <div class="why-card">
-    <h2>Your story isn't a gap</h2>
-    <p>Maybe you've been away from work for two years — or ten. Somewhere between caring for others and holding everything together, a quiet question crept in: <em>"Who would hire me now?"</em></p>
-    <p>Here's what we've learned from women who've stood exactly where you stand: what's missing is almost never ability. It's that years of real skills — organizing, supporting, solving, deciding — have never been written down in one place.</p>
-    <p>That's what these questions are for. This is not a personality quiz, and there are no trick questions. Each answer adds a piece of your picture: what you did before, what you carried through your break, what you want now. At the end you'll see your strengths and realistic directions right away — and within 24 hours, we'll send your personal roadmap back to work.</p>
-  </div>
   <div class="why-card cta-card">
     <p class="story-close"><strong>Five minutes. One question at a time. Let's put your story into words.</strong></p>
     <a class="cta-btn" href="#assessment">Discover My Next Step</a>
     <p class="cta-note">5 minutes · One question at a time · Free</p>
     <p class="sub under-story">Uncover the skills you may be overlooking, explore realistic career directions, and get practical next steps back to work — based on what you've actually done.</p>
     <p class="promise">Skills you may be overlooking <span>·</span> Realistic career directions <span>·</span> Practical next steps</p>
+  </div>
+  <div class="why-card">
+    <h2>Your story isn't a gap</h2>
+    <p>Maybe you've been away from work for two years — or ten. Somewhere between caring for others and holding everything together, a quiet question crept in: <em>"Who would hire me now?"</em></p>
+    <p>Here's what we've learned from women who've stood exactly where you stand: what's missing is almost never ability. It's that years of real skills — organizing, supporting, solving, deciding — have never been written down in one place.</p>
+    <p>That's what these questions are for. This is not a personality quiz, and there are no trick questions. Each answer adds a piece of your picture: what you did before, what you carried through your break, what you want now. At the end you'll see your strengths and realistic directions right away — and within 24 hours, we'll send your personal roadmap back to work.</p>
   </div>
 </section>
 
