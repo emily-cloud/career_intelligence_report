@@ -5,69 +5,72 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Career Clarity Assessment — Ready to return to work?</title>
 <meta name="description" content="Ready to return to work, but not sure where to start? Take the 5-minute Career Clarity Assessment and receive a personalized career roadmap.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #332c3e;
-    --ink-soft: #5f5872;
-    --ink-faint: #9a92ac;
-    --paper: #faf8fc;
-    --card: #ffffff;
-    --accent: #8a6bbf;
-    --accent-dark: #7253a6;
-    --accent-soft: #f0eafa;
-    --gold: #c9a26b;
-    --line: #e8e2f1;
-    --radius: 20px;
-    --serif: Georgia, "Times New Roman", serif;
-    --glow1: #ece3f8;
-    --glow2: #f6f0e4;
-    --veil-a: rgba(250, 248, 252, 0.88);
-    --veil-b: rgba(253, 252, 254, 0.93);
-    --story-bg: linear-gradient(165deg, #ffffff 0%, #f9f5fd 45%, #f1eaf9 100%);
-    --story-border: #e5daf1;
+    --ink: #2f2a24;
+    --ink-soft: #6b6157;
+    --ink-faint: #a0968b;
+    --paper: #f7f0e5;
+    --card: #fffdf8;
+    --accent: #b91c22;
+    --accent-dark: #93151b;
+    --accent-soft: #f8e7e2;
+    --gold: #b9924f;
+    --line: #eadfcc;
+    --radius: 10px;
+    --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+    --glow1: #f5e3d8;
+    --glow2: #f2ead6;
+    --veil-a: rgba(247, 240, 229, 0.88);
+    --veil-b: rgba(250, 245, 237, 0.93);
+    --story-bg: linear-gradient(165deg, #fffdf8 0%, #fbf4e9 45%, #f6ecdc 100%);
+    --story-border: #ecdfc7;
     font-size: 16px;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --ink: #ece7f4;
-      --ink-soft: #b9b1ca;
-      --ink-faint: #8d84a3;
-      --paper: #1d1926;
-      --card: #272132;
-      --accent: #a98fd6;
-      --accent-dark: #bfa8e6;
-      --accent-soft: #362c4a;
-      --gold: #d4b078;
-      --line: #3b3352;
-      --glow1: #2a2142;
-      --glow2: #322a1e;
-      --veil-a: rgba(29, 25, 38, 0.9);
-      --veil-b: rgba(29, 25, 38, 0.94);
-      --story-bg: linear-gradient(165deg, #2c2539 0%, #272134 45%, #221c2e 100%);
-      --story-border: #463b5e;
+      --ink: #f2eae0;
+      --ink-soft: #cfc2b4;
+      --ink-faint: #9c8e82;
+      --paper: #211814;
+      --card: #2b211c;
+      --accent: #e0605a;
+      --accent-dark: #ea7c74;
+      --accent-soft: #47241f;
+      --gold: #d3a76a;
+      --line: #453629;
+      --glow1: #3a231e;
+      --glow2: #37301e;
+      --veil-a: rgba(33, 24, 20, 0.9);
+      --veil-b: rgba(33, 24, 20, 0.94);
+      --story-bg: linear-gradient(165deg, #322520 0%, #2c211c 45%, #271c17 100%);
+      --story-border: #4d3b2e;
     }
   }
   :root[data-theme="dark"] {
-    --ink: #ece7f4;
-    --ink-soft: #b9b1ca;
-    --ink-faint: #8d84a3;
-    --paper: #1d1926;
-    --card: #272132;
-    --accent: #a98fd6;
-    --accent-dark: #bfa8e6;
-    --accent-soft: #362c4a;
-    --gold: #d4b078;
-    --line: #3b3352;
-    --glow1: #2a2142;
-    --glow2: #322a1e;
-    --veil-a: rgba(29, 25, 38, 0.9);
-    --veil-b: rgba(29, 25, 38, 0.94);
-    --story-bg: linear-gradient(165deg, #2c2539 0%, #272134 45%, #221c2e 100%);
-    --story-border: #463b5e;
+    --ink: #f2eae0;
+    --ink-soft: #cfc2b4;
+    --ink-faint: #9c8e82;
+    --paper: #211814;
+    --card: #2b211c;
+    --accent: #e0605a;
+    --accent-dark: #ea7c74;
+    --accent-soft: #47241f;
+    --gold: #d3a76a;
+    --line: #453629;
+    --glow1: #3a231e;
+    --glow2: #37301e;
+    --veil-a: rgba(33, 24, 20, 0.9);
+    --veil-b: rgba(33, 24, 20, 0.94);
+    --story-bg: linear-gradient(165deg, #322520 0%, #2c211c 45%, #271c17 100%);
+    --story-border: #4d3b2e;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     background:
       radial-gradient(60rem 30rem at 85% -5%, var(--glow1) 0%, transparent 60%),
       radial-gradient(50rem 26rem at -10% 30%, var(--glow2) 0%, transparent 55%),
@@ -104,7 +107,7 @@
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--ink-faint);
     margin-bottom: 1.6rem;
     white-space: nowrap;
   }
@@ -119,9 +122,10 @@
   }
   h1 {
     font-family: var(--serif);
-    font-size: clamp(1.3rem, 6.6vw, 2.9rem);
+    font-size: clamp(1.25rem, 6.3vw, 2.8rem);
     line-height: 1.18;
-    font-weight: 500;
+    font-weight: 700;
+    color: var(--accent);
     margin-bottom: 1.2rem;
     text-wrap: balance;
   }
@@ -136,16 +140,18 @@
   .sub.under-story { text-align: center; margin: 0 auto 1.2rem; padding: 0 1.25rem; }
   .cta-btn {
     display: inline-block;
-    font-size: 1.05rem;
-    font-weight: 600;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: #fff;
     background: var(--accent);
     border: none;
-    border-radius: 999px;
-    padding: 1rem 2.8rem;
+    border-radius: 3px;
+    padding: 1rem 2.4rem;
     cursor: pointer;
     text-decoration: none;
-    box-shadow: 0 10px 28px rgba(138, 107, 191, 0.3);
+    box-shadow: 0 10px 28px rgba(185, 28, 34, 0.22);
     transition: background 0.15s ease, transform 0.15s ease;
   }
   .cta-btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
@@ -174,7 +180,7 @@
     border-radius: var(--radius);
     padding: 2.2rem 2rem;
     text-align: center;
-    box-shadow: 0 14px 40px rgba(114, 83, 166, 0.13);
+    box-shadow: 0 14px 40px rgba(147, 21, 27, 0.1);
   }
   .why-card::before {
     content: "✿"; position: absolute; top: -16px; left: -4px;
@@ -224,7 +230,7 @@
     border: 1px solid var(--line);
     border-radius: var(--radius);
     padding: 2.2rem 2rem 2rem;
-    box-shadow: 0 16px 48px rgba(51, 44, 62, 0.08);
+    box-shadow: 0 16px 48px rgba(47, 42, 36, 0.08);
   }
   .progress { margin-bottom: 2.2rem; }
   .progress-label {
@@ -246,8 +252,9 @@
   .step h3 {
     font-family: var(--serif);
     font-size: 1.5rem;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 1.28;
+    color: var(--accent-dark);
     margin-bottom: 0.4rem;
     text-wrap: balance;
   }
@@ -267,7 +274,7 @@
     color: var(--ink);
     background: var(--paper);
     border: 1px solid var(--line);
-    border-radius: 14px;
+    border-radius: 6px;
     padding: 0.85rem 1rem;
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
@@ -310,7 +317,7 @@
     color: var(--ink-soft);
     background: var(--paper);
     border: 1px solid var(--line);
-    border-radius: 999px;
+    border-radius: 4px;
     padding: 0.6rem 0.9rem;
     cursor: pointer;
     user-select: none;
@@ -348,7 +355,7 @@
     color: var(--ink-soft);
     background: var(--paper);
     border: 1px solid var(--line);
-    border-radius: 14px;
+    border-radius: 6px;
     padding: 0.85rem 0;
     cursor: pointer;
     transition: all 0.12s ease;
@@ -363,9 +370,11 @@
 
   .step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; }
   .btn-next, .btn-back {
-    font: inherit; font-weight: 600; font-size: 1rem;
-    border-radius: 999px;
-    padding: 0.8rem 2.1rem;
+    font: inherit; font-weight: 700; font-size: 0.9rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    border-radius: 3px;
+    padding: 0.85rem 2rem;
     cursor: pointer;
     transition: background 0.15s ease;
   }
@@ -419,7 +428,7 @@
     border: 1px solid var(--line);
     border-radius: var(--radius);
     padding: 2.5rem 2.1rem;
-    box-shadow: 0 16px 48px rgba(51, 44, 62, 0.08);
+    box-shadow: 0 16px 48px rgba(47, 42, 36, 0.08);
   }
   .report-card h2 {
     font-family: var(--serif);
@@ -439,7 +448,7 @@
   .report-list li { display: flex; gap: 0.65rem; align-items: baseline; font-size: 1rem; }
   .report-list li .mark { flex: none; color: var(--accent); font-weight: 700; }
   .paths { display: grid; gap: 0.7rem; }
-  .path-item { background: var(--accent-soft); border-radius: 16px; padding: 1rem 1.15rem; }
+  .path-item { background: var(--accent-soft); border-radius: 6px; padding: 1rem 1.15rem; }
   .path-item strong { display: block; font-size: 1.05rem; }
   .path-item span { font-size: 0.9rem; color: var(--ink-soft); }
   .paths-note { font-size: 0.85rem; color: var(--ink-faint); margin-top: 0.3rem; }
@@ -447,12 +456,14 @@
   .report-note strong { color: var(--ink); }
   .share-row { text-align: center; margin-top: 2rem; }
   .share-btn {
-    font: inherit; font-size: 0.98rem; font-weight: 600;
+    font: inherit; font-size: 0.88rem; font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
     color: var(--accent);
-    background: var(--accent-soft);
-    border: 1px solid var(--accent);
-    border-radius: 999px;
-    padding: 0.75rem 1.8rem;
+    background: transparent;
+    border: 1.5px solid var(--accent);
+    border-radius: 3px;
+    padding: 0.75rem 1.7rem;
     cursor: pointer;
     transition: all 0.15s ease;
   }
@@ -471,7 +482,7 @@
     border: 1px solid var(--line);
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(51, 44, 62, 0.12);
+    box-shadow: 0 4px 14px rgba(47, 42, 36, 0.12);
   }
   #theme-toggle:hover { border-color: var(--accent); }
 
@@ -494,21 +505,21 @@
   <div class="why-card">
     <div class="story-flourish" aria-hidden="true">
       <svg viewBox="0 0 320 44">
-        <path d="M20 24 C70 8 120 8 150 22" fill="none" stroke="#b79ad9" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M300 24 C250 8 200 8 170 22" fill="none" stroke="#b79ad9" stroke-width="1.6" stroke-linecap="round"/>
-        <ellipse cx="70" cy="13" rx="6" ry="2.6" fill="#cdb6e6" transform="rotate(-14 70 13)"/>
-        <ellipse cx="110" cy="10" rx="6" ry="2.6" fill="#cdb6e6" transform="rotate(-6 110 10)"/>
-        <ellipse cx="250" cy="13" rx="6" ry="2.6" fill="#cdb6e6" transform="rotate(14 250 13)"/>
-        <ellipse cx="210" cy="10" rx="6" ry="2.6" fill="#cdb6e6" transform="rotate(6 210 10)"/>
-        <circle cx="36" cy="21" r="2.4" fill="#c9a26b"/>
-        <circle cx="284" cy="21" r="2.4" fill="#c9a26b"/>
+        <path d="M20 24 C70 8 120 8 150 22" fill="none" stroke="#d09186" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M300 24 C250 8 200 8 170 22" fill="none" stroke="#d09186" stroke-width="1.6" stroke-linecap="round"/>
+        <ellipse cx="70" cy="13" rx="6" ry="2.6" fill="#dfae9f" transform="rotate(-14 70 13)"/>
+        <ellipse cx="110" cy="10" rx="6" ry="2.6" fill="#dfae9f" transform="rotate(-6 110 10)"/>
+        <ellipse cx="250" cy="13" rx="6" ry="2.6" fill="#dfae9f" transform="rotate(14 250 13)"/>
+        <ellipse cx="210" cy="10" rx="6" ry="2.6" fill="#dfae9f" transform="rotate(6 210 10)"/>
+        <circle cx="36" cy="21" r="2.4" fill="#c79c5c"/>
+        <circle cx="284" cy="21" r="2.4" fill="#c79c5c"/>
         <g>
-          <circle cx="160" cy="14" r="5" fill="#a988d1"/>
-          <circle cx="169" cy="21" r="5" fill="#a988d1"/>
-          <circle cx="166" cy="31" r="5" fill="#a988d1"/>
-          <circle cx="154" cy="31" r="5" fill="#a988d1"/>
-          <circle cx="151" cy="21" r="5" fill="#a988d1"/>
-          <circle cx="160" cy="23" r="4" fill="#c9a26b"/>
+          <circle cx="160" cy="14" r="5" fill="#c9564f"/>
+          <circle cx="169" cy="21" r="5" fill="#c9564f"/>
+          <circle cx="166" cy="31" r="5" fill="#c9564f"/>
+          <circle cx="154" cy="31" r="5" fill="#c9564f"/>
+          <circle cx="151" cy="21" r="5" fill="#c9564f"/>
+          <circle cx="160" cy="23" r="4" fill="#c79c5c"/>
         </g>
       </svg>
     </div>
@@ -1215,7 +1226,7 @@
   function validateStep(step) {
     let ok = true;
     const mark = (el, bad) => {
-      el.style.outline = bad ? "2px solid #d98570" : "";
+      el.style.outline = bad ? "2px solid #c4574e" : "";
       el.style.outlineOffset = bad ? "3px" : "";
     };
     step.querySelectorAll("[data-required]").forEach(el => {
