@@ -962,10 +962,10 @@
         <div class="field">
           <select id="experience" data-required>
             <option value="" disabled selected>Select…</option>
-            <option>0–2 years</option>
-            <option>3–5 years</option>
-            <option>6–10 years</option>
-            <option>11–15 years</option>
+            <option>0-2 years</option>
+            <option>3-5 years</option>
+            <option>6-10 years</option>
+            <option>11-15 years</option>
             <option>15+ years</option>
           </select>
         </div>
@@ -978,9 +978,9 @@
           <select id="break-duration" data-required>
             <option value="" disabled selected>Select…</option>
             <option>Less than 1 year</option>
-            <option>1–2 years</option>
-            <option>3–5 years</option>
-            <option>6–10 years</option>
+            <option>1-2 years</option>
+            <option>3-5 years</option>
+            <option>6-10 years</option>
             <option>More than 10 years</option>
           </select>
         </div>
@@ -1124,7 +1124,7 @@
       </div>
 
       <div class="step" data-name="Strengths">
-        <h3>What do people often appreciate and rely on you for? 💪</h3>
+        <h3>What do people often appreciate and rely on you for? 🙌</h3>
         <p class="step-sub" id="strengths-sub">Pick up to four - these become your strengths.</p>
         <div class="field">
           <div class="pills" id="soft-skills" data-required data-max="4" data-other="soft-skills-other">
@@ -1286,7 +1286,7 @@
       </div>
 
       <div class="step" data-name="Your solution">
-        <h3>How would you prefer to solve this? 🤝</h3>
+        <h3>How would you prefer to solve this?</h3>
         <p class="step-sub" id="solution-sub">Pick up to three kinds of help that appeal to you most.</p>
         <div class="field">
           <div class="pills" id="solution" data-required data-max="3" data-other="solution-other">
@@ -1295,6 +1295,7 @@
             <span class="pill">An online course to build skills</span>
             <span class="pill">Talking to people who've done it</span>
             <span class="pill">Tools that match me to the right jobs</span>
+            <span class="pill">Job coaching using a Voucher</span>
             <span class="pill">I'm not sure yet</span>
             <span class="pill">Other</span>
           </div>
@@ -1310,9 +1311,9 @@
         <div class="field">
           <div class="pills" id="return-timeline" data-single data-required>
             <span class="pill">As soon as possible</span>
-            <span class="pill">Within 1–3 months</span>
-            <span class="pill">Within 3–6 months</span>
-            <span class="pill">Within 6–12 months</span>
+            <span class="pill">Within 1-3 months</span>
+            <span class="pill">Within 3-6 months</span>
+            <span class="pill">Within 6-12 months</span>
             <span class="pill">No fixed timeline</span>
           </div>
         </div>
@@ -1449,7 +1450,7 @@
         and email address. We use this data for one purpose only: to create your personal career roadmap and send it to
         you by email. The legal basis is your consent, given by ticking the box before submitting.</p>
       <h5>Where your data is stored</h5>
-      <p>Submissions are delivered to us through Formspree Inc. (USA), which participates in the EU–U.S. Data Privacy
+      <p>Submissions are delivered to us through Formspree Inc. (USA), which participates in the EU-U.S. Data Privacy
         Framework, and arrive in our email inbox. We do not sell or share your data with anyone else, and we won't send
         you anything beyond your roadmap unless you separately ask us to.</p>
       <h5>How long we keep it</h5>
@@ -1721,7 +1722,7 @@
 
       const exp = document.getElementById("experience").value;
       document.getElementById("prev-work-sub").textContent =
-        exp && exp !== "0–2 years"
+        exp && exp !== "0-2 years"
           ? `Your ${exp} of experience count for a lot - pick everything that applies.`
           : "Pick everything that applies.";
 
