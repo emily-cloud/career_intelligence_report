@@ -22,7 +22,7 @@ The page therefore collects **evidence**, not just labels: what she did in her p
 12. Interests (up to 3)
 13. What would you like to do next? (goal)
 14. Biggest challenges (incl. skills-relevance, explaining the break, language/qualifications; up to 2)
-15. How would you prefer to solve this? (product validation; up to 2)
+15. What have you already tried to solve this — and what didn't work? (multi-select + optional free text)
 16. Transition readiness: how much change + ideal return timeline (one screen)
 17. Three 1–5 confidence statements (one screen)
 18. Reusable professional skills (optional free text)
@@ -56,4 +56,4 @@ GitHub Pages (Settings → Pages → deploy from `main`) or Netlify. A pre-Build
 
 ## Measuring the test
 
-Funnel: visits → Start clicked → email submitted → post-result answer. The free-text answers (`career_break_details`, `previous_role_tasks`, `reusable_skills`, `biggest_challenge`, `most_valuable_next`) are the core research data.
+Funnel: visits → Start clicked → email submitted → post-result answer. The free-text answers (`career_break_details`, `previous_role_tasks`, `reusable_skills`, `biggest_challenge`, `why_it_failed`, `most_valuable_next`) are the core research data.

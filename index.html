@@ -190,12 +190,6 @@
       text-wrap: balance;
     }
 
-    .sub.under-story {
-      text-align: center;
-      margin: 0 auto 1.2rem;
-      padding: 0 1.25rem;
-    }
-
     .cta-btn {
       display: inline-block;
       font-size: 0.95rem;
@@ -216,33 +210,6 @@
     .cta-btn:hover {
       background: var(--btn-hover);
       transform: translateY(-1px);
-    }
-
-    .cta-note {
-      margin-top: 1rem;
-      font-size: 0.85rem;
-      color: var(--ink-faint);
-    }
-
-    .promise {
-      max-width: none;
-      padding: 0 0.5rem 2.5rem;
-      text-align: center;
-      color: var(--ink-soft);
-      font-size: clamp(0.5rem, 2.35vw, 0.95rem);
-      white-space: nowrap;
-    }
-
-    .promise span {
-      color: var(--accent);
-      margin: 0 0.35rem;
-    }
-
-    @media (max-width: 420px) {
-      .promise span {
-        margin: 0 0.12rem;
-        font-size: 0.85em;
-      }
     }
 
     /* ---------- The story ---------- */
@@ -287,13 +254,24 @@
       color: var(--accent-dark);
     }
 
-    .why-card em {
-      font-style: italic;
-      color: var(--accent);
+    .why-card+.why-card {
+      margin-top: 1.2rem;
     }
 
-    .why-card .cta-btn {
-      margin-top: 1.4rem;
+    .cta-card {
+      background: none;
+      border: none;
+      box-shadow: none;
+      padding: 0.5rem 0 0.4rem;
+    }
+
+    .why-card .cta-lead {
+      text-align: center;
+      color: var(--ink-soft);
+      font-size: 1rem;
+      max-width: 30rem;
+      margin: 0 auto 1.4rem;
+      text-wrap: balance;
     }
 
     .why-card .cta-note {
@@ -301,6 +279,15 @@
       font-size: 0.85rem;
       color: var(--ink-faint);
       margin-top: 0.8rem;
+    }
+
+    .why-card em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .why-card .cta-btn {
+      margin-top: 1.4rem;
     }
 
     /* ---------- Assessment ---------- */
@@ -907,28 +894,26 @@
   </header>
 
   <section class="wrap" id="why">
-    <div class="why-card">
-      <h2>Your story isn't a gap</h2>
-      <p>Maybe you've been away from work for two years - or ten. Somewhere between caring for others and holding
-        everything together, a quiet question crept in: <em>"Who would hire me now?"</em></p>
-      <p>Here's what we've learned from women who've stood exactly where you stand: what's missing is almost never
-        ability. It's that years of real skills - organizing, supporting, solving, deciding - have never been written
-        down in one place.</p>
-      <p>That's what these questions are for. This is not a personality quiz, and there are no trick questions. Each
-        answer adds a piece of your picture: what you did before, what you carried through your break, what you want
-        now. At the end you'll see your strengths and realistic directions right away - and within 24 hours, we'll send
-        your personal roadmap back to work.</p>
-      <p class="story-close"><strong>Five minutes. One question at a time. Let's put your story into words.</strong></p>
+    <div class="why-card cta-card">
+      <p class="cta-lead">Uncover the skills you may be overlooking, explore realistic career directions, and get
+        practical next steps back to work — based on what you've actually done.</p>
       <a class="cta-btn" href="#assessment">Discover My Next Step</a>
       <p class="cta-note">5 minutes · One question at a time · Free</p>
     </div>
+    <div class="why-card">
+      <h2>Your story isn't a gap</h2>
+      <p>Maybe you've been away from work for two years — or ten. Somewhere between caring for others and holding
+        everything together, a quiet question crept in: <em>"Who would hire me now?"</em></p>
+      <p>Here's what we've learned from women who've stood exactly where you stand: what's missing is almost never
+        ability. It's that years of real skills — organizing, supporting, solving, deciding — have never been written
+        down in one place.</p>
+      <p>That's what these questions are for. This is not a personality quiz, and there are no trick questions. Each
+        answer adds a piece of your picture: what you did before, what you carried through your break, what you want
+        now. At the end you'll see your strengths and realistic directions right away — and within 24 hours, we'll send
+        your personal roadmap back to work.</p>
+      <p class="story-close"><strong>Five minutes. One question at a time. Let's put your story into words.</strong></p>
+    </div>
   </section>
-
-  <p class="sub under-story wrap">Uncover the skills you may be overlooking, explore realistic career directions, and
-    get practical next steps back to work - based on what you've actually done.</p>
-
-  <p class="promise wrap">Skills you may be overlooking <span>·</span> Realistic career directions <span>·</span>
-    Practical next steps</p>
 
   <section class="wrap" id="assessment">
     <div class="panel" id="wizard">
@@ -1285,23 +1270,30 @@
         </div>
       </div>
 
-      <div class="step" data-name="Your solution">
-        <h3>How would you prefer to solve this?</h3>
-        <p class="step-sub" id="solution-sub">Pick up to three kinds of help that appeal to you most.</p>
+      <div class="step" data-name="What you've tried">
+        <h3>What have you already tried to solve this? 🤝</h3>
+        <p class="step-sub" id="solution-sub">Pick everything you've tried. Every attempt tells us something.</p>
         <div class="field">
-          <div class="pills" id="solution" data-required data-max="3" data-other="solution-other">
-            <span class="pill">A clear step-by-step plan I follow myself</span>
-            <span class="pill">Personal guidance from a coach</span>
-            <span class="pill">An online course to build skills</span>
-            <span class="pill">Talking to people who've done it</span>
-            <span class="pill">Tools that match me to the right jobs</span>
-            <span class="pill">Job coaching using a Voucher</span>
-            <span class="pill">I'm not sure yet</span>
+          <div class="pills" id="solution" data-required data-other="solution-other">
+            <span class="pill">Applying to jobs online</span>
+            <span class="pill">Updating my CV myself</span>
+            <span class="pill">Career coaching or counseling</span>
+            <span class="pill">Online courses or certificates</span>
+            <span class="pill">Job center / Arbeitsagentur programs</span>
+            <span class="pill">Networking or LinkedIn</span>
+            <span class="pill">Advice from friends &amp; family</span>
+            <span class="pill">Nothing yet</span>
             <span class="pill">Other</span>
           </div>
           <div class="other-input" id="solution-other">
-            <input type="text" placeholder="Describe what would help you…">
+            <input type="text" placeholder="Tell us what you tried…">
           </div>
+        </div>
+        <div class="field" style="margin-top:1rem;">
+          <label for="solution-why">What didn't work, and why do you think that was? <span
+              class="opt">(optional)</span></label>
+          <textarea id="solution-why" rows="3"
+            placeholder="e.g. I sent 30 applications but barely heard back…"></textarea>
         </div>
       </div>
 
@@ -1481,10 +1473,7 @@
       e.preventDefault();
       assessment.classList.add("open");
       document.getElementById("why").style.display = "none";
-      document.querySelector(".promise").style.display = "none";
-      document.querySelector(".under-story").style.display = "none";
       e.currentTarget.style.display = "none";
-      document.querySelector(".cta-note").style.display = "none";
       assessment.scrollIntoView({ behavior: "smooth", block: "start" });
       const firstInput = assessment.querySelector(".step.active input, .step.active select");
       if (firstInput) firstInput.focus({ preventScroll: true });
@@ -1522,7 +1511,7 @@
     const ALONE = {
       "break-reason": ["Prefer not to say"],
       "prev-work": ["Never worked before"],
-      "solution": ["I'm not sure yet"]
+      "solution": ["Nothing yet"]
     };
 
     document.querySelectorAll(".pills").forEach(group => {
@@ -1696,6 +1685,58 @@
       return ok;
     }
 
+    // ---- challenge options adapt to her goal (Q14) ----
+    // each entry: [group label, [options]]; an "Other" group is always appended
+    const CHALLENGE_SETS = {
+      "default": [
+        ["🧭 Direction", ["Unsure which role suits me", "Unsure what skills to build", "Unsure how to use my past experience"]],
+        ["🌷 Confidence & story", ["Rebuilding my confidence", "Explaining my career break"]],
+        ["📄 Applications", ["Updating my CV or LinkedIn", "Preparing for interviews"]],
+        ["🌐 Market & network", ["Building a professional network", "Understanding today's job market", "Language barriers"]],
+        ["⚖️ Life fit", ["Finding work that fits my life"]]
+      ],
+      "Try something new": [
+        ["🧭 New direction", ["Choosing the right new direction", "Knowing which of my skills transfer", "Unsure what skills to build"]],
+        ["🌷 Confidence & story", ["Rebuilding my confidence", "Explaining the switch and my break"]],
+        ["📄 Getting started", ["Competing with experienced candidates", "Updating my CV for a new field"]],
+        ["🌐 Market & network", ["No network in the new field", "Language barriers"]],
+        ["⚖️ Life fit", ["Finding work that fits my life"]]
+      ],
+      "Start my own business": [
+        ["💡 The idea", ["Choosing or validating my business idea", "Knowing if people would pay for it"]],
+        ["📋 Getting started", ["Registering a business in Germany", "Understanding taxes & insurance"]],
+        ["💶 Money", ["Funding or start-up costs", "Unsteady income at the beginning"]],
+        ["📣 Customers", ["Finding my first customers", "Marketing and visibility"]],
+        ["🌷 Confidence & life", ["Confidence to take the leap", "Balancing business and family"]]
+      ],
+      "Any stable job, soon": [
+        ["🔎 Finding jobs", ["Finding openings that match me", "Getting responses to applications"]],
+        ["📄 Applications", ["Updating my CV or LinkedIn", "Preparing for interviews"]],
+        ["🌷 Confidence & story", ["Explaining my career break", "Rebuilding my confidence"]],
+        ["🌐 Practical", ["Language barriers", "Childcare or scheduling constraints"]],
+        ["⚖️ Life fit", ["Finding work that fits my life"]]
+      ],
+      "I'm not sure yet": [
+        ["🧭 Direction", ["Unsure which role suits me", "Unsure what skills to build", "Unsure how to use my past experience", "Too many options, hard to choose"]],
+        ["🌷 Confidence & story", ["Rebuilding my confidence", "Explaining my career break"]],
+        ["🌐 Market", ["Understanding today's job market", "Language barriers"]],
+        ["⚖️ Life fit", ["Finding work that fits my life"]]
+      ]
+    };
+    let challengeGoalKey = "default";
+    function buildChallenges(key) {
+      const groups = CHALLENGE_SETS[key] || CHALLENGE_SETS["default"];
+      document.getElementById("challenge").innerHTML =
+        groups.map(([label, opts]) =>
+          `<span class="pill-group-label">${label}</span>` +
+          opts.map(o => `<span class="pill">${o}</span>`).join("")
+        ).join("") +
+        `<span class="pill-group-label">💬 Something else</span><span class="pill">Other</span>`;
+      const field = document.getElementById("challenge-other");
+      field.classList.remove("visible");
+      field.querySelector("input").value = "";
+    }
+
     // ---- context-aware copy: later questions pick up her earlier answers ----
     const GOAL_BITS = {
       "Return to my previous field": "returning to your field",
@@ -1707,6 +1748,13 @@
     function personalize() {
       const goal = selected("#goal")[0] || "";
       const g = GOAL_BITS[goal] || "";
+
+      // swap the challenge options when the goal changes (selections reset)
+      const setKey = CHALLENGE_SETS[goal] ? goal : "default";
+      if (setKey !== challengeGoalKey) {
+        buildChallenges(setKey);
+        challengeGoalKey = setKey;
+      }
 
       document.getElementById("challenge-h").textContent = g
         ? `As you think about ${g}, which parts feel most challenging right now? 🤔`
@@ -1733,8 +1781,8 @@
 
       document.getElementById("solution-sub").textContent =
         selected("#challenge").length
-          ? "You've named what's hard - now let's look at what would help. Pick up to three."
-          : "Pick up to three kinds of help that appeal to you most.";
+          ? "You've named what's hard. What have you already tried? Pick everything that applies."
+          : "Pick everything you've tried. Every attempt tells us something.";
 
       document.getElementById("timeline-sub").textContent = g
         ? `Whether ${g} takes three months or a year - knowing your pace keeps the roadmap realistic.`
@@ -1922,7 +1970,27 @@
         "Language barriers": "Language barriers",
         "Finding work that fits my life": "Finding work that fits your life",
         "Understanding today's job market": "Understanding today's job market",
-        "Knowing what salary to expect": "Uncertainty about salary expectations"
+        "Knowing what salary to expect": "Uncertainty about salary expectations",
+        "Choosing the right new direction": "Choosing the right new direction",
+        "Knowing which of my skills transfer": "Clarity on which of your skills transfer",
+        "Explaining the switch and my break": "Explaining the switch and the career break",
+        "Competing with experienced candidates": "Competing with more recent experience",
+        "Updating my CV for a new field": "A CV not yet aimed at the new field",
+        "No network in the new field": "No network in the new field yet",
+        "Too many options, hard to choose": "Too many options to choose from",
+        "Finding openings that match me": "Finding openings that match you",
+        "Getting responses to applications": "Getting responses to applications",
+        "Childcare or scheduling constraints": "Childcare and scheduling constraints",
+        "Choosing or validating my business idea": "An idea that still needs validating",
+        "Knowing if people would pay for it": "Unproven demand for the idea",
+        "Registering a business in Germany": "Navigating business registration",
+        "Understanding taxes & insurance": "Understanding taxes and insurance",
+        "Funding or start-up costs": "Funding and start-up costs",
+        "Unsteady income at the beginning": "Unsteady income at the start",
+        "Finding my first customers": "Finding the first customers",
+        "Marketing and visibility": "Marketing and visibility",
+        "Confidence to take the leap": "Confidence to take the leap",
+        "Balancing business and family": "Balancing business and family"
       };
       blockers.unshift(...challenges.map(c => CHALLENGE_BLOCKERS[c] || c));
       blockers = [...new Set(blockers)];
@@ -1956,7 +2024,8 @@
         interests: selected("#interests").join(", "),
         goal: selected("#goal").join(""),
         biggest_challenge: selected("#challenge").join(", "),
-        preferred_solution: selected("#solution").join(", "),
+        tried_before: selected("#solution").join(", "),
+        why_it_failed: val("solution-why"),
         return_timeline: selected("#return-timeline").join(""),
         confidence: [...document.querySelectorAll(".scale-q")]
           .map(q => `${q.querySelector(".statement").textContent} → ${q.querySelector(".scale").dataset.value}/5`).join(" | "),
@@ -2048,43 +2117,39 @@
       }
     });
 
-    // ---- share the assessment (and her top paths) with a friend ----
-    function shareParts() {
-      const url = location.protocol.startsWith("http")
+    // ---- share the assessment with a friend (link only) ----
+    function shareUrl() {
+      return location.protocol.startsWith("http")
         ? location.href.split("#")[0]
         : "https://emily-cloud.github.io/career_intelligence_report/";
-      const paths = [...document.querySelectorAll(".path-item strong")]
-        .map(x => x.textContent.replace("⭐ ", "")).slice(0, 3);
-      const text = `I just tried the Career Clarity Assessment${paths.length ? " - my top paths: " + paths.join(", ") : ""}. If you're thinking about returning to work, try it too:`;
-      return { url, text, full: `${text} ${url}` };
     }
     function fillShareLinks() {
-      const { full } = shareParts();
-      document.getElementById("share-wa").href = "https://wa.me/?text=" + encodeURIComponent(full);
+      const url = shareUrl();
+      document.getElementById("share-wa").href = "https://wa.me/?text=" + encodeURIComponent(url);
       document.getElementById("share-mail").href = "mailto:?subject=" +
-        encodeURIComponent("Something for you - Career Clarity Assessment") +
-        "&body=" + encodeURIComponent(full);
+        encodeURIComponent("Something for you — Career Clarity Assessment") +
+        "&body=" + encodeURIComponent(url);
     }
     document.getElementById("share-btn").addEventListener("click", async () => {
       const btn = document.getElementById("share-btn");
-      const { url, text, full } = shareParts();
+      const url = shareUrl();
       const confirmCopied = () => {
-        btn.textContent = "Copied - paste it anywhere";
+        btn.textContent = "Link copied — paste it anywhere";
         setTimeout(() => { btn.textContent = "💌 Share this with a friend"; }, 3000);
       };
       if (navigator.share) {
-        try { await navigator.share({ title: "Career Clarity Assessment", text, url }); return; }
+        try { await navigator.share({ title: "Career Clarity Assessment", url }); return; }
         catch (e) { if (e.name === "AbortError") return; /* else fall through */ }
       }
-      try { await navigator.clipboard.writeText(full); confirmCopied(); return; } catch (e) { /* fall through */ }
+      try { await navigator.clipboard.writeText(url); confirmCopied(); return; } catch (e) { /* fall through */ }
       const ta = document.createElement("textarea");
-      ta.value = full; ta.style.position = "fixed"; ta.style.opacity = "0";
+      ta.value = url; ta.style.position = "fixed"; ta.style.opacity = "0";
       document.body.appendChild(ta); ta.select();
       let done = false;
       try { done = document.execCommand("copy"); } catch (e) { }
       ta.remove();
       if (done) confirmCopied();
-      else window.prompt("Copy this message and send it to a friend:", full);
+      else window.prompt("Copy this link and send it to a friend:", url);
     });
 
     // ---- light / dark mode ----
