@@ -1,6 +1,6 @@
-# UnityWerk — Career Clarity Assessment (Builder Week Mini-MVP)
+# UnityWerk - Career Clarity Assessment (Builder Week Mini-MVP)
 
-A single-file landing page (`index.html`) piloting a **Career Clarity Assessment for women returning to work after a career break**. No frameworks, no build step, no backend — open `index.html` in a browser and it works.
+A single-file landing page (`index.html`) piloting a **Career Clarity Assessment for women returning to work after a career break**. No frameworks, no build step, no backend - open `index.html` in a browser and it works.
 
 **Core hypothesis:** what has this woman actually done → what transferable skills may be hidden in that experience → what realistic career directions could fit her now → what should she do next?
 
@@ -28,7 +28,7 @@ The page therefore collects **evidence**, not just labels: what she did in her p
 18. Reusable professional skills (optional free text)
 19. Name + email + optional notes + GDPR consent → instant Career Profile preview
 
-**After the report:** one product-research question — "What would be most valuable to you next?" — sent as a separate fire-and-forget submission.
+**After the report:** one product-research question - "What would be most valuable to you next?" - sent as a separate fire-and-forget submission.
 
 ## The instant report
 
@@ -40,13 +40,13 @@ Submissions post to the `FORM_ENDPOINT` (Formspree) configured near the top of t
 
 ## Privacy (GDPR)
 
-Consent checkbox (unticked by default), on-page privacy notice (UnityWerk pilot; contact unitywerk@gmail.com; Formspree as processor; 30-day retention; data-subject rights), and a timestamped consent record in each submission. **Open item:** the notice names UnityWerk as a pilot project — confirm the formal controller name/address for a Berlin/Germany-based pilot before scaling beyond friendly testers.
+Consent checkbox (unticked by default), on-page privacy notice (UnityWerk pilot; contact unitywerk@gmail.com; Formspree as processor; 30-day retention; data-subject rights), and a timestamped consent record in each submission. **Open item:** the notice names UnityWerk as a pilot project - confirm the formal controller name/address for a Berlin/Germany-based pilot before scaling beyond friendly testers.
 
 Operator duties: fill roadmaps within 24h, delete submissions within 30 days, no mailing beyond the roadmap, honor access/deletion requests.
 
 ## Photos (optional)
 
-One image slot is wired in: add a **`background.jpg`** next to `index.html` and it renders as a photographic backdrop behind a soft white veil across the whole page. Without the file, the textured gradient shows — nothing breaks.
+One image slot is wired in: add a **`background.jpg`** next to `index.html` and it renders as a photographic backdrop behind a soft white veil across the whole page. Without the file, the textured gradient shows - nothing breaks.
 
 Recommended: a calm, light photo (a bright workspace, soft morning light, plants) around 1600–2000px wide, compressed to under ~400KB (e.g. via squoosh.app) so the page stays fast. Free sources with safe licenses: unsplash.com and pexels.com.
 

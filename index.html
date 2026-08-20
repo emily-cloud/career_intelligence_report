@@ -1,41 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Career Clarity Assessment — Ready to return to work?</title>
-<meta name="description" content="Ready to return to work, but not sure where to start? Take the 5-minute Career Clarity Assessment and receive a personalized career roadmap.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ink: #3f3947;
-    --ink-soft: #6c6576;
-    --ink-faint: #9b93a5;
-    --paper: #ffffff;
-    --card: #ffffff;
-    --accent: #9c93b5;
-    --accent-dark: #7a7096;
-    --accent-soft: #e9e2e9;
-    --gold: #f8d568;
-    --olive: #b5b35c;
-    --btn: #b5b35c;
-    --btn-hover: #a3a150;
-    --btn-text: #33311d;
-    --line: #c6afc6;
-    --radius: 10px;
-    --serif: "Playfair Display", Georgia, "Times New Roman", serif;
-    --glow1: #f0edf5;
-    --glow2: #faf8e8;
-    --veil-a: rgba(255, 255, 255, 0.88);
-    --veil-b: rgba(255, 255, 255, 0.93);
-    --story-bg: linear-gradient(165deg, #ffffff 0%, #f9f8ec 45%, #f2f1d8 100%);
-    --story-border: #c6afc6;
-    font-size: 16px;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Clarity Assessment - Ready to return to work?</title>
+  <meta name="description"
+    content="Ready to return to work, but not sure where to start? Take the 5-minute Career Clarity Assessment and receive a personalized career roadmap.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ink: #3f3947;
+      --ink-soft: #6c6576;
+      --ink-faint: #9b93a5;
+      --paper: #ffffff;
+      --card: #ffffff;
+      --accent: #9c93b5;
+      --accent-dark: #7a7096;
+      --accent-soft: #e9e2e9;
+      --gold: #f8d568;
+      --olive: #b5b35c;
+      --btn: #b5b35c;
+      --btn-hover: #a3a150;
+      --btn-text: #33311d;
+      --line: #c6afc6;
+      --radius: 10px;
+      --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+      --glow1: #f0edf5;
+      --glow2: #faf8e8;
+      --veil-a: rgba(255, 255, 255, 0.88);
+      --veil-b: rgba(255, 255, 255, 0.93);
+      --story-bg: linear-gradient(165deg, #ffffff 0%, #f9f8ec 45%, #f2f1d8 100%);
+      --story-border: #c6afc6;
+      font-size: 16px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --ink: #f2eae0;
+        --ink-soft: #cfc2b4;
+        --ink-faint: #9c8e82;
+        --paper: #211814;
+        --card: #2b211c;
+        --accent: #e0605a;
+        --accent-dark: #ea7c74;
+        --accent-soft: #47241f;
+        --gold: #d3a76a;
+        --olive: #d3a76a;
+        --btn: #e0605a;
+        --btn-hover: #ea7c74;
+        --btn-text: #ffffff;
+        --line: #453629;
+        --glow1: #3a231e;
+        --glow2: #37301e;
+        --veil-a: rgba(33, 24, 20, 0.9);
+        --veil-b: rgba(33, 24, 20, 0.94);
+        --story-bg: linear-gradient(165deg, #322520 0%, #2c211c 45%, #271c17 100%);
+        --story-border: #4d3b2e;
+      }
+    }
+
+    :root[data-theme="dark"] {
       --ink: #f2eae0;
       --ink-soft: #cfc2b4;
       --ink-faint: #9c8e82;
@@ -57,1610 +86,2027 @@
       --story-bg: linear-gradient(165deg, #322520 0%, #2c211c 45%, #271c17 100%);
       --story-border: #4d3b2e;
     }
-  }
-  :root[data-theme="dark"] {
-    --ink: #f2eae0;
-    --ink-soft: #cfc2b4;
-    --ink-faint: #9c8e82;
-    --paper: #211814;
-    --card: #2b211c;
-    --accent: #e0605a;
-    --accent-dark: #ea7c74;
-    --accent-soft: #47241f;
-    --gold: #d3a76a;
-    --olive: #d3a76a;
-    --btn: #e0605a;
-    --btn-hover: #ea7c74;
-    --btn-text: #ffffff;
-    --line: #453629;
-    --glow1: #3a231e;
-    --glow2: #37301e;
-    --veil-a: rgba(33, 24, 20, 0.9);
-    --veil-b: rgba(33, 24, 20, 0.94);
-    --story-bg: linear-gradient(165deg, #322520 0%, #2c211c 45%, #271c17 100%);
-    --story-border: #4d3b2e;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background:
-      radial-gradient(60rem 30rem at 85% -5%, var(--glow1) 0%, transparent 60%),
-      radial-gradient(50rem 26rem at -10% 30%, var(--glow2) 0%, transparent 55%),
-      var(--paper);
-    background-attachment: fixed;
-    color: var(--ink);
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
-  }
-  /* Optional photographic backdrop: drop a "background.jpg" next to this
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background:
+        radial-gradient(60rem 30rem at 85% -5%, var(--glow1) 0%, transparent 60%),
+        radial-gradient(50rem 26rem at -10% 30%, var(--glow2) 0%, transparent 55%),
+        var(--paper);
+      background-attachment: fixed;
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* Optional photographic backdrop: drop a "background.jpg" next to this
      file and it appears behind a soft white veil; without the file, only
      the gentle veil shows. */
-  body::before {
-    content: "";
-    position: fixed; inset: 0; z-index: -2; pointer-events: none;
-    background:
-      linear-gradient(var(--veil-a), var(--veil-b)),
-      url("background.jpg") center / cover no-repeat;
-  }
-  /* fine grain so the ground feels like paper, not a flat fill */
-  body::after {
-    content: "";
-    position: fixed; inset: 0; z-index: -1; pointer-events: none;
-    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='220' height='220' filter='url(%23n)' opacity='0.045'/></svg>");
-  }
-  .wrap { max-width: 560px; margin: 0 auto; padding: 0 1.25rem; }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background:
+        linear-gradient(var(--veil-a), var(--veil-b)),
+        url("background.jpg") center / cover no-repeat;
+    }
 
-  /* ---------- Hero ---------- */
-  header { padding: 5rem 0 3.5rem; text-align: center; }
-  .eyebrow {
-    display: inline-block;
-    font-size: clamp(0.56rem, 1.75vw, 0.72rem);
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin-bottom: 1.6rem;
-    white-space: nowrap;
-  }
-  @media (max-width: 430px) {
-    .eyebrow { letter-spacing: 0.06em; font-size: 0.54rem; }
-  }
-  @media (max-width: 370px) {
-    .eyebrow { letter-spacing: 0.05em; }
-  }
-  h1 {
-    font-family: var(--serif);
-    font-size: clamp(1.25rem, 6.3vw, 2.8rem);
-    line-height: 1.18;
-    font-weight: 700;
-    color: var(--accent-dark);
-    margin-bottom: 1.2rem;
-    text-wrap: balance;
-  }
-  h1 em { font-style: italic; color: inherit; white-space: nowrap; }
-  .sub {
-    font-size: 1.08rem;
-    color: var(--ink-soft);
-    max-width: 28rem;
-    margin: 0 auto 2.2rem;
-    text-wrap: balance;
-  }
-  .sub.under-story { text-align: center; margin: 0 auto 1.2rem; padding: 0 1.25rem; }
-  .cta-btn {
-    display: inline-block;
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--btn-text);
-    background: var(--btn);
-    border: none;
-    border-radius: 3px;
-    padding: 1rem 2.4rem;
-    cursor: pointer;
-    text-decoration: none;
-    box-shadow: 0 10px 28px rgba(181, 179, 92, 0.4);
-    transition: background 0.15s ease, transform 0.15s ease;
-  }
-  .cta-btn:hover { background: var(--btn-hover); transform: translateY(-1px); }
-  .cta-note { margin-top: 1rem; font-size: 0.85rem; color: var(--ink-faint); }
+    /* fine grain so the ground feels like paper, not a flat fill */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='220' height='220' filter='url(%23n)' opacity='0.045'/></svg>");
+    }
 
-  .promise {
-    max-width: none;
-    padding: 0 0.5rem 2.5rem;
-    text-align: center;
-    color: var(--ink-soft);
-    font-size: clamp(0.5rem, 2.35vw, 0.95rem);
-    white-space: nowrap;
-  }
-  .promise span { color: var(--accent); margin: 0 0.35rem; }
-  @media (max-width: 420px) {
-    .promise span { margin: 0 0.12rem; font-size: 0.85em; }
-  }
+    .wrap {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
 
-  /* ---------- The story ---------- */
-  #why { padding: 0 0 1.5rem; }
-  .why-card {
-    position: relative;
-    overflow: hidden;
-    background: var(--story-bg);
-    border: 1px solid var(--story-border);
-    border-radius: var(--radius);
-    padding: 2.2rem 2rem;
-    text-align: center;
-    box-shadow: 0 14px 40px rgba(122, 112, 150, 0.13);
-  }
-  .why-card h2 {
-    font-family: var(--serif);
-    font-size: 1.45rem;
-    font-weight: 500;
-    color: var(--accent-dark);
-    margin-bottom: 0.9rem;
-  }
-  .why-card p {
-    color: var(--ink-soft);
-    font-size: 0.97rem;
-    max-width: 30rem;
-    margin: 0 auto;
-    text-align: left;
-  }
-  .why-card p + p { margin-top: 0.8rem; }
-  .why-card .story-close { text-align: center; margin-top: 1.2rem; color: var(--accent-dark); }
-  .why-card em { font-style: italic; color: var(--accent); }
-  .why-card .cta-btn { margin-top: 1.4rem; }
-  .why-card .cta-note { text-align: center; font-size: 0.85rem; color: var(--ink-faint); margin-top: 0.8rem; }
+    /* ---------- Hero ---------- */
+    header {
+      padding: 5rem 0 3.5rem;
+      text-align: center;
+    }
 
-  /* ---------- Assessment ---------- */
-  section { padding: 1rem 0 3rem; }
-  #assessment { scroll-margin-top: 1.5rem; display: none; max-width: 760px; }
-  #assessment.open { display: block; }
-  .panel {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 2.2rem 2rem 2rem;
-    box-shadow: 0 16px 48px rgba(47, 42, 36, 0.08);
-  }
-  .progress { margin-bottom: 2.2rem; }
-  .progress-label {
-    display: flex; justify-content: space-between;
-    font-size: 0.78rem; font-weight: 600; color: var(--ink-faint);
-    letter-spacing: 0.05em;
-    margin-bottom: 0.5rem;
-  }
-  .progress-bar { height: 5px; border-radius: 999px; background: var(--accent-soft); overflow: hidden; }
-  .progress-fill {
-    height: 100%; width: 0;
-    background: linear-gradient(90deg, var(--accent), var(--gold));
-    border-radius: 999px; transition: width 0.35s ease;
-  }
-  .step { display: none; animation: fadein 0.35s ease; }
-  .step.active { display: block; }
-  @keyframes fadein { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-  @media (prefers-reduced-motion: reduce) { .step { animation: none; } }
-  .step h3 {
-    font-family: var(--serif);
-    font-size: 1.5rem;
-    font-weight: 600;
-    line-height: 1.28;
-    color: var(--accent-dark);
-    margin-bottom: 0.4rem;
-    text-wrap: balance;
-  }
-  .step .step-sub { color: var(--ink-soft); font-size: 0.95rem; margin-bottom: 1.6rem; }
-  .field { margin-bottom: 0.4rem; }
-  label, .q-label {
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 650;
-    margin-bottom: 0.4rem;
-  }
-  .opt { font-weight: 400; color: var(--ink-faint); }
-  input[type="text"], input[type="email"], select, textarea {
-    width: 100%;
-    font: inherit;
-    font-size: 1.05rem;
-    color: var(--ink);
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 0.85rem 1rem;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
-  }
-  textarea { resize: vertical; min-height: 5rem; }
-  .lang-row { display: flex; gap: 0.5rem; margin-bottom: 0.6rem; align-items: center; }
-  .lang-row .lang-select { flex: 1.5; }
-  .lang-row .lang-custom { flex: 1.3; display: none; }
-  .lang-row .lang-level { flex: 1; }
-  .lang-remove {
-    flex: none;
-    width: 2.1rem; height: 2.1rem;
-    font: inherit; font-size: 1.1rem; line-height: 1;
-    color: var(--ink-faint);
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  .lang-remove:hover { color: var(--accent); border-color: var(--accent); }
-  .add-lang {
-    font: inherit; font-size: 0.9rem; font-weight: 600;
-    color: var(--accent);
-    background: none; border: none;
-    cursor: pointer;
-    padding: 0.2rem 0;
-  }
-  .add-lang:hover { color: var(--accent-dark); }
-  input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 3px var(--accent-soft);
-  }
+    .eyebrow {
+      display: inline-block;
+      font-size: clamp(0.56rem, 1.75vw, 0.72rem);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1.6rem;
+      white-space: nowrap;
+    }
 
-  /* pills — two options per line */
-  .pills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.6rem; }
-  .pill {
-    font-size: 0.98rem;
-    font-weight: 550;
-    text-align: center;
-    color: var(--ink-soft);
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 4px;
-    padding: 0.6rem 0.9rem;
-    cursor: pointer;
-    user-select: none;
-    transition: all 0.12s ease;
-  }
-  @media (max-width: 520px) {
-    .pills { grid-template-columns: 1fr; }
-  }
-  .pill:hover { border-color: var(--accent); color: var(--accent); }
-  .pill.selected { color: #fff; background: var(--accent); border-color: var(--accent); }
-  .other-input { display: none; margin-top: 0.8rem; }
-  .other-input.visible { display: block; }
-  .pill-group-label {
-    grid-column: 1 / -1;
-    font-size: 0.78rem;
-    font-weight: 650;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: var(--ink-faint);
-    margin-top: 0.6rem;
-  }
-  .pill-group-label:first-child { margin-top: 0; }
+    @media (max-width: 430px) {
+      .eyebrow {
+        letter-spacing: 0.06em;
+        font-size: 0.54rem;
+      }
+    }
 
-  /* 1-5 scale */
-  .statement {
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: 1.3rem;
-    margin-bottom: 1.2rem;
-  }
-  .scale { display: flex; gap: 0.55rem; }
-  .scale button {
-    flex: 1;
-    font: inherit; font-weight: 650; font-size: 1.05rem;
-    color: var(--ink-soft);
-    background: var(--paper);
-    border: 1px solid var(--line);
-    border-radius: 6px;
-    padding: 0.85rem 0;
-    cursor: pointer;
-    transition: all 0.12s ease;
-  }
-  .scale button:hover { border-color: var(--accent); color: var(--accent); }
-  .scale button.selected { color: #fff; background: var(--accent); border-color: var(--accent); }
-  .scale-ends {
-    display: flex; justify-content: space-between;
-    font-size: 0.78rem; color: var(--ink-faint); margin-top: 0.4rem;
-  }
-  .scale-q + .scale-q { margin-top: 1.6rem; }
+    @media (max-width: 370px) {
+      .eyebrow {
+        letter-spacing: 0.05em;
+      }
+    }
 
-  .step-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 2rem; }
-  .btn-next, .btn-back {
-    font: inherit; font-weight: 700; font-size: 0.9rem;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    border-radius: 3px;
-    padding: 0.85rem 2rem;
-    cursor: pointer;
-    transition: background 0.15s ease;
-  }
-  .btn-next { color: var(--btn-text); background: var(--btn); border: none; }
-  .btn-next:hover { background: var(--btn-hover); }
-  .btn-back { color: var(--ink-faint); background: transparent; border: none; padding-left: 0; }
-  .btn-back:hover { color: var(--ink); }
-  .step-error { display: none; font-size: 0.85rem; color: #b3402a; margin-top: 1rem; }
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.25rem, 6.3vw, 2.8rem);
+      line-height: 1.18;
+      font-weight: 700;
+      color: var(--accent-dark);
+      margin-bottom: 1.2rem;
+      text-wrap: balance;
+    }
 
-  .consent {
-    display: flex; gap: 0.7rem; align-items: flex-start;
-    font-size: 0.85rem; font-weight: 400; color: var(--ink-soft);
-    line-height: 1.5;
-    margin-top: 1.1rem;
-    cursor: pointer;
-  }
-  .consent input {
-    flex: none;
-    width: 1.15rem; height: 1.15rem;
-    margin-top: 0.15rem;
-    accent-color: var(--accent);
-    cursor: pointer;
-  }
-  .consent a { color: var(--accent); }
+    h1 em {
+      font-style: italic;
+      color: inherit;
+      white-space: nowrap;
+    }
 
-  /* ---------- Privacy notice ---------- */
-  #privacy { scroll-margin-top: 2rem; padding-top: 1rem; }
-  .privacy-card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 1.8rem 1.7rem;
-    font-size: 0.9rem;
-    color: var(--ink-soft);
-  }
-  .privacy-card summary {
-    font-family: var(--serif);
-    font-size: 1.05rem;
-    color: var(--ink);
-    cursor: pointer;
-    list-style-position: inside;
-  }
-  .privacy-card h5 { font-size: 0.9rem; color: var(--ink); margin: 1.1rem 0 0.2rem; }
-  .privacy-card p { margin-top: 0.3rem; }
-  .privacy-card a { color: var(--accent); }
+    .sub {
+      font-size: 1.08rem;
+      color: var(--ink-soft);
+      max-width: 28rem;
+      margin: 0 auto 2.2rem;
+      text-wrap: balance;
+    }
 
-  /* ---------- Report ---------- */
-  #report { display: none; animation: fadein 0.4s ease; }
-  .report-card {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 2.5rem 2.1rem;
-    box-shadow: 0 16px 48px rgba(47, 42, 36, 0.08);
-  }
-  .report-card h2 {
-    font-family: var(--serif);
-    font-size: 1.7rem;
-    font-weight: 500;
-    margin-bottom: 0.3rem;
-  }
-  .report-intro { color: var(--ink-soft); font-size: 0.98rem; margin-bottom: 2rem; }
-  .report-section { margin-bottom: 2rem; }
-  .report-section h4 {
-    font-size: 0.76rem; font-weight: 700;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.8rem;
-  }
-  .report-list { list-style: none; display: grid; gap: 0.5rem; }
-  .report-list li { display: flex; gap: 0.65rem; align-items: baseline; font-size: 1rem; }
-  .report-list li .mark { flex: none; color: var(--accent); font-weight: 700; }
-  .paths { display: grid; gap: 0.7rem; }
-  .path-item { background: var(--accent-soft); border-radius: 6px; padding: 1rem 1.15rem; }
-  .path-item strong { display: block; font-size: 1.05rem; }
-  .path-item span { font-size: 0.9rem; color: var(--ink-soft); }
-  .paths-note { font-size: 0.85rem; color: var(--ink-faint); margin-top: 0.3rem; }
-  .report-note { border-top: 1px solid var(--line); padding-top: 1.5rem; font-size: 0.93rem; color: var(--ink-soft); }
-  .report-note strong { color: var(--ink); }
-  .share-row { text-align: center; margin-top: 2rem; }
-  .share-btn {
-    font: inherit; font-size: 0.88rem; font-weight: 700;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: var(--accent);
-    background: transparent;
-    border: 1.5px solid var(--accent);
-    border-radius: 3px;
-    padding: 0.75rem 1.7rem;
-    cursor: pointer;
-    transition: all 0.15s ease;
-  }
-  .share-btn:hover { color: #fff; background: var(--accent); }
-  .share-links { margin-top: 0.8rem; font-size: 0.92rem; color: var(--ink-faint); }
-  .share-links a { color: var(--accent); font-weight: 600; text-decoration: none; cursor: pointer; }
-  .share-links a:hover { text-decoration: underline; }
+    .sub.under-story {
+      text-align: center;
+      margin: 0 auto 1.2rem;
+      padding: 0 1.25rem;
+    }
 
-  footer { padding: 2rem 0 2.5rem; text-align: center; font-size: 0.85rem; color: var(--ink-faint); }
+    .cta-btn {
+      display: inline-block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--btn-text);
+      background: var(--btn);
+      border: none;
+      border-radius: 3px;
+      padding: 1rem 2.4rem;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 10px 28px rgba(181, 179, 92, 0.4);
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
 
-  #theme-toggle {
-    position: fixed; top: 0.9rem; right: 0.9rem; z-index: 50;
-    width: 2.6rem; height: 2.6rem;
-    font-size: 1.15rem; line-height: 1;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 4px 14px rgba(47, 42, 36, 0.12);
-  }
-  #theme-toggle:hover { border-color: var(--accent); }
+    .cta-btn:hover {
+      background: var(--btn-hover);
+      transform: translateY(-1px);
+    }
 
-  @media (max-width: 480px) {
-    header { padding-top: 3.5rem; }
-    .panel, .report-card { padding: 1.7rem 1.25rem; }
-  }
-</style>
+    .cta-note {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--ink-faint);
+    }
+
+    .promise {
+      max-width: none;
+      padding: 0 0.5rem 2.5rem;
+      text-align: center;
+      color: var(--ink-soft);
+      font-size: clamp(0.5rem, 2.35vw, 0.95rem);
+      white-space: nowrap;
+    }
+
+    .promise span {
+      color: var(--accent);
+      margin: 0 0.35rem;
+    }
+
+    @media (max-width: 420px) {
+      .promise span {
+        margin: 0 0.12rem;
+        font-size: 0.85em;
+      }
+    }
+
+    /* ---------- The story ---------- */
+    #why {
+      padding: 0 0 1.5rem;
+    }
+
+    .why-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--story-bg);
+      border: 1px solid var(--story-border);
+      border-radius: var(--radius);
+      padding: 2.2rem 2rem;
+      text-align: center;
+      box-shadow: 0 14px 40px rgba(122, 112, 150, 0.13);
+    }
+
+    .why-card h2 {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 500;
+      color: var(--accent-dark);
+      margin-bottom: 0.9rem;
+    }
+
+    .why-card p {
+      color: var(--ink-soft);
+      font-size: 0.97rem;
+      max-width: 30rem;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .why-card p+p {
+      margin-top: 0.8rem;
+    }
+
+    .why-card .story-close {
+      text-align: center;
+      margin-top: 1.2rem;
+      color: var(--accent-dark);
+    }
+
+    .why-card em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .why-card .cta-btn {
+      margin-top: 1.4rem;
+    }
+
+    .why-card .cta-note {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--ink-faint);
+      margin-top: 0.8rem;
+    }
+
+    /* ---------- Assessment ---------- */
+    section {
+      padding: 1rem 0 3rem;
+    }
+
+    #assessment {
+      scroll-margin-top: 1.5rem;
+      display: none;
+      max-width: 760px;
+    }
+
+    #assessment.open {
+      display: block;
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 2.2rem 2rem 2rem;
+      box-shadow: 0 16px 48px rgba(47, 42, 36, 0.08);
+    }
+
+    .progress {
+      margin-bottom: 2.2rem;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--ink-faint);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-bar {
+      height: 5px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--accent), var(--gold));
+      border-radius: 999px;
+      transition: width 0.35s ease;
+    }
+
+    .step {
+      display: none;
+      animation: fadein 0.35s ease;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    @keyframes fadein {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .step {
+        animation: none;
+      }
+    }
+
+    .step h3 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      line-height: 1.28;
+      color: var(--accent-dark);
+      margin-bottom: 0.4rem;
+      text-wrap: balance;
+    }
+
+    .step .step-sub {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .field {
+      margin-bottom: 0.4rem;
+    }
+
+    label,
+    .q-label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 650;
+      margin-bottom: 0.4rem;
+    }
+
+    .opt {
+      font-weight: 400;
+      color: var(--ink-faint);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      font: inherit;
+      font-size: 1.05rem;
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 5rem;
+    }
+
+    .lang-row {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.6rem;
+      align-items: center;
+    }
+
+    .lang-row .lang-select {
+      flex: 1.5;
+    }
+
+    .lang-row .lang-custom {
+      flex: 1.3;
+      display: none;
+    }
+
+    .lang-row .lang-level {
+      flex: 1;
+    }
+
+    .lang-remove {
+      flex: none;
+      width: 2.1rem;
+      height: 2.1rem;
+      font: inherit;
+      font-size: 1.1rem;
+      line-height: 1;
+      color: var(--ink-faint);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .lang-remove:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .add-lang {
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.2rem 0;
+    }
+
+    .add-lang:hover {
+      color: var(--accent-dark);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    /* pills - two options per line */
+    .pills {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+    }
+
+    .pill {
+      font-size: 0.98rem;
+      font-weight: 550;
+      text-align: center;
+      color: var(--ink-soft);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 0.6rem 0.9rem;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.12s ease;
+    }
+
+    @media (max-width: 520px) {
+      .pills {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .pill.selected {
+      color: #fff;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .other-input {
+      display: none;
+      margin-top: 0.8rem;
+    }
+
+    .other-input.visible {
+      display: block;
+    }
+
+    .pill-group-label {
+      grid-column: 1 / -1;
+      font-size: 0.78rem;
+      font-weight: 650;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-top: 0.6rem;
+    }
+
+    .pill-group-label:first-child {
+      margin-top: 0;
+    }
+
+    /* 1-5 scale */
+    .statement {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .scale {
+      display: flex;
+      gap: 0.55rem;
+    }
+
+    .scale button {
+      flex: 1;
+      font: inherit;
+      font-weight: 650;
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0.85rem 0;
+      cursor: pointer;
+      transition: all 0.12s ease;
+    }
+
+    .scale button:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .scale button.selected {
+      color: #fff;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .scale-ends {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--ink-faint);
+      margin-top: 0.4rem;
+    }
+
+    .scale-q+.scale-q {
+      margin-top: 1.6rem;
+    }
+
+    .step-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    .btn-next,
+    .btn-back {
+      font: inherit;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border-radius: 3px;
+      padding: 0.85rem 2rem;
+      cursor: pointer;
+      transition: background 0.15s ease;
+    }
+
+    .btn-next {
+      color: var(--btn-text);
+      background: var(--btn);
+      border: none;
+    }
+
+    .btn-next:hover {
+      background: var(--btn-hover);
+    }
+
+    .btn-back {
+      color: var(--ink-faint);
+      background: transparent;
+      border: none;
+      padding-left: 0;
+    }
+
+    .btn-back:hover {
+      color: var(--ink);
+    }
+
+    .step-error {
+      display: none;
+      font-size: 0.85rem;
+      color: #b3402a;
+      margin-top: 1rem;
+    }
+
+    .consent {
+      display: flex;
+      gap: 0.7rem;
+      align-items: flex-start;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+      line-height: 1.5;
+      margin-top: 1.1rem;
+      cursor: pointer;
+    }
+
+    .consent input {
+      flex: none;
+      width: 1.15rem;
+      height: 1.15rem;
+      margin-top: 0.15rem;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
+
+    .consent a {
+      color: var(--accent);
+    }
+
+    /* ---------- Privacy notice ---------- */
+    #privacy {
+      scroll-margin-top: 2rem;
+      padding-top: 1rem;
+    }
+
+    .privacy-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 1.8rem 1.7rem;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    .privacy-card summary {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--ink);
+      cursor: pointer;
+      list-style-position: inside;
+    }
+
+    .privacy-card h5 {
+      font-size: 0.9rem;
+      color: var(--ink);
+      margin: 1.1rem 0 0.2rem;
+    }
+
+    .privacy-card p {
+      margin-top: 0.3rem;
+    }
+
+    .privacy-card a {
+      color: var(--accent);
+    }
+
+    /* ---------- Report ---------- */
+    #report {
+      display: none;
+      animation: fadein 0.4s ease;
+    }
+
+    .report-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 2.5rem 2.1rem;
+      box-shadow: 0 16px 48px rgba(47, 42, 36, 0.08);
+    }
+
+    .report-card h2 {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+
+    .report-intro {
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+      margin-bottom: 2rem;
+    }
+
+    .report-section {
+      margin-bottom: 2rem;
+    }
+
+    .report-section h4 {
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.8rem;
+    }
+
+    .report-list {
+      list-style: none;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .report-list li {
+      display: flex;
+      gap: 0.65rem;
+      align-items: baseline;
+      font-size: 1rem;
+    }
+
+    .report-list li .mark {
+      flex: none;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .paths {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .path-item {
+      background: var(--accent-soft);
+      border-radius: 6px;
+      padding: 1rem 1.15rem;
+    }
+
+    .path-item strong {
+      display: block;
+      font-size: 1.05rem;
+    }
+
+    .path-item span {
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+    }
+
+    .paths-note {
+      font-size: 0.85rem;
+      color: var(--ink-faint);
+      margin-top: 0.3rem;
+    }
+
+    .report-note {
+      border-top: 1px solid var(--line);
+      padding-top: 1.5rem;
+      font-size: 0.93rem;
+      color: var(--ink-soft);
+    }
+
+    .report-note strong {
+      color: var(--ink);
+    }
+
+    .share-row {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .share-btn {
+      font: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: transparent;
+      border: 1.5px solid var(--accent);
+      border-radius: 3px;
+      padding: 0.75rem 1.7rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .share-btn:hover {
+      color: #fff;
+      background: var(--accent);
+    }
+
+    .share-links {
+      margin-top: 0.8rem;
+      font-size: 0.92rem;
+      color: var(--ink-faint);
+    }
+
+    .share-links a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .share-links a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      padding: 2rem 0 2.5rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--ink-faint);
+    }
+
+    #theme-toggle {
+      position: fixed;
+      top: 0.9rem;
+      right: 0.9rem;
+      z-index: 50;
+      width: 2.6rem;
+      height: 2.6rem;
+      font-size: 1.15rem;
+      line-height: 1;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(47, 42, 36, 0.12);
+    }
+
+    #theme-toggle:hover {
+      border-color: var(--accent);
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding-top: 3.5rem;
+      }
+
+      .panel,
+      .report-card {
+        padding: 1.7rem 1.25rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<button id="theme-toggle" aria-label="Switch between light and dark mode">🌙</button>
+  <button id="theme-toggle" aria-label="Switch between light and dark mode">🌙</button>
 
-<header class="wrap">
-  <span class="eyebrow">For women returning to work after a career break</span>
-  <h1>Ready to return to work,<br><em>but unsure where to start?</em></h1>
-</header>
+  <header class="wrap">
+    <span class="eyebrow">For women returning to work after a career break</span>
+    <h1>Ready to return to work,<br><em>but unsure where to start?</em></h1>
+  </header>
 
-<section class="wrap" id="why">
-  <div class="why-card">
-    <h2>Your story isn't a gap</h2>
-    <p>Maybe you've been away from work for two years — or ten. Somewhere between caring for others and holding everything together, a quiet question crept in: <em>"Who would hire me now?"</em></p>
-    <p>Here's what we've learned from women who've stood exactly where you stand: what's missing is almost never ability. It's that years of real skills — organizing, supporting, solving, deciding — have never been written down in one place.</p>
-    <p>That's what these questions are for. This is not a personality quiz, and there are no trick questions. Each answer adds a piece of your picture: what you did before, what you carried through your break, what you want now. At the end you'll see your strengths and realistic directions right away — and within 24 hours, we'll send your personal roadmap back to work.</p>
-    <p class="story-close"><strong>Five minutes. One question at a time. Let's put your story into words.</strong></p>
-    <a class="cta-btn" href="#assessment">Discover My Next Step</a>
-    <p class="cta-note">5 minutes · One question at a time · Free</p>
-  </div>
-</section>
-
-<p class="sub under-story wrap">Uncover the skills you may be overlooking, explore realistic career directions, and get practical next steps back to work — based on what you've actually done.</p>
-
-<p class="promise wrap">Skills you may be overlooking <span>·</span> Realistic career directions <span>·</span> Practical next steps</p>
-
-<section class="wrap" id="assessment">
-  <div class="panel" id="wizard">
-    <div class="progress">
-      <div class="progress-label">
-        <span id="progress-step">1 of 19</span>
-        <span id="progress-name"></span>
-      </div>
-      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+  <section class="wrap" id="why">
+    <div class="why-card">
+      <h2>Your story isn't a gap</h2>
+      <p>Maybe you've been away from work for two years - or ten. Somewhere between caring for others and holding
+        everything together, a quiet question crept in: <em>"Who would hire me now?"</em></p>
+      <p>Here's what we've learned from women who've stood exactly where you stand: what's missing is almost never
+        ability. It's that years of real skills - organizing, supporting, solving, deciding - have never been written
+        down in one place.</p>
+      <p>That's what these questions are for. This is not a personality quiz, and there are no trick questions. Each
+        answer adds a piece of your picture: what you did before, what you carried through your break, what you want
+        now. At the end you'll see your strengths and realistic directions right away - and within 24 hours, we'll send
+        your personal roadmap back to work.</p>
+      <p class="story-close"><strong>Five minutes. One question at a time. Let's put your story into words.</strong></p>
+      <a class="cta-btn" href="#assessment">Discover My Next Step</a>
+      <p class="cta-note">5 minutes · One question at a time · Free</p>
     </div>
+  </section>
 
-    <!-- One topic per page -->
-    <div class="step active" data-name="Location">
-      <h3>Where are you based? 📍</h3>
-      <p class="step-sub">Job markets differ a lot by place.</p>
-      <div class="field">
-        <label for="country">Country you want to work in</label>
-        <input type="text" id="country" placeholder="e.g. Germany" data-required>
-      </div>
-      <div class="field">
-        <label for="location">Current location</label>
-        <input type="text" id="location" placeholder="e.g. Berlin, Germany" data-required>
-      </div>
-    </div>
+  <p class="sub under-story wrap">Uncover the skills you may be overlooking, explore realistic career directions, and
+    get practical next steps back to work - based on what you've actually done.</p>
 
-    <div class="step" data-name="Experience">
-      <h3>How many years have you worked in total? 💼</h3>
-      <p class="step-sub">Before your break — all of it counts.</p>
-      <div class="field">
-        <select id="experience" data-required>
-          <option value="" disabled selected>Select…</option>
-          <option>0–2 years</option>
-          <option>3–5 years</option>
-          <option>6–10 years</option>
-          <option>11–15 years</option>
-          <option>15+ years</option>
-        </select>
-      </div>
-    </div>
+  <p class="promise wrap">Skills you may be overlooking <span>·</span> Realistic career directions <span>·</span>
+    Practical next steps</p>
 
-    <div class="step" data-name="Career break">
-      <h3>How long is your career break so far? ⏳</h3>
-      <p class="step-sub">A break is part of your story — not a gap to apologize for.</p>
-      <div class="field">
-        <select id="break-duration" data-required>
-          <option value="" disabled selected>Select…</option>
-          <option>Less than 1 year</option>
-          <option>1–2 years</option>
-          <option>3–5 years</option>
-          <option>6–10 years</option>
-          <option>More than 10 years</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="step" data-name="Career break">
-      <h3>What was the reason for your break? 💛</h3>
-      <p class="step-sub">Whatever it was, it was valid — pick everything that applies.</p>
-      <div class="field">
-        <div class="pills" id="break-reason" data-required data-other="break-reason-other">
-          <span class="pill">Parenthood</span>
-          <span class="pill">Caregiving</span>
-          <span class="pill">Illness</span>
-          <span class="pill">Relocation</span>
-          <span class="pill">Other</span>
-          <span class="pill">Prefer not to say</span>
+  <section class="wrap" id="assessment">
+    <div class="panel" id="wizard">
+      <div class="progress">
+        <div class="progress-label">
+          <span id="progress-step">1 of 19</span>
+          <span id="progress-name"></span>
         </div>
-        <div class="other-input" id="break-reason-other">
-          <input type="text" placeholder="Tell us in your own words…">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill"></div>
         </div>
       </div>
-    </div>
 
-    <div class="step" data-name="Previous work">
-      <h3>What did you mainly do in your previous work, if you've worked before? 🧰</h3>
-      <p class="step-sub" id="prev-work-sub">Pick everything that applies.</p>
-      <div class="field">
-        <div class="pills" id="prev-work" data-required data-other="prev-work-other">
-          <span class="pill">Customer service</span>
-          <span class="pill">Sales</span>
-          <span class="pill">Project management</span>
-          <span class="pill">Team leadership</span>
-          <span class="pill">Data &amp; analysis</span>
-          <span class="pill">Operations &amp; admin</span>
-          <span class="pill">Technical work</span>
-          <span class="pill">Content &amp; design</span>
-          <span class="pill">Teaching &amp; advising</span>
-          <span class="pill">Research</span>
-          <span class="pill">Never worked before</span>
-          <span class="pill">Other</span>
+      <!-- One topic per page -->
+      <div class="step active" data-name="Location">
+        <h3>Where are you based? 📍</h3>
+        <p class="step-sub">Job markets differ a lot by place.</p>
+        <div class="field">
+          <label for="country">Country you want to work in</label>
+          <input type="text" id="country" placeholder="e.g. Germany" data-required>
         </div>
-        <div class="other-input" id="prev-work-other">
-          <input type="text" placeholder="Tell us in your own words…">
+        <div class="field">
+          <label for="location">Current location</label>
+          <input type="text" id="location" placeholder="e.g. Berlin, Germany" data-required>
         </div>
       </div>
-      <div class="field" style="margin-top:1rem;">
-        <label for="prev-work-details">Tell us a little about your experience. <span class="opt">(optional)</span></label>
-        <textarea id="prev-work-details" rows="3" placeholder="Job titles, industries, or main tasks — don't worry about professional wording."></textarea>
-      </div>
-    </div>
 
-    <div class="step" data-name="Career break">
-      <h3>What experiences were part of your career break? 🌱</h3>
-      <p class="step-sub" id="break-activities-sub">Pick everything that applies — it all counts.</p>
-      <div class="field">
-        <div class="pills" id="break-activities" data-required data-other="break-activities-other" data-other-label="Something else">
-          <span class="pill">Studied or took a course</span>
-          <span class="pill">Learned new skills</span>
-          <span class="pill">Earned a certification</span>
-          <span class="pill">Worked on a personal project</span>
-          <span class="pill">Freelanced or worked part-time</span>
-          <span class="pill">Volunteered</span>
-          <span class="pill">Focused on caregiving or family</span>
-          <span class="pill">Something else</span>
-        </div>
-        <div class="other-input" id="break-activities-other">
-          <input type="text" placeholder="Tell us what you've been up to…">
-        </div>
-      </div>
-      <div class="field" style="margin-top:1rem;">
-        <label for="break-details">Would you like to tell us a little more? <span class="opt">(optional)</span></label>
-        <textarea id="break-details" rows="3" placeholder="What did you do, organize, learn, manage, create or help with?"></textarea>
-      </div>
-    </div>
-
-    <div class="step" data-name="Education">
-      <h3>What's your highest education? 🎓</h3>
-      <div class="field">
-        <select id="education" data-required>
-          <option value="" disabled selected>Select…</option>
-          <option>High school</option>
-          <option>Vocational training / Ausbildung</option>
-          <option>Bachelor's degree</option>
-          <option>Master's degree</option>
-          <option>PhD</option>
-          <option>Other</option>
-        </select>
-        <input type="text" id="education-other" placeholder="Tell us what it is…" style="display:none; margin-top:0.7rem;">
-      </div>
-    </div>
-
-    <div class="step" data-name="Languages">
-      <h3>Which languages do you speak, and how well? 🌍</h3>
-      <p class="step-sub">Languages open doors — add each one with your level (up to 4).</p>
-      <div class="field" id="languages-rows">
-        <div class="lang-row">
-          <select class="lang-select">
-            <option value="" selected>Language…</option>
-            <option>German</option>
-            <option>English</option>
-            <option>Turkish</option>
-            <option>Arabic</option>
-            <option>Polish</option>
-            <option>Russian</option>
-            <option>Ukrainian</option>
-            <option>French</option>
-            <option>Spanish</option>
-            <option>Italian</option>
-            <option>Portuguese</option>
-            <option>Dutch</option>
-            <option>Greek</option>
-            <option>Romanian</option>
-            <option>Chinese</option>
-            <option>Vietnamese</option>
-            <option>Farsi</option>
-            <option>Hindi</option>
-            <option>Urdu</option>
-            <option>Korean</option>
-            <option>Japanese</option>
-            <option>Other…</option>
+      <div class="step" data-name="Experience">
+        <h3>How many years have you worked in total? 💼</h3>
+        <p class="step-sub">Before your break - all of it counts.</p>
+        <div class="field">
+          <select id="experience" data-required>
+            <option value="" disabled selected>Select…</option>
+            <option>0–2 years</option>
+            <option>3–5 years</option>
+            <option>6–10 years</option>
+            <option>11–15 years</option>
+            <option>15+ years</option>
           </select>
-          <input type="text" class="lang-custom" placeholder="Type your language">
-          <select class="lang-level">
-            <option value="" selected>Level…</option>
-            <option>Basic</option>
-            <option>Good</option>
-            <option>Fluent</option>
-            <option>Native</option>
+        </div>
+      </div>
+
+      <div class="step" data-name="Career break">
+        <h3>How long is your career break so far? ⏳</h3>
+        <p class="step-sub">A break is part of your story - not a gap to apologize for.</p>
+        <div class="field">
+          <select id="break-duration" data-required>
+            <option value="" disabled selected>Select…</option>
+            <option>Less than 1 year</option>
+            <option>1–2 years</option>
+            <option>3–5 years</option>
+            <option>6–10 years</option>
+            <option>More than 10 years</option>
           </select>
-          <button type="button" class="lang-remove" aria-label="Remove this language" style="visibility:hidden">×</button>
         </div>
       </div>
-      <button type="button" class="add-lang" id="add-lang">+ Add another language</button>
+
+      <div class="step" data-name="Career break">
+        <h3>What was the reason for your break? 💛</h3>
+        <p class="step-sub">Whatever it was, it was valid - pick everything that applies.</p>
+        <div class="field">
+          <div class="pills" id="break-reason" data-required data-other="break-reason-other">
+            <span class="pill">Parenthood</span>
+            <span class="pill">Caregiving</span>
+            <span class="pill">Illness</span>
+            <span class="pill">Relocation</span>
+            <span class="pill">Other</span>
+            <span class="pill">Prefer not to say</span>
+          </div>
+          <div class="other-input" id="break-reason-other">
+            <input type="text" placeholder="Tell us in your own words…">
+          </div>
+        </div>
+      </div>
+
+      <div class="step" data-name="Previous work">
+        <h3>What did you mainly do in your previous work, if you've worked before? 🧰</h3>
+        <p class="step-sub" id="prev-work-sub">Pick everything that applies.</p>
+        <div class="field">
+          <div class="pills" id="prev-work" data-required data-other="prev-work-other">
+            <span class="pill">Customer service</span>
+            <span class="pill">Sales</span>
+            <span class="pill">Project management</span>
+            <span class="pill">Team leadership</span>
+            <span class="pill">Data &amp; analysis</span>
+            <span class="pill">Operations &amp; admin</span>
+            <span class="pill">Technical work</span>
+            <span class="pill">Content &amp; design</span>
+            <span class="pill">Teaching &amp; advising</span>
+            <span class="pill">Research</span>
+            <span class="pill">Never worked before</span>
+            <span class="pill">Other</span>
+          </div>
+          <div class="other-input" id="prev-work-other">
+            <input type="text" placeholder="Tell us in your own words…">
+          </div>
+        </div>
+        <div class="field" style="margin-top:1rem;">
+          <label for="prev-work-details">Tell us a little about your experience. <span
+              class="opt">(optional)</span></label>
+          <textarea id="prev-work-details" rows="3"
+            placeholder="Job titles, industries, or main tasks - don't worry about professional wording."></textarea>
+        </div>
+      </div>
+
+      <div class="step" data-name="Career break">
+        <h3>What experiences were part of your career break? 🌱</h3>
+        <p class="step-sub" id="break-activities-sub">Pick everything that applies - it all counts.</p>
+        <div class="field">
+          <div class="pills" id="break-activities" data-required data-other="break-activities-other"
+            data-other-label="Something else">
+            <span class="pill">Studied or took a course</span>
+            <span class="pill">Learned new skills</span>
+            <span class="pill">Earned a certification</span>
+            <span class="pill">Worked on a personal project</span>
+            <span class="pill">Freelanced or worked part-time</span>
+            <span class="pill">Volunteered</span>
+            <span class="pill">Focused on caregiving or family</span>
+            <span class="pill">Something else</span>
+          </div>
+          <div class="other-input" id="break-activities-other">
+            <input type="text" placeholder="Tell us what you've been up to…">
+          </div>
+        </div>
+        <div class="field" style="margin-top:1rem;">
+          <label for="break-details">Would you like to tell us a little more? <span
+              class="opt">(optional)</span></label>
+          <textarea id="break-details" rows="3"
+            placeholder="What did you do, organize, learn, manage, create or help with?"></textarea>
+        </div>
+      </div>
+
+      <div class="step" data-name="Education">
+        <h3>What's your highest education? 🎓</h3>
+        <div class="field">
+          <select id="education" data-required>
+            <option value="" disabled selected>Select…</option>
+            <option>High school</option>
+            <option>Vocational training / Ausbildung</option>
+            <option>Bachelor's degree</option>
+            <option>Master's degree</option>
+            <option>PhD</option>
+            <option>Other</option>
+          </select>
+          <input type="text" id="education-other" placeholder="Tell us what it is…"
+            style="display:none; margin-top:0.7rem;">
+        </div>
+      </div>
+
+      <div class="step" data-name="Languages">
+        <h3>Which languages do you speak, and how well? 🌍</h3>
+        <p class="step-sub">Languages open doors - add each one with your level (up to 4).</p>
+        <div class="field" id="languages-rows">
+          <div class="lang-row">
+            <select class="lang-select">
+              <option value="" selected>Language…</option>
+              <option>German</option>
+              <option>English</option>
+              <option>Turkish</option>
+              <option>Arabic</option>
+              <option>Polish</option>
+              <option>Russian</option>
+              <option>Ukrainian</option>
+              <option>French</option>
+              <option>Spanish</option>
+              <option>Italian</option>
+              <option>Portuguese</option>
+              <option>Dutch</option>
+              <option>Greek</option>
+              <option>Romanian</option>
+              <option>Chinese</option>
+              <option>Vietnamese</option>
+              <option>Farsi</option>
+              <option>Hindi</option>
+              <option>Urdu</option>
+              <option>Korean</option>
+              <option>Japanese</option>
+              <option>Other…</option>
+            </select>
+            <input type="text" class="lang-custom" placeholder="Type your language">
+            <select class="lang-level">
+              <option value="" selected>Level…</option>
+              <option>Basic</option>
+              <option>Good</option>
+              <option>Fluent</option>
+              <option>Native</option>
+            </select>
+            <button type="button" class="lang-remove" aria-label="Remove this language"
+              style="visibility:hidden">×</button>
+          </div>
+        </div>
+        <button type="button" class="add-lang" id="add-lang">+ Add another language</button>
+      </div>
+
+      <div class="step" data-name="Strengths">
+        <h3>What do people often appreciate and rely on you for? 💪</h3>
+        <p class="step-sub" id="strengths-sub">Pick up to four - these become your strengths.</p>
+        <div class="field">
+          <div class="pills" id="soft-skills" data-required data-max="4" data-other="soft-skills-other">
+            <span class="pill">Communicating clearly</span>
+            <span class="pill">Managing time &amp; priorities</span>
+            <span class="pill">Solving problems</span>
+            <span class="pill">Supporting others</span>
+            <span class="pill">Leading people</span>
+            <span class="pill">Building relationships</span>
+            <span class="pill">Working with customers</span>
+            <span class="pill">Getting things done</span>
+            <span class="pill">Handling change</span>
+            <span class="pill">Learning quickly</span>
+            <span class="pill">Other</span>
+          </div>
+          <div class="other-input" id="soft-skills-other">
+            <input type="text" placeholder="Describe it in your own words…">
+          </div>
+        </div>
+      </div>
+
+      <div class="step" data-name="Work style">
+        <h3>How would you like to work? ⏰</h3>
+        <p class="step-sub">Pick up to three that would fit your life now.</p>
+        <div class="field">
+          <div class="pills" id="work-format" data-required data-max="3" data-other="work-format-other">
+            <span class="pill">Full-time</span>
+            <span class="pill">Part-time</span>
+            <span class="pill">Remote</span>
+            <span class="pill">Hybrid</span>
+            <span class="pill">On-site</span>
+            <span class="pill">Flexible hours</span>
+            <span class="pill">Weekdays only</span>
+            <span class="pill">Weekend work is okay</span>
+            <span class="pill">Other</span>
+          </div>
+          <div class="other-input" id="work-format-other">
+            <input type="text" placeholder="Describe what would work for you…">
+          </div>
+        </div>
+      </div>
+
+      <div class="step" data-name="Priorities">
+        <h3>What matters most to you? 💖</h3>
+        <p class="step-sub">Choose up to three.</p>
+        <div class="field">
+          <div class="pills" id="priorities" data-required data-max="3" data-other="priorities-other">
+            <span class="pill-group-label">💰 Security &amp; pay</span>
+            <span class="pill">Higher salary</span>
+            <span class="pill">Job stability</span>
+            <span class="pill">Good benefits</span>
+            <span class="pill-group-label">🌿 Balance &amp; freedom</span>
+            <span class="pill">Work-life balance</span>
+            <span class="pill">Low-stress environment</span>
+            <span class="pill">Independence &amp; autonomy</span>
+            <span class="pill-group-label">🌱 Growth</span>
+            <span class="pill">Career growth</span>
+            <span class="pill">Learning new skills</span>
+            <span class="pill">More responsibility</span>
+            <span class="pill">Recognition</span>
+            <span class="pill-group-label">💜 Meaning</span>
+            <span class="pill">Meaningful work</span>
+            <span class="pill">Positive social/environmental impact</span>
+            <span class="pill-group-label">🤝 People &amp; culture</span>
+            <span class="pill">Supportive team</span>
+            <span class="pill">Good manager</span>
+            <span class="pill">Friendly work culture</span>
+            <span class="pill">International environment</span>
+            <span class="pill-group-label">💬 Something else</span>
+            <span class="pill">Other</span>
+          </div>
+          <div class="other-input" id="priorities-other">
+            <input type="text" placeholder="What matters most to you?">
+          </div>
+        </div>
+      </div>
+
+      <div class="step" data-name="Interests">
+        <h3>What kind of work interests you most? ✨</h3>
+        <p class="step-sub">Choose up to three.</p>
+        <div class="field">
+          <div class="pills" id="interests" data-required data-max="3" data-other="interests-other">
+            <span class="pill-group-label">🤝 People</span>
+            <span class="pill">Working with people</span>
+            <span class="pill">Teaching &amp; supporting others</span>
+            <span class="pill">Leading people</span>
+            <span class="pill-group-label">📈 Business &amp; influence</span>
+            <span class="pill">Selling &amp; persuading</span>
+            <span class="pill">Business &amp; strategy</span>
+            <span class="pill-group-label">🗂️ Organizing</span>
+            <span class="pill">Organizing &amp; planning</span>
+            <span class="pill">Managing projects</span>
+            <span class="pill">Operations &amp; logistics</span>
+            <span class="pill-group-label">🔢 Analysis &amp; tech</span>
+            <span class="pill">Numbers &amp; analysis</span>
+            <span class="pill">Research &amp; investigation</span>
+            <span class="pill">Technology</span>
+            <span class="pill">Problem solving</span>
+            <span class="pill-group-label">🎨 Creating &amp; making</span>
+            <span class="pill">Creative work</span>
+            <span class="pill">Writing &amp; communication</span>
+            <span class="pill">Building or making things</span>
+            <span class="pill">Hands-on practical work</span>
+            <span class="pill-group-label">💬 Something else</span>
+            <span class="pill">Other</span>
+          </div>
+          <div class="other-input" id="interests-other">
+            <input type="text" placeholder="Tell us what draws you…">
+          </div>
+        </div>
+      </div>
+
+      <div class="step" data-name="Your goal">
+        <h3>What would you like to do next? 🎯</h3>
+        <p class="step-sub">There's no wrong answer - "not sure" is exactly what we're here for.</p>
+        <div class="field">
+          <div class="pills" id="goal" data-single data-required data-other="goal-other">
+            <span class="pill">Return to my previous field</span>
+            <span class="pill">Try something new</span>
+            <span class="pill">Any stable job, soon</span>
+            <span class="pill">Start my own business</span>
+            <span class="pill">I'm not sure yet</span>
+            <span class="pill">Other</span>
+          </div>
+          <div class="other-input" id="goal-other">
+            <input type="text" placeholder="Describe your goal…">
+          </div>
+        </div>
+      </div>
+
+      <div class="step" data-name="Your challenge">
+        <h3 id="challenge-h">Which parts of returning to work feel most challenging right now? 🤔</h3>
+        <p class="step-sub">Choose up to three.</p>
+        <div class="field">
+          <div class="pills" id="challenge" data-required data-max="3" data-other="challenge-other">
+            <span class="pill-group-label">🧭 Direction</span>
+            <span class="pill">Unsure which role suits me</span>
+            <span class="pill">Unsure what skills to build</span>
+            <span class="pill">Unsure how to use my past experience</span>
+            <span class="pill-group-label">🌷 Confidence &amp; story</span>
+            <span class="pill">Rebuilding my confidence</span>
+            <span class="pill">Explaining my career break</span>
+            <span class="pill-group-label">📄 Applications</span>
+            <span class="pill">Updating my CV or LinkedIn</span>
+            <span class="pill">Preparing for interviews</span>
+            <span class="pill-group-label">🌐 Market &amp; network</span>
+            <span class="pill">Building a professional network</span>
+            <span class="pill">Understanding today's job market</span>
+            <span class="pill">Language barriers</span>
+            <span class="pill-group-label">⚖️ Life fit</span>
+            <span class="pill">Finding work that fits my life</span>
+            <span class="pill-group-label">💬 Something else</span>
+            <span class="pill">Other</span>
+          </div>
+          <div class="other-input" id="challenge-other">
+            <input type="text" placeholder="Tell us in your own words…">
+          </div>
+        </div>
+      </div>
+
+      <div class="step" data-name="Your solution">
+        <h3>How would you prefer to solve this? 🤝</h3>
+        <p class="step-sub" id="solution-sub">Pick up to three kinds of help that appeal to you most.</p>
+        <div class="field">
+          <div class="pills" id="solution" data-required data-max="3" data-other="solution-other">
+            <span class="pill">A clear step-by-step plan I follow myself</span>
+            <span class="pill">Personal guidance from a coach</span>
+            <span class="pill">An online course to build skills</span>
+            <span class="pill">Talking to people who've done it</span>
+            <span class="pill">Tools that match me to the right jobs</span>
+            <span class="pill">I'm not sure yet</span>
+            <span class="pill">Other</span>
+          </div>
+          <div class="other-input" id="solution-other">
+            <input type="text" placeholder="Describe what would help you…">
+          </div>
+        </div>
+      </div>
+
+      <div class="step" data-name="Timeline">
+        <h3>When would you ideally like to return to paid work? 📅</h3>
+        <p class="step-sub" id="timeline-sub">There's no right answer - this keeps your roadmap practical.</p>
+        <div class="field">
+          <div class="pills" id="return-timeline" data-single data-required>
+            <span class="pill">As soon as possible</span>
+            <span class="pill">Within 1–3 months</span>
+            <span class="pill">Within 3–6 months</span>
+            <span class="pill">Within 6–12 months</span>
+            <span class="pill">No fixed timeline</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step" data-name="Confidence">
+        <h3>How true is this for you today? 🌸</h3>
+        <p class="step-sub">1 = not at all, 5 = completely. Honest answers make your roadmap more useful.</p>
+        <div class="scale-q" data-blocker="Unclear which direction to take">
+          <p class="statement">“I know what type of job I want.”</p>
+          <div class="scale" data-required>
+            <button type="button">1</button><button type="button">2</button><button type="button">3</button><button
+              type="button">4</button><button type="button">5</button>
+          </div>
+          <div class="scale-ends"><span>Not at all</span><span>Completely</span></div>
+        </div>
+        <div class="scale-q" data-blocker="Unsure which skills to update">
+          <p class="statement">“I know which skills I should learn.”</p>
+          <div class="scale" data-required>
+            <button type="button">1</button><button type="button">2</button><button type="button">3</button><button
+              type="button">4</button><button type="button">5</button>
+          </div>
+          <div class="scale-ends"><span>Not at all</span><span>Completely</span></div>
+        </div>
+        <div class="scale-q" data-blocker="Lack of confidence when applying">
+          <p class="statement">“I feel confident applying for jobs.”</p>
+          <div class="scale" data-required>
+            <button type="button">1</button><button type="button">2</button><button type="button">3</button><button
+              type="button">4</button><button type="button">5</button>
+          </div>
+          <div class="scale-ends"><span>Not at all</span><span>Completely</span></div>
+        </div>
+      </div>
+
+      <div class="step" data-name="Skills">
+        <h3>Is there any professional knowledge, software, tools or specialist skill you could use today? 🛠️</h3>
+        <p class="step-sub">Optional - skip if nothing comes to mind, even rusty skills count.</p>
+        <div class="field">
+          <textarea id="skills-text" rows="3"
+            placeholder="For example: Excel, accounting, CRM, teaching, design tools, coding, recruiting, healthcare, administration…"></textarea>
+        </div>
+      </div>
+
+      <div class="step" data-name="Your roadmap">
+        <h3>Almost there</h3>
+        <p class="step-sub" id="final-sub">Leave your email and we'll create your personalized career roadmap. You'll
+          receive it within 24 hours.</p>
+        <div class="field" style="margin-bottom:1rem;">
+          <label for="name">Name</label>
+          <input type="text" id="name" autocomplete="name" placeholder="Your first name" data-required>
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" autocomplete="email" placeholder="you@example.com" data-required>
+        </div>
+        <div class="field" style="margin-top:1rem;">
+          <label for="notes">Anything else you'd like us to know? <span class="opt">(optional)</span></label>
+          <textarea id="notes" rows="3"
+            placeholder="Your situation, doubts, hopes - anything that helps us tailor your roadmap…"></textarea>
+        </div>
+        <label class="consent" for="consent">
+          <input type="checkbox" id="consent" data-required>
+          <span>I agree that my answers are used to create my career roadmap and that I'll receive it by email. I can
+            withdraw my consent and have my data deleted at any time. <a href="#privacy">Privacy notice</a></span>
+        </label>
+      </div>
+
+      <p class="step-error" id="step-error">Please answer this question to continue.</p>
+
+      <div class="step-nav">
+        <button type="button" class="btn-back" id="btn-back" style="visibility:hidden">← Back</button>
+        <button type="button" class="btn-next" id="btn-next">Continue</button>
+      </div>
     </div>
 
-    <div class="step" data-name="Strengths">
-      <h3>What do people often appreciate and rely on you for? 💪</h3>
-      <p class="step-sub" id="strengths-sub">Pick up to four — these become your strengths.</p>
-      <div class="field">
-        <div class="pills" id="soft-skills" data-required data-max="4" data-other="soft-skills-other">
-          <span class="pill">Communicating clearly</span>
-          <span class="pill">Managing time &amp; priorities</span>
-          <span class="pill">Solving problems</span>
-          <span class="pill">Supporting others</span>
-          <span class="pill">Leading people</span>
-          <span class="pill">Building relationships</span>
-          <span class="pill">Working with customers</span>
-          <span class="pill">Getting things done</span>
-          <span class="pill">Handling change</span>
-          <span class="pill">Learning quickly</span>
-          <span class="pill">Other</span>
-        </div>
-        <div class="other-input" id="soft-skills-other">
-          <input type="text" placeholder="Describe it in your own words…">
-        </div>
-      </div>
-    </div>
+    <!-- REPORT -->
+    <div id="report">
+      <div class="report-card">
+        <h2>Your Career Profile</h2>
+        <p class="report-intro" id="report-intro">Based on your answers…</p>
 
-    <div class="step" data-name="Work style">
-      <h3>How would you like to work? ⏰</h3>
-      <p class="step-sub">Pick up to three that would fit your life now.</p>
-      <div class="field">
-        <div class="pills" id="work-format" data-required data-max="3" data-other="work-format-other">
-          <span class="pill">Full-time</span>
-          <span class="pill">Part-time</span>
-          <span class="pill">Remote</span>
-          <span class="pill">Hybrid</span>
-          <span class="pill">On-site</span>
-          <span class="pill">Flexible hours</span>
-          <span class="pill">Weekdays only</span>
-          <span class="pill">Weekend work is okay</span>
-          <span class="pill">Other</span>
+        <div class="report-section">
+          <h4>Your biggest strengths</h4>
+          <ul class="report-list" id="report-strengths"></ul>
         </div>
-        <div class="other-input" id="work-format-other">
-          <input type="text" placeholder="Describe what would work for you…">
-        </div>
-      </div>
-    </div>
 
-    <div class="step" data-name="Priorities">
-      <h3>What matters most to you? 💖</h3>
-      <p class="step-sub">Choose up to three.</p>
-      <div class="field">
-        <div class="pills" id="priorities" data-required data-max="3" data-other="priorities-other">
-          <span class="pill-group-label">💰 Security &amp; pay</span>
-          <span class="pill">Higher salary</span>
-          <span class="pill">Job stability</span>
-          <span class="pill">Good benefits</span>
-          <span class="pill-group-label">🌿 Balance &amp; freedom</span>
-          <span class="pill">Work-life balance</span>
-          <span class="pill">Low-stress environment</span>
-          <span class="pill">Independence &amp; autonomy</span>
-          <span class="pill-group-label">🌱 Growth</span>
-          <span class="pill">Career growth</span>
-          <span class="pill">Learning new skills</span>
-          <span class="pill">More responsibility</span>
-          <span class="pill">Recognition</span>
-          <span class="pill-group-label">💜 Meaning</span>
-          <span class="pill">Meaningful work</span>
-          <span class="pill">Positive social/environmental impact</span>
-          <span class="pill-group-label">🤝 People &amp; culture</span>
-          <span class="pill">Supportive team</span>
-          <span class="pill">Good manager</span>
-          <span class="pill">Friendly work culture</span>
-          <span class="pill">International environment</span>
-          <span class="pill-group-label">💬 Something else</span>
-          <span class="pill">Other</span>
+        <div class="report-section">
+          <h4>Potential career paths</h4>
+          <div class="paths" id="report-paths"></div>
         </div>
-        <div class="other-input" id="priorities-other">
-          <input type="text" placeholder="What matters most to you?">
+
+        <div class="report-section">
+          <h4>Current blockers</h4>
+          <ul class="report-list" id="report-blockers"></ul>
+        </div>
+
+        <p class="report-note" id="report-note"></p>
+
+        <div class="report-section" id="next-value-block" style="margin-top:1.8rem; margin-bottom:0;">
+          <h4>One last question</h4>
+          <p style="margin-bottom:0.8rem;">What would be most valuable to you next?</p>
+          <div class="pills" id="next-value" data-single data-other="next-value-other">
+            <span class="pill">Detailed career roadmap</span>
+            <span class="pill">Skills or qualification plan</span>
+            <span class="pill">Relevant jobs</span>
+            <span class="pill">CV/application help</span>
+            <span class="pill">Human career coach</span>
+            <span class="pill">Other</span>
+          </div>
+          <div class="other-input" id="next-value-other">
+            <input type="text" placeholder="Tell us what would help - press Enter to send…">
+          </div>
+        </div>
+
+        <div class="share-row">
+          <button type="button" class="share-btn" id="share-btn">💌 Share this with a friend</button>
+          <p class="share-links">
+            <a id="share-wa" target="_blank" rel="noopener">Share on WhatsApp</a> ·
+            <a id="share-mail">Share by email</a>
+          </p>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="step" data-name="Interests">
-      <h3>What kind of work interests you most? ✨</h3>
-      <p class="step-sub">Choose up to three.</p>
-      <div class="field">
-        <div class="pills" id="interests" data-required data-max="3" data-other="interests-other">
-          <span class="pill-group-label">🤝 People</span>
-          <span class="pill">Working with people</span>
-          <span class="pill">Teaching &amp; supporting others</span>
-          <span class="pill">Leading people</span>
-          <span class="pill-group-label">📈 Business &amp; influence</span>
-          <span class="pill">Selling &amp; persuading</span>
-          <span class="pill">Business &amp; strategy</span>
-          <span class="pill-group-label">🗂️ Organizing</span>
-          <span class="pill">Organizing &amp; planning</span>
-          <span class="pill">Managing projects</span>
-          <span class="pill">Operations &amp; logistics</span>
-          <span class="pill-group-label">🔢 Analysis &amp; tech</span>
-          <span class="pill">Numbers &amp; analysis</span>
-          <span class="pill">Research &amp; investigation</span>
-          <span class="pill">Technology</span>
-          <span class="pill">Problem solving</span>
-          <span class="pill-group-label">🎨 Creating &amp; making</span>
-          <span class="pill">Creative work</span>
-          <span class="pill">Writing &amp; communication</span>
-          <span class="pill">Building or making things</span>
-          <span class="pill">Hands-on practical work</span>
-          <span class="pill-group-label">💬 Something else</span>
-          <span class="pill">Other</span>
-        </div>
-        <div class="other-input" id="interests-other">
-          <input type="text" placeholder="Tell us what draws you…">
-        </div>
-      </div>
-    </div>
+  <section class="wrap" id="privacy">
+    <details class="privacy-card">
+      <summary>Privacy notice</summary>
+      <h5>Who we are</h5>
+      <p>This assessment is a pilot project run by UnityWerk. Questions or requests about your data: <a
+          href="mailto:unitywerk@gmail.com">unitywerk@gmail.com</a>.</p>
+      <h5>What we collect and why</h5>
+      <p>Your assessment answers (background, career break, experience, goals, skills, and confidence), plus your name
+        and email address. We use this data for one purpose only: to create your personal career roadmap and send it to
+        you by email. The legal basis is your consent, given by ticking the box before submitting.</p>
+      <h5>Where your data is stored</h5>
+      <p>Submissions are delivered to us through Formspree Inc. (USA), which participates in the EU–U.S. Data Privacy
+        Framework, and arrive in our email inbox. We do not sell or share your data with anyone else, and we won't send
+        you anything beyond your roadmap unless you separately ask us to.</p>
+      <h5>How long we keep it</h5>
+      <p>Your answers are deleted within 30 days after your roadmap has been sent.</p>
+      <h5>Your rights</h5>
+      <p>You can ask at any time to see, correct, or delete the data we hold about you, or withdraw your consent - just
+        email us. You also have the right to complain to a data protection supervisory authority.</p>
+    </details>
+  </section>
 
-    <div class="step" data-name="Your goal">
-      <h3>What would you like to do next? 🎯</h3>
-      <p class="step-sub">There's no wrong answer — "not sure" is exactly what we're here for.</p>
-      <div class="field">
-        <div class="pills" id="goal" data-single data-required data-other="goal-other">
-          <span class="pill">Return to my previous field</span>
-          <span class="pill">Try something new</span>
-          <span class="pill">Any stable job, soon</span>
-          <span class="pill">Start my own business</span>
-          <span class="pill">I'm not sure yet</span>
-          <span class="pill">Other</span>
-        </div>
-        <div class="other-input" id="goal-other">
-          <input type="text" placeholder="Describe your goal…">
-        </div>
-      </div>
-    </div>
+  <footer class="wrap">
+    © 2026 UnityWerk · Career Clarity Assessment · <a href="#privacy" style="color:var(--ink-faint);">Privacy</a>
+  </footer>
 
-    <div class="step" data-name="Your challenge">
-      <h3 id="challenge-h">Which parts of returning to work feel most challenging right now? 🤔</h3>
-      <p class="step-sub">Choose up to three.</p>
-      <div class="field">
-        <div class="pills" id="challenge" data-required data-max="3" data-other="challenge-other">
-          <span class="pill-group-label">🧭 Direction</span>
-          <span class="pill">Unsure which role suits me</span>
-          <span class="pill">Unsure what skills to build</span>
-          <span class="pill">Unsure how to use my past experience</span>
-          <span class="pill-group-label">🌷 Confidence &amp; story</span>
-          <span class="pill">Rebuilding my confidence</span>
-          <span class="pill">Explaining my career break</span>
-          <span class="pill-group-label">📄 Applications</span>
-          <span class="pill">Updating my CV or LinkedIn</span>
-          <span class="pill">Preparing for interviews</span>
-          <span class="pill-group-label">🌐 Market &amp; network</span>
-          <span class="pill">Building a professional network</span>
-          <span class="pill">Understanding today's job market</span>
-          <span class="pill">Language barriers</span>
-          <span class="pill-group-label">⚖️ Life fit</span>
-          <span class="pill">Finding work that fits my life</span>
-          <span class="pill-group-label">💬 Something else</span>
-          <span class="pill">Other</span>
-        </div>
-        <div class="other-input" id="challenge-other">
-          <input type="text" placeholder="Tell us in your own words…">
-        </div>
-      </div>
-    </div>
+  <script>
+    // ---- Configuration -------------------------------------------------------
+    // Point this at your form backend (e.g. a Formspree endpoint like
+    // "https://formspree.io/f/xxxxxxxx") to receive each completed assessment
+    // (all answers + email) as a submission. Leave empty for demo mode:
+    // the report still renders, nothing is sent anywhere.
+    const FORM_ENDPOINT = "https://formspree.io/f/xrpzkvwj";
+    // --------------------------------------------------------------------------
 
-    <div class="step" data-name="Your solution">
-      <h3>How would you prefer to solve this? 🤝</h3>
-      <p class="step-sub" id="solution-sub">Pick up to three kinds of help that appeal to you most.</p>
-      <div class="field">
-        <div class="pills" id="solution" data-required data-max="3" data-other="solution-other">
-          <span class="pill">A clear step-by-step plan I follow myself</span>
-          <span class="pill">Personal guidance from a coach</span>
-          <span class="pill">An online course to build skills</span>
-          <span class="pill">Talking to people who've done it</span>
-          <span class="pill">Tools that match me to the right jobs</span>
-          <span class="pill">I'm not sure yet</span>
-          <span class="pill">Other</span>
-        </div>
-        <div class="other-input" id="solution-other">
-          <input type="text" placeholder="Describe what would help you…">
-        </div>
-      </div>
-    </div>
+    // The assessment stays hidden until the visitor clicks Start;
+    // the explainer card makes way for the questions.
+    const assessment = document.getElementById("assessment");
+    document.querySelector(".cta-btn").addEventListener("click", e => {
+      e.preventDefault();
+      assessment.classList.add("open");
+      document.getElementById("why").style.display = "none";
+      document.querySelector(".promise").style.display = "none";
+      document.querySelector(".under-story").style.display = "none";
+      e.currentTarget.style.display = "none";
+      document.querySelector(".cta-note").style.display = "none";
+      assessment.scrollIntoView({ behavior: "smooth", block: "start" });
+      const firstInput = assessment.querySelector(".step.active input, .step.active select");
+      if (firstInput) firstInput.focus({ preventScroll: true });
+    });
 
-    <div class="step" data-name="Timeline">
-      <h3>When would you ideally like to return to paid work? 📅</h3>
-      <p class="step-sub" id="timeline-sub">There's no right answer — this keeps your roadmap practical.</p>
-      <div class="field">
-        <div class="pills" id="return-timeline" data-single data-required>
-          <span class="pill">As soon as possible</span>
-          <span class="pill">Within 1–3 months</span>
-          <span class="pill">Within 3–6 months</span>
-          <span class="pill">Within 6–12 months</span>
-          <span class="pill">No fixed timeline</span>
-        </div>
-      </div>
-    </div>
+    const steps = [...document.querySelectorAll(".step")];
+    const fill = document.getElementById("progress-fill");
+    const progressStep = document.getElementById("progress-step");
+    const progressName = document.getElementById("progress-name");
+    const btnNext = document.getElementById("btn-next");
+    const btnBack = document.getElementById("btn-back");
+    const stepError = document.getElementById("step-error");
+    let current = 0;
 
-    <div class="step" data-name="Confidence">
-      <h3>How true is this for you today? 🌸</h3>
-      <p class="step-sub">1 = not at all, 5 = completely. Honest answers make your roadmap more useful.</p>
-      <div class="scale-q" data-blocker="Unclear which direction to take">
-        <p class="statement">“I know what type of job I want.”</p>
-        <div class="scale" data-required>
-          <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
-        </div>
-        <div class="scale-ends"><span>Not at all</span><span>Completely</span></div>
-      </div>
-      <div class="scale-q" data-blocker="Unsure which skills to update">
-        <p class="statement">“I know which skills I should learn.”</p>
-        <div class="scale" data-required>
-          <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
-        </div>
-        <div class="scale-ends"><span>Not at all</span><span>Completely</span></div>
-      </div>
-      <div class="scale-q" data-blocker="Lack of confidence when applying">
-        <p class="statement">“I feel confident applying for jobs.”</p>
-        <div class="scale" data-required>
-          <button type="button">1</button><button type="button">2</button><button type="button">3</button><button type="button">4</button><button type="button">5</button>
-        </div>
-        <div class="scale-ends"><span>Not at all</span><span>Completely</span></div>
-      </div>
-    </div>
+    // ---- pills ----
+    const otherLabel = group => group.dataset.otherLabel || "Other";
+    const otherSelected = group =>
+      [...group.querySelectorAll(".pill.selected")].some(p => p.textContent === otherLabel(group));
+    const otherField = group =>
+      group.dataset.other ? document.getElementById(group.dataset.other) : null;
+    const otherText = group => {
+      const f = otherField(group);
+      return f ? f.querySelector("input").value.trim() : "";
+    };
 
-    <div class="step" data-name="Skills">
-      <h3>Is there any professional knowledge, software, tools or specialist skill you could use today? 🛠️</h3>
-      <p class="step-sub">Optional — skip if nothing comes to mind, even rusty skills count.</p>
-      <div class="field">
-        <textarea id="skills-text" rows="3" placeholder="For example: Excel, accounting, CRM, teaching, design tools, coding, recruiting, healthcare, administration…"></textarea>
-      </div>
-    </div>
+    // options that can never be combined (within the same set), and
+    // options that stand alone (deselect everything else when picked)
+    const EXCLUSIVE = {
+      "work-format": [
+        ["Full-time", "Part-time"],
+        ["Remote", "Hybrid", "On-site"],
+        ["Weekdays only", "Weekend work is okay"]
+      ]
+    };
+    const ALONE = {
+      "break-reason": ["Prefer not to say"],
+      "prev-work": ["Never worked before"],
+      "solution": ["I'm not sure yet"]
+    };
 
-    <div class="step" data-name="Your roadmap">
-      <h3>Almost there</h3>
-      <p class="step-sub" id="final-sub">Leave your email and we'll create your personalized career roadmap. You'll receive it within 24 hours.</p>
-      <div class="field" style="margin-bottom:1rem;">
-        <label for="name">Name</label>
-        <input type="text" id="name" autocomplete="name" placeholder="Your first name" data-required>
-      </div>
-      <div class="field">
-        <label for="email">Email</label>
-        <input type="email" id="email" autocomplete="email" placeholder="you@example.com" data-required>
-      </div>
-      <div class="field" style="margin-top:1rem;">
-        <label for="notes">Anything else you'd like us to know? <span class="opt">(optional)</span></label>
-        <textarea id="notes" rows="3" placeholder="Your situation, doubts, hopes — anything that helps us tailor your roadmap…"></textarea>
-      </div>
-      <label class="consent" for="consent">
-        <input type="checkbox" id="consent" data-required>
-        <span>I agree that my answers are used to create my career roadmap and that I'll receive it by email. I can withdraw my consent and have my data deleted at any time. <a href="#privacy">Privacy notice</a></span>
-      </label>
-    </div>
-
-    <p class="step-error" id="step-error">Please answer this question to continue.</p>
-
-    <div class="step-nav">
-      <button type="button" class="btn-back" id="btn-back" style="visibility:hidden">← Back</button>
-      <button type="button" class="btn-next" id="btn-next">Continue</button>
-    </div>
-  </div>
-
-  <!-- REPORT -->
-  <div id="report">
-    <div class="report-card">
-      <h2>Your Career Profile</h2>
-      <p class="report-intro" id="report-intro">Based on your answers…</p>
-
-      <div class="report-section">
-        <h4>Your biggest strengths</h4>
-        <ul class="report-list" id="report-strengths"></ul>
-      </div>
-
-      <div class="report-section">
-        <h4>Potential career paths</h4>
-        <div class="paths" id="report-paths"></div>
-      </div>
-
-      <div class="report-section">
-        <h4>Current blockers</h4>
-        <ul class="report-list" id="report-blockers"></ul>
-      </div>
-
-      <p class="report-note" id="report-note"></p>
-
-      <div class="report-section" id="next-value-block" style="margin-top:1.8rem; margin-bottom:0;">
-        <h4>One last question</h4>
-        <p style="margin-bottom:0.8rem;">What would be most valuable to you next?</p>
-        <div class="pills" id="next-value" data-single data-other="next-value-other">
-          <span class="pill">Detailed career roadmap</span>
-          <span class="pill">Skills or qualification plan</span>
-          <span class="pill">Relevant jobs</span>
-          <span class="pill">CV/application help</span>
-          <span class="pill">Human career coach</span>
-          <span class="pill">Other</span>
-        </div>
-        <div class="other-input" id="next-value-other">
-          <input type="text" placeholder="Tell us what would help — press Enter to send…">
-        </div>
-      </div>
-
-      <div class="share-row">
-        <button type="button" class="share-btn" id="share-btn">💌 Share this with a friend</button>
-        <p class="share-links">
-          <a id="share-wa" target="_blank" rel="noopener">Share on WhatsApp</a> ·
-          <a id="share-mail">Share by email</a>
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="wrap" id="privacy">
-  <details class="privacy-card">
-    <summary>Privacy notice</summary>
-    <h5>Who we are</h5>
-    <p>This assessment is a pilot project run by UnityWerk. Questions or requests about your data: <a href="mailto:unitywerk@gmail.com">unitywerk@gmail.com</a>.</p>
-    <h5>What we collect and why</h5>
-    <p>Your assessment answers (background, career break, experience, goals, skills, and confidence), plus your name and email address. We use this data for one purpose only: to create your personal career roadmap and send it to you by email. The legal basis is your consent, given by ticking the box before submitting.</p>
-    <h5>Where your data is stored</h5>
-    <p>Submissions are delivered to us through Formspree Inc. (USA), which participates in the EU–U.S. Data Privacy Framework, and arrive in our email inbox. We do not sell or share your data with anyone else, and we won't send you anything beyond your roadmap unless you separately ask us to.</p>
-    <h5>How long we keep it</h5>
-    <p>Your answers are deleted within 30 days after your roadmap has been sent.</p>
-    <h5>Your rights</h5>
-    <p>You can ask at any time to see, correct, or delete the data we hold about you, or withdraw your consent — just email us. You also have the right to complain to a data protection supervisory authority.</p>
-  </details>
-</section>
-
-<footer class="wrap">
-  © 2026 UnityWerk · Career Clarity Assessment · <a href="#privacy" style="color:var(--ink-faint);">Privacy</a>
-</footer>
-
-<script>
-  // ---- Configuration -------------------------------------------------------
-  // Point this at your form backend (e.g. a Formspree endpoint like
-  // "https://formspree.io/f/xxxxxxxx") to receive each completed assessment
-  // (all answers + email) as a submission. Leave empty for demo mode:
-  // the report still renders, nothing is sent anywhere.
-  const FORM_ENDPOINT = "https://formspree.io/f/xrpzkvwj";
-  // --------------------------------------------------------------------------
-
-  // The assessment stays hidden until the visitor clicks Start;
-  // the explainer card makes way for the questions.
-  const assessment = document.getElementById("assessment");
-  document.querySelector(".cta-btn").addEventListener("click", e => {
-    e.preventDefault();
-    assessment.classList.add("open");
-    document.getElementById("why").style.display = "none";
-    document.querySelector(".promise").style.display = "none";
-    document.querySelector(".under-story").style.display = "none";
-    e.currentTarget.style.display = "none";
-    document.querySelector(".cta-note").style.display = "none";
-    assessment.scrollIntoView({ behavior: "smooth", block: "start" });
-    const firstInput = assessment.querySelector(".step.active input, .step.active select");
-    if (firstInput) firstInput.focus({ preventScroll: true });
-  });
-
-  const steps = [...document.querySelectorAll(".step")];
-  const fill = document.getElementById("progress-fill");
-  const progressStep = document.getElementById("progress-step");
-  const progressName = document.getElementById("progress-name");
-  const btnNext = document.getElementById("btn-next");
-  const btnBack = document.getElementById("btn-back");
-  const stepError = document.getElementById("step-error");
-  let current = 0;
-
-  // ---- pills ----
-  const otherLabel = group => group.dataset.otherLabel || "Other";
-  const otherSelected = group =>
-    [...group.querySelectorAll(".pill.selected")].some(p => p.textContent === otherLabel(group));
-  const otherField = group =>
-    group.dataset.other ? document.getElementById(group.dataset.other) : null;
-  const otherText = group => {
-    const f = otherField(group);
-    return f ? f.querySelector("input").value.trim() : "";
-  };
-
-  // options that can never be combined (within the same set), and
-  // options that stand alone (deselect everything else when picked)
-  const EXCLUSIVE = {
-    "work-format": [
-      ["Full-time", "Part-time"],
-      ["Remote", "Hybrid", "On-site"],
-      ["Weekdays only", "Weekend work is okay"]
-    ]
-  };
-  const ALONE = {
-    "break-reason": ["Prefer not to say"],
-    "prev-work": ["Never worked before"],
-    "solution": ["I'm not sure yet"]
-  };
-
-  document.querySelectorAll(".pills").forEach(group => {
-    const single = group.hasAttribute("data-single");
-    const max = parseInt(group.dataset.max || "0", 10);
-    group.addEventListener("click", e => {
-      const pill = e.target.closest(".pill");
-      if (!pill) return;
-      if (single) {
-        group.querySelectorAll(".pill").forEach(p => p.classList.remove("selected"));
-        pill.classList.add("selected");
-      } else {
-        const isSelecting = !pill.classList.contains("selected");
-        if (isSelecting) {
-          // deselect logical opposites first, so picking one side replaces the other
-          (EXCLUSIVE[group.id] || []).forEach(set => {
-            if (set.includes(pill.textContent))
-              group.querySelectorAll(".pill.selected").forEach(p => {
-                if (set.includes(p.textContent)) p.classList.remove("selected");
-              });
-          });
-          const alone = ALONE[group.id] || [];
-          if (alone.includes(pill.textContent)) {
-            group.querySelectorAll(".pill.selected").forEach(p => p.classList.remove("selected"));
-          } else if (alone.length) {
-            group.querySelectorAll(".pill.selected").forEach(p => {
-              if (alone.includes(p.textContent)) p.classList.remove("selected");
+    document.querySelectorAll(".pills").forEach(group => {
+      const single = group.hasAttribute("data-single");
+      const max = parseInt(group.dataset.max || "0", 10);
+      group.addEventListener("click", e => {
+        const pill = e.target.closest(".pill");
+        if (!pill) return;
+        if (single) {
+          group.querySelectorAll(".pill").forEach(p => p.classList.remove("selected"));
+          pill.classList.add("selected");
+        } else {
+          const isSelecting = !pill.classList.contains("selected");
+          if (isSelecting) {
+            // deselect logical opposites first, so picking one side replaces the other
+            (EXCLUSIVE[group.id] || []).forEach(set => {
+              if (set.includes(pill.textContent))
+                group.querySelectorAll(".pill.selected").forEach(p => {
+                  if (set.includes(p.textContent)) p.classList.remove("selected");
+                });
             });
+            const alone = ALONE[group.id] || [];
+            if (alone.includes(pill.textContent)) {
+              group.querySelectorAll(".pill.selected").forEach(p => p.classList.remove("selected"));
+            } else if (alone.length) {
+              group.querySelectorAll(".pill.selected").forEach(p => {
+                if (alone.includes(p.textContent)) p.classList.remove("selected");
+              });
+            }
+            if (max && group.querySelectorAll(".pill.selected").length >= max) return;
           }
-          if (max && group.querySelectorAll(".pill.selected").length >= max) return;
+          pill.classList.toggle("selected");
         }
-        pill.classList.toggle("selected");
-      }
-      const field = otherField(group);
-      if (field) {
-        field.classList.toggle("visible", otherSelected(group));
-        if (otherSelected(group)) field.querySelector("input").focus();
+        const field = otherField(group);
+        if (field) {
+          field.classList.toggle("visible", otherSelected(group));
+          if (otherSelected(group)) field.querySelector("input").focus();
+        }
+      });
+    });
+
+    // ---- 1-5 scales ----
+    document.querySelectorAll(".scale").forEach(scale => {
+      scale.addEventListener("click", e => {
+        const btn = e.target.closest("button");
+        if (!btn) return;
+        scale.querySelectorAll("button").forEach(b => b.classList.remove("selected"));
+        btn.classList.add("selected");
+        scale.dataset.value = btn.textContent;
+      });
+    });
+
+    // Enter advances from text inputs (report inputs have their own handling)
+    document.querySelectorAll("input").forEach(inp => {
+      if (inp.closest("#report")) return;
+      inp.addEventListener("keydown", e => {
+        if (e.key === "Enter") { e.preventDefault(); btnNext.click(); }
+      });
+    });
+
+    // ---- education: "Other" reveals a describe-field ----
+    const eduSel = document.getElementById("education");
+    eduSel.addEventListener("change", () => {
+      document.getElementById("education-other").style.display =
+        eduSel.value === "Other" ? "block" : "none";
+    });
+
+    // ---- languages: dropdown + level rows, add/remove, up to 4 ----
+    const langRows = document.getElementById("languages-rows");
+    const addLang = document.getElementById("add-lang");
+    // a language already chosen in one row can't be chosen again in another
+    function refreshLangOptions() {
+      const selects = [...langRows.querySelectorAll(".lang-select")];
+      const taken = selects.map(s => s.value).filter(v => v && v !== "Other…");
+      selects.forEach(sel => {
+        [...sel.options].forEach(opt => {
+          if (!opt.value || opt.value === "Other…") return;
+          opt.disabled = taken.includes(opt.value) && sel.value !== opt.value;
+        });
+      });
+    }
+    langRows.addEventListener("change", e => {
+      if (e.target.classList.contains("lang-select")) {
+        const custom = e.target.closest(".lang-row").querySelector(".lang-custom");
+        const isOther = e.target.value === "Other…";
+        custom.style.display = isOther ? "block" : "none";
+        if (isOther) custom.focus();
+        refreshLangOptions();
       }
     });
-  });
-
-  // ---- 1-5 scales ----
-  document.querySelectorAll(".scale").forEach(scale => {
-    scale.addEventListener("click", e => {
-      const btn = e.target.closest("button");
+    langRows.addEventListener("click", e => {
+      const btn = e.target.closest(".lang-remove");
       if (!btn) return;
-      scale.querySelectorAll("button").forEach(b => b.classList.remove("selected"));
-      btn.classList.add("selected");
-      scale.dataset.value = btn.textContent;
-    });
-  });
-
-  // Enter advances from text inputs (report inputs have their own handling)
-  document.querySelectorAll("input").forEach(inp => {
-    if (inp.closest("#report")) return;
-    inp.addEventListener("keydown", e => {
-      if (e.key === "Enter") { e.preventDefault(); btnNext.click(); }
-    });
-  });
-
-  // ---- education: "Other" reveals a describe-field ----
-  const eduSel = document.getElementById("education");
-  eduSel.addEventListener("change", () => {
-    document.getElementById("education-other").style.display =
-      eduSel.value === "Other" ? "block" : "none";
-  });
-
-  // ---- languages: dropdown + level rows, add/remove, up to 4 ----
-  const langRows = document.getElementById("languages-rows");
-  const addLang = document.getElementById("add-lang");
-  // a language already chosen in one row can't be chosen again in another
-  function refreshLangOptions() {
-    const selects = [...langRows.querySelectorAll(".lang-select")];
-    const taken = selects.map(s => s.value).filter(v => v && v !== "Other…");
-    selects.forEach(sel => {
-      [...sel.options].forEach(opt => {
-        if (!opt.value || opt.value === "Other…") return;
-        opt.disabled = taken.includes(opt.value) && sel.value !== opt.value;
-      });
-    });
-  }
-  langRows.addEventListener("change", e => {
-    if (e.target.classList.contains("lang-select")) {
-      const custom = e.target.closest(".lang-row").querySelector(".lang-custom");
-      const isOther = e.target.value === "Other…";
-      custom.style.display = isOther ? "block" : "none";
-      if (isOther) custom.focus();
+      if (langRows.querySelectorAll(".lang-row").length <= 1) return;
+      btn.closest(".lang-row").remove();
+      addLang.style.display = "";
       refreshLangOptions();
-    }
-  });
-  langRows.addEventListener("click", e => {
-    const btn = e.target.closest(".lang-remove");
-    if (!btn) return;
-    if (langRows.querySelectorAll(".lang-row").length <= 1) return;
-    btn.closest(".lang-row").remove();
-    addLang.style.display = "";
-    refreshLangOptions();
-  });
-  addLang.addEventListener("click", () => {
-    const first = langRows.querySelector(".lang-row");
-    const row = first.cloneNode(true);
-    row.querySelector(".lang-select").selectedIndex = 0;
-    row.querySelector(".lang-level").selectedIndex = 0;
-    const custom = row.querySelector(".lang-custom");
-    custom.value = ""; custom.style.display = "none";
-    row.querySelector(".lang-remove").style.visibility = "visible";
-    langRows.appendChild(row);
-    row.querySelector(".lang-select").focus();
-    refreshLangOptions();
-    if (langRows.querySelectorAll(".lang-row").length >= 4) addLang.style.display = "none";
-  });
-
-  // ---- validation ----
-  function validateStep(step) {
-    let ok = true;
-    const mark = (el, bad) => {
-      el.style.outline = bad ? "2px solid #c4574e" : "";
-      el.style.outlineOffset = bad ? "3px" : "";
-    };
-    step.querySelectorAll("[data-required]").forEach(el => {
-      let valid;
-      if (el.classList.contains("pills")) {
-        valid = el.querySelector(".pill.selected") !== null &&
-                (!otherSelected(el) || otherText(el) !== "");
-      } else if (el.classList.contains("scale")) {
-        valid = !!el.dataset.value;
-      } else if (el.type === "checkbox") {
-        valid = el.checked;
-      } else if (el.type === "email") {
-        valid = /.+@.+\..+/.test(el.value.trim());
-      } else {
-        valid = el.value.trim() !== "";
-      }
-      mark(el, !valid);
-      if (!valid) ok = false;
     });
-    // education "Other" needs a description
-    const edu = step.querySelector("#education");
-    if (edu && edu.value === "Other") {
-      const o = document.getElementById("education-other");
-      const valid = o.value.trim() !== "";
-      mark(o, !valid);
-      if (!valid) ok = false;
-    }
-    // languages: at least one complete row, no half-filled rows, no duplicates
-    if (step.querySelector("#languages-rows")) {
-      let complete = 0;
-      const seen = [];
-      langRows.querySelectorAll(".lang-row").forEach(row => {
-        const sel = row.querySelector(".lang-select");
-        const custom = row.querySelector(".lang-custom");
-        const level = row.querySelector(".lang-level");
-        [sel, custom, level].forEach(el => mark(el, false));
-        const nm = sel.value === "Other…" ? custom.value.trim() : sel.value;
-        if (nm && seen.includes(nm.toLowerCase())) {
-          ok = false;
-          mark(sel.value === "Other…" ? custom : sel, true);
-          return;
+    addLang.addEventListener("click", () => {
+      const first = langRows.querySelector(".lang-row");
+      const row = first.cloneNode(true);
+      row.querySelector(".lang-select").selectedIndex = 0;
+      row.querySelector(".lang-level").selectedIndex = 0;
+      const custom = row.querySelector(".lang-custom");
+      custom.value = ""; custom.style.display = "none";
+      row.querySelector(".lang-remove").style.visibility = "visible";
+      langRows.appendChild(row);
+      row.querySelector(".lang-select").focus();
+      refreshLangOptions();
+      if (langRows.querySelectorAll(".lang-row").length >= 4) addLang.style.display = "none";
+    });
+
+    // ---- validation ----
+    function validateStep(step) {
+      let ok = true;
+      const mark = (el, bad) => {
+        el.style.outline = bad ? "2px solid #c4574e" : "";
+        el.style.outlineOffset = bad ? "3px" : "";
+      };
+      step.querySelectorAll("[data-required]").forEach(el => {
+        let valid;
+        if (el.classList.contains("pills")) {
+          valid = el.querySelector(".pill.selected") !== null &&
+            (!otherSelected(el) || otherText(el) !== "");
+        } else if (el.classList.contains("scale")) {
+          valid = !!el.dataset.value;
+        } else if (el.type === "checkbox") {
+          valid = el.checked;
+        } else if (el.type === "email") {
+          valid = /.+@.+\..+/.test(el.value.trim());
+        } else {
+          valid = el.value.trim() !== "";
         }
-        if (nm) seen.push(nm.toLowerCase());
-        if (nm && level.value) { complete++; return; }
-        if (nm && !level.value) { ok = false; mark(level, true); }
-        else if (!nm && level.value) { ok = false; mark(sel.value === "Other…" ? custom : sel, true); }
-        else if (sel.value === "Other…" && !custom.value.trim()) { ok = false; mark(custom, true); }
+        mark(el, !valid);
+        if (!valid) ok = false;
       });
-      if (complete === 0 && ok) {
-        ok = false;
-        mark(langRows.querySelector(".lang-select"), true);
+      // education "Other" needs a description
+      const edu = step.querySelector("#education");
+      if (edu && edu.value === "Other") {
+        const o = document.getElementById("education-other");
+        const valid = o.value.trim() !== "";
+        mark(o, !valid);
+        if (!valid) ok = false;
       }
-    }
-    return ok;
-  }
-
-  // ---- context-aware copy: later questions pick up her earlier answers ----
-  const GOAL_BITS = {
-    "Return to my previous field": "returning to your field",
-    "Try something new": "trying something new",
-    "Any stable job, soon": "finding a stable job soon",
-    "Start my own business": "starting your own business",
-    "I'm not sure yet": "finding your direction"
-  };
-  function personalize() {
-    const goal = selected("#goal")[0] || "";
-    const g = GOAL_BITS[goal] || "";
-
-    document.getElementById("challenge-h").textContent = g
-      ? `As you think about ${g}, which parts feel most challenging right now? 🤔`
-      : "Which parts of returning to work feel most challenging right now? 🤔";
-
-    const dur = document.getElementById("break-duration").value;
-    document.getElementById("break-activities-sub").textContent =
-      dur === "Less than 1 year"
-        ? "Even a shorter break holds a lot of life — pick everything that applies, it all counts."
-        : dur
-          ? `Those ${dur.toLowerCase()} were full of life too — pick everything that applies, it all counts.`
-          : "Pick everything that applies — it all counts.";
-
-    const exp = document.getElementById("experience").value;
-    document.getElementById("prev-work-sub").textContent =
-      exp && exp !== "0–2 years"
-        ? `Your ${exp} of experience count for a lot — pick everything that applies.`
-        : "Pick everything that applies.";
-
-    document.getElementById("strengths-sub").textContent =
-      selected("#prev-work").includes("Never worked before")
-        ? "Paid work or not, people count on you — pick up to four, these become your strengths."
-        : "Pick up to four — these become your strengths.";
-
-    document.getElementById("solution-sub").textContent =
-      selected("#challenge").length
-        ? "You've named what's hard — now let's look at what would help. Pick up to three."
-        : "Pick up to three kinds of help that appeal to you most.";
-
-    document.getElementById("timeline-sub").textContent = g
-      ? `Whether ${g} takes three months or a year — knowing your pace keeps the roadmap realistic.`
-      : "There's no right answer — this keeps your roadmap practical.";
-
-    document.getElementById("final-sub").textContent = g
-      ? `Leave your email and we'll create your personalized roadmap for ${g}. You'll receive it within 24 hours.`
-      : "Leave your email and we'll create your personalized career roadmap. You'll receive it within 24 hours.";
-  }
-
-  function show(i) {
-    steps[current].classList.remove("active");
-    current = i;
-    steps[current].classList.add("active");
-    personalize();
-    stepError.style.display = "none";
-    progressStep.textContent = `${current + 1} of ${steps.length}`;
-    progressName.textContent = steps[current].dataset.name;
-    fill.style.width = `${((current + 1) / steps.length) * 100}%`;
-    btnBack.style.visibility = current === 0 ? "hidden" : "visible";
-    btnNext.textContent = current === steps.length - 1 ? "See my Career Profile" : "Continue";
-    document.getElementById("assessment").scrollIntoView({ behavior: "smooth", block: "start" });
-    const firstInput = steps[current].querySelector("input, select");
-    if (firstInput && !firstInput.closest(".other-input")) firstInput.focus({ preventScroll: true });
-  }
-  fill.style.width = `${(1 / steps.length) * 100}%`;
-  progressStep.textContent = `1 of ${steps.length}`;
-  progressName.textContent = steps[0].dataset.name;
-
-  btnBack.addEventListener("click", () => { if (current > 0) show(current - 1); });
-  btnNext.addEventListener("click", () => {
-    if (!validateStep(steps[current])) {
-      stepError.style.display = "block";
-      return;
-    }
-    if (current < steps.length - 1) show(current + 1);
-    else finish();
-  });
-
-  // ---- report logic (simple, transparent rules — no fake AI) ----
-  // Each role is scored against the answers:
-  //   +3 per keyword found in the user's own text (strongest signal)
-  //   +2 per skill uncovered from previous work or the user's own words
-  //   +1 per matching strength trait, +1 per matching interest
-  //   +3 when the stated goal fits, +2 per fitting career-break activity
-  const PATHS = {
-    "Customer Success":       { skills: ["Customer Support", "Sales", "Marketing"], soft: ["Customer relationships", "Communication"], interests: ["Working with people", "Teaching & supporting others"], keywords: ["customer", "support", "service", "client"], why: "builds on your people skills and support experience" },
-    "Project Coordinator":    { skills: ["Project Management", "Excel", "Event Planning"], soft: ["Organization", "Time management"], interests: ["Organizing & planning", "Managing projects"], keywords: ["project", "coordinator", "planner"], why: "fits your coordination and organizational strengths" },
-    "Operations Specialist":  { skills: ["Excel", "Project Management", "Bookkeeping"], soft: ["Organization", "Problem solving"], interests: ["Organizing & planning", "Numbers & analysis", "Operations & logistics"], keywords: ["operations", "logistics", "supply chain"], why: "matches your structured, detail-oriented profile" },
-    "Data Analyst":           { skills: ["Excel", "Python", "SQL"], soft: ["Problem solving"], interests: ["Numbers & analysis", "Technology", "Research & investigation"], keywords: ["analyst", "data", "research"], why: "builds on your analytical and technical skills" },
-    "Digital Marketing Specialist": { skills: ["Marketing", "Social Media", "Writing", "Design"], soft: ["Communication"], interests: ["Creative work", "Selling & persuading"], keywords: ["marketing", "brand", "campaign"], why: "uses your creative and communication skills" },
-    "Account Manager":        { skills: ["Sales", "Customer Support", "Marketing"], soft: ["Customer relationships", "Communication"], interests: ["Working with people", "Selling & persuading", "Business & strategy"], keywords: ["sales", "business development", "account manager"], why: "leverages your relationship-building experience" },
-    "Corporate Trainer / L&D": { skills: ["Teaching", "Writing"], soft: ["Communication", "Leadership"], interests: ["Teaching & supporting others", "Working with people", "Leading people"], keywords: ["trainer", "training", "education", "lecturer"], why: "puts your teaching and mentoring skills to work" },
-    "HR / Recruitment Coordinator": { skills: ["Recruiting / HR", "Customer Support"], soft: ["Communication", "Teamwork", "Customer relationships"], interests: ["Working with people"], keywords: ["hr", "human resources", "recruit", "talent"], why: "combines your people skills with coordination work" },
-    "Content / Communications Specialist": { skills: ["Writing", "Social Media", "Marketing"], soft: ["Communication"], interests: ["Creative work", "Writing & communication"], keywords: ["content", "communication", "editor", "copywriter", "journalist"], why: "builds on your writing and communication strengths" },
-    "Executive / Virtual Assistant": { skills: ["Excel", "Bookkeeping", "Event Planning"], soft: ["Organization", "Time management", "Adaptability"], interests: ["Organizing & planning"], keywords: ["assistant", "secretary", "administrative"], why: "rewards your reliability and organizational talent, often with flexible hours" },
-    "Office Manager":         { skills: ["Bookkeeping", "Excel", "Event Planning"], soft: ["Organization", "Leadership"], interests: ["Organizing & planning"], keywords: ["office manager", "administration", "facilities"], why: "puts you at the organized heart of a team" },
-    "Bookkeeper / Finance Assistant": { skills: ["Bookkeeping", "Excel"], soft: ["Organization", "Problem solving"], interests: ["Numbers & analysis"], keywords: ["finance", "accounting", "accountant", "bookkeep", "payroll", "invoice", "bank", "insurance"], why: "builds on your precision and comfort with numbers" },
-    "Social Media Manager":   { skills: ["Social Media", "Marketing", "Design", "Writing"], soft: ["Communication", "Adaptability"], interests: ["Creative work", "Technology", "Writing & communication"], keywords: ["social media", "community manager", "influencer"], why: "turns your creativity and online fluency into a role" },
-    "UX / Visual Designer":   { skills: ["Design"], soft: ["Problem solving", "Communication"], interests: ["Creative work", "Technology", "Building or making things"], keywords: ["design", "graphic", "ux", "ui", "creative"], why: "builds on your design skills and eye for detail" },
-    "Event Coordinator":      { skills: ["Event Planning", "Project Management", "Social Media"], soft: ["Organization", "Customer relationships"], interests: ["Organizing & planning", "Working with people", "Hands-on practical work"], keywords: ["event", "hospitality", "wedding", "catering", "restaurant", "chef", "cook", "hotel"], why: "combines your planning skills with working with people" },
-    "Teacher / Tutor":        { skills: ["Teaching"], soft: ["Communication", "Adaptability", "Leadership"], interests: ["Teaching & supporting others"], keywords: ["teacher", "tutor", "school", "childcare"], why: "uses your gift for explaining and encouraging others" },
-    "QA / Software Tester":   { skills: ["Python", "SQL", "Excel"], soft: ["Problem solving"], interests: ["Technology", "Numbers & analysis", "Problem solving"], keywords: ["software", "developer", "engineer", "tester", "ict"], why: "is a realistic tech entry point for a structured, curious mind" },
-    "Care / Community Coordinator": { skills: ["Customer Support", "Teaching"], soft: ["Customer relationships", "Teamwork", "Communication"], interests: ["Teaching & supporting others", "Working with people"], keywords: ["nurse", "health", "community", "charity", "ngo", "welfare"], why: "turns your care experience into recognized, paid work" },
-    "E-commerce / Webshop Coordinator": { skills: ["Marketing", "Social Media", "Excel", "Customer Support"], soft: ["Organization", "Adaptability"], interests: ["Technology", "Selling & persuading"], keywords: ["e-commerce", "ecommerce", "webshop", "retail", "store", "shop"], why: "combines organization with online selling in a flexible, growing field" },
-    "Translator / Language Specialist": { skills: ["Writing", "Teaching"], soft: ["Communication", "Adaptability"], interests: ["Creative work", "Writing & communication"], keywords: ["translator", "translation", "linguist", "language"], why: "puts your languages to professional use, often freelance-friendly" },
-    "Legal / Compliance Assistant": { skills: ["Excel", "Bookkeeping", "Writing"], soft: ["Organization", "Problem solving"], interests: ["Organizing & planning"], keywords: ["legal", "paralegal", "lawyer", "law firm", "compliance", "notary"], why: "values your precision and process discipline" },
-    "Healthcare / Practice Assistant": { skills: ["Customer Support", "Excel"], soft: ["Customer relationships", "Teamwork", "Organization"], interests: ["Teaching & supporting others", "Working with people"], keywords: ["medical", "clinic", "pharmac", "dental", "doctor", "physio", "hospital"], why: "keeps you close to healthcare with regular, family-friendly hours" },
-    "Supply Chain / Logistics Coordinator": { skills: ["Excel", "Project Management"], soft: ["Organization", "Problem solving"], interests: ["Organizing & planning", "Numbers & analysis", "Operations & logistics", "Hands-on practical work"], keywords: ["warehouse", "transport", "production", "manufacturing", "logistics"], why: "rewards your practical, keep-things-moving mindset" },
-    "Research / Policy Assistant": { skills: ["Writing", "Excel", "SQL"], soft: ["Problem solving", "Organization"], interests: ["Numbers & analysis", "Research & investigation"], keywords: ["policy", "government", "municipality", "university", "science"], why: "suits your careful, analytical way of working" },
-    "Product Owner / Business Analyst": { skills: ["Project Management", "SQL", "Excel"], soft: ["Communication", "Problem solving"], interests: ["Technology", "Organizing & planning", "Business & strategy", "Managing projects"], keywords: ["product owner", "business analyst", "scrum", "consultant"], why: "bridges business and technology — a strong step up from coordination or analysis" },
-    "Freelance / Your Own Business": { skills: ["Marketing", "Social Media", "Bookkeeping", "Sales"], soft: ["Adaptability", "Leadership"], interests: ["Selling & persuading", "Creative work", "Business & strategy"], keywords: ["founder", "owner", "entrepreneur", "freelanc", "self-employed"], goals: ["Start my own business"], activities: ["Freelanced or worked part-time", "Worked on a personal project"], why: "builds on your independence — many returners restart on their own terms" }
-  };
-
-  // selected pill labels; the write-in option becomes the user's own words
-  const selected = sel => {
-    const group = document.querySelector(sel);
-    const ol = group.dataset.otherLabel || "Other";
-    return [...group.querySelectorAll(".pill.selected")].map(p =>
-      p.textContent === ol && otherText(group) ? otherText(group) : p.textContent);
-  };
-
-  // strengths → the trait tags used in the PATHS catalog
-  const BEHAVIOR_TRAITS = {
-    "Communicating clearly": ["Communication"],
-    "Managing time & priorities": ["Time management", "Organization"],
-    "Solving problems": ["Problem solving"],
-    "Supporting others": ["Teamwork", "Customer relationships"],
-    "Leading people": ["Leadership"],
-    "Building relationships": ["Customer relationships", "Communication"],
-    "Working with customers": ["Customer relationships"],
-    "Getting things done": ["Organization"],
-    "Handling change": ["Adaptability"],
-    "Learning quickly": ["Adaptability"]
-  };
-
-  // what she mainly did at work → catalog skills and traits
-  const WORK_HINTS = {
-    "Customer service": { skills: ["Customer Support"], soft: ["Customer relationships"] },
-    "Sales": { skills: ["Sales"], soft: [] },
-    "Project management": { skills: ["Project Management"], soft: ["Organization"] },
-    "Team leadership": { skills: [], soft: ["Leadership", "Teamwork"] },
-    "Data & analysis": { skills: ["Excel"], soft: ["Problem solving"] },
-    "Operations & admin": { skills: ["Excel", "Bookkeeping"], soft: ["Organization"] },
-    "Technical work": { skills: ["SQL"], soft: [] },
-    "Content & design": { skills: ["Design", "Writing"], soft: [] },
-    "Teaching & advising": { skills: ["Teaching"], soft: ["Communication"] },
-    "Research": { skills: ["SQL", "Writing"], soft: ["Problem solving"] }
-  };
-
-  // skill names from the PATHS catalog, detected in the user's own text
-  const SKILL_HINTS = {
-    "Marketing": ["marketing"], "Sales": ["sales", "selling"], "Excel": ["excel", "spreadsheet"],
-    "Project Management": ["project"], "Python": ["python"], "SQL": ["sql", "database"],
-    "Customer Support": ["customer", "support", "helpdesk", "client"],
-    "Teaching": ["teach", "tutor", "training", "lesson"],
-    "Design": ["design", "photoshop", "figma", "canva", "illustrator"],
-    "Writing": ["writing", "writer", "copywrit", "blog", "editing"],
-    "Social Media": ["social media", "instagram", "tiktok", "linkedin", "facebook"],
-    "Bookkeeping": ["accounting", "bookkeep", "invoic", "payroll", "finance", "budget"],
-    "Event Planning": ["event", "party", "festival"],
-    "Recruiting / HR": ["recruit", "human resources", "hiring", "hr"]
-  };
-
-  function buildProfile() {
-    const behaviors = selected("#soft-skills");
-    const priorities = selected("#priorities");
-    const interests = selected("#interests");
-    const goal = selected("#goal")[0] || "";
-    const prevWork = selected("#prev-work");
-    const activities = selected("#break-activities");
-
-    // what she says people rely on her for, in her own words
-    const strengths = [...behaviors.slice(0, 4)];
-    // map strengths + work activities to catalog traits for scoring
-    const soft = [...new Set([
-      ...behaviors.flatMap(b => BEHAVIOR_TRAITS[b] || []),
-      ...prevWork.flatMap(w => (WORK_HINTS[w] || {}).soft || [])
-    ])];
-    // uncover catalog skills from what she did and what she wrote
-    const ownText = ["skills-text", "prev-work-details", "break-details"]
-      .map(id => document.getElementById(id).value).join(" ").toLowerCase();
-    const skills = [...new Set([
-      ...Object.keys(SKILL_HINTS).filter(name => SKILL_HINTS[name].some(h => ownText.includes(h))),
-      ...prevWork.flatMap(w => (WORK_HINTS[w] || {}).skills || [])
-    ])];
-
-    const scored = Object.entries(PATHS).map(([name, def]) => {
-      const kw = def.keywords.filter(k => ownText.includes(k)).length;
-      const s = kw * 3 +
-                def.skills.filter(x => skills.includes(x)).length * 2 +
-                def.soft.filter(x => soft.includes(x)).length +
-                def.interests.filter(x => interests.includes(x)).length +
-                (def.goals && def.goals.includes(goal) ? 3 : 0) +
-                (def.activities ? def.activities.filter(a => activities.includes(a)).length * 2 : 0);
-      return { name, why: def.why, score: s, fromBackground: kw > 0 };
-    }).filter(p => p.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
-
-    // her stated goal of independence always earns the entrepreneurial path a place
-    if (goal === "Start my own business" && !scored.some(p => p.name === "Freelance / Your Own Business")) {
-      scored.unshift({ name: "Freelance / Your Own Business", why: PATHS["Freelance / Your Own Business"].why, score: 0, fromBackground: false });
-      if (scored.length > 3) scored.length = 3;
+      // languages: at least one complete row, no half-filled rows, no duplicates
+      if (step.querySelector("#languages-rows")) {
+        let complete = 0;
+        const seen = [];
+        langRows.querySelectorAll(".lang-row").forEach(row => {
+          const sel = row.querySelector(".lang-select");
+          const custom = row.querySelector(".lang-custom");
+          const level = row.querySelector(".lang-level");
+          [sel, custom, level].forEach(el => mark(el, false));
+          const nm = sel.value === "Other…" ? custom.value.trim() : sel.value;
+          if (nm && seen.includes(nm.toLowerCase())) {
+            ok = false;
+            mark(sel.value === "Other…" ? custom : sel, true);
+            return;
+          }
+          if (nm) seen.push(nm.toLowerCase());
+          if (nm && level.value) { complete++; return; }
+          if (nm && !level.value) { ok = false; mark(level, true); }
+          else if (!nm && level.value) { ok = false; mark(sel.value === "Other…" ? custom : sel, true); }
+          else if (sel.value === "Other…" && !custom.value.trim()) { ok = false; mark(custom, true); }
+        });
+        if (complete === 0 && ok) {
+          ok = false;
+          mark(langRows.querySelector(".lang-select"), true);
+        }
+      }
+      return ok;
     }
 
-    const challenges = selected("#challenge");
-
-    let blockers = [...document.querySelectorAll(".scale-q")]
-      .filter(q => parseInt(q.querySelector(".scale").dataset.value, 10) <= 3)
-      .map(q => q.dataset.blocker);
-    if (goal === "I'm not sure yet")
-      blockers.unshift("Unclear which direction to take");
-    // the challenges they named themselves always lead the list
-    const CHALLENGE_BLOCKERS = {
-      "Unsure which role suits me": "Unclear which direction to take",
-      "Unsure what skills to build": "Unsure which skills to update",
-      "Unsure how to use my past experience": "Uncertainty how to use your past experience",
-      "Explaining my career break": "Explaining the career break with confidence",
-      "Rebuilding my confidence": "Rebuilding your confidence",
-      "Updating my CV or LinkedIn": "An outdated CV or LinkedIn profile",
-      "Getting interviews": "Not getting interviews",
-      "Preparing for interviews": "Interview preparation",
-      "Finding the right jobs": "Finding the right jobs to apply for",
-      "Building a professional network": "A limited professional network",
-      "Lack of recent experience": "A gap in recent experience",
-      "Language barriers": "Language barriers",
-      "Finding work that fits my life": "Finding work that fits your life",
-      "Understanding today's job market": "Understanding today's job market",
-      "Knowing what salary to expect": "Uncertainty about salary expectations"
-    };
-    blockers.unshift(...challenges.map(c => CHALLENGE_BLOCKERS[c] || c));
-    blockers = [...new Set(blockers)];
-
-    return { skills, soft, priorities, interests, goal, challenges, strengths, paths: scored, blockers };
-  }
-
-  function collectAnswers() {
-    const val = id => document.getElementById(id).value.trim();
-    return {
-      country: val("country"), current_location: val("location"),
-      years_of_experience: val("experience"), career_break_duration: val("break-duration"),
-      break_reason: selected("#break-reason").join(", "),
-      previous_work: selected("#prev-work").join(", "),
-      previous_work_details: val("prev-work-details"),
-      career_break_activities: selected("#break-activities").join(", "),
-      career_break_details: val("break-details"),
-      additional_notes: val("notes"),
-      highest_education: val("education") === "Other"
-        ? "Other: " + val("education-other")
-        : val("education"),
-      languages: [...document.querySelectorAll(".lang-row")].map(r => {
-        const sel = r.querySelector(".lang-select").value;
-        const nm = sel === "Other…" ? r.querySelector(".lang-custom").value.trim() : sel;
-        const lv = r.querySelector(".lang-level").value;
-        return { nm, lv };
-      }).filter(x => x.nm).map(x => x.lv ? `${x.nm} (${x.lv})` : x.nm).join(", "),
-      relied_on_for: selected("#soft-skills").join(", "),
-      work_format: selected("#work-format").join(", "),
-      priorities: selected("#priorities").join(", "),
-      interests: selected("#interests").join(", "),
-      goal: selected("#goal").join(""),
-      biggest_challenge: selected("#challenge").join(", "),
-      preferred_solution: selected("#solution").join(", "),
-      return_timeline: selected("#return-timeline").join(""),
-      confidence: [...document.querySelectorAll(".scale-q")]
-        .map(q => `${q.querySelector(".statement").textContent} → ${q.querySelector(".scale").dataset.value}/5`).join(" | "),
-      reusable_skills: val("skills-text"),
-      name: val("name"), email: val("email"),
-      // record of consent, kept with the submission (GDPR accountability)
-      consent: document.getElementById("consent").checked
-        ? `Consented to processing for career roadmap at ${new Date().toISOString()}`
-        : "NO CONSENT"
-    };
-  }
-
-  function renderReport(profile) {
-    const name = document.getElementById("name").value.trim().split(" ")[0];
-    document.getElementById("report-intro").textContent =
-      `${name}, based on your answers, here's where you stand — and where you could go next.`;
-
-    document.getElementById("report-strengths").innerHTML = profile.strengths
-      .map(s => `<li><span class="mark">✓</span>${s}</li>`).join("");
-
-    const pathsEl = document.getElementById("report-paths");
-    pathsEl.innerHTML = (profile.paths.length
-      ? profile.paths.map(p => `<div class="path-item"><strong>⭐ ${p.name}</strong><span>This ${p.why}${p.fromBackground ? ", and connects directly to your previous experience" : ""}.</span></div>`).join("")
-      : `<div class="path-item"><strong>⭐ Let's talk</strong><span>Your combination of skills is unique — your full roadmap will include hand-picked suggestions.</span></div>`)
-      + `<p class="paths-note">These are starting points, not a verdict — your full roadmap will explore directions beyond this list.</p>`;
-
-    const blockersEl = document.getElementById("report-blockers");
-    blockersEl.innerHTML = profile.blockers.length
-      ? profile.blockers.map(b => `<li><span class="mark">•</span>${b}</li>`).join("")
-      : `<li><span class="mark">•</span>No major blockers — your main task is simply to start applying.</li>`;
-
-    const prioList = profile.priorities.map(p => p.toLowerCase());
-    const prio = prioList.length
-      ? (prioList.length > 1
-          ? prioList.slice(0, -1).join(", ") + " and " + prioList[prioList.length - 1]
-          : prioList[0])
-      : "what matters to you";
-    const goalPhrases = {
+    // ---- context-aware copy: later questions pick up her earlier answers ----
+    const GOAL_BITS = {
       "Return to my previous field": "returning to your field",
       "Try something new": "trying something new",
       "Any stable job, soon": "finding a stable job soon",
       "Start my own business": "starting your own business",
       "I'm not sure yet": "finding your direction"
     };
-    const goalText = goalPhrases[profile.goal] || (profile.goal ? profile.goal.toLowerCase() : "");
-    document.getElementById("report-note").innerHTML =
-      `<strong>What happens next:</strong> within 24 hours you'll receive your full career roadmap by email — with concrete next steps for each path above, focused on ${prio}${goalText ? ` and built around your goal of ${goalText}` : ""}.`;
-  }
+    function personalize() {
+      const goal = selected("#goal")[0] || "";
+      const g = GOAL_BITS[goal] || "";
 
-  async function finish() {
-    btnNext.disabled = true;
-    btnNext.textContent = "Building your profile…";
-    try {
-      if (FORM_ENDPOINT) {
-        const fd = new FormData();
-        Object.entries(collectAnswers()).forEach(([k, v]) => fd.append(k, v));
-        await fetch(FORM_ENDPOINT, { method: "POST", body: fd, headers: { Accept: "application/json" } });
-      }
-    } catch (e) { /* still show the report — don't lose the user */ }
-    renderReport(buildProfile());
-    fillShareLinks();
-    document.getElementById("wizard").style.display = "none";
-    document.getElementById("report").style.display = "block";
-    document.getElementById("assessment").scrollIntoView({ behavior: "smooth", block: "start" });
-  }
+      document.getElementById("challenge-h").textContent = g
+        ? `As you think about ${g}, which parts feel most challenging right now? 🤔`
+        : "Which parts of returning to work feel most challenging right now? 🤔";
 
-  // ---- post-result product-research question (separate, fire-and-forget) ----
-  function sendNextValue(value) {
-    try {
-      if (FORM_ENDPOINT) {
-        const fd = new FormData();
-        fd.append("email", document.getElementById("email").value.trim());
-        fd.append("most_valuable_next", value);
-        fetch(FORM_ENDPOINT, { method: "POST", body: fd, headers: { Accept: "application/json" } }).catch(() => {});
-      }
-    } catch (e) { /* research data only — never block the user */ }
-    document.getElementById("next-value-block").innerHTML =
-      "<h4>One last question</h4><p>Thank you — noted.</p>";
-  }
-  document.getElementById("next-value").addEventListener("click", e => {
-    const pill = e.target.closest(".pill");
-    if (!pill || pill.textContent === "Other") return;
-    sendNextValue(pill.textContent);
-  });
-  document.querySelector("#next-value-other input").addEventListener("keydown", e => {
-    if (e.key === "Enter" && e.target.value.trim()) {
-      e.preventDefault();
-      sendNextValue("Other: " + e.target.value.trim());
+      const dur = document.getElementById("break-duration").value;
+      document.getElementById("break-activities-sub").textContent =
+        dur === "Less than 1 year"
+          ? "Even a shorter break holds a lot of life - pick everything that applies, it all counts."
+          : dur
+            ? `Those ${dur.toLowerCase()} were full of life too - pick everything that applies, it all counts.`
+            : "Pick everything that applies - it all counts.";
+
+      const exp = document.getElementById("experience").value;
+      document.getElementById("prev-work-sub").textContent =
+        exp && exp !== "0–2 years"
+          ? `Your ${exp} of experience count for a lot - pick everything that applies.`
+          : "Pick everything that applies.";
+
+      document.getElementById("strengths-sub").textContent =
+        selected("#prev-work").includes("Never worked before")
+          ? "Paid work or not, people count on you - pick up to four, these become your strengths."
+          : "Pick up to four - these become your strengths.";
+
+      document.getElementById("solution-sub").textContent =
+        selected("#challenge").length
+          ? "You've named what's hard - now let's look at what would help. Pick up to three."
+          : "Pick up to three kinds of help that appeal to you most.";
+
+      document.getElementById("timeline-sub").textContent = g
+        ? `Whether ${g} takes three months or a year - knowing your pace keeps the roadmap realistic.`
+        : "There's no right answer - this keeps your roadmap practical.";
+
+      document.getElementById("final-sub").textContent = g
+        ? `Leave your email and we'll create your personalized roadmap for ${g}. You'll receive it within 24 hours.`
+        : "Leave your email and we'll create your personalized career roadmap. You'll receive it within 24 hours.";
     }
-  });
 
-  // ---- share the assessment (and her top paths) with a friend ----
-  function shareParts() {
-    const url = location.protocol.startsWith("http")
-      ? location.href.split("#")[0]
-      : "https://emily-cloud.github.io/career_intelligence_report/";
-    const paths = [...document.querySelectorAll(".path-item strong")]
-      .map(x => x.textContent.replace("⭐ ", "")).slice(0, 3);
-    const text = `I just tried the Career Clarity Assessment${paths.length ? " — my top paths: " + paths.join(", ") : ""}. If you're thinking about returning to work, try it too:`;
-    return { url, text, full: `${text} ${url}` };
-  }
-  function fillShareLinks() {
-    const { full } = shareParts();
-    document.getElementById("share-wa").href = "https://wa.me/?text=" + encodeURIComponent(full);
-    document.getElementById("share-mail").href = "mailto:?subject=" +
-      encodeURIComponent("Something for you — Career Clarity Assessment") +
-      "&body=" + encodeURIComponent(full);
-  }
-  document.getElementById("share-btn").addEventListener("click", async () => {
-    const btn = document.getElementById("share-btn");
-    const { url, text, full } = shareParts();
-    const confirmCopied = () => {
-      btn.textContent = "Copied — paste it anywhere";
-      setTimeout(() => { btn.textContent = "💌 Share this with a friend"; }, 3000);
+    function show(i) {
+      steps[current].classList.remove("active");
+      current = i;
+      steps[current].classList.add("active");
+      personalize();
+      stepError.style.display = "none";
+      progressStep.textContent = `${current + 1} of ${steps.length}`;
+      progressName.textContent = steps[current].dataset.name;
+      fill.style.width = `${((current + 1) / steps.length) * 100}%`;
+      btnBack.style.visibility = current === 0 ? "hidden" : "visible";
+      btnNext.textContent = current === steps.length - 1 ? "See my Career Profile" : "Continue";
+      document.getElementById("assessment").scrollIntoView({ behavior: "smooth", block: "start" });
+      const firstInput = steps[current].querySelector("input, select");
+      if (firstInput && !firstInput.closest(".other-input")) firstInput.focus({ preventScroll: true });
+    }
+    fill.style.width = `${(1 / steps.length) * 100}%`;
+    progressStep.textContent = `1 of ${steps.length}`;
+    progressName.textContent = steps[0].dataset.name;
+
+    btnBack.addEventListener("click", () => { if (current > 0) show(current - 1); });
+    btnNext.addEventListener("click", () => {
+      if (!validateStep(steps[current])) {
+        stepError.style.display = "block";
+        return;
+      }
+      if (current < steps.length - 1) show(current + 1);
+      else finish();
+    });
+
+    // ---- report logic (simple, transparent rules - no fake AI) ----
+    // Each role is scored against the answers:
+    //   +3 per keyword found in the user's own text (strongest signal)
+    //   +2 per skill uncovered from previous work or the user's own words
+    //   +1 per matching strength trait, +1 per matching interest
+    //   +3 when the stated goal fits, +2 per fitting career-break activity
+    const PATHS = {
+      "Customer Success": { skills: ["Customer Support", "Sales", "Marketing"], soft: ["Customer relationships", "Communication"], interests: ["Working with people", "Teaching & supporting others"], keywords: ["customer", "support", "service", "client"], why: "builds on your people skills and support experience" },
+      "Project Coordinator": { skills: ["Project Management", "Excel", "Event Planning"], soft: ["Organization", "Time management"], interests: ["Organizing & planning", "Managing projects"], keywords: ["project", "coordinator", "planner"], why: "fits your coordination and organizational strengths" },
+      "Operations Specialist": { skills: ["Excel", "Project Management", "Bookkeeping"], soft: ["Organization", "Problem solving"], interests: ["Organizing & planning", "Numbers & analysis", "Operations & logistics"], keywords: ["operations", "logistics", "supply chain"], why: "matches your structured, detail-oriented profile" },
+      "Data Analyst": { skills: ["Excel", "Python", "SQL"], soft: ["Problem solving"], interests: ["Numbers & analysis", "Technology", "Research & investigation"], keywords: ["analyst", "data", "research"], why: "builds on your analytical and technical skills" },
+      "Digital Marketing Specialist": { skills: ["Marketing", "Social Media", "Writing", "Design"], soft: ["Communication"], interests: ["Creative work", "Selling & persuading"], keywords: ["marketing", "brand", "campaign"], why: "uses your creative and communication skills" },
+      "Account Manager": { skills: ["Sales", "Customer Support", "Marketing"], soft: ["Customer relationships", "Communication"], interests: ["Working with people", "Selling & persuading", "Business & strategy"], keywords: ["sales", "business development", "account manager"], why: "leverages your relationship-building experience" },
+      "Corporate Trainer / L&D": { skills: ["Teaching", "Writing"], soft: ["Communication", "Leadership"], interests: ["Teaching & supporting others", "Working with people", "Leading people"], keywords: ["trainer", "training", "education", "lecturer"], why: "puts your teaching and mentoring skills to work" },
+      "HR / Recruitment Coordinator": { skills: ["Recruiting / HR", "Customer Support"], soft: ["Communication", "Teamwork", "Customer relationships"], interests: ["Working with people"], keywords: ["hr", "human resources", "recruit", "talent"], why: "combines your people skills with coordination work" },
+      "Content / Communications Specialist": { skills: ["Writing", "Social Media", "Marketing"], soft: ["Communication"], interests: ["Creative work", "Writing & communication"], keywords: ["content", "communication", "editor", "copywriter", "journalist"], why: "builds on your writing and communication strengths" },
+      "Executive / Virtual Assistant": { skills: ["Excel", "Bookkeeping", "Event Planning"], soft: ["Organization", "Time management", "Adaptability"], interests: ["Organizing & planning"], keywords: ["assistant", "secretary", "administrative"], why: "rewards your reliability and organizational talent, often with flexible hours" },
+      "Office Manager": { skills: ["Bookkeeping", "Excel", "Event Planning"], soft: ["Organization", "Leadership"], interests: ["Organizing & planning"], keywords: ["office manager", "administration", "facilities"], why: "puts you at the organized heart of a team" },
+      "Bookkeeper / Finance Assistant": { skills: ["Bookkeeping", "Excel"], soft: ["Organization", "Problem solving"], interests: ["Numbers & analysis"], keywords: ["finance", "accounting", "accountant", "bookkeep", "payroll", "invoice", "bank", "insurance"], why: "builds on your precision and comfort with numbers" },
+      "Social Media Manager": { skills: ["Social Media", "Marketing", "Design", "Writing"], soft: ["Communication", "Adaptability"], interests: ["Creative work", "Technology", "Writing & communication"], keywords: ["social media", "community manager", "influencer"], why: "turns your creativity and online fluency into a role" },
+      "UX / Visual Designer": { skills: ["Design"], soft: ["Problem solving", "Communication"], interests: ["Creative work", "Technology", "Building or making things"], keywords: ["design", "graphic", "ux", "ui", "creative"], why: "builds on your design skills and eye for detail" },
+      "Event Coordinator": { skills: ["Event Planning", "Project Management", "Social Media"], soft: ["Organization", "Customer relationships"], interests: ["Organizing & planning", "Working with people", "Hands-on practical work"], keywords: ["event", "hospitality", "wedding", "catering", "restaurant", "chef", "cook", "hotel"], why: "combines your planning skills with working with people" },
+      "Teacher / Tutor": { skills: ["Teaching"], soft: ["Communication", "Adaptability", "Leadership"], interests: ["Teaching & supporting others"], keywords: ["teacher", "tutor", "school", "childcare"], why: "uses your gift for explaining and encouraging others" },
+      "QA / Software Tester": { skills: ["Python", "SQL", "Excel"], soft: ["Problem solving"], interests: ["Technology", "Numbers & analysis", "Problem solving"], keywords: ["software", "developer", "engineer", "tester", "ict"], why: "is a realistic tech entry point for a structured, curious mind" },
+      "Care / Community Coordinator": { skills: ["Customer Support", "Teaching"], soft: ["Customer relationships", "Teamwork", "Communication"], interests: ["Teaching & supporting others", "Working with people"], keywords: ["nurse", "health", "community", "charity", "ngo", "welfare"], why: "turns your care experience into recognized, paid work" },
+      "E-commerce / Webshop Coordinator": { skills: ["Marketing", "Social Media", "Excel", "Customer Support"], soft: ["Organization", "Adaptability"], interests: ["Technology", "Selling & persuading"], keywords: ["e-commerce", "ecommerce", "webshop", "retail", "store", "shop"], why: "combines organization with online selling in a flexible, growing field" },
+      "Translator / Language Specialist": { skills: ["Writing", "Teaching"], soft: ["Communication", "Adaptability"], interests: ["Creative work", "Writing & communication"], keywords: ["translator", "translation", "linguist", "language"], why: "puts your languages to professional use, often freelance-friendly" },
+      "Legal / Compliance Assistant": { skills: ["Excel", "Bookkeeping", "Writing"], soft: ["Organization", "Problem solving"], interests: ["Organizing & planning"], keywords: ["legal", "paralegal", "lawyer", "law firm", "compliance", "notary"], why: "values your precision and process discipline" },
+      "Healthcare / Practice Assistant": { skills: ["Customer Support", "Excel"], soft: ["Customer relationships", "Teamwork", "Organization"], interests: ["Teaching & supporting others", "Working with people"], keywords: ["medical", "clinic", "pharmac", "dental", "doctor", "physio", "hospital"], why: "keeps you close to healthcare with regular, family-friendly hours" },
+      "Supply Chain / Logistics Coordinator": { skills: ["Excel", "Project Management"], soft: ["Organization", "Problem solving"], interests: ["Organizing & planning", "Numbers & analysis", "Operations & logistics", "Hands-on practical work"], keywords: ["warehouse", "transport", "production", "manufacturing", "logistics"], why: "rewards your practical, keep-things-moving mindset" },
+      "Research / Policy Assistant": { skills: ["Writing", "Excel", "SQL"], soft: ["Problem solving", "Organization"], interests: ["Numbers & analysis", "Research & investigation"], keywords: ["policy", "government", "municipality", "university", "science"], why: "suits your careful, analytical way of working" },
+      "Product Owner / Business Analyst": { skills: ["Project Management", "SQL", "Excel"], soft: ["Communication", "Problem solving"], interests: ["Technology", "Organizing & planning", "Business & strategy", "Managing projects"], keywords: ["product owner", "business analyst", "scrum", "consultant"], why: "bridges business and technology - a strong step up from coordination or analysis" },
+      "Freelance / Your Own Business": { skills: ["Marketing", "Social Media", "Bookkeeping", "Sales"], soft: ["Adaptability", "Leadership"], interests: ["Selling & persuading", "Creative work", "Business & strategy"], keywords: ["founder", "owner", "entrepreneur", "freelanc", "self-employed"], goals: ["Start my own business"], activities: ["Freelanced or worked part-time", "Worked on a personal project"], why: "builds on your independence - many returners restart on their own terms" }
     };
-    if (navigator.share) {
-      try { await navigator.share({ title: "Career Clarity Assessment", text, url }); return; }
-      catch (e) { if (e.name === "AbortError") return; /* else fall through */ }
-    }
-    try { await navigator.clipboard.writeText(full); confirmCopied(); return; } catch (e) { /* fall through */ }
-    const ta = document.createElement("textarea");
-    ta.value = full; ta.style.position = "fixed"; ta.style.opacity = "0";
-    document.body.appendChild(ta); ta.select();
-    let done = false;
-    try { done = document.execCommand("copy"); } catch (e) {}
-    ta.remove();
-    if (done) confirmCopied();
-    else window.prompt("Copy this message and send it to a friend:", full);
-  });
 
-  // ---- light / dark mode ----
-  const themeToggle = document.getElementById("theme-toggle");
-  function isDarkNow() {
-    const t = document.documentElement.dataset.theme;
-    return t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
-  }
-  function applyTheme(t) {
-    if (t) document.documentElement.dataset.theme = t;
-    else delete document.documentElement.dataset.theme;
-    themeToggle.textContent = isDarkNow() ? "☀️" : "🌙";
-  }
-  let storedTheme = null;
-  try { storedTheme = localStorage.getItem("theme"); } catch (e) {}
-  applyTheme(storedTheme || null);
-  themeToggle.addEventListener("click", () => {
-    const next = isDarkNow() ? "light" : "dark";
-    try { localStorage.setItem("theme", next); } catch (e) {}
-    applyTheme(next);
-  });
-</script>
+    // selected pill labels; the write-in option becomes the user's own words
+    const selected = sel => {
+      const group = document.querySelector(sel);
+      const ol = group.dataset.otherLabel || "Other";
+      return [...group.querySelectorAll(".pill.selected")].map(p =>
+        p.textContent === ol && otherText(group) ? otherText(group) : p.textContent);
+    };
+
+    // strengths → the trait tags used in the PATHS catalog
+    const BEHAVIOR_TRAITS = {
+      "Communicating clearly": ["Communication"],
+      "Managing time & priorities": ["Time management", "Organization"],
+      "Solving problems": ["Problem solving"],
+      "Supporting others": ["Teamwork", "Customer relationships"],
+      "Leading people": ["Leadership"],
+      "Building relationships": ["Customer relationships", "Communication"],
+      "Working with customers": ["Customer relationships"],
+      "Getting things done": ["Organization"],
+      "Handling change": ["Adaptability"],
+      "Learning quickly": ["Adaptability"]
+    };
+
+    // what she mainly did at work → catalog skills and traits
+    const WORK_HINTS = {
+      "Customer service": { skills: ["Customer Support"], soft: ["Customer relationships"] },
+      "Sales": { skills: ["Sales"], soft: [] },
+      "Project management": { skills: ["Project Management"], soft: ["Organization"] },
+      "Team leadership": { skills: [], soft: ["Leadership", "Teamwork"] },
+      "Data & analysis": { skills: ["Excel"], soft: ["Problem solving"] },
+      "Operations & admin": { skills: ["Excel", "Bookkeeping"], soft: ["Organization"] },
+      "Technical work": { skills: ["SQL"], soft: [] },
+      "Content & design": { skills: ["Design", "Writing"], soft: [] },
+      "Teaching & advising": { skills: ["Teaching"], soft: ["Communication"] },
+      "Research": { skills: ["SQL", "Writing"], soft: ["Problem solving"] }
+    };
+
+    // skill names from the PATHS catalog, detected in the user's own text
+    const SKILL_HINTS = {
+      "Marketing": ["marketing"], "Sales": ["sales", "selling"], "Excel": ["excel", "spreadsheet"],
+      "Project Management": ["project"], "Python": ["python"], "SQL": ["sql", "database"],
+      "Customer Support": ["customer", "support", "helpdesk", "client"],
+      "Teaching": ["teach", "tutor", "training", "lesson"],
+      "Design": ["design", "photoshop", "figma", "canva", "illustrator"],
+      "Writing": ["writing", "writer", "copywrit", "blog", "editing"],
+      "Social Media": ["social media", "instagram", "tiktok", "linkedin", "facebook"],
+      "Bookkeeping": ["accounting", "bookkeep", "invoic", "payroll", "finance", "budget"],
+      "Event Planning": ["event", "party", "festival"],
+      "Recruiting / HR": ["recruit", "human resources", "hiring", "hr"]
+    };
+
+    function buildProfile() {
+      const behaviors = selected("#soft-skills");
+      const priorities = selected("#priorities");
+      const interests = selected("#interests");
+      const goal = selected("#goal")[0] || "";
+      const prevWork = selected("#prev-work");
+      const activities = selected("#break-activities");
+
+      // what she says people rely on her for, in her own words
+      const strengths = [...behaviors.slice(0, 4)];
+      // map strengths + work activities to catalog traits for scoring
+      const soft = [...new Set([
+        ...behaviors.flatMap(b => BEHAVIOR_TRAITS[b] || []),
+        ...prevWork.flatMap(w => (WORK_HINTS[w] || {}).soft || [])
+      ])];
+      // uncover catalog skills from what she did and what she wrote
+      const ownText = ["skills-text", "prev-work-details", "break-details"]
+        .map(id => document.getElementById(id).value).join(" ").toLowerCase();
+      const skills = [...new Set([
+        ...Object.keys(SKILL_HINTS).filter(name => SKILL_HINTS[name].some(h => ownText.includes(h))),
+        ...prevWork.flatMap(w => (WORK_HINTS[w] || {}).skills || [])
+      ])];
+
+      const scored = Object.entries(PATHS).map(([name, def]) => {
+        const kw = def.keywords.filter(k => ownText.includes(k)).length;
+        const s = kw * 3 +
+          def.skills.filter(x => skills.includes(x)).length * 2 +
+          def.soft.filter(x => soft.includes(x)).length +
+          def.interests.filter(x => interests.includes(x)).length +
+          (def.goals && def.goals.includes(goal) ? 3 : 0) +
+          (def.activities ? def.activities.filter(a => activities.includes(a)).length * 2 : 0);
+        return { name, why: def.why, score: s, fromBackground: kw > 0 };
+      }).filter(p => p.score > 0).sort((a, b) => b.score - a.score).slice(0, 3);
+
+      // her stated goal of independence always earns the entrepreneurial path a place
+      if (goal === "Start my own business" && !scored.some(p => p.name === "Freelance / Your Own Business")) {
+        scored.unshift({ name: "Freelance / Your Own Business", why: PATHS["Freelance / Your Own Business"].why, score: 0, fromBackground: false });
+        if (scored.length > 3) scored.length = 3;
+      }
+
+      const challenges = selected("#challenge");
+
+      let blockers = [...document.querySelectorAll(".scale-q")]
+        .filter(q => parseInt(q.querySelector(".scale").dataset.value, 10) <= 3)
+        .map(q => q.dataset.blocker);
+      if (goal === "I'm not sure yet")
+        blockers.unshift("Unclear which direction to take");
+      // the challenges they named themselves always lead the list
+      const CHALLENGE_BLOCKERS = {
+        "Unsure which role suits me": "Unclear which direction to take",
+        "Unsure what skills to build": "Unsure which skills to update",
+        "Unsure how to use my past experience": "Uncertainty how to use your past experience",
+        "Explaining my career break": "Explaining the career break with confidence",
+        "Rebuilding my confidence": "Rebuilding your confidence",
+        "Updating my CV or LinkedIn": "An outdated CV or LinkedIn profile",
+        "Getting interviews": "Not getting interviews",
+        "Preparing for interviews": "Interview preparation",
+        "Finding the right jobs": "Finding the right jobs to apply for",
+        "Building a professional network": "A limited professional network",
+        "Lack of recent experience": "A gap in recent experience",
+        "Language barriers": "Language barriers",
+        "Finding work that fits my life": "Finding work that fits your life",
+        "Understanding today's job market": "Understanding today's job market",
+        "Knowing what salary to expect": "Uncertainty about salary expectations"
+      };
+      blockers.unshift(...challenges.map(c => CHALLENGE_BLOCKERS[c] || c));
+      blockers = [...new Set(blockers)];
+
+      return { skills, soft, priorities, interests, goal, challenges, strengths, paths: scored, blockers };
+    }
+
+    function collectAnswers() {
+      const val = id => document.getElementById(id).value.trim();
+      return {
+        country: val("country"), current_location: val("location"),
+        years_of_experience: val("experience"), career_break_duration: val("break-duration"),
+        break_reason: selected("#break-reason").join(", "),
+        previous_work: selected("#prev-work").join(", "),
+        previous_work_details: val("prev-work-details"),
+        career_break_activities: selected("#break-activities").join(", "),
+        career_break_details: val("break-details"),
+        additional_notes: val("notes"),
+        highest_education: val("education") === "Other"
+          ? "Other: " + val("education-other")
+          : val("education"),
+        languages: [...document.querySelectorAll(".lang-row")].map(r => {
+          const sel = r.querySelector(".lang-select").value;
+          const nm = sel === "Other…" ? r.querySelector(".lang-custom").value.trim() : sel;
+          const lv = r.querySelector(".lang-level").value;
+          return { nm, lv };
+        }).filter(x => x.nm).map(x => x.lv ? `${x.nm} (${x.lv})` : x.nm).join(", "),
+        relied_on_for: selected("#soft-skills").join(", "),
+        work_format: selected("#work-format").join(", "),
+        priorities: selected("#priorities").join(", "),
+        interests: selected("#interests").join(", "),
+        goal: selected("#goal").join(""),
+        biggest_challenge: selected("#challenge").join(", "),
+        preferred_solution: selected("#solution").join(", "),
+        return_timeline: selected("#return-timeline").join(""),
+        confidence: [...document.querySelectorAll(".scale-q")]
+          .map(q => `${q.querySelector(".statement").textContent} → ${q.querySelector(".scale").dataset.value}/5`).join(" | "),
+        reusable_skills: val("skills-text"),
+        name: val("name"), email: val("email"),
+        // record of consent, kept with the submission (GDPR accountability)
+        consent: document.getElementById("consent").checked
+          ? `Consented to processing for career roadmap at ${new Date().toISOString()}`
+          : "NO CONSENT"
+      };
+    }
+
+    function renderReport(profile) {
+      const name = document.getElementById("name").value.trim().split(" ")[0];
+      document.getElementById("report-intro").textContent =
+        `${name}, based on your answers, here's where you stand - and where you could go next.`;
+
+      document.getElementById("report-strengths").innerHTML = profile.strengths
+        .map(s => `<li><span class="mark">✓</span>${s}</li>`).join("");
+
+      const pathsEl = document.getElementById("report-paths");
+      pathsEl.innerHTML = (profile.paths.length
+        ? profile.paths.map(p => `<div class="path-item"><strong>⭐ ${p.name}</strong><span>This ${p.why}${p.fromBackground ? ", and connects directly to your previous experience" : ""}.</span></div>`).join("")
+        : `<div class="path-item"><strong>⭐ Let's talk</strong><span>Your combination of skills is unique - your full roadmap will include hand-picked suggestions.</span></div>`)
+        + `<p class="paths-note">These are starting points, not a verdict - your full roadmap will explore directions beyond this list.</p>`;
+
+      const blockersEl = document.getElementById("report-blockers");
+      blockersEl.innerHTML = profile.blockers.length
+        ? profile.blockers.map(b => `<li><span class="mark">•</span>${b}</li>`).join("")
+        : `<li><span class="mark">•</span>No major blockers - your main task is simply to start applying.</li>`;
+
+      const prioList = profile.priorities.map(p => p.toLowerCase());
+      const prio = prioList.length
+        ? (prioList.length > 1
+          ? prioList.slice(0, -1).join(", ") + " and " + prioList[prioList.length - 1]
+          : prioList[0])
+        : "what matters to you";
+      const goalPhrases = {
+        "Return to my previous field": "returning to your field",
+        "Try something new": "trying something new",
+        "Any stable job, soon": "finding a stable job soon",
+        "Start my own business": "starting your own business",
+        "I'm not sure yet": "finding your direction"
+      };
+      const goalText = goalPhrases[profile.goal] || (profile.goal ? profile.goal.toLowerCase() : "");
+      document.getElementById("report-note").innerHTML =
+        `<strong>What happens next:</strong> within 24 hours you'll receive your full career roadmap by email - with concrete next steps for each path above, focused on ${prio}${goalText ? ` and built around your goal of ${goalText}` : ""}.`;
+    }
+
+    async function finish() {
+      btnNext.disabled = true;
+      btnNext.textContent = "Building your profile…";
+      try {
+        if (FORM_ENDPOINT) {
+          const fd = new FormData();
+          Object.entries(collectAnswers()).forEach(([k, v]) => fd.append(k, v));
+          await fetch(FORM_ENDPOINT, { method: "POST", body: fd, headers: { Accept: "application/json" } });
+        }
+      } catch (e) { /* still show the report - don't lose the user */ }
+      renderReport(buildProfile());
+      fillShareLinks();
+      document.getElementById("wizard").style.display = "none";
+      document.getElementById("report").style.display = "block";
+      document.getElementById("assessment").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    // ---- post-result product-research question (separate, fire-and-forget) ----
+    function sendNextValue(value) {
+      try {
+        if (FORM_ENDPOINT) {
+          const fd = new FormData();
+          fd.append("email", document.getElementById("email").value.trim());
+          fd.append("most_valuable_next", value);
+          fetch(FORM_ENDPOINT, { method: "POST", body: fd, headers: { Accept: "application/json" } }).catch(() => { });
+        }
+      } catch (e) { /* research data only - never block the user */ }
+      document.getElementById("next-value-block").innerHTML =
+        "<h4>One last question</h4><p>Thank you - noted.</p>";
+    }
+    document.getElementById("next-value").addEventListener("click", e => {
+      const pill = e.target.closest(".pill");
+      if (!pill || pill.textContent === "Other") return;
+      sendNextValue(pill.textContent);
+    });
+    document.querySelector("#next-value-other input").addEventListener("keydown", e => {
+      if (e.key === "Enter" && e.target.value.trim()) {
+        e.preventDefault();
+        sendNextValue("Other: " + e.target.value.trim());
+      }
+    });
+
+    // ---- share the assessment (and her top paths) with a friend ----
+    function shareParts() {
+      const url = location.protocol.startsWith("http")
+        ? location.href.split("#")[0]
+        : "https://emily-cloud.github.io/career_intelligence_report/";
+      const paths = [...document.querySelectorAll(".path-item strong")]
+        .map(x => x.textContent.replace("⭐ ", "")).slice(0, 3);
+      const text = `I just tried the Career Clarity Assessment${paths.length ? " - my top paths: " + paths.join(", ") : ""}. If you're thinking about returning to work, try it too:`;
+      return { url, text, full: `${text} ${url}` };
+    }
+    function fillShareLinks() {
+      const { full } = shareParts();
+      document.getElementById("share-wa").href = "https://wa.me/?text=" + encodeURIComponent(full);
+      document.getElementById("share-mail").href = "mailto:?subject=" +
+        encodeURIComponent("Something for you - Career Clarity Assessment") +
+        "&body=" + encodeURIComponent(full);
+    }
+    document.getElementById("share-btn").addEventListener("click", async () => {
+      const btn = document.getElementById("share-btn");
+      const { url, text, full } = shareParts();
+      const confirmCopied = () => {
+        btn.textContent = "Copied - paste it anywhere";
+        setTimeout(() => { btn.textContent = "💌 Share this with a friend"; }, 3000);
+      };
+      if (navigator.share) {
+        try { await navigator.share({ title: "Career Clarity Assessment", text, url }); return; }
+        catch (e) { if (e.name === "AbortError") return; /* else fall through */ }
+      }
+      try { await navigator.clipboard.writeText(full); confirmCopied(); return; } catch (e) { /* fall through */ }
+      const ta = document.createElement("textarea");
+      ta.value = full; ta.style.position = "fixed"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select();
+      let done = false;
+      try { done = document.execCommand("copy"); } catch (e) { }
+      ta.remove();
+      if (done) confirmCopied();
+      else window.prompt("Copy this message and send it to a friend:", full);
+    });
+
+    // ---- light / dark mode ----
+    const themeToggle = document.getElementById("theme-toggle");
+    function isDarkNow() {
+      const t = document.documentElement.dataset.theme;
+      return t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+    function applyTheme(t) {
+      if (t) document.documentElement.dataset.theme = t;
+      else delete document.documentElement.dataset.theme;
+      themeToggle.textContent = isDarkNow() ? "☀️" : "🌙";
+    }
+    let storedTheme = null;
+    try { storedTheme = localStorage.getItem("theme"); } catch (e) { }
+    applyTheme(storedTheme || null);
+    themeToggle.addEventListener("click", () => {
+      const next = isDarkNow() ? "light" : "dark";
+      try { localStorage.setItem("theme", next); } catch (e) { }
+      applyTheme(next);
+    });
+  </script>
 
 </body>
+
 </html>
