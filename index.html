@@ -853,22 +853,28 @@
       </div>
     </div>
 
-    <div class="step" data-name="Your solution">
-      <h3>How would you prefer to solve this? 🤝</h3>
-      <p class="step-sub" id="solution-sub">Pick up to three kinds of help that appeal to you most.</p>
+    <div class="step" data-name="What you've tried">
+      <h3>What have you already tried to solve this? 🤝</h3>
+      <p class="step-sub" id="solution-sub">Pick everything you've tried. Every attempt tells us something.</p>
       <div class="field">
-        <div class="pills" id="solution" data-required data-max="3" data-other="solution-other">
-          <span class="pill">A clear step-by-step plan I follow myself</span>
-          <span class="pill">Personal guidance from a coach</span>
-          <span class="pill">An online course to build skills</span>
-          <span class="pill">Talking to people who've done it</span>
-          <span class="pill">Tools that match me to the right jobs</span>
-          <span class="pill">I'm not sure yet</span>
+        <div class="pills" id="solution" data-required data-other="solution-other">
+          <span class="pill">Applying to jobs online</span>
+          <span class="pill">Updating my CV myself</span>
+          <span class="pill">Career coaching or counseling</span>
+          <span class="pill">Online courses or certificates</span>
+          <span class="pill">Job center / Arbeitsagentur programs</span>
+          <span class="pill">Networking or LinkedIn</span>
+          <span class="pill">Advice from friends &amp; family</span>
+          <span class="pill">Nothing yet</span>
           <span class="pill">Other</span>
         </div>
         <div class="other-input" id="solution-other">
-          <input type="text" placeholder="Describe what would help you…">
+          <input type="text" placeholder="Tell us what you tried…">
         </div>
+      </div>
+      <div class="field" style="margin-top:1rem;">
+        <label for="solution-why">What didn't work, and why do you think that was? <span class="opt">(optional)</span></label>
+        <textarea id="solution-why" rows="3" placeholder="e.g. I sent 30 applications but barely heard back…"></textarea>
       </div>
     </div>
 
@@ -1076,7 +1082,7 @@
   const ALONE = {
     "break-reason": ["Prefer not to say"],
     "prev-work": ["Never worked before"],
-    "solution": ["I'm not sure yet"]
+    "solution": ["Nothing yet"]
   };
 
   document.querySelectorAll(".pills").forEach(group => {
@@ -1346,8 +1352,8 @@
 
     document.getElementById("solution-sub").textContent =
       selected("#challenge").length
-        ? "You've named what's hard — now let's look at what would help. Pick up to three."
-        : "Pick up to three kinds of help that appeal to you most.";
+        ? "You've named what's hard. What have you already tried? Pick everything that applies."
+        : "Pick everything you've tried. Every attempt tells us something.";
 
     document.getElementById("timeline-sub").textContent = g
       ? `Whether ${g} takes three months or a year — knowing your pace keeps the roadmap realistic.`
@@ -1589,7 +1595,8 @@
       interests: selected("#interests").join(", "),
       goal: selected("#goal").join(""),
       biggest_challenge: selected("#challenge").join(", "),
-      preferred_solution: selected("#solution").join(", "),
+      tried_before: selected("#solution").join(", "),
+      why_it_failed: val("solution-why"),
       return_timeline: selected("#return-timeline").join(""),
       confidence: [...document.querySelectorAll(".scale-q")]
         .map(q => `${q.querySelector(".statement").textContent} → ${q.querySelector(".scale").dataset.value}/5`).join(" | "),
