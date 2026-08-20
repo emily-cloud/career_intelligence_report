@@ -896,20 +896,20 @@
   <section class="wrap" id="why">
     <div class="why-card cta-card">
       <p class="cta-lead">Uncover the skills you may be overlooking, explore realistic career directions, and get
-        practical next steps back to work — based on what you've actually done.</p>
+        practical next steps back to work - based on what you've actually done.</p>
       <a class="cta-btn" href="#assessment">Discover My Next Step</a>
       <p class="cta-note">5 minutes · One question at a time · Free</p>
     </div>
     <div class="why-card">
       <h2>Your story isn't a gap</h2>
-      <p>Maybe you've been away from work for two years — or ten. Somewhere between caring for others and holding
+      <p>Maybe you've been away from work for two years - or ten. Somewhere between caring for others and holding
         everything together, a quiet question crept in: <em>"Who would hire me now?"</em></p>
       <p>Here's what we've learned from women who've stood exactly where you stand: what's missing is almost never
-        ability. It's that years of real skills — organizing, supporting, solving, deciding — have never been written
+        ability. It's that years of real skills - organizing, supporting, solving, deciding - have never been written
         down in one place.</p>
       <p>That's what these questions are for. This is not a personality quiz, and there are no trick questions. Each
         answer adds a piece of your picture: what you did before, what you carried through your break, what you want
-        now. At the end you'll see your strengths and realistic directions right away — and within 24 hours, we'll send
+        now. At the end you'll see your strengths and realistic directions right away - and within 24 hours, we'll send
         your personal roadmap back to work.</p>
       <p class="story-close"><strong>Five minutes. One question at a time. Let's put your story into words.</strong></p>
     </div>
@@ -2127,14 +2127,14 @@
       const url = shareUrl();
       document.getElementById("share-wa").href = "https://wa.me/?text=" + encodeURIComponent(url);
       document.getElementById("share-mail").href = "mailto:?subject=" +
-        encodeURIComponent("Something for you — Career Clarity Assessment") +
+        encodeURIComponent("Something for you - Career Clarity Assessment") +
         "&body=" + encodeURIComponent(url);
     }
     document.getElementById("share-btn").addEventListener("click", async () => {
       const btn = document.getElementById("share-btn");
       const url = shareUrl();
       const confirmCopied = () => {
-        btn.textContent = "Link copied — paste it anywhere";
+        btn.textContent = "Link copied - paste it anywhere";
         setTimeout(() => { btn.textContent = "💌 Share this with a friend"; }, 3000);
       };
       if (navigator.share) {
