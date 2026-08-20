@@ -1250,6 +1250,58 @@
     return ok;
   }
 
+  // ---- challenge options adapt to her goal (Q14) ----
+  // each entry: [group label, [options]]; an "Other" group is always appended
+  const CHALLENGE_SETS = {
+    "default": [
+      ["🧭 Direction", ["Unsure which role suits me", "Unsure what skills to build", "Unsure how to use my past experience"]],
+      ["🌷 Confidence & story", ["Rebuilding my confidence", "Explaining my career break"]],
+      ["📄 Applications", ["Updating my CV or LinkedIn", "Preparing for interviews"]],
+      ["🌐 Market & network", ["Building a professional network", "Understanding today's job market", "Language barriers"]],
+      ["⚖️ Life fit", ["Finding work that fits my life"]]
+    ],
+    "Try something new": [
+      ["🧭 New direction", ["Choosing the right new direction", "Knowing which of my skills transfer", "Unsure what skills to build"]],
+      ["🌷 Confidence & story", ["Rebuilding my confidence", "Explaining the switch and my break"]],
+      ["📄 Getting started", ["Competing with experienced candidates", "Updating my CV for a new field"]],
+      ["🌐 Market & network", ["No network in the new field", "Language barriers"]],
+      ["⚖️ Life fit", ["Finding work that fits my life"]]
+    ],
+    "Start my own business": [
+      ["💡 The idea", ["Choosing or validating my business idea", "Knowing if people would pay for it"]],
+      ["📋 Getting started", ["Registering a business in Germany", "Understanding taxes & insurance"]],
+      ["💶 Money", ["Funding or start-up costs", "Unsteady income at the beginning"]],
+      ["📣 Customers", ["Finding my first customers", "Marketing and visibility"]],
+      ["🌷 Confidence & life", ["Confidence to take the leap", "Balancing business and family"]]
+    ],
+    "Any stable job, soon": [
+      ["🔎 Finding jobs", ["Finding openings that match me", "Getting responses to applications"]],
+      ["📄 Applications", ["Updating my CV or LinkedIn", "Preparing for interviews"]],
+      ["🌷 Confidence & story", ["Explaining my career break", "Rebuilding my confidence"]],
+      ["🌐 Practical", ["Language barriers", "Childcare or scheduling constraints"]],
+      ["⚖️ Life fit", ["Finding work that fits my life"]]
+    ],
+    "I'm not sure yet": [
+      ["🧭 Direction", ["Unsure which role suits me", "Unsure what skills to build", "Unsure how to use my past experience", "Too many options, hard to choose"]],
+      ["🌷 Confidence & story", ["Rebuilding my confidence", "Explaining my career break"]],
+      ["🌐 Market", ["Understanding today's job market", "Language barriers"]],
+      ["⚖️ Life fit", ["Finding work that fits my life"]]
+    ]
+  };
+  let challengeGoalKey = "default";
+  function buildChallenges(key) {
+    const groups = CHALLENGE_SETS[key] || CHALLENGE_SETS["default"];
+    document.getElementById("challenge").innerHTML =
+      groups.map(([label, opts]) =>
+        `<span class="pill-group-label">${label}</span>` +
+        opts.map(o => `<span class="pill">${o}</span>`).join("")
+      ).join("") +
+      `<span class="pill-group-label">💬 Something else</span><span class="pill">Other</span>`;
+    const field = document.getElementById("challenge-other");
+    field.classList.remove("visible");
+    field.querySelector("input").value = "";
+  }
+
   // ---- context-aware copy: later questions pick up her earlier answers ----
   const GOAL_BITS = {
     "Return to my previous field": "returning to your field",
@@ -1261,6 +1313,13 @@
   function personalize() {
     const goal = selected("#goal")[0] || "";
     const g = GOAL_BITS[goal] || "";
+
+    // swap the challenge options when the goal changes (selections reset)
+    const setKey = CHALLENGE_SETS[goal] ? goal : "default";
+    if (setKey !== challengeGoalKey) {
+      buildChallenges(setKey);
+      challengeGoalKey = setKey;
+    }
 
     document.getElementById("challenge-h").textContent = g
       ? `As you think about ${g}, which parts feel most challenging right now? 🤔`
@@ -1476,7 +1535,27 @@
       "Language barriers": "Language barriers",
       "Finding work that fits my life": "Finding work that fits your life",
       "Understanding today's job market": "Understanding today's job market",
-      "Knowing what salary to expect": "Uncertainty about salary expectations"
+      "Knowing what salary to expect": "Uncertainty about salary expectations",
+      "Choosing the right new direction": "Choosing the right new direction",
+      "Knowing which of my skills transfer": "Clarity on which of your skills transfer",
+      "Explaining the switch and my break": "Explaining the switch and the career break",
+      "Competing with experienced candidates": "Competing with more recent experience",
+      "Updating my CV for a new field": "A CV not yet aimed at the new field",
+      "No network in the new field": "No network in the new field yet",
+      "Too many options, hard to choose": "Too many options to choose from",
+      "Finding openings that match me": "Finding openings that match you",
+      "Getting responses to applications": "Getting responses to applications",
+      "Childcare or scheduling constraints": "Childcare and scheduling constraints",
+      "Choosing or validating my business idea": "An idea that still needs validating",
+      "Knowing if people would pay for it": "Unproven demand for the idea",
+      "Registering a business in Germany": "Navigating business registration",
+      "Understanding taxes & insurance": "Understanding taxes and insurance",
+      "Funding or start-up costs": "Funding and start-up costs",
+      "Unsteady income at the beginning": "Unsteady income at the start",
+      "Finding my first customers": "Finding the first customers",
+      "Marketing and visibility": "Marketing and visibility",
+      "Confidence to take the leap": "Confidence to take the leap",
+      "Balancing business and family": "Balancing business and family"
     };
     blockers.unshift(...challenges.map(c => CHALLENGE_BLOCKERS[c] || c));
     blockers = [...new Set(blockers)];
