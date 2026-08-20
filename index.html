@@ -182,25 +182,6 @@
     text-align: center;
     box-shadow: 0 14px 40px rgba(147, 21, 27, 0.1);
   }
-  .why-card::before {
-    content: "✿"; position: absolute; top: -16px; left: -4px;
-    font-size: 5.5rem; color: var(--accent); opacity: 0.07; pointer-events: none;
-  }
-  .why-card::after {
-    content: "✿"; position: absolute; bottom: -26px; right: -8px;
-    font-size: 6.5rem; color: var(--gold); opacity: 0.12; pointer-events: none;
-  }
-  .story-flourish { width: min(320px, 80%); margin: 0 auto 1rem; }
-  .story-flourish svg { display: block; width: 100%; height: auto; }
-  .deco {
-    position: absolute;
-    color: var(--accent);
-    pointer-events: none;
-    user-select: none;
-  }
-  .deco-1 { top: 34%; left: 6%; font-size: 1.3rem; opacity: 0.18; }
-  .deco-2 { top: 18%; right: 7%; font-size: 1.7rem; opacity: 0.16; color: var(--gold); }
-  .deco-3 { bottom: 30%; right: 5%; font-size: 1.1rem; opacity: 0.2; }
   .why-card h2 {
     font-family: var(--serif);
     font-size: 1.45rem;
@@ -503,29 +484,6 @@
 
 <section class="wrap" id="why">
   <div class="why-card">
-    <div class="story-flourish" aria-hidden="true">
-      <svg viewBox="0 0 320 44">
-        <path d="M20 24 C70 8 120 8 150 22" fill="none" stroke="#d09186" stroke-width="1.6" stroke-linecap="round"/>
-        <path d="M300 24 C250 8 200 8 170 22" fill="none" stroke="#d09186" stroke-width="1.6" stroke-linecap="round"/>
-        <ellipse cx="70" cy="13" rx="6" ry="2.6" fill="#dfae9f" transform="rotate(-14 70 13)"/>
-        <ellipse cx="110" cy="10" rx="6" ry="2.6" fill="#dfae9f" transform="rotate(-6 110 10)"/>
-        <ellipse cx="250" cy="13" rx="6" ry="2.6" fill="#dfae9f" transform="rotate(14 250 13)"/>
-        <ellipse cx="210" cy="10" rx="6" ry="2.6" fill="#dfae9f" transform="rotate(6 210 10)"/>
-        <circle cx="36" cy="21" r="2.4" fill="#c79c5c"/>
-        <circle cx="284" cy="21" r="2.4" fill="#c79c5c"/>
-        <g>
-          <circle cx="160" cy="14" r="5" fill="#c9564f"/>
-          <circle cx="169" cy="21" r="5" fill="#c9564f"/>
-          <circle cx="166" cy="31" r="5" fill="#c9564f"/>
-          <circle cx="154" cy="31" r="5" fill="#c9564f"/>
-          <circle cx="151" cy="21" r="5" fill="#c9564f"/>
-          <circle cx="160" cy="23" r="4" fill="#c79c5c"/>
-        </g>
-      </svg>
-    </div>
-    <span class="deco deco-1" aria-hidden="true">❀</span>
-    <span class="deco deco-2" aria-hidden="true">✿</span>
-    <span class="deco deco-3" aria-hidden="true">❀</span>
     <h2>Your story isn't a gap ✿</h2>
     <p>Maybe you've been away from work for two years — or ten. Somewhere between caring for others and holding everything together, a quiet question crept in: <em>"Who would hire me now?"</em></p>
     <p>Here's what we've learned from women who've stood exactly where you stand: what's missing is almost never ability. It's that years of real skills — organizing, supporting, solving, deciding — have never been written down in one place.</p>
