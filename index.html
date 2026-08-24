@@ -378,18 +378,27 @@
   }
   .consent a { color: var(--accent); }
 
-  .skip-email-row { text-align: center; margin-top: 1.6rem; }
-  .skip-email-btn {
-    font: inherit; font-size: 0.92rem; font-weight: 600;
-    color: var(--accent);
-    background: none; border: none;
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    cursor: pointer;
-    padding: 0.2rem 0.4rem;
+  .skip-email-row {
+    text-align: center;
+    margin-top: 1.6rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--line);
   }
-  .skip-email-btn:hover { color: var(--accent-dark); }
-  .skip-note { font-size: 0.8rem; color: var(--ink-faint); margin-top: 0.3rem; }
+  .skip-email-btn {
+    font: inherit; font-size: 0.9rem; font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: transparent;
+    border: 1.5px solid var(--btn);
+    border-radius: 3px;
+    padding: 0.85rem 2rem;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .skip-email-btn:hover { background: var(--btn); color: var(--btn-text); }
+  .skip-note { font-size: 0.88rem; color: var(--ink-soft); margin-bottom: 1rem; }
+  .skip-note strong { color: var(--ink); }
 
   /* ---------- Privacy notice ---------- */
   #privacy { scroll-margin-top: 2rem; padding-top: 1rem; }
@@ -942,8 +951,8 @@
         <span>I agree that my answers are used to create my career profile and, if I leave my email address, to send me my personal roadmap. I can withdraw my consent and have my data deleted at any time. <a href="#privacy">Privacy notice</a></span>
       </label>
       <div class="skip-email-row">
+        <p class="skip-note"><strong>If you want your personal career report, please leave your email address above.</strong> Without an email you'll still see your instant results, but we can't send you the report.</p>
         <button type="button" class="skip-email-btn" id="skip-email">Submit without email</button>
-        <p class="skip-note">You'll still see your instant Career Profile. You just won't receive the emailed roadmap.</p>
       </div>
     </div>
 
@@ -1031,7 +1040,7 @@
   // "https://formspree.io/f/xxxxxxxx") to receive each completed assessment
   // (all answers + email) as a submission. Leave empty for demo mode:
   // the report still renders, nothing is sent anywhere.
-  const FORM_ENDPOINT = "https://formspree.io/f/xrpzkvwj";
+  const FORM_ENDPOINT = "https://formspree.io/f/xaewzzkg";
   // --------------------------------------------------------------------------
 
   // The assessment stays hidden until the visitor clicks Start;
