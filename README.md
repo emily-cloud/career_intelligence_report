@@ -6,7 +6,7 @@ A single-file landing page (`index.html`) piloting a **Career Clarity Assessment
 
 The page therefore collects **evidence**, not just labels: what she did in her previous role, what her career-break activities actually involved, what people rely on her for, and any professional skills in her own words. Submissions are reviewed (with AI/manual help) to write each personalized roadmap, delivered by email within 24 hours.
 
-## The flow (18 pages, one topic each, ~5 minutes)
+## The flow (19 pages, one topic each, ~5 minutes)
 
 1. Where are you based? (country + city)
 2. Years of work experience
@@ -23,9 +23,10 @@ The page therefore collects **evidence**, not just labels: what she did in her p
 13. Biggest challenges (grouped; options adapt to the goal; up to 3)
 14. What have you already tried to solve this — and what didn't work? (multi-select + optional free text)
 15. Ideal return timeline
-16. Three 1–5 confidence statements (one screen)
-17. Reusable professional skills (optional free text)
-18. Name + email + optional notes + GDPR consent → instant Career Profile preview
+16. Weekly time spent on job searching
+17. Three 1–5 confidence statements (one screen)
+18. Reusable professional skills (optional free text)
+19. Name + email + optional notes + GDPR consent → instant Career Profile preview
 
 **After the report:** one product-research question — "What would be most valuable to you next?" — sent as a separate fire-and-forget submission.
 

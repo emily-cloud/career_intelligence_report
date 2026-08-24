@@ -498,7 +498,7 @@
   <div class="panel" id="wizard">
     <div class="progress">
       <div class="progress-label">
-        <span id="progress-step">1 of 18</span>
+        <span id="progress-step">1 of 19</span>
         <span id="progress-name"></span>
       </div>
       <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
@@ -857,6 +857,20 @@
           <span class="pill">Within 3–6 months</span>
           <span class="pill">Within 6–12 months</span>
           <span class="pill">No fixed timeline</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step" data-name="Job search">
+      <h3>How much time have you spent on job searching each week? 🔍</h3>
+      <p class="step-sub">An honest guess is enough — there's no right amount.</p>
+      <div class="field">
+        <div class="pills" id="search-time" data-single data-required>
+          <span class="pill">I haven't started yet</span>
+          <span class="pill">Less than 2 hours</span>
+          <span class="pill">2–5 hours</span>
+          <span class="pill">5–10 hours</span>
+          <span class="pill">More than 10 hours</span>
         </div>
       </div>
     </div>
@@ -1562,6 +1576,7 @@
       tried_before: selected("#solution").join(", "),
       why_it_failed: val("solution-why"),
       return_timeline: selected("#return-timeline").join(""),
+      weekly_job_search_time: selected("#search-time").join(""),
       confidence: [...document.querySelectorAll(".scale-q")]
         .map(q => `${q.querySelector(".statement").textContent} → ${q.querySelector(".scale").dataset.value}/5`).join(" | "),
       reusable_skills: val("skills-text"),
