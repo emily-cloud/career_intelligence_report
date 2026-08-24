@@ -1393,7 +1393,7 @@
           receive it within 24 hours.</p>
         <div class="field" style="margin-bottom:1rem;">
           <label for="name">Name <span class="opt">(Optional)</span></label>
-          <input type="text" id="name" autocomplete="name" placeholder="Your first name" data-required>
+          <input type="text" id="name" autocomplete="name" placeholder="Your first name">
         </div>
         <div class="field">
           <label for="email">Email <span class="opt">(Optional — needed only for your emailed career
@@ -1467,6 +1467,8 @@
         </div>
 
         <div class="share-row">
+          <button type="button" class="share-btn" id="email-me" style="display:none; margin-bottom:0.8rem;">📧 Email my results to me</button>
+          <br>
           <button type="button" class="share-btn" id="share-btn">💌 Share this with a friend</button>
           <p class="share-links">
             <a id="share-wa" target="_blank" rel="noopener">Share on WhatsApp</a> ·
@@ -2090,8 +2092,9 @@
 
     function renderReport(profile) {
       const name = document.getElementById("name").value.trim().split(" ")[0];
-      document.getElementById("report-intro").textContent =
-        `${name}, based on your answers, here's where you stand — and where you could go next.`;
+      document.getElementById("report-intro").textContent = name
+        ? `${name}, based on your answers, here's where you stand — and where you could go next.`
+        : "Based on your answers, here's where you stand — and where you could go next.";
 
       document.getElementById("report-strengths").innerHTML = profile.strengths
         .map(s => `<li><span class="mark">✓</span>${s}</li>`).join("");
@@ -2160,6 +2163,7 @@
       } catch (e) { /* still show the report — don't lose the user */ }
       renderReport(buildProfile());
       fillShareLinks();
+      fillEmailMe();
       document.getElementById("wizard").style.display = "none";
       document.getElementById("report").style.display = "block";
       document.getElementById("assessment").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -2189,6 +2193,56 @@
         sendNextValue("Other: " + e.target.value.trim());
       }
     });
+
+    // ---- a copy of her results, addressed to her own inbox ----
+    function fillEmailMe() {
+      const email = document.getElementById("email").value.trim();
+      const btn = document.getElementById("email-me");
+      if (!email) { btn.style.display = "none"; return; }
+      btn.style.display = "";
+      btn.onclick = () => {
+        const name = document.getElementById("name").value.trim();
+        const clean = t => t.replace(/^[•✓✦⭐\s]+/, "").trim();
+        const strengths = [...document.querySelectorAll("#report-strengths li")].map(li => "• " + clean(li.textContent));
+        const paths = [...document.querySelectorAll("#report-paths .path-item")].map(p => {
+          const t = clean(p.querySelector("strong").textContent);
+          const s = p.querySelector("span") ? p.querySelector("span").textContent.trim() : "";
+          return "• " + t + (s ? ": " + s : "");
+        });
+        const blockers = [...document.querySelectorAll("#report-blockers li")].map(li => "• " + clean(li.textContent));
+        const pretty = k => k.replace(/_/g, " ").replace(/^./, c => c.toUpperCase());
+        const answers = Object.entries(collectAnswers())
+          .filter(([k, v]) => v && k !== "consent")
+          .map(([k, v]) => pretty(k) + ": " + v);
+        const body =
+`Hi ${name || "there"},
+
+Here is a copy of your Career Clarity Assessment.
+
+YOUR INSTANT PROFILE
+
+Your biggest strengths
+${strengths.join("\n")}
+
+Realistic career directions
+${paths.join("\n")}
+
+What's in the way
+${blockers.join("\n")}
+
+Your full personal career roadmap will arrive by email within 24 hours.
+
+YOUR ANSWERS
+${answers.join("\n")}
+
+Take the assessment yourself: https://emily-cloud.github.io/career_intelligence_report/`;
+        const url = "mailto:" + encodeURIComponent(email) +
+          "?subject=" + encodeURIComponent("Your Career Profile, Career Clarity Assessment") +
+          "&body=" + encodeURIComponent(body);
+        btn.dataset.mailto = url;
+        location.href = url;
+      };
+    }
 
     // ---- share the assessment with a friend (link only) ----
     function shareUrl() {
