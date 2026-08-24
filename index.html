@@ -498,7 +498,7 @@
   <div class="panel" id="wizard">
     <div class="progress">
       <div class="progress-label">
-        <span id="progress-step">1 of 19</span>
+        <span id="progress-step">1 of 18</span>
         <span id="progress-name"></span>
       </div>
       <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
@@ -545,24 +545,6 @@
           <option>6–10 years</option>
           <option>More than 10 years</option>
         </select>
-      </div>
-    </div>
-
-    <div class="step" data-name="Career break">
-      <h3>What was the reason for your break? 💛</h3>
-      <p class="step-sub">Whatever it was, it was valid — pick everything that applies.</p>
-      <div class="field">
-        <div class="pills" id="break-reason" data-required data-other="break-reason-other">
-          <span class="pill">Parenthood</span>
-          <span class="pill">Caregiving</span>
-          <span class="pill">Illness</span>
-          <span class="pill">Relocation</span>
-          <span class="pill">Other</span>
-          <span class="pill">Prefer not to say</span>
-        </div>
-        <div class="other-input" id="break-reason-other">
-          <input type="text" placeholder="Tell us in your own words…">
-        </div>
       </div>
     </div>
 
@@ -1064,7 +1046,6 @@
     ]
   };
   const ALONE = {
-    "break-reason": ["Prefer not to say"],
     "prev-work": ["Never worked before"],
     "solution": ["Nothing yet"]
   };
@@ -1558,7 +1539,6 @@
     return {
       country: val("country"), current_location: val("location"),
       years_of_experience: val("experience"), career_break_duration: val("break-duration"),
-      break_reason: selected("#break-reason").join(", "),
       previous_work: selected("#prev-work").join(", "),
       previous_work_details: val("prev-work-details"),
       career_break_activities: selected("#break-activities").join(", "),
