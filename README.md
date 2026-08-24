@@ -11,19 +11,19 @@ The page therefore collects **evidence**, not just labels: what she did in her p
 1. Where are you based? (country + city)
 2. Years of work experience
 3. Career break length
-4. Break reason (incl. Other + Prefer not to say)
-5. Career-break activities **+ "Tell us briefly what this involved"** (free text, required)
-6. Previous job title + industry **+ "What did you actually do in this role?"** (free text, required)
-7. Highest education
-8. Languages with levels (up to 4)
-9. "What kinds of things have people relied on you for?" (behavioral strengths, up to 4)
-10. Desired work format (up to 3)
-11. What matters most (incl. work-life balance, getting back quickly; up to 3)
-12. Interests (up to 3)
-13. What would you like to do next? (goal)
-14. Biggest challenges (incl. skills-relevance, explaining the break, language/qualifications; up to 2)
-15. What have you already tried to solve this — and what didn't work? (multi-select + optional free text)
-16. Transition readiness: how much change + ideal return timeline (one screen)
+4. What did you mainly do in your previous work? (categories + optional free text)
+5. Career-break experiences (+ optional free text)
+6. Highest education
+7. Languages with levels (up to 4)
+8. What do people appreciate and rely on you for? (behavioral strengths, up to 4)
+9. Desired work format (up to 3)
+10. What matters most (grouped; up to 3)
+11. Interests (grouped; up to 3)
+12. What would you like to do next? (goal)
+13. Biggest challenges (grouped; options adapt to the goal; up to 3)
+14. What have you already tried to solve this — and what didn't work? (multi-select + optional free text)
+15. Ideal return timeline
+16. Weekly time spent on job searching
 17. Three 1–5 confidence statements (one screen)
 18. Reusable professional skills (optional free text)
 19. Name + email + optional notes + GDPR consent → instant Career Profile preview

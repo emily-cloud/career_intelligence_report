@@ -548,24 +548,6 @@
       </div>
     </div>
 
-    <div class="step" data-name="Career break">
-      <h3>What was the reason for your break? 💛</h3>
-      <p class="step-sub">Whatever it was, it was valid — pick everything that applies.</p>
-      <div class="field">
-        <div class="pills" id="break-reason" data-required data-other="break-reason-other">
-          <span class="pill">Parenthood</span>
-          <span class="pill">Caregiving</span>
-          <span class="pill">Illness</span>
-          <span class="pill">Relocation</span>
-          <span class="pill">Other</span>
-          <span class="pill">Prefer not to say</span>
-        </div>
-        <div class="other-input" id="break-reason-other">
-          <input type="text" placeholder="Tell us in your own words…">
-        </div>
-      </div>
-    </div>
-
     <div class="step" data-name="Previous work">
       <h3>What did you mainly do in your previous work, if you've worked before? 🧰</h3>
       <p class="step-sub" id="prev-work-sub">Pick everything that applies.</p>
@@ -879,6 +861,20 @@
       </div>
     </div>
 
+    <div class="step" data-name="Job search">
+      <h3>How much time have you spent on job searching each week? 🔍</h3>
+      <p class="step-sub">An honest guess is enough — there's no right amount.</p>
+      <div class="field">
+        <div class="pills" id="search-time" data-single data-required>
+          <span class="pill">I haven't started yet</span>
+          <span class="pill">Less than 2 hours</span>
+          <span class="pill">2–5 hours</span>
+          <span class="pill">5–10 hours</span>
+          <span class="pill">More than 10 hours</span>
+        </div>
+      </div>
+    </div>
+
     <div class="step" data-name="Confidence">
       <h3>How true is this for you today? 🌸</h3>
       <p class="step-sub">1 = not at all, 5 = completely. Honest answers make your roadmap more useful.</p>
@@ -1064,7 +1060,6 @@
     ]
   };
   const ALONE = {
-    "break-reason": ["Prefer not to say"],
     "prev-work": ["Never worked before"],
     "solution": ["Nothing yet"]
   };
@@ -1558,7 +1553,6 @@
     return {
       country: val("country"), current_location: val("location"),
       years_of_experience: val("experience"), career_break_duration: val("break-duration"),
-      break_reason: selected("#break-reason").join(", "),
       previous_work: selected("#prev-work").join(", "),
       previous_work_details: val("prev-work-details"),
       career_break_activities: selected("#break-activities").join(", "),
@@ -1582,6 +1576,7 @@
       tried_before: selected("#solution").join(", "),
       why_it_failed: val("solution-why"),
       return_timeline: selected("#return-timeline").join(""),
+      weekly_job_search_time: selected("#search-time").join(""),
       confidence: [...document.querySelectorAll(".scale-q")]
         .map(q => `${q.querySelector(".statement").textContent} → ${q.querySelector(".scale").dataset.value}/5`).join(" | "),
       reusable_skills: val("skills-text"),
