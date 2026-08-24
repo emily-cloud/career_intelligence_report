@@ -378,6 +378,19 @@
   }
   .consent a { color: var(--accent); }
 
+  .skip-email-row { text-align: center; margin-top: 1.6rem; }
+  .skip-email-btn {
+    font: inherit; font-size: 0.92rem; font-weight: 600;
+    color: var(--accent);
+    background: none; border: none;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    padding: 0.2rem 0.4rem;
+  }
+  .skip-email-btn:hover { color: var(--accent-dark); }
+  .skip-note { font-size: 0.8rem; color: var(--ink-faint); margin-top: 0.3rem; }
+
   /* ---------- Privacy notice ---------- */
   #privacy { scroll-margin-top: 2rem; padding-top: 1rem; }
   .privacy-card {
@@ -917,7 +930,7 @@
         <input type="text" id="name" autocomplete="name" placeholder="Your first name" data-required>
       </div>
       <div class="field">
-        <label for="email">Email</label>
+        <label for="email">Email <span class="opt">(needed only for your emailed roadmap)</span></label>
         <input type="email" id="email" autocomplete="email" placeholder="you@example.com" data-required>
       </div>
       <div class="field" style="margin-top:1rem;">
@@ -926,8 +939,12 @@
       </div>
       <label class="consent" for="consent">
         <input type="checkbox" id="consent" data-required>
-        <span>I agree that my answers are used to create my career roadmap and that I'll receive it by email. I can withdraw my consent and have my data deleted at any time. <a href="#privacy">Privacy notice</a></span>
+        <span>I agree that my answers are used to create my career profile and, if I leave my email address, to send me my personal roadmap. I can withdraw my consent and have my data deleted at any time. <a href="#privacy">Privacy notice</a></span>
       </label>
+      <div class="skip-email-row">
+        <button type="button" class="skip-email-btn" id="skip-email">Submit without email</button>
+        <p class="skip-note">You'll still see your instant Career Profile. You just won't receive the emailed roadmap.</p>
+      </div>
     </div>
 
     <p class="step-error" id="step-error">Please answer this question to continue.</p>
@@ -1339,8 +1356,8 @@
       : "There's no right answer — this keeps your roadmap practical.";
 
     document.getElementById("final-sub").textContent = g
-      ? `Leave your email and we'll create your personalized roadmap for ${g}. You'll receive it within 24 hours.`
-      : "Leave your email and we'll create your personalized career roadmap. You'll receive it within 24 hours.";
+      ? `Leave your email and we'll send your personalized roadmap for ${g} within 24 hours. Or submit without email and just see your results.`
+      : "Leave your email and we'll send your personalized career roadmap within 24 hours. Or submit without email and just see your results.";
   }
 
   function show(i) {
@@ -1622,11 +1639,27 @@
     };
     const goalText = goalPhrases[profile.goal] || (profile.goal ? profile.goal.toLowerCase() : "");
     document.getElementById("report-note").innerHTML =
-      `<strong>What happens next:</strong> within 24 hours you'll receive your full career roadmap by email — with concrete next steps for each path above, focused on ${prio}${goalText ? ` and built around your goal of ${goalText}` : ""}.`;
+      document.getElementById("email").value.trim()
+        ? `<strong>What happens next:</strong> within 24 hours you'll receive your full career roadmap by email — with concrete next steps for each path above, focused on ${prio}${goalText ? ` and built around your goal of ${goalText}` : ""}.`
+        : `<strong>What happens next:</strong> you submitted without an email, so nothing will arrive in your inbox. If you'd like your full career roadmap after all, write to <a href="mailto:unitywerk@gmail.com">unitywerk@gmail.com</a>.`;
   }
+
+  // Submit without email: everything else must still be valid (incl. consent)
+  document.getElementById("skip-email").addEventListener("click", () => {
+    const emailEl = document.getElementById("email");
+    emailEl.removeAttribute("data-required");
+    if (!validateStep(steps[current])) {
+      emailEl.setAttribute("data-required", "");
+      stepError.style.display = "block";
+      return;
+    }
+    emailEl.value = "";
+    finish();
+  });
 
   async function finish() {
     btnNext.disabled = true;
+    document.getElementById("skip-email").disabled = true;
     btnNext.textContent = "Building your profile…";
     try {
       if (FORM_ENDPOINT) {
