@@ -2,6 +2,8 @@
 
 A single-file landing page (`index.html`) piloting a **Career Clarity Assessment for women returning to work after a career break**. No frameworks, no build step, no backend — open `index.html` in a browser and it works.
 
+**Two languages:** `index.html` is the English version, `de.html` the full German version ("Karriere-Klarheits-Check", du-form). A DE/EN pill in the top-right corner switches between them. The German page is a complete translation — questions, options, personalized copy, report, privacy notice — with the matching rules renamed consistently so the report engine works identically; German keywords were added to the free-text matching. Submissions include a `language` field (`en`/`de`). When editing questions or options, apply the change to both files.
+
 **Core hypothesis:** what has this woman actually done → what transferable skills may be hidden in that experience → what realistic career directions could fit her now → what should she do next?
 
 The page therefore collects **evidence**, not just labels: what she did in her previous role, what her career-break activities actually involved, what people rely on her for, and any professional skills in her own words. Submissions are reviewed (with AI/manual help) to write each personalized roadmap, delivered by email within 24 hours.
